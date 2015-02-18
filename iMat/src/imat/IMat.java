@@ -17,6 +17,8 @@ public class IMat {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Starting iMat...");
+        
+        new IMatView().setVisible(true);
     }
     
 }
