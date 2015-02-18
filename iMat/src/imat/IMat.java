@@ -5,6 +5,9 @@
  */
 package imat;
 
+import java.util.List;
+import se.chalmers.ait.dat215.project.Product;
+
 /**
  *
  * @author Oskar
@@ -17,7 +20,7 @@ public class IMat {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Starting iMat...");
-        
+       
         new IMatView().setVisible(true);
     }
     
