@@ -9,6 +9,7 @@ import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.UIManager;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
 /**
@@ -22,7 +23,7 @@ public class IMatView extends javax.swing.JFrame {
     /**
      * Creates new form IMatView
      */
-    public IMatView() {
+    public IMatView() throws Exception {
         initComponents();
 //SidePanel
         categoryList.setCellRenderer(new CellRenderer());
@@ -30,6 +31,8 @@ public class IMatView extends javax.swing.JFrame {
         categoryList.setModel(listModel);
         
         //categoryScrollPane.setVisible(false);
+    UIManager.setLookAndFeel(
+        UIManager.getCrossPlatformLookAndFeelClassName());
     }
 
     /**
