@@ -5,8 +5,10 @@
  */
 package imat;
 
+import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
 /**
@@ -85,7 +87,7 @@ public class IMatView extends javax.swing.JFrame {
         });
 
         breadButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        breadButton.setText("Bread");
+        breadButton.setText("Bröd");
         breadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 breadButtonActionPerformed(evt);
@@ -199,9 +201,9 @@ public class IMatView extends javax.swing.JFrame {
 
         sidePanel.setBackground(new java.awt.Color(0, 204, 204));
 
+        categoryScrollPane.setBackground(new java.awt.Color(255, 255, 255));
         categoryScrollPane.setBorder(null);
 
-        categoryList.setBackground(new java.awt.Color(240, 240, 240));
         categoryList.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         categoryList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -287,10 +289,12 @@ public class IMatView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fruitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fruitButtonActionPerformed
+        resetAndLight(fruitButton);
         setList("FoG");
     }//GEN-LAST:event_fruitButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        resetButtons();
         if(categoryList.getModel().getSize() != 0){
             listModel.removeAllElements();
             categoryList.setModel(listModel);
@@ -298,22 +302,27 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void breadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_breadButtonActionPerformed
+        resetAndLight(breadButton);
         setList("Bread");
     }//GEN-LAST:event_breadButtonActionPerformed
 
     private void charkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_charkButtonActionPerformed
+        resetAndLight(charkButton);
         setList("Chark");
     }//GEN-LAST:event_charkButtonActionPerformed
 
     private void mejeriButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mejeriButtonActionPerformed
+        resetAndLight(mejeriButton);
         setList("Mejeri");
     }//GEN-LAST:event_mejeriButtonActionPerformed
 
     private void dryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dryButtonActionPerformed
+        resetAndLight(dryButton);
         setList("Torr");
     }//GEN-LAST:event_dryButtonActionPerformed
 
     private void dsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dsButtonActionPerformed
+        resetAndLight(dsButton);
         setList("DS");
     }//GEN-LAST:event_dsButtonActionPerformed
 
@@ -382,5 +391,23 @@ public class IMatView extends javax.swing.JFrame {
         Object[] listData = lh.getLists(s).toArray();
         categoryList.setListData(listData);
         categoryList.setSelectedIndex(0);
+    }
+
+    private void resetButtons() {
+        fruitButton.setBackground(Color.WHITE);
+        breadButton.setBackground(Color.WHITE);
+        charkButton.setBackground(Color.WHITE);
+        dryButton.setBackground(Color.WHITE);
+        dsButton.setBackground(Color.WHITE);
+        mejeriButton.setBackground(Color.WHITE);        
+    }
+
+    private void light(JButton button) {
+        button.setBackground(Color.YELLOW);
+    }
+
+    private void resetAndLight(JButton button) {
+        resetButtons();
+        light(button);
     }
 }

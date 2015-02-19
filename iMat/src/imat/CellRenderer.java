@@ -17,33 +17,18 @@ import javax.swing.ListCellRenderer;
  *
  * @author Oskar
  */
-public class CellRenderer extends JLabel implements ListCellRenderer<String>{
+public class CellRenderer extends GradientLabel implements ListCellRenderer<String>{
 
     public CellRenderer(){
         setOpaque(true);
         setFont(new Font(this.getFont().getName(), Font.PLAIN, 18));
-
+        setBackground(Color.WHITE);
     }
     @Override
     public Component getListCellRendererComponent(JList<? extends String> list, String value, int index, boolean isSelected, boolean cellHasFocus) {
        
         setText(value);
-        Color background;
-        Color foreground;
-        // check if this cell is selected
-        if (isSelected) {
-            background = Color.YELLOW;
-            foreground = Color.BLACK;
-
-        // unselected, and not the DnD drop location
-        } else {
-            background = Color.WHITE;
-            foreground = Color.BLACK;
-        };
-
-        setBackground(background);
-        setForeground(foreground);
-
+        setSelected(isSelected);
         return this;
    }
     
