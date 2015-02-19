@@ -23,7 +23,7 @@ public class IMatView extends javax.swing.JFrame {
     /**
      * Creates new form IMatView
      */
-    public IMatView() throws Exception {
+    public IMatView(){
         initComponents();
 //SidePanel
         categoryList.setCellRenderer(new CellRenderer());
@@ -31,8 +31,6 @@ public class IMatView extends javax.swing.JFrame {
         categoryList.setModel(listModel);
         
         //categoryScrollPane.setVisible(false);
-    UIManager.setLookAndFeel(
-        UIManager.getCrossPlatformLookAndFeelClassName());
     }
 
     /**
