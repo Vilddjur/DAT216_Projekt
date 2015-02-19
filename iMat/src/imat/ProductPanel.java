@@ -13,9 +13,9 @@ import javax.swing.ImageIcon;
  */
 public class ProductPanel extends javax.swing.JPanel {
     private String name;
-    private int price;
+    private double price;
     private String priceSuffix;
-    private ImageIcon image;
+    private String imageName;
     /**
      * Creates new form ProductPanel
      */
@@ -28,13 +28,22 @@ public class ProductPanel extends javax.swing.JPanel {
     
     public void setName(String s){
         name = s;
+        nameLabel.setText(name);
     }
-    public void setPrice(int p,String s){
+    public void setPrice(double p,String s){
         price = p;
         priceSuffix = s;
+        priceLabel.setText(p + " " + priceSuffix);
     }    
-    public void setImage(ImageIcon I){
-        image = I;
+    public String getName(){
+        return name;
+    }
+    public double getPrice(){
+        return price;
+    }
+    public void setImage(String s){
+        imageName = s;
+        imageLabel.setIcon(new ImageIcon(s));
     }    
     
     /**

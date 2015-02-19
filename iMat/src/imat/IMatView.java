@@ -6,11 +6,12 @@
 package imat;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.UIManager;
-import se.chalmers.ait.dat215.project.ProductCategory;
+import se.chalmers.ait.dat215.project.Product;
 
 /**
  *
@@ -211,6 +212,11 @@ public class IMatView extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        categoryList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                categoryListValueChanged(evt);
+            }
+        });
         categoryScrollPane.setViewportView(categoryList);
 
         javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
@@ -224,17 +230,6 @@ public class IMatView extends javax.swing.JFrame {
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(categoryScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
-        contentPanel.setLayout(contentPanelLayout);
-        contentPanelLayout.setHorizontalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        contentPanelLayout.setVerticalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout bodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
@@ -327,6 +322,11 @@ public class IMatView extends javax.swing.JFrame {
         setList("DS");
     }//GEN-LAST:event_dsButtonActionPerformed
 
+    private void categoryListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_categoryListValueChanged
+        resetProductList();
+        listProducts((String)categoryList.getSelectedValue());
+    }//GEN-LAST:event_categoryListValueChanged
+
     /**
      * @param args the command line arguments
      */
@@ -410,5 +410,30 @@ public class IMatView extends javax.swing.JFrame {
     private void resetAndLight(JButton button) {
         resetButtons();
         light(button);
+    }
+
+    private void resetProductList() {
+        contentPanel.removeAll();
+    }
+
+    private void listProducts(String p) {
+        ArrayList<Product> list = new ArrayList<>();
+        if(p == "ALLA"){
+            list.addAll(lh.getProducts(getMainCategory()));
+        }else{
+            list.addAll(lh.getProducts(lh.parseString(p)));
+        }
+        for(Product temp : list){
+            ProductPanel panel = new ProductPanel();
+            panel.setName(temp.getName());
+            panel.setPrice(temp.getPrice(), temp.getUnit() + "" + temp.getUnitSuffix());
+            panel.setImage(temp.getImageName());
+            contentPanel.add(panel);
+            System.out.print(temp.getName());
+        }
+    }
+
+    private String getMainCategory() {
+        return "FoG";
     }
 }
