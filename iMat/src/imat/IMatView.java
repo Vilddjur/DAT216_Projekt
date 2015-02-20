@@ -6,10 +6,14 @@
 package imat;
 
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 import se.chalmers.ait.dat215.project.Product;
 
@@ -21,17 +25,16 @@ public class IMatView extends javax.swing.JFrame {
 
     final ListHandler lh = new ListHandler();
     private DefaultListModel listModel;
+    
     /**
      * Creates new form IMatView
      */
     public IMatView(){
         initComponents();
-//SidePanel
+        
         categoryList.setCellRenderer(new CellRenderer());
         listModel = new DefaultListModel();
         categoryList.setModel(listModel);
-        
-        //categoryScrollPane.setVisible(false);
     }
 
     /**
@@ -48,12 +51,20 @@ public class IMatView extends javax.swing.JFrame {
         homeButton = new javax.swing.JButton();
         topTabsPanel = new javax.swing.JPanel();
         topHeadPanel = new javax.swing.JPanel();
-        fruitButton = new javax.swing.JButton();
-        breadButton = new javax.swing.JButton();
-        charkButton = new javax.swing.JButton();
-        mejeriButton = new javax.swing.JButton();
-        dryButton = new javax.swing.JButton();
-        dsButton = new javax.swing.JButton();
+        fruitButton = new imat.MainCategoryItem();
+        fruitButton.setText("Frukt & grönt");
+        charkButton = new imat.MainCategoryItem();
+        charkButton.setText("Chark");
+        diaryButton = new imat.MainCategoryItem();
+        diaryButton.setText("Mejeri");
+        breadButton = new imat.MainCategoryItem();
+        breadButton.setText("Bröd");
+        snacksButton = new imat.MainCategoryItem();
+        snacksButton.setText("Dryck & snacks");
+        recipeButton = new imat.MainCategoryItem();
+        recipeButton.setText("Recept");
+        dryButton = new imat.MainCategoryItem();
+        dryButton.setText("Torrvaror");
         subHeadPanel = new javax.swing.JPanel();
         bodyPanel = new javax.swing.JPanel();
         sidePanel = new javax.swing.JPanel();
@@ -66,7 +77,6 @@ public class IMatView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iMat - Mat..Mat!");
-        setPreferredSize(new java.awt.Dimension(1200, 800));
 
         homeButton.setBackground(new java.awt.Color(255, 255, 255));
         homeButton.setFont(new java.awt.Font("Tahoma", 0, 52)); // NOI18N
@@ -80,51 +90,53 @@ public class IMatView extends javax.swing.JFrame {
 
         topHeadPanel.setBackground(new java.awt.Color(0, 255, 0));
 
-        fruitButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        fruitButton.setText("Frukt & Grönt");
-        fruitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fruitButtonActionPerformed(evt);
+        fruitButton.setMinimumSize(new java.awt.Dimension(100, 60));
+        fruitButton.setName(""); // NOI18N
+        fruitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fruitButtonMouseClicked(evt);
             }
         });
 
-        breadButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        breadButton.setText("Bröd");
-        breadButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                breadButtonActionPerformed(evt);
+        charkButton.setMinimumSize(new java.awt.Dimension(100, 60));
+        charkButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                charkButtonMouseClicked(evt);
             }
         });
 
-        charkButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        charkButton.setText("Chark");
-        charkButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                charkButtonActionPerformed(evt);
+        diaryButton.setMinimumSize(new java.awt.Dimension(100, 60));
+        diaryButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                diaryButtonMouseClicked(evt);
             }
         });
 
-        mejeriButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        mejeriButton.setText("Mejeri");
-        mejeriButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mejeriButtonActionPerformed(evt);
+        breadButton.setMinimumSize(new java.awt.Dimension(100, 60));
+        breadButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                breadButtonMouseClicked(evt);
             }
         });
 
-        dryButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        dryButton.setText("Torrvaror");
-        dryButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dryButtonActionPerformed(evt);
+        snacksButton.setMinimumSize(new java.awt.Dimension(100, 60));
+        snacksButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                snacksButtonMouseClicked(evt);
             }
         });
 
-        dsButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        dsButton.setText("Dryck/Snacks");
-        dsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dsButtonActionPerformed(evt);
+        recipeButton.setMinimumSize(new java.awt.Dimension(100, 60));
+        recipeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                recipeButtonMouseClicked(evt);
+            }
+        });
+
+        dryButton.setMinimumSize(new java.awt.Dimension(100, 60));
+        dryButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dryButtonMouseClicked(evt);
             }
         });
 
@@ -133,27 +145,33 @@ public class IMatView extends javax.swing.JFrame {
         topHeadPanelLayout.setHorizontalGroup(
             topHeadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topHeadPanelLayout.createSequentialGroup()
-                .addComponent(fruitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fruitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(breadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(breadButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(charkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(charkButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(mejeriButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(diaryButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(dryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dryButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(dsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 240, Short.MAX_VALUE))
+                .addComponent(snacksButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(recipeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         topHeadPanelLayout.setVerticalGroup(
             topHeadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fruitButton, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-            .addComponent(breadButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(charkButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(mejeriButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(dryButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(dsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(topHeadPanelLayout.createSequentialGroup()
+                .addGroup(topHeadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fruitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(charkButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(diaryButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(breadButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(snacksButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(recipeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dryButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
         );
 
         subHeadPanel.setBackground(new java.awt.Color(0, 0, 255));
@@ -203,7 +221,6 @@ public class IMatView extends javax.swing.JFrame {
 
         sidePanel.setBackground(new java.awt.Color(0, 204, 204));
 
-        categoryScrollPane.setBackground(new java.awt.Color(255, 255, 255));
         categoryScrollPane.setBorder(null);
 
         categoryList.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -230,6 +247,17 @@ public class IMatView extends javax.swing.JFrame {
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(categoryScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
+        contentPanel.setLayout(contentPanelLayout);
+        contentPanelLayout.setHorizontalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 890, Short.MAX_VALUE)
+        );
+        contentPanelLayout.setVerticalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 668, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout bodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
@@ -284,44 +312,63 @@ public class IMatView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fruitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fruitButtonActionPerformed
-        resetAndLight(fruitButton);
-        setList("FoG");
-    }//GEN-LAST:event_fruitButtonActionPerformed
-
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         resetButtons();
-        if(categoryList.getModel().getSize() != 0){
+        if (categoryList.getModel().getSize() != 0){
             listModel.removeAllElements();
             categoryList.setModel(listModel);
         }
     }//GEN-LAST:event_homeButtonActionPerformed
 
-    private void breadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_breadButtonActionPerformed
-        resetAndLight(breadButton);
-        setList("Bread");
-    }//GEN-LAST:event_breadButtonActionPerformed
+    private void fruitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fruitButtonMouseClicked
+        handleClick(evt);
+    }//GEN-LAST:event_fruitButtonMouseClicked
 
-    private void charkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_charkButtonActionPerformed
-        resetAndLight(charkButton);
-        setList("Chark");
-    }//GEN-LAST:event_charkButtonActionPerformed
+    private void breadButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_breadButtonMouseClicked
+        handleClick(evt);
+    }//GEN-LAST:event_breadButtonMouseClicked
 
-    private void mejeriButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mejeriButtonActionPerformed
-        resetAndLight(mejeriButton);
-        setList("Mejeri");
-    }//GEN-LAST:event_mejeriButtonActionPerformed
+    private void charkButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_charkButtonMouseClicked
+        handleClick(evt);
+    }//GEN-LAST:event_charkButtonMouseClicked
 
-    private void dryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dryButtonActionPerformed
-        resetAndLight(dryButton);
-        setList("Torr");
-    }//GEN-LAST:event_dryButtonActionPerformed
+    private void diaryButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_diaryButtonMouseClicked
+        handleClick(evt);
+    }//GEN-LAST:event_diaryButtonMouseClicked
 
-    private void dsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dsButtonActionPerformed
-        resetAndLight(dsButton);
-        setList("DS");
-    }//GEN-LAST:event_dsButtonActionPerformed
+    private void dryButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dryButtonMouseClicked
+        handleClick(evt);
+    }//GEN-LAST:event_dryButtonMouseClicked
 
+    private void snacksButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_snacksButtonMouseClicked
+        handleClick(evt);
+    }//GEN-LAST:event_snacksButtonMouseClicked
+
+    private void recipeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recipeButtonMouseClicked
+        handleClick(evt);
+    }//GEN-LAST:event_recipeButtonMouseClicked
+
+    private void handleClick(java.awt.event.MouseEvent evt) {
+        MainCategoryItem source = (MainCategoryItem)evt.getSource();
+        
+        if (source == fruitButton) {
+            setList("FoG");
+        } else if (source == charkButton) {
+            setList("Chark");
+        } else if (source == breadButton) {
+            setList("Bröd");
+        } else if (source == diaryButton) {
+            setList("Mejeri");
+        } else if (source == dryButton) {
+            setList("Torr");
+        } else if (source == snacksButton) {
+            setList("DS");
+        }
+        
+        resetButtons();
+        highlightButton(source);
+    }
+    
     private void categoryListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_categoryListValueChanged
         resetProductList();
         listProducts((String)categoryList.getSelectedValue());
@@ -364,21 +411,22 @@ public class IMatView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bodyPanel;
-    private javax.swing.JButton breadButton;
+    private imat.MainCategoryItem breadButton;
     private javax.swing.JList categoryList;
     private javax.swing.JScrollPane categoryScrollPane;
-    private javax.swing.JButton charkButton;
+    private imat.MainCategoryItem charkButton;
     private javax.swing.JPanel contentPanel;
-    private javax.swing.JButton dryButton;
-    private javax.swing.JButton dsButton;
-    private javax.swing.JButton fruitButton;
+    private imat.MainCategoryItem diaryButton;
+    private imat.MainCategoryItem dryButton;
+    private imat.MainCategoryItem fruitButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JButton mejeriButton;
+    private imat.MainCategoryItem recipeButton;
     private javax.swing.JPanel sidePanel;
+    private imat.MainCategoryItem snacksButton;
     private javax.swing.JPanel subHeadPanel;
     private javax.swing.JPanel topHeadPanel;
     private javax.swing.JPanel topPanel;
@@ -395,21 +443,17 @@ public class IMatView extends javax.swing.JFrame {
     }
 
     private void resetButtons() {
-        fruitButton.setBackground(Color.WHITE);
-        breadButton.setBackground(Color.WHITE);
-        charkButton.setBackground(Color.WHITE);
-        dryButton.setBackground(Color.WHITE);
-        dsButton.setBackground(Color.WHITE);
-        mejeriButton.setBackground(Color.WHITE);        
+        fruitButton.reset();
+        breadButton.reset();
+        charkButton.reset();
+        dryButton.reset();
+        snacksButton.reset();
+        diaryButton.reset();
+        recipeButton.reset();
     }
 
-    private void light(JButton button) {
-        button.setBackground(Color.YELLOW);
-    }
-
-    private void resetAndLight(JButton button) {
-        resetButtons();
-        light(button);
+    private void highlightButton(MainCategoryItem button) {
+        button.highlight();
     }
 
     private void resetProductList() {
