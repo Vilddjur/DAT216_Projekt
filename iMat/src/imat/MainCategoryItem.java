@@ -12,9 +12,17 @@ import java.awt.Color;
  * @author mats
  */
 public class MainCategoryItem extends javax.swing.JPanel {
-    private static Color DEFAULT_COLOR = Color.white;
-    private static Color HOVER_COLOR = new Color(246, 246, 246);
-    private static Color PRESSED_COLOR = new Color(237, 237, 237);
+    private static final Color DEFAULT_COLOR = Color.white;
+    private static final Color HOVER_COLOR = new Color(246, 246, 246);
+    private static final Color PRESSED_COLOR = new Color(237, 237, 237);
+    
+    private static final Color HIGHLIGHT_COLOR = new Color(255, 237, 97);
+    private static final Color HIGHLIGHT_HOVER_COLOR = new Color(232, 216, 88);
+    private static final Color HIGHLIGHT_PRESSED_COLOR = new Color(224, 209, 85);
+    
+    private Color currentColor = DEFAULT_COLOR;
+    private Color currentHoverColor = HOVER_COLOR;
+    private Color currentPressedColor = PRESSED_COLOR;
     
     private boolean mouseOver = false;
     private boolean mousePressed = false;
@@ -26,16 +34,38 @@ public class MainCategoryItem extends javax.swing.JPanel {
         initComponents();
     }
     
+    public String getText() {
+        return categoryName.getText();
+    }
+    
     public void setText(String label) {
         categoryName.setText(label);
     }
     
     public void highlight() {
-        // TODO highlight panel
+        currentColor = HIGHLIGHT_COLOR;
+        currentHoverColor = HIGHLIGHT_HOVER_COLOR;
+        currentPressedColor = HIGHLIGHT_PRESSED_COLOR;
+        
+        updateBackgroundColor();
+    }
+    
+    private void updateBackgroundColor() {
+        if (mousePressed) {
+            this.setBackground(currentPressedColor);
+        } else if (mouseOver) {
+            this.setBackground(currentHoverColor);
+        } else {
+            this.setBackground(currentColor);
+        }
     }
     
     public void reset() {
+        currentColor = DEFAULT_COLOR;
+        currentHoverColor = HOVER_COLOR;
+        currentPressedColor = PRESSED_COLOR;
         
+        updateBackgroundColor();
     }
 
     /**
@@ -91,29 +121,23 @@ public class MainCategoryItem extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
-        this.setBackground(HOVER_COLOR);
         mouseOver = true;
+        updateBackgroundColor();
     }//GEN-LAST:event_formMouseEntered
 
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
-        if (!mousePressed) {
-            this.setBackground(DEFAULT_COLOR);
-        }
         mouseOver = false;
+        updateBackgroundColor();
     }//GEN-LAST:event_formMouseExited
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-        this.setBackground(PRESSED_COLOR);
         mousePressed = true;
+        updateBackgroundColor();
     }//GEN-LAST:event_formMousePressed
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-        if (mouseOver) {
-            this.setBackground(HOVER_COLOR);
-        } else {
-            this.setBackground(DEFAULT_COLOR);
-        }
         mousePressed = false;
+        updateBackgroundColor();
     }//GEN-LAST:event_formMouseReleased
 
 
