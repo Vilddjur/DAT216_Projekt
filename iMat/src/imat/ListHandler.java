@@ -116,4 +116,38 @@ public class ListHandler {
         }
         return list;
     }
+
+    ProductCategory parseString(String p) {
+        if(p == "    Baljväxter"){
+            return ProductCategory.POD;
+        }else if(p == "    Bär"){
+            return ProductCategory.BERRY;
+        }else if(p == "    Kål"){
+            return ProductCategory.CABBAGE;
+        }else if(p == "    Citrusfrukter"){
+            return ProductCategory.CITRUS_FRUIT;
+        }else if(p == "    Exotiskafrukter"){
+            return ProductCategory.EXOTIC_FRUIT;
+        }else if(p == "    Örtkryddor"){
+            return ProductCategory.HERB;
+        }else if(p == "    Meloner"){
+            return ProductCategory.MELONS;
+        }else if(p == "    Nötter och Frön"){
+            return ProductCategory.NUTS_AND_SEEDS;
+        }else if(p == "    Rotfrukter"){
+            return ProductCategory.ROOT_VEGETABLE;
+        }else if(p == "    Grönsaksfrukter"){
+            return ProductCategory.VEGETABLE_FRUIT;
+        }
+        /*list.add("    Kött");
+        list.add("    Fisk");
+        list.add("    Mjöl, socker, salt");
+        list.add("    Pasta");
+        list.add("    Potatis och ris");
+        list.add("    Sötsaker");
+        list.add("    Kalla drycker");
+        list.add("    Varma drycker");
+        */
+        return null;
+    }
 }

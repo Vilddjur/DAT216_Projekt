@@ -9,12 +9,13 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-import se.chalmers.ait.dat215.project.ProductCategory;
+import se.chalmers.ait.dat215.project.Product;
 
 /**
  *
@@ -228,6 +229,11 @@ public class IMatView extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        categoryList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                categoryListValueChanged(evt);
+            }
+        });
         categoryScrollPane.setViewportView(categoryList);
 
         javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
@@ -363,6 +369,11 @@ public class IMatView extends javax.swing.JFrame {
         highlightButton(source);
     }
     
+    private void categoryListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_categoryListValueChanged
+        resetProductList();
+        listProducts((String)categoryList.getSelectedValue());
+    }//GEN-LAST:event_categoryListValueChanged
+
     /**
      * @param args the command line arguments
      */
@@ -443,5 +454,30 @@ public class IMatView extends javax.swing.JFrame {
 
     private void highlightButton(MainCategoryItem button) {
         button.highlight();
+    }
+
+    private void resetProductList() {
+        contentPanel.removeAll();
+    }
+
+    private void listProducts(String p) {
+        ArrayList<Product> list = new ArrayList<>();
+        if(p == "ALLA"){
+            list.addAll(lh.getProducts(getMainCategory()));
+        }else{
+            list.addAll(lh.getProducts(lh.parseString(p)));
+        }
+        for(Product temp : list){
+            ProductPanel panel = new ProductPanel();
+            panel.setName(temp.getName());
+            panel.setPrice(temp.getPrice(), temp.getUnit() + "" + temp.getUnitSuffix());
+            panel.setImage(temp.getImageName());
+            contentPanel.add(panel);
+            panel.revalidate();
+        }
+    }
+
+    private String getMainCategory() {
+        return "FoG";
     }
 }
