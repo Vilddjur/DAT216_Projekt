@@ -429,7 +429,7 @@ public class IMatView extends javax.swing.JFrame {
             panel.setPrice(temp.getPrice(), temp.getUnit() + "" + temp.getUnitSuffix());
             panel.setImage(temp.getImageName());
             contentPanel.add(panel);
-            System.out.print(temp.getName());
+            panel.revalidate();
         }
     }
 
