@@ -78,7 +78,6 @@ public class ProductPanel extends javax.swing.JPanel {
 
         imageLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         imageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imageLabel.setText("BILD");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
