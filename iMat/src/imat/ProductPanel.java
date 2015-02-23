@@ -6,7 +6,7 @@
 package imat;
 
 import javax.swing.ImageIcon;
-
+import java.awt.Image;
 /**
  *
  * @author Oskar
@@ -42,9 +42,13 @@ public class ProductPanel extends javax.swing.JPanel {
         return price;
     }
     public void setImage(String s){
-        imageName = s;
-        imageLabel.setIcon(new ImageIcon(s));
-    }    
+        imageName = System.getProperty("user.home") + "/.dat215/imat/images/" + s;
+        ImageIcon icon = new ImageIcon(imageName);
+        Image image = icon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(120, 120,  Image.SCALE_SMOOTH); // scale it the smooth way  
+        icon = new ImageIcon(newimg);  // transform it back
+        imageLabel.setIcon(icon);        
+    }     
     
     /**
      * This method is called from within the constructor to initialize the form.

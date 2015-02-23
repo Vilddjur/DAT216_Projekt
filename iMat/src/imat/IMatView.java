@@ -6,6 +6,7 @@
 package imat;
 
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -14,6 +15,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.ScrollPaneLayout;
 import javax.swing.UIManager;
 import se.chalmers.ait.dat215.project.Product;
 
@@ -31,10 +33,13 @@ public class IMatView extends javax.swing.JFrame {
      */
     public IMatView(){
         initComponents();
-        
+//sidePanel
         categoryList.setCellRenderer(new CellRenderer());
         listModel = new DefaultListModel();
         categoryList.setModel(listModel);
+//contentPanel
+        contentPanel.setLayout(new WrapLayout());
+    
     }
 
     /**
@@ -70,6 +75,7 @@ public class IMatView extends javax.swing.JFrame {
         sidePanel = new javax.swing.JPanel();
         categoryScrollPane = new javax.swing.JScrollPane();
         categoryList = new javax.swing.JList();
+        contentScrollPane = new javax.swing.JScrollPane();
         contentPanel = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -253,12 +259,14 @@ public class IMatView extends javax.swing.JFrame {
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 890, Short.MAX_VALUE)
+            .addGap(0, 708, Short.MAX_VALUE)
         );
         contentPanelLayout.setVerticalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
+            .addGap(0, 666, Short.MAX_VALUE)
         );
+
+        contentScrollPane.setViewportView(contentPanel);
 
         javax.swing.GroupLayout bodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
         bodyPanel.setLayout(bodyPanelLayout);
@@ -267,12 +275,12 @@ public class IMatView extends javax.swing.JFrame {
             .addGroup(bodyPanelLayout.createSequentialGroup()
                 .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(contentScrollPane))
         );
         bodyPanelLayout.setVerticalGroup(
             bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(contentPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(contentScrollPane)
         );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -416,6 +424,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JScrollPane categoryScrollPane;
     private imat.MainCategoryItem charkButton;
     private javax.swing.JPanel contentPanel;
+    private javax.swing.JScrollPane contentScrollPane;
     private imat.MainCategoryItem diaryButton;
     private imat.MainCategoryItem dryButton;
     private imat.MainCategoryItem fruitButton;
@@ -457,7 +466,7 @@ public class IMatView extends javax.swing.JFrame {
     }
 
     private void resetProductList() {
-        contentPanel.removeAll();
+        contentScrollPane.removeAll();
     }
 
     private void listProducts(String p) {
@@ -472,8 +481,10 @@ public class IMatView extends javax.swing.JFrame {
             panel.setName(temp.getName());
             panel.setPrice(temp.getPrice(), temp.getUnit() + "" + temp.getUnitSuffix());
             panel.setImage(temp.getImageName());
+            panel.setVisible(true);
             contentPanel.add(panel);
             panel.revalidate();
+            panel.repaint();
         }
     }
 
