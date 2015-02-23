@@ -466,7 +466,7 @@ public class IMatView extends javax.swing.JFrame {
     }
 
     private void resetProductList() {
-        contentScrollPane.removeAll();
+        contentPanel.removeAll();
     }
 
     private void listProducts(String p) {
@@ -484,7 +484,6 @@ public class IMatView extends javax.swing.JFrame {
             panel.setVisible(true);
             contentPanel.add(panel);
             panel.revalidate();
-            panel.repaint();
         }
     }
 
