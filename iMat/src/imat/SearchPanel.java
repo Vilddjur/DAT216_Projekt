@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
  * @author mats
  */
 public class SearchPanel extends javax.swing.JPanel {
-    private ActionListener searchButtonListener = null;
+    private SearchListener searchListener = null;
 
     /**
      * Creates new form SearchPanel
@@ -71,11 +71,11 @@ public class SearchPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        searchButtonListener.actionPerformed(evt);
+        searchListener.search(searchField.getText());
     }//GEN-LAST:event_searchButtonActionPerformed
 
-    public void addSearchButtonListener(ActionListener listener) {
-        this.searchButtonListener = listener;
+    public void addSearchButtonListener(SearchListener listener) {
+        this.searchListener = listener;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

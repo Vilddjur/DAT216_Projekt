@@ -5,19 +5,11 @@
  */
 package imat;
 
-import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import javax.swing.DefaultComboBoxModel;
+import java.util.List;
 import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.ScrollPaneLayout;
-import javax.swing.UIManager;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 
 /**
@@ -25,14 +17,17 @@ import se.chalmers.ait.dat215.project.Product;
  * @author Oskar
  */
 public class IMatView extends javax.swing.JFrame {
-
-    final ListHandler lh = new ListHandler();
+    private final ListHandler lh = new ListHandler();
+    
+    private final IMatDataHandler imat = IMatDataHandler.getInstance();
+    
     private DefaultListModel listModel;
     
-    private class SearchListener implements ActionListener {
+    private class ConcreteSearchListener implements SearchListener {
         @Override
-        public void actionPerformed(ActionEvent e) {
-            // TODO handle search
+        public void search(String str) {
+            List<Product> results = imat.findProducts(str);
+            // TODO: do stuff with the result
         }
     }
     
@@ -43,7 +38,7 @@ public class IMatView extends javax.swing.JFrame {
         initComponents();
         
         //topPanel
-        searchPanel.addSearchButtonListener(new SearchListener());
+        searchPanel.addSearchButtonListener(new ConcreteSearchListener());
         
         //sidePanel
         categoryList.setCellRenderer(new CellRenderer());
