@@ -5,11 +5,14 @@
  */
 package imat;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author mats
  */
 public class SearchPanel extends javax.swing.JPanel {
+    private ActionListener searchButtonListener = null;
 
     /**
      * Creates new form SearchPanel
@@ -68,11 +71,11 @@ public class SearchPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        System.out.println("test");
+        searchButtonListener.actionPerformed(evt);
     }//GEN-LAST:event_searchButtonActionPerformed
 
-    public void addSearchButtonListener() {
-        
+    public void addSearchButtonListener(ActionListener listener) {
+        this.searchButtonListener = listener;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
