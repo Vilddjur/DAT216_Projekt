@@ -305,7 +305,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="sidePanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="contentScrollPane" max="32767" attributes="0"/>
+                      <Component id="contentScrollPane" pref="900" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -384,7 +384,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="838" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="898" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
