@@ -129,11 +129,6 @@
               </Layout>
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="topHeadPanel">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="ff" red="0" type="rgb"/>
-                    </Property>
-                  </Properties>
 
                   <Layout>
                     <DimensionLayout dim="0">
@@ -153,23 +148,23 @@
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="recipeButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Component id="searchPanel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="fruitButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="charkButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="diaryButton" min="-2" max="-2" attributes="0"/>
-                                  <Component id="breadButton" min="-2" max="-2" attributes="0"/>
-                                  <Component id="snacksButton" min="-2" max="-2" attributes="0"/>
-                                  <Component id="recipeButton" min="-2" max="-2" attributes="0"/>
-                                  <Component id="dryButton" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="fruitButton" alignment="1" max="32767" attributes="0"/>
+                              <Component id="charkButton" alignment="1" max="32767" attributes="0"/>
+                              <Component id="diaryButton" alignment="1" max="32767" attributes="0"/>
+                              <Component id="breadButton" alignment="1" max="32767" attributes="0"/>
+                              <Component id="snacksButton" alignment="1" max="32767" attributes="0"/>
+                              <Component id="recipeButton" alignment="1" max="32767" attributes="0"/>
+                              <Component id="dryButton" alignment="1" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="searchPanel" min="-2" max="-2" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -266,6 +261,8 @@
                         <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="dryButton.setText(&quot;Torrvaror&quot;);"/>
                       </AuxValues>
                     </Component>
+                    <Component class="imat.SearchPanel" name="searchPanel">
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="subHeadPanel">
@@ -305,14 +302,14 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="sidePanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="contentScrollPane" pref="900" max="32767" attributes="0"/>
+                      <Component id="contentScrollPane" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="sidePanel" max="32767" attributes="0"/>
-                  <Component id="contentScrollPane" alignment="1" max="32767" attributes="0"/>
+                  <Component id="contentScrollPane" alignment="1" pref="578" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -384,7 +381,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="898" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="927" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
