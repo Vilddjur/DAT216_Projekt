@@ -66,7 +66,6 @@ public class IMatView extends javax.swing.JFrame {
 
         mainPanel = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
-        homeButton = new javax.swing.JButton();
         topTabsPanel = new javax.swing.JPanel();
         topHeadPanel = new javax.swing.JPanel();
         fruitButton = new imat.MainCategoryItem();
@@ -85,6 +84,7 @@ public class IMatView extends javax.swing.JFrame {
         dryButton.setText("Torrvaror");
         searchPanel = new imat.SearchPanel();
         subHeadPanel = new javax.swing.JPanel();
+        homeButton = new javax.swing.JLabel();
         bodyPanel = new javax.swing.JPanel();
         sidePanel = new javax.swing.JPanel();
         categoryScrollPane = new javax.swing.JScrollPane();
@@ -97,16 +97,6 @@ public class IMatView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iMat - Mat..Mat!");
-
-        homeButton.setBackground(new java.awt.Color(255, 255, 255));
-        homeButton.setFont(new java.awt.Font("Tahoma", 0, 52)); // NOI18N
-        homeButton.setForeground(new java.awt.Color(255, 51, 51));
-        homeButton.setText("iMat");
-        homeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeButtonActionPerformed(evt);
-            }
-        });
 
         fruitButton.setMinimumSize(new java.awt.Dimension(100, 60));
         fruitButton.setName(""); // NOI18N
@@ -203,7 +193,7 @@ public class IMatView extends javax.swing.JFrame {
         );
         subHeadPanelLayout.setVerticalGroup(
             subHeadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
+            .addGap(0, 44, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout topTabsPanelLayout = new javax.swing.GroupLayout(topTabsPanel);
@@ -218,22 +208,33 @@ public class IMatView extends javax.swing.JFrame {
             .addGroup(topTabsPanelLayout.createSequentialGroup()
                 .addComponent(topHeadPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(subHeadPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(subHeadPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
+
+        homeButton.setIcon(new javax.swing.ImageIcon("/Users/mats/Dropbox/school/Chalmers/DAT216/project/DAT216_Projekt/iMat/images/logo.jpg")); // NOI18N
+        homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
         topPanelLayout.setHorizontalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
-                .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(homeButton)
                 .addGap(0, 0, 0)
                 .addComponent(topTabsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(topTabsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(topPanelLayout.createSequentialGroup()
+                .addComponent(homeButton)
+                .addGap(0, 0, 0))
         );
 
         bodyPanel.setBackground(new java.awt.Color(102, 255, 102));
@@ -272,7 +273,7 @@ public class IMatView extends javax.swing.JFrame {
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 927, Short.MAX_VALUE)
+            .addGap(0, 1052, Short.MAX_VALUE)
         );
         contentPanelLayout.setVerticalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,7 +294,7 @@ public class IMatView extends javax.swing.JFrame {
         bodyPanelLayout.setVerticalGroup(
             bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(contentScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+            .addComponent(contentScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -332,15 +333,6 @@ public class IMatView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-        resetButtons();
-        resetProductList();
-        if (categoryList.getModel().getSize() != 0){
-            listModel.removeAllElements();
-            categoryList.setModel(listModel);
-        }
-    }//GEN-LAST:event_homeButtonActionPerformed
 
     private void fruitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fruitButtonMouseClicked
         handleClick(evt);
@@ -396,6 +388,15 @@ public class IMatView extends javax.swing.JFrame {
         listProducts((String)categoryList.getSelectedValue());
     }//GEN-LAST:event_categoryListValueChanged
 
+    private void homeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeButtonMouseClicked
+        resetButtons();
+        resetProductList();
+        if (categoryList.getModel().getSize() != 0){
+            listModel.removeAllElements();
+            categoryList.setModel(listModel);
+        }
+    }//GEN-LAST:event_homeButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -442,7 +443,7 @@ public class IMatView extends javax.swing.JFrame {
     private imat.MainCategoryItem diaryButton;
     private imat.MainCategoryItem dryButton;
     private imat.MainCategoryItem fruitButton;
-    private javax.swing.JButton homeButton;
+    private javax.swing.JLabel homeButton;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
