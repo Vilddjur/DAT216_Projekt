@@ -12,17 +12,9 @@ import java.awt.Color;
  * @author mats
  */
 public class MainCategoryItem extends javax.swing.JPanel {
-    private static final Color DEFAULT_COLOR = Color.white;
-    private static final Color HOVER_COLOR = new Color(246, 246, 246);
-    private static final Color PRESSED_COLOR = new Color(237, 237, 237);
-    
-    private static final Color HIGHLIGHT_COLOR = new Color(255, 237, 97);
-    private static final Color HIGHLIGHT_HOVER_COLOR = new Color(232, 216, 88);
-    private static final Color HIGHLIGHT_PRESSED_COLOR = new Color(224, 209, 85);
-    
-    private Color currentColor = DEFAULT_COLOR;
-    private Color currentHoverColor = HOVER_COLOR;
-    private Color currentPressedColor = PRESSED_COLOR;
+    private Color currentColor = Constants.DEFAULT_COLOR;
+    private Color currentHoverColor = Constants.HOVER_COLOR;
+    private Color currentPressedColor = Constants.PRESSED_COLOR;
     
     private boolean mouseOver = false;
     private boolean mousePressed = false;
@@ -43,9 +35,9 @@ public class MainCategoryItem extends javax.swing.JPanel {
     }
     
     public void highlight() {
-        currentColor = HIGHLIGHT_COLOR;
-        currentHoverColor = HIGHLIGHT_HOVER_COLOR;
-        currentPressedColor = HIGHLIGHT_PRESSED_COLOR;
+        currentColor = Constants.HIGHLIGHT_COLOR;
+        currentHoverColor = Constants.HIGHLIGHT_HOVER_COLOR;
+        currentPressedColor = Constants.HIGHLIGHT_PRESSED_COLOR;
         
         updateBackgroundColor();
     }
@@ -61,9 +53,9 @@ public class MainCategoryItem extends javax.swing.JPanel {
     }
     
     public void reset() {
-        currentColor = DEFAULT_COLOR;
-        currentHoverColor = HOVER_COLOR;
-        currentPressedColor = PRESSED_COLOR;
+        currentColor = Constants.DEFAULT_COLOR;
+        currentHoverColor = Constants.HOVER_COLOR;
+        currentPressedColor = Constants.PRESSED_COLOR;
         
         updateBackgroundColor();
     }
