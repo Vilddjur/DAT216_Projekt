@@ -6,6 +6,7 @@
 package imat;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -373,7 +374,8 @@ public class IMatView extends javax.swing.JFrame {
   
         resetButtons();
         highlightButton(source);
-        
+        CardLayout manager = (CardLayout) mainContentPanel.getLayout();
+        manager.show(mainContentPanel, "product");
         if (source == fruitButton) {
             setList("FoG");
         } else if (source == charkButton) {
@@ -401,6 +403,8 @@ public class IMatView extends javax.swing.JFrame {
             listModel.removeAllElements();
             categoryList.setModel(listModel);
         }
+        CardLayout manager = (CardLayout) mainContentPanel.getLayout();
+        manager.show(mainContentPanel, "start");
     }//GEN-LAST:event_homeButtonMouseClicked
 
     /**
