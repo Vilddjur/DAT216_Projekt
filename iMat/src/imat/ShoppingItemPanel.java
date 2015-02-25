@@ -18,8 +18,9 @@ public class ShoppingItemPanel extends javax.swing.JPanel {
      * Creates new form cartItemPanel
      */
     public ShoppingItemPanel(ShoppingItem item) {
-        setShoppingItem(item);
+        
         initComponents();
+        setShoppingItem(item);
     }
 
     /**
@@ -30,58 +31,47 @@ public class ShoppingItemPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         productNameLabel = new javax.swing.JLabel();
-        productPriceLabel = new javax.swing.JLabel();
         amountSpinner = new javax.swing.JSpinner();
         productUnitLabel = new javax.swing.JLabel();
+        productPriceLabel = new javax.swing.JLabel();
+
+        setLayout(new java.awt.GridBagLayout());
 
         productNameLabel.setText("Mjölk");
-
-        productPriceLabel.setText("10 :-");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 3.0;
+        add(productNameLabel, gridBagConstraints);
 
         amountSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 amountSpinnerStateChanged(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        gridBagConstraints.weightx = 1.0;
+        add(amountSpinner, gridBagConstraints);
 
         productUnitLabel.setText("st");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 1.0;
+        add(productUnitLabel, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(productNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(amountSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(productUnitLabel)
-                .addGap(18, 18, 18)
-                .addComponent(productPriceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(productNameLabel)
-                    .addComponent(amountSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(productPriceLabel)
-                    .addComponent(productUnitLabel))
-                .addGap(0, 11, Short.MAX_VALUE))
-        );
+        productPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        productPriceLabel.setText("10 :-");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.weightx = 2.0;
+        add(productPriceLabel, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void amountSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_amountSpinnerStateChanged
         
-        
-        
-       //SOME VALIDATION CHECK
-       item.setAmount((Integer) amountSpinner.getValue());
     }//GEN-LAST:event_amountSpinnerStateChanged
 
 
