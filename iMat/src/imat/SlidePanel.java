@@ -5,19 +5,29 @@
  */
 package imat;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 /**
  *
  * @author Oskar
  */
-public class SlidePanel extends javax.swing.JPanel {
-
+public class SlidePanel extends javax.swing.JPanel implements ActionListener{
+    private final String[] text = {"instert cool ad1 here", "2nd", "3rd"};
+    private final int DELAY = 3000;
+    
+    private int index = 0;
+    
+    private Timer timer;
     /**
      * Creates new form SlidePanel
      */
     public SlidePanel() {
         initComponents();
         //mainLabel.setIcon(null);
-        mainLabel.setText("instert cool ad here");
+        mainLabel.setText(text[index]);
+        timer = new Timer(DELAY, this);
     }
 
     /**
@@ -30,6 +40,9 @@ public class SlidePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         mainLabel = new javax.swing.JLabel();
+
+        mainLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mainLabel.setText("asd");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -47,4 +60,10 @@ public class SlidePanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel mainLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        index += (index+1)%text.length;
+        mainLabel.setText(text[index]);
+    }
 }
