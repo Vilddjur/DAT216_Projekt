@@ -207,7 +207,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
-        homeButton.setIcon(new javax.swing.ImageIcon("/Users/mats/Dropbox/school/Chalmers/DAT216/project/DAT216_Projekt/iMat/images/logo.jpg")); // NOI18N
+        homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/logo.jpg"))); // NOI18N
         homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -227,9 +227,7 @@ public class IMatView extends javax.swing.JFrame {
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(topTabsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(topPanelLayout.createSequentialGroup()
-                .addComponent(homeButton)
-                .addGap(0, 0, 0))
+            .addComponent(homeButton)
         );
 
         bodyPanel.setBackground(new java.awt.Color(102, 255, 102));
