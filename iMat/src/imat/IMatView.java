@@ -49,8 +49,7 @@ public class IMatView extends javax.swing.JFrame {
         listModel = new DefaultListModel();
         categoryList.setModel(listModel);
         
-        //contentPanel
-        contentPanel.setLayout(new GridLayout(0,4));
+        //progressBar
         final JDialog dlg = new JDialog(this, "Loading Resources...", true);
         JProgressBar bar = new JProgressBar(0,500);
         dlg.add(BorderLayout.CENTER, bar);
@@ -104,7 +103,7 @@ public class IMatView extends javax.swing.JFrame {
         categoryScrollPane = new javax.swing.JScrollPane();
         categoryList = new javax.swing.JList();
         contentScrollPane = new javax.swing.JScrollPane();
-        contentPanel = new javax.swing.JPanel();
+        contentPanel = new imat.MainContentPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -227,7 +226,7 @@ public class IMatView extends javax.swing.JFrame {
         );
 
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/logo.jpg"))); // NOI18N
-        homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 homeButtonMouseClicked(evt);
@@ -279,17 +278,6 @@ public class IMatView extends javax.swing.JFrame {
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(categoryScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-
-        javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
-        contentPanel.setLayout(contentPanelLayout);
-        contentPanelLayout.setHorizontalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1052, Short.MAX_VALUE)
-        );
-        contentPanelLayout.setVerticalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
         );
 
         contentScrollPane.setViewportView(contentPanel);
@@ -450,7 +438,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JList categoryList;
     private javax.swing.JScrollPane categoryScrollPane;
     private imat.MainCategoryItem charkButton;
-    private javax.swing.JPanel contentPanel;
+    private imat.MainContentPanel contentPanel;
     private javax.swing.JScrollPane contentScrollPane;
     private imat.MainCategoryItem diaryButton;
     private imat.MainCategoryItem dryButton;
@@ -494,7 +482,7 @@ public class IMatView extends javax.swing.JFrame {
     }
 
     private void resetProductList() {
-        contentPanel.removeAll();
+        contentPanel.reset();
     }
 
     private void listProducts(String p) {
@@ -504,15 +492,8 @@ public class IMatView extends javax.swing.JFrame {
         }else{
             list.addAll(lh.getProducts(lh.parseString(p)));
         }
-        for(Product temp : list){
-            ProductPanel panel = new ProductPanel();
-            panel.setName(temp.getName());
-            panel.setPrice(temp.getPrice(), temp.getUnit() + "" + temp.getUnitSuffix());
-            panel.setImage(temp.getImageName());
-            panel.setVisible(true);
-            contentPanel.add(panel);
-            panel.revalidate();
-        }
+        
+        contentPanel.updateProducts(list);
     }
 
     private String getMainCategory() {

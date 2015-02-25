@@ -7,45 +7,27 @@ package imat;
 
 import javax.swing.ImageIcon;
 import java.awt.Image;
+import se.chalmers.ait.dat215.project.Product;
 /**
  *
  * @author Oskar
  */
 public class ProductPanel extends javax.swing.JPanel {
-    private String name;
-    private double price;
-    private String priceSuffix;
-    private String imageName;
+    private Product product;
+    
     /**
      * Creates new form ProductPanel
      */
-    public ProductPanel() {
+    public ProductPanel(Product product) {
         initComponents();
-        price = 0;
-        name = "";
-        priceSuffix = "";
-        amountSpinner.setValue(1);
+        this.product = product;
+        
+        nameLabel.setText(product.getName());
+        priceLabel.setText(product.getPrice() + " " + product.getUnit());
+        imageLabel.setIcon(ResourceHandler.getInstance().getImage(product.getImageName()));
+        
+        this.setVisible(true);
     }
-    
-    public void setName(String s){
-        name = s;
-        nameLabel.setText(name);
-    }
-    public void setPrice(double p,String s){
-        price = p;
-        priceSuffix = s;
-        priceLabel.setText(p + " " + priceSuffix);
-    }    
-    public String getName(){
-        return name;
-    }
-    public double getPrice(){
-        return price;
-    }
-    public void setImage(String s){
-        imageName = s;
-        imageLabel.setIcon(ResourceHandler.getInstance().getImage(imageName));        
-    }     
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,6 +44,8 @@ public class ProductPanel extends javax.swing.JPanel {
         priceLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         imageLabel = new javax.swing.JLabel();
+
+        amountSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
 
         addToCartButton.setBackground(new java.awt.Color(102, 255, 102));
         addToCartButton.setText("Lägg till i kundvagnen");
