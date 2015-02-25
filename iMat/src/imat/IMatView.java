@@ -364,7 +364,10 @@ public class IMatView extends javax.swing.JFrame {
 
     private void handleClick(java.awt.event.MouseEvent evt) {
         MainCategoryItem source = (MainCategoryItem)evt.getSource();
-        
+  
+        resetButtons();
+        highlightButton(source);
+    
         if (source == fruitButton) {
             setList("FoG");
         } else if (source == charkButton) {
@@ -378,9 +381,6 @@ public class IMatView extends javax.swing.JFrame {
         } else if (source == snacksButton) {
             setList("DS");
         }
-        
-        resetButtons();
-        highlightButton(source);
     }
     
     private void categoryListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_categoryListValueChanged
