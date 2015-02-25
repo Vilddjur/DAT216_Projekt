@@ -26,8 +26,9 @@ public class SlidePanel extends javax.swing.JPanel implements ActionListener{
     public SlidePanel() {
         initComponents();
         //mainLabel.setIcon(null);
-        mainLabel.setText(text[index]);
         timer = new Timer(DELAY, this);
+        timer.setRepeats(true);
+        timer.start();
     }
 
     /**
@@ -63,7 +64,10 @@ public class SlidePanel extends javax.swing.JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        index += (index+1)%text.length;
         mainLabel.setText(text[index]);
+        index ++;
+        if(index == text.length){
+            index = 0;
+        }
     }
 }
