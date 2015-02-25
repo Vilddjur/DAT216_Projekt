@@ -106,6 +106,7 @@ public class IMatView extends javax.swing.JFrame {
         contentScrollPane = new javax.swing.JScrollPane();
         mainContentPanel = new javax.swing.JPanel();
         productListPanel = new imat.ProductListPanel();
+        slidePanel1 = new imat.SlidePanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -182,7 +183,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(recipeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE))
+                .addComponent(searchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         topHeadPanelLayout.setVerticalGroup(
             topHeadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,6 +284,7 @@ public class IMatView extends javax.swing.JFrame {
 
         mainContentPanel.setLayout(new java.awt.CardLayout());
         mainContentPanel.add(productListPanel, "card2");
+        mainContentPanel.add(slidePanel1, "card3");
 
         contentScrollPane.setViewportView(mainContentPanel);
 
@@ -293,7 +295,7 @@ public class IMatView extends javax.swing.JFrame {
             .addGroup(bodyPanelLayout.createSequentialGroup()
                 .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(contentScrollPane))
+                .addComponent(contentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 990, Short.MAX_VALUE))
         );
         bodyPanelLayout.setVerticalGroup(
             bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -456,6 +458,7 @@ public class IMatView extends javax.swing.JFrame {
     private imat.MainCategoryItem recipeButton;
     private imat.SearchPanel searchPanel;
     private javax.swing.JPanel sidePanel;
+    private imat.SlidePanel slidePanel1;
     private imat.MainCategoryItem snacksButton;
     private javax.swing.JPanel subHeadPanel;
     private javax.swing.JPanel topHeadPanel;
