@@ -31,7 +31,7 @@ public class IMatView extends javax.swing.JFrame {
         @Override
         public void search(String str) {
             List<Product> results = imat.findProducts(str);
-            contentPanel.updateProducts(results);
+            productListPanel.updateProducts(results);
             
         }
     }
@@ -104,7 +104,8 @@ public class IMatView extends javax.swing.JFrame {
         categoryScrollPane = new javax.swing.JScrollPane();
         categoryList = new javax.swing.JList();
         contentScrollPane = new javax.swing.JScrollPane();
-        contentPanel = new imat.MainContentPanel();
+        mainContentPanel = new javax.swing.JPanel();
+        productListPanel = new imat.ProductListPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -278,10 +279,13 @@ public class IMatView extends javax.swing.JFrame {
         );
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(categoryScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(categoryScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
         );
 
-        contentScrollPane.setViewportView(contentPanel);
+        mainContentPanel.setLayout(new java.awt.CardLayout());
+        mainContentPanel.add(productListPanel, "card2");
+
+        contentScrollPane.setViewportView(mainContentPanel);
 
         javax.swing.GroupLayout bodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
         bodyPanel.setLayout(bodyPanelLayout);
@@ -295,7 +299,7 @@ public class IMatView extends javax.swing.JFrame {
         bodyPanelLayout.setVerticalGroup(
             bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(contentScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
+            .addComponent(contentScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -439,7 +443,6 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JList categoryList;
     private javax.swing.JScrollPane categoryScrollPane;
     private imat.MainCategoryItem charkButton;
-    private imat.MainContentPanel contentPanel;
     private javax.swing.JScrollPane contentScrollPane;
     private imat.MainCategoryItem diaryButton;
     private imat.MainCategoryItem dryButton;
@@ -448,7 +451,9 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel mainContentPanel;
     private javax.swing.JPanel mainPanel;
+    private imat.ProductListPanel productListPanel;
     private imat.MainCategoryItem recipeButton;
     private imat.SearchPanel searchPanel;
     private javax.swing.JPanel sidePanel;
@@ -483,7 +488,7 @@ public class IMatView extends javax.swing.JFrame {
     }
 
     private void resetProductList() {
-        contentPanel.reset();
+        productListPanel.reset();
     }
 
     private void listProducts(String p) {
@@ -494,7 +499,7 @@ public class IMatView extends javax.swing.JFrame {
             list.addAll(lh.getProducts(lh.parseString(p)));
         }
         
-        contentPanel.updateProducts(list);
+        productListPanel.updateProducts(list);
     }
 
     private String getMainCategory() {
