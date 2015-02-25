@@ -42,6 +42,13 @@ public class MainCategoryItem extends javax.swing.JPanel {
         updateBackgroundColor();
     }
     
+    public boolean isHighlighted(){
+        if(currentColor == Constants.HIGHLIGHT_COLOR){
+            return true;
+        }
+        return false;
+    }
+    
     private void updateBackgroundColor() {
         if (mousePressed) {
             this.setBackground(currentPressedColor);

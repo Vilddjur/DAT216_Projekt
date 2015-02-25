@@ -497,6 +497,21 @@ public class IMatView extends javax.swing.JFrame {
     }
 
     private String getMainCategory() {
-        return "FoG";
+        if(fruitButton.isHighlighted()){
+            return "FoG";
+        }else if(breadButton.isHighlighted()){
+            return "Bröd";
+        }else if(charkButton.isHighlighted()){
+            return "Chark";
+        }else if(dryButton.isHighlighted()){
+            return "Torr";
+        }else if(snacksButton.isHighlighted()){
+            return "DS";
+        }else if(diaryButton.isHighlighted()){
+            return "Mejeri";
+        }else if(recipeButton.isHighlighted()){
+            return null;
+        }
+        return null;
     }
 }

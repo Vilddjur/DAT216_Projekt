@@ -138,16 +138,24 @@ public class ListHandler {
             return ProductCategory.ROOT_VEGETABLE;
         }else if(p == "    Grönsaksfrukter"){
             return ProductCategory.VEGETABLE_FRUIT;
+        }else if(p == "    Kött"){
+            return ProductCategory.MEAT;
+        }else if(p == "    Fisk"){
+            return ProductCategory.FISH;
+        }else if(p == "    Mjöl, socker, salt"){
+            return ProductCategory.FLOUR_SUGAR_SALT;
+        }else if(p == "    Pasta"){
+            return ProductCategory.PASTA;
+        }else if(p == "    Potatis och ris"){
+            return ProductCategory.POTATO_RICE;
+        }else if(p == "    Sötsaker"){
+            return ProductCategory.SWEET;
+        }else if(p == "    Kalla drycker"){
+            return ProductCategory.COLD_DRINKS;
+        }else if(p == "    Varma drycker"){
+            return ProductCategory.HOT_DRINKS;
         }
-        /*list.add("    Kött");
-        list.add("    Fisk");
-        list.add("    Mjöl, socker, salt");
-        list.add("    Pasta");
-        list.add("    Potatis och ris");
-        list.add("    Sötsaker");
-        list.add("    Kalla drycker");
-        list.add("    Varma drycker");
-        */
+        
         return null;
     }
 }
