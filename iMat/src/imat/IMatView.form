@@ -132,7 +132,7 @@
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="recipeButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="searchPanel" max="32767" attributes="0"/>
+                              <Component id="searchPanel" pref="272" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -298,7 +298,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="sidePanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="contentScrollPane" pref="990" max="32767" attributes="0"/>
+                      <Component id="contentScrollPane" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -388,13 +388,6 @@
                         <Property name="rows" type="int" value="0"/>
                       </Layout>
                     </Container>
-                    <Component class="imat.SlidePanel" name="slidePanel1">
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                          <CardConstraints cardName="card3"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
