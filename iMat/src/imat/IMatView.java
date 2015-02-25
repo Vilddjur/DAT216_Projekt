@@ -106,6 +106,7 @@ public class IMatView extends javax.swing.JFrame {
         contentScrollPane = new javax.swing.JScrollPane();
         mainContentPanel = new javax.swing.JPanel();
         productListPanel = new imat.ProductListPanel();
+        startPagePanel = new imat.StartPagePanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -283,6 +284,7 @@ public class IMatView extends javax.swing.JFrame {
 
         mainContentPanel.setLayout(new java.awt.CardLayout());
         mainContentPanel.add(productListPanel, "card2");
+        mainContentPanel.add(startPagePanel, "card3");
 
         contentScrollPane.setViewportView(mainContentPanel);
 
@@ -457,6 +459,7 @@ public class IMatView extends javax.swing.JFrame {
     private imat.SearchPanel searchPanel;
     private javax.swing.JPanel sidePanel;
     private imat.MainCategoryItem snacksButton;
+    private imat.StartPagePanel startPagePanel;
     private javax.swing.JPanel subHeadPanel;
     private javax.swing.JPanel topHeadPanel;
     private javax.swing.JPanel topPanel;
