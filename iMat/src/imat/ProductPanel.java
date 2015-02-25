@@ -24,6 +24,7 @@ public class ProductPanel extends javax.swing.JPanel {
         price = 0;
         name = "";
         priceSuffix = "";
+        amountSpinner.setValue(1);
     }
     
     public void setName(String s){
