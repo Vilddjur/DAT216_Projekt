@@ -43,12 +43,8 @@ public class ProductPanel extends javax.swing.JPanel {
         return price;
     }
     public void setImage(String s){
-        imageName = System.getProperty("user.home") + "/.dat215/imat/images/" + s;
-        ImageIcon icon = new ImageIcon(imageName);
-        Image image = icon.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(120, 120,  Image.SCALE_SMOOTH); // scale it the smooth way  
-        icon = new ImageIcon(newimg);  // transform it back
-        imageLabel.setIcon(icon);        
+        imageName = s;
+        imageLabel.setIcon(ResourceHandler.getInstance().getImage(imageName));        
     }     
     
     /**
