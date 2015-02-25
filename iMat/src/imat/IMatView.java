@@ -31,7 +31,8 @@ public class IMatView extends javax.swing.JFrame {
         @Override
         public void search(String str) {
             List<Product> results = imat.findProducts(str);
-            // TODO: do stuff with the result
+            contentPanel.updateProducts(results);
+            
         }
     }
     
