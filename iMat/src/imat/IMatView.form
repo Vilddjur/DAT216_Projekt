@@ -379,14 +379,14 @@
                     <Component class="imat.StartPagePanel" name="startPagePanel">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                          <CardConstraints cardName="card3"/>
+                          <CardConstraints cardName="start"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Container class="imat.ProductListPanel" name="productListPanel">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                          <CardConstraints cardName="card2"/>
+                          <CardConstraints cardName="product"/>
                         </Constraint>
                       </Constraints>
 

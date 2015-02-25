@@ -283,8 +283,8 @@ public class IMatView extends javax.swing.JFrame {
         );
 
         mainContentPanel.setLayout(new java.awt.CardLayout());
-        mainContentPanel.add(startPagePanel, "card3");
-        mainContentPanel.add(productListPanel, "card2");
+        mainContentPanel.add(startPagePanel, "start");
+        mainContentPanel.add(productListPanel, "product");
 
         contentScrollPane.setViewportView(mainContentPanel);
 
@@ -373,7 +373,7 @@ public class IMatView extends javax.swing.JFrame {
   
         resetButtons();
         highlightButton(source);
-    
+        
         if (source == fruitButton) {
             setList("FoG");
         } else if (source == charkButton) {
