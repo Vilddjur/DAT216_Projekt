@@ -17,7 +17,7 @@ public class ShoppingItemPanel extends javax.swing.JPanel {
     /**
      * Creates new form cartItemPanel
      */
-    public ShoppingItemPanel(ShoppingItem item, Controller ctrl) {
+    public ShoppingItemPanel(ShoppingItem item) {
         setShoppingItem(item);
         initComponents();
     }
