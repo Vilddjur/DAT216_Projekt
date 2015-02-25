@@ -5,10 +5,14 @@
  */
 package imat;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 
@@ -47,7 +51,22 @@ public class IMatView extends javax.swing.JFrame {
         
         //contentPanel
         contentPanel.setLayout(new GridLayout(0,4));
-    
+        final JDialog dlg = new JDialog(this, "Loading Resources...", true);
+        JProgressBar bar = new JProgressBar(0,500);
+        dlg.add(BorderLayout.CENTER, bar);
+        dlg.add(BorderLayout.NORTH, new JLabel("Progress..."));
+        dlg.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        dlg.setSize(300, 75);
+        dlg.setLocationRelativeTo(this);
+        bar.setMaximum(150);
+        Thread t = new Thread(new Runnable() {
+            public void run() {
+                dlg.setVisible(true);
+            }
+        });
+        t.start();      
+        ResourceHandler.getInstance(bar);
+        dlg.setVisible(false);
     }
 
     /**

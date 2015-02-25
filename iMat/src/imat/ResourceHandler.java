@@ -10,6 +10,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.ImageIcon;
+import javax.swing.JProgressBar;
 
 /**
  *
@@ -20,6 +21,21 @@ public class ResourceHandler {
     
     private Map<String, ImageIcon> imageMap;
     
+    private ResourceHandler(JProgressBar bar){
+        imageMap = new HashMap<>();
+        File folder = new File(System.getProperty("user.home") + "/.dat215/imat/images/");
+        int count = 0;
+        bar.setValue(count);
+        for(File i: folder.listFiles()){
+            ImageIcon tmp = new ImageIcon(i.getPath());
+            Image image = tmp.getImage(); // transform it 
+            Image newimg = image.getScaledInstance(120, 120,  Image.SCALE_SMOOTH); // scale it the smooth way  
+            tmp = new ImageIcon(newimg);  // transform it back
+            imageMap.put(i.getName(), tmp);
+            count++;
+            bar.setValue(count);
+        }
+    }
     private ResourceHandler(){
         imageMap = new HashMap<>();
         File folder = new File(System.getProperty("user.home") + "/.dat215/imat/images/");
@@ -35,12 +51,19 @@ public class ResourceHandler {
             System.out.println(count);
         }
     }
+
+    public static ResourceHandler getInstance(JProgressBar bar){
+        if(instance == null){
+            instance = new ResourceHandler(bar);
+        }
+        return instance;
+    }
     public static ResourceHandler getInstance(){
         if(instance == null){
             instance = new ResourceHandler();
         }
         return instance;
-    }
+    }    
     public ImageIcon getImage(String s){
         return imageMap.get(s);
     }
