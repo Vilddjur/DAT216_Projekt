@@ -35,6 +35,7 @@ public class CheckOutItem extends javax.swing.JPanel implements ShoppingCartList
         iconLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 102, 102));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         priceLabel.setForeground(new java.awt.Color(255, 255, 255));
         priceLabel.setText("23 varor 1337 KR");

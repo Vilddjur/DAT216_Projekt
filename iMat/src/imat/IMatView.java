@@ -84,6 +84,8 @@ public class IMatView extends javax.swing.JFrame {
         dryButton.setText("Torrvaror");
         searchPanel = new imat.SearchPanel();
         subHeadPanel = new javax.swing.JPanel();
+        checkOutItem2 = new imat.CheckOutItem();
+        profileItem1 = new imat.ProfileItem();
         homeButton = new javax.swing.JLabel();
         bodyPanel = new javax.swing.JPanel();
         sidePanel = new javax.swing.JPanel();
@@ -91,8 +93,8 @@ public class IMatView extends javax.swing.JFrame {
         categoryList = new javax.swing.JList();
         contentScrollPane = new javax.swing.JScrollPane();
         mainContentPanel = new javax.swing.JPanel();
-        startPagePanel = new imat.StartPagePanel();
         productListPanel = new imat.ProductListPanel();
+        startPagePanel = new imat.StartPagePanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -186,15 +188,24 @@ public class IMatView extends javax.swing.JFrame {
 
         subHeadPanel.setBackground(new java.awt.Color(0, 0, 255));
 
+        checkOutItem2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        profileItem1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         javax.swing.GroupLayout subHeadPanelLayout = new javax.swing.GroupLayout(subHeadPanel);
         subHeadPanel.setLayout(subHeadPanelLayout);
         subHeadPanelLayout.setHorizontalGroup(
             subHeadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, subHeadPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(profileItem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(checkOutItem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         subHeadPanelLayout.setVerticalGroup(
             subHeadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
+            .addComponent(checkOutItem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(profileItem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout topTabsPanelLayout = new javax.swing.GroupLayout(topTabsPanel);
@@ -209,8 +220,8 @@ public class IMatView extends javax.swing.JFrame {
             .addGroup(topTabsPanelLayout.createSequentialGroup()
                 .addComponent(topHeadPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(subHeadPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(subHeadPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/logo.jpg"))); // NOI18N
@@ -265,12 +276,12 @@ public class IMatView extends javax.swing.JFrame {
         );
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(categoryScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+            .addComponent(categoryScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
         );
 
         mainContentPanel.setLayout(new java.awt.CardLayout());
-        mainContentPanel.add(startPagePanel, "start");
         mainContentPanel.add(productListPanel, "product");
+        mainContentPanel.add(startPagePanel, "start");
 
         contentScrollPane.setViewportView(mainContentPanel);
 
@@ -433,6 +444,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JList categoryList;
     private javax.swing.JScrollPane categoryScrollPane;
     private imat.MainCategoryItem charkButton;
+    private imat.CheckOutItem checkOutItem2;
     private javax.swing.JScrollPane contentScrollPane;
     private imat.MainCategoryItem diaryButton;
     private imat.MainCategoryItem dryButton;
@@ -444,6 +456,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JPanel mainContentPanel;
     private javax.swing.JPanel mainPanel;
     private imat.ProductListPanel productListPanel;
+    private imat.ProfileItem profileItem1;
     private imat.MainCategoryItem recipeButton;
     private imat.SearchPanel searchPanel;
     private javax.swing.JPanel sidePanel;
