@@ -16,14 +16,13 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  * @author win8
  */
 public class CartManager {
-    private ShoppingCart cart;
+    private final ShoppingCart cart;
     
     public CartManager(){
         this.cart = IMatDataHandler.getInstance().getShoppingCart();
     }
     public void addProduct(double amount,Product item){
         cart.addProduct(item, amount);
-        cart.fireShoppingCartChanged(new ShoppingItem(item), true);
     }
     public void removeItem(int i){
         cart.removeItem(i);
