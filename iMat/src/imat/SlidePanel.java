@@ -8,10 +8,8 @@ package imat;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JProgressBar;
 import javax.swing.Timer;
 
 /**
@@ -19,7 +17,7 @@ import javax.swing.Timer;
  * @author Oskar
  */
 public class SlidePanel extends javax.swing.JPanel implements ActionListener{
-    private final String[] imageNames = {"product_1.jpg", "product_2.jpg", "product_10.jpg"};
+    private final String[] imageNames = {"product_15.jpg", "product_60.jpg", "product_10.jpg"};
     private final int DELAY = 3000;
     
     private int index = 0;
@@ -69,10 +67,7 @@ public class SlidePanel extends javax.swing.JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         mainLabel.setIcon(getImage(imageNames[index], this.getWidth(), this.getHeight()));
-        index ++;
-        if(index == imageNames.length){
-            index = 0;
-        }
+        index = (index+1)%imageNames.length;
     }
 
     private Icon getImage(String s, int w, int h) {
