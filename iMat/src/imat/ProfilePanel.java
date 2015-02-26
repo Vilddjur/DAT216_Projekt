@@ -9,13 +9,15 @@ package imat;
  *
  * @author Albertsson
  */
-public class profilePanel extends javax.swing.JPanel {
-
+public class ProfilePanel extends javax.swing.JPanel {
+    
+    
     /**
      * Creates new form profilePanel
      */
-    public profilePanel() {
+    public ProfilePanel() {
         initComponents();
+        
     }
 
     /**

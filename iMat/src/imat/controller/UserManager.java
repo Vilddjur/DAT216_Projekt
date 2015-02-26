@@ -5,10 +5,21 @@
  */
 package imat.controller;
 
+import se.chalmers.ait.dat215.project.Customer;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.User;
+
 /**
  *
  * @author win8
  */
 public class UserManager {
     
+    private final Customer customer;
+    private final User user;
+    
+    public UserManager(){
+        this.customer = IMatDataHandler.getInstance().getCustomer();
+        this.user = IMatDataHandler.getInstance().getUser();
+    }   
 }
