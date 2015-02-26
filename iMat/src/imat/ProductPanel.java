@@ -5,8 +5,6 @@
  */
 package imat;
 
-import javax.swing.ImageIcon;
-import java.awt.Image;
 import se.chalmers.ait.dat215.project.Product;
 /**
  *
