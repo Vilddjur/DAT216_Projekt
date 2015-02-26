@@ -7,9 +7,12 @@ package imat;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.DefaultListModel;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
@@ -20,12 +23,22 @@ import se.chalmers.ait.dat215.project.Product;
  *
  * @author Oskar
  */
-public class IMatView extends javax.swing.JFrame {
+public class IMatView extends javax.swing.JFrame implements PropertyChangeListener {
     private final ListHandler lh = new ListHandler();
     
     private final IMatDataHandler imat = IMatDataHandler.getInstance();
-    
-    private DefaultListModel listModel;
+
+    /**
+     * Listens for changes in SubcategoryList
+     * @param evt 
+     */
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        ProductCategoryWrapper category = (ProductCategoryWrapper) evt.getNewValue();
+        if (category != null) {
+            productListPanel.updateProducts(imat.getProducts(category.getProductCategory()));
+        }
+    }
     
     private class ConcreteSearchListener implements SearchListener {
         @Override
@@ -39,16 +52,14 @@ public class IMatView extends javax.swing.JFrame {
     /**
      * Creates new form IMatView
      */
-    public IMatView(){
+    public IMatView() {
         initComponents();
         
        //topPanel
         searchPanel.addSearchButtonListener(new ConcreteSearchListener());
         
-       //sidePanel
-        categoryList.setCellRenderer(new CellRenderer());
-        listModel = new DefaultListModel();
-        categoryList.setModel(listModel);
+       //sideBar
+        subcategoryList.addObserver(this);
         
        //progressBar
         loadResourcesWithProgressBar();
@@ -68,32 +79,29 @@ public class IMatView extends javax.swing.JFrame {
         topTabsPanel = new javax.swing.JPanel();
         topHeadPanel = new javax.swing.JPanel();
         fruitButton = new imat.MainCategoryItem();
-        fruitButton.setText("Frukt & grönt");
+        fruitButton.setCategory(MainProductCategory.FRUIT_AND_VEGETABLES);
         charkButton = new imat.MainCategoryItem();
-        charkButton.setText("Chark");
+        charkButton.setCategory(MainProductCategory.CHARK);
         diaryButton = new imat.MainCategoryItem();
-        diaryButton.setText("Mejeri");
+        diaryButton.setCategory(MainProductCategory.DIARIES);
         breadButton = new imat.MainCategoryItem();
-        breadButton.setText("Bröd");
+        breadButton.setCategory(MainProductCategory.BREAD);
         snacksButton = new imat.MainCategoryItem();
-        snacksButton.setText("Dryck & snacks");
+        snacksButton.setCategory(MainProductCategory.DRINKS_AND_SNACKS);
         recipeButton = new imat.MainCategoryItem();
-        recipeButton.setText("Recept");
         dryButton = new imat.MainCategoryItem();
-        dryButton.setText("Torrvaror");
+        dryButton.setCategory(MainProductCategory.DRY);
         searchPanel = new imat.SearchPanel();
         subHeadPanel = new javax.swing.JPanel();
         checkOutItem2 = new imat.CheckOutItem();
         profileItem1 = new imat.ProfileItem();
         homeButton = new javax.swing.JLabel();
-        bodyPanel = new javax.swing.JPanel();
-        sidePanel = new javax.swing.JPanel();
-        categoryScrollPane = new javax.swing.JScrollPane();
-        categoryList = new javax.swing.JList();
+        jSplitPane1 = new javax.swing.JSplitPane();
         contentScrollPane = new javax.swing.JScrollPane();
         mainContentPanel = new javax.swing.JPanel();
         startPagePanel = new imat.StartPagePanel();
         productListPanel = new imat.ProductListPanel();
+        subcategoryList = new imat.SubcategoryList();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -170,7 +178,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(recipeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE))
+                .addComponent(searchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE))
         );
         topHeadPanelLayout.setVerticalGroup(
             topHeadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,37 +254,7 @@ public class IMatView extends javax.swing.JFrame {
             .addComponent(homeButton)
         );
 
-        bodyPanel.setBackground(new java.awt.Color(102, 255, 102));
-
-        sidePanel.setBackground(new java.awt.Color(0, 204, 204));
-
-        categoryScrollPane.setBorder(null);
-
-        categoryList.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        categoryList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        categoryList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                categoryListValueChanged(evt);
-            }
-        });
-        categoryScrollPane.setViewportView(categoryList);
-
-        javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
-        sidePanel.setLayout(sidePanelLayout);
-        sidePanelLayout.setHorizontalGroup(
-            sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sidePanelLayout.createSequentialGroup()
-                .addComponent(categoryScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        sidePanelLayout.setVerticalGroup(
-            sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(categoryScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
-        );
+        jSplitPane1.setDividerSize(0);
 
         mainContentPanel.setLayout(new java.awt.CardLayout());
         mainContentPanel.add(startPagePanel, "start");
@@ -286,34 +264,22 @@ public class IMatView extends javax.swing.JFrame {
 
         contentScrollPane.setViewportView(mainContentPanel);
 
-        javax.swing.GroupLayout bodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
-        bodyPanel.setLayout(bodyPanelLayout);
-        bodyPanelLayout.setHorizontalGroup(
-            bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bodyPanelLayout.createSequentialGroup()
-                .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(contentScrollPane))
-        );
-        bodyPanelLayout.setVerticalGroup(
-            bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(contentScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
+        jSplitPane1.setRightComponent(contentScrollPane);
+        jSplitPane1.setLeftComponent(subcategoryList);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(bodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSplitPane1)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(bodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jMenu1.setText("File");
@@ -370,38 +336,20 @@ public class IMatView extends javax.swing.JFrame {
         MainCategoryItem source = (MainCategoryItem)evt.getSource();
   
         resetButtons();
-        highlightButton(source);
-        CardLayout manager = (CardLayout) mainContentPanel.getLayout();
-        manager.show(mainContentPanel, "product");
-        if (source == fruitButton) {
-            setList("FoG");
-        } else if (source == charkButton) {
-            setList("Chark");
-        } else if (source == breadButton) {
-            setList("Bröd");
-        } else if (source == diaryButton) {
-            setList("Mejeri");
-        } else if (source == dryButton) {
-            setList("Torr");
-        } else if (source == snacksButton) {
-            setList("DS");
-        }
+        source.highlight();
+        
+        showProductPage();
+        
+        setList(source.getCategory());
     }
     
-    private void categoryListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_categoryListValueChanged
-        resetProductList();
-        listProducts((String)categoryList.getSelectedValue());
-    }//GEN-LAST:event_categoryListValueChanged
-
     private void homeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeButtonMouseClicked
         resetButtons();
         resetProductList();
-        if (categoryList.getModel().getSize() != 0){
-            listModel.removeAllElements();
-            categoryList.setModel(listModel);
-        }
-        CardLayout manager = (CardLayout) mainContentPanel.getLayout();
-        manager.show(mainContentPanel, "start");
+        
+        subcategoryList.clear();
+        
+        showStartPage();
     }//GEN-LAST:event_homeButtonMouseClicked
 
     /**
@@ -440,10 +388,7 @@ public class IMatView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel bodyPanel;
     private imat.MainCategoryItem breadButton;
-    private javax.swing.JList categoryList;
-    private javax.swing.JScrollPane categoryScrollPane;
     private imat.MainCategoryItem charkButton;
     private imat.CheckOutItem checkOutItem2;
     private javax.swing.JScrollPane contentScrollPane;
@@ -454,28 +399,36 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel mainContentPanel;
     private javax.swing.JPanel mainPanel;
     private imat.ProductListPanel productListPanel;
     private imat.ProfileItem profileItem1;
     private imat.MainCategoryItem recipeButton;
     private imat.SearchPanel searchPanel;
-    private javax.swing.JPanel sidePanel;
     private imat.MainCategoryItem snacksButton;
     private imat.StartPagePanel startPagePanel;
     private javax.swing.JPanel subHeadPanel;
+    private imat.SubcategoryList subcategoryList;
     private javax.swing.JPanel topHeadPanel;
     private javax.swing.JPanel topPanel;
     private javax.swing.JPanel topTabsPanel;
     // End of variables declaration//GEN-END:variables
 
-    private void setList(String s) {
-        if(!categoryScrollPane.isVisible()){
-            categoryScrollPane.setVisible(true);
-        }
-        Object[] listData = lh.getLists(s).toArray();
-        categoryList.setListData(listData);
-        categoryList.setSelectedIndex(0);
+    private void showStartPage() {
+        CardLayout manager = (CardLayout) mainContentPanel.getLayout();
+        manager.show(mainContentPanel, "start");
+    }
+    
+    private void showProductPage() {
+        CardLayout manager = (CardLayout) mainContentPanel.getLayout();
+        manager.show(mainContentPanel, "product");
+    }
+    
+    private void setList(MainProductCategory mainCategory) {
+        List<ProductCategoryWrapper> subcategories = mainCategory.getSubcategories();
+        Object[] arr = subcategories.toArray();
+        subcategoryList.update(arr);
     }
 
     private void resetButtons() {
@@ -486,10 +439,6 @@ public class IMatView extends javax.swing.JFrame {
         snacksButton.reset();
         diaryButton.reset();
         recipeButton.reset();
-    }
-
-    private void highlightButton(MainCategoryItem button) {
-        button.highlight();
     }
 
     private void resetProductList() {

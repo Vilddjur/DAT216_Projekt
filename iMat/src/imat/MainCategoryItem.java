@@ -12,6 +12,8 @@ import java.awt.Color;
  * @author mats
  */
 public class MainCategoryItem extends javax.swing.JPanel {
+    private MainProductCategory category;
+    
     private Color currentColor = Constants.DEFAULT_COLOR;
     private Color currentHoverColor = Constants.HOVER_COLOR;
     private Color currentPressedColor = Constants.PRESSED_COLOR;
@@ -26,12 +28,13 @@ public class MainCategoryItem extends javax.swing.JPanel {
         initComponents();
     }
     
-    public String getText() {
-        return categoryName.getText();
+    public void setCategory(MainProductCategory category) {
+        this.category = category;
+        this.categoryName.setText(category.toString());
     }
     
-    public void setText(String label) {
-        categoryName.setText(label);
+    public MainProductCategory getCategory() {
+        return this.category;
     }
     
     public void highlight() {

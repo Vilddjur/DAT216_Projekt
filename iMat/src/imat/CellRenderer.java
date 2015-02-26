@@ -15,19 +15,22 @@ import javax.swing.ListCellRenderer;
  *
  * @author Oskar
  */
-public class CellRenderer extends GradientLabel implements ListCellRenderer<String>{
-
-    public CellRenderer(){
+public class CellRenderer extends SubcategoryListItem
+        implements ListCellRenderer<ProductCategoryWrapper> {
+    
+    public CellRenderer() {
         setOpaque(true);
         setFont(new Font(this.getFont().getName(), Font.PLAIN, 18));
-        setBackground(Color.WHITE);
     }
+
     @Override
-    public Component getListCellRendererComponent(JList<? extends String> list, String value, int index, boolean isSelected, boolean cellHasFocus) {
-       
-        setText(value);
-        setSelected(isSelected);
+    public Component getListCellRendererComponent(JList<? extends ProductCategoryWrapper> list, ProductCategoryWrapper value, int index, boolean isSelected, boolean cellHasFocus) {
+        setCategory(value);
+        if (isSelected) {
+            setBackground(Constants.HIGHLIGHT_COLOR);
+        } else {
+            setBackground(Constants.DEFAULT_COLOR);
+        }
         return this;
-   }
-    
+    }
 }
