@@ -20,6 +20,7 @@ public class ProductListPanel extends javax.swing.JPanel {
      */
     public ProductListPanel() {
         initComponents();
+        this.setLayout(null);
     }
     
     public void reset() {
@@ -28,7 +29,11 @@ public class ProductListPanel extends javax.swing.JPanel {
     
     public void updateProducts(List<Product> products) {
         this.removeAll();
-        
+        if(products.size() > 8){
+            this.setLayout(new GridLayout((int)(products.size()/4),4));
+        }else{
+            this.setLayout(new GridLayout(2,4));
+        }
         for (Product product : products) {
             ProductPanel panel = new ProductPanel(product);
             this.add(panel);

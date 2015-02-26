@@ -43,15 +43,15 @@ public class IMatView extends javax.swing.JFrame {
     public IMatView(){
         initComponents();
         
-        //topPanel
+       //topPanel
         searchPanel.addSearchButtonListener(new ConcreteSearchListener());
         
-        //sidePanel
+       //sidePanel
         categoryList.setCellRenderer(new CellRenderer());
         listModel = new DefaultListModel();
         categoryList.setModel(listModel);
         
-        //progressBar
+       //progressBar
         loadResourcesWithProgressBar();
     }
 
