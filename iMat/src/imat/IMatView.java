@@ -52,22 +52,7 @@ public class IMatView extends javax.swing.JFrame {
         categoryList.setModel(listModel);
         
         //progressBar
-        final JDialog dlg = new JDialog(this, "Loading Resources...", true);
-        JProgressBar bar = new JProgressBar(0,500);
-        dlg.add(BorderLayout.CENTER, bar);
-        dlg.add(BorderLayout.NORTH, new JLabel("Progress..."));
-        dlg.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-        dlg.setSize(300, 75);
-        dlg.setLocationRelativeTo(this);
-        bar.setMaximum(150);
-        Thread t = new Thread(new Runnable() {
-            public void run() {
-                dlg.setVisible(true);
-            }
-        });
-        t.start();      
-        ResourceHandler.getInstance(bar);
-        dlg.setVisible(false);
+        loadResourcesWithProgressBar();
     }
 
     /**
@@ -525,5 +510,24 @@ public class IMatView extends javax.swing.JFrame {
             return null;
         }
         return null;
+    }
+
+    private void loadResourcesWithProgressBar() {
+        final JDialog dlg = new JDialog(this, "Loading Resources...", true);
+        JProgressBar bar = new JProgressBar(0,500);
+        dlg.add(BorderLayout.CENTER, bar);
+        dlg.add(BorderLayout.NORTH, new JLabel("Progress..."));
+        dlg.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        dlg.setSize(300, 75);
+        dlg.setLocationRelativeTo(this);
+        bar.setMaximum(150);
+        Thread t = new Thread(new Runnable() {
+            public void run() {
+                dlg.setVisible(true);
+            }
+        });
+        t.start();      
+        ResourceHandler.getInstance(bar);
+        dlg.setVisible(false);
     }
 }

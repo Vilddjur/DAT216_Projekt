@@ -17,9 +17,9 @@ import javax.swing.JProgressBar;
  * @author Oskar
  */
 public class ResourceHandler {
-    private static ResourceHandler instance;
+    private static ResourceHandler instance = null;
     
-    private Map<String, ImageIcon> imageMap;
+    private static Map<String, ImageIcon> imageMap;
     
     private ResourceHandler(JProgressBar bar){
         imageMap = new HashMap<>();
@@ -53,13 +53,13 @@ public class ResourceHandler {
     }
 
     public static ResourceHandler getInstance(JProgressBar bar){
-        if(instance == null){
+        if(null == instance){
             instance = new ResourceHandler(bar);
         }
         return instance;
     }
     public static ResourceHandler getInstance(){
-        if(instance == null){
+        if(null == instance){
             instance = new ResourceHandler();
         }
         return instance;
@@ -67,5 +67,5 @@ public class ResourceHandler {
     public ImageIcon getImage(String s){
         return imageMap.get(s);
     }
-    
+   
 }

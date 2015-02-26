@@ -5,8 +5,13 @@
  */
 package imat;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JProgressBar;
 import javax.swing.Timer;
 
 /**
@@ -14,7 +19,7 @@ import javax.swing.Timer;
  * @author Oskar
  */
 public class SlidePanel extends javax.swing.JPanel implements ActionListener{
-    private final String[] text = {"instert cool ad1 here", "2nd", "3rd"};
+    private final String[] imageNames = {"product_1.jpg", "product_2.jpg", "product_10.jpg"};
     private final int DELAY = 3000;
     
     private int index = 0;
@@ -43,7 +48,6 @@ public class SlidePanel extends javax.swing.JPanel implements ActionListener{
         mainLabel = new javax.swing.JLabel();
 
         mainLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        mainLabel.setText("asd");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -64,10 +68,18 @@ public class SlidePanel extends javax.swing.JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        mainLabel.setText(text[index]);
+        mainLabel.setIcon(getImage(imageNames[index], this.getWidth(), this.getHeight()));
         index ++;
-        if(index == text.length){
+        if(index == imageNames.length){
             index = 0;
         }
+    }
+
+    private Icon getImage(String s, int w, int h) {
+        String path = System.getProperty("user.home") + "/.dat215/imat/images/" + s;
+        ImageIcon tmp = new ImageIcon(path);
+        Image image = tmp.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(w, h,  Image.SCALE_SMOOTH); // scale it the smooth way  
+        return new ImageIcon(newimg);  // transform it back
     }
 }
