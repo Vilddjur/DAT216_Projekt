@@ -14,7 +14,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  *
  * @author win8
  */
-public class ShoppingItemListPanel extends javax.swing.JPanel{
+public class ShoppingItemListPanel extends javax.swing.JPanel implements ShoppingCartListener{
 
     /**
      * Creates new form CartListPanel
@@ -56,5 +56,11 @@ public class ShoppingItemListPanel extends javax.swing.JPanel{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void shoppingCartChanged(CartEvent ce) {
+        System.out.println("ADDED");
+        System.out.println(ce.getShoppingItem().getProduct().getName());
+    }
 
 }

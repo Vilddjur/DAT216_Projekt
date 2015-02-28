@@ -25,7 +25,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private final ListHandler lh = new ListHandler();
     
     private final IMatDataHandler imat = IMatDataHandler.getInstance();
-
+    
+    private final ShoppingItemListPanel shoppingList;
     /**
      * Listens for changes in SubcategoryList
      * @param evt 
@@ -51,6 +52,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
      * Creates new form IMatView
      */
     public IMatView() {
+        this.shoppingList = new ShoppingItemListPanel();
         initComponents();
         
        //topPanel
@@ -61,6 +63,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         
        //progressBar
         loadResourcesWithProgressBar();
+        
+        IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(shoppingList);
     }
 
     /**
