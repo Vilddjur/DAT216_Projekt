@@ -5,6 +5,7 @@
  */
 package imat;
 
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 /**
  *
@@ -28,7 +29,8 @@ public class ProductPanel extends javax.swing.JPanel {
         this.setVisible(true);
     }
     public double getAmount(){
-        return (double)amountSpinner.getValue();
+        int i = (int) amountSpinner.getValue();
+        return (double)i;
     }
     public Product getProduct(){
         return product;
@@ -53,6 +55,11 @@ public class ProductPanel extends javax.swing.JPanel {
 
         addToCartButton.setBackground(new java.awt.Color(102, 255, 102));
         addToCartButton.setText("Lägg till i kundvagnen");
+        addToCartButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addToCartButtonActionPerformed(evt);
+            }
+        });
 
         priceLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         priceLabel.setText("100 :-/st");
@@ -114,6 +121,10 @@ public class ProductPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addToCartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartButtonActionPerformed
+        IMatDataHandler.getInstance().getShoppingCart().addProduct(product, getAmount());
+    }//GEN-LAST:event_addToCartButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
