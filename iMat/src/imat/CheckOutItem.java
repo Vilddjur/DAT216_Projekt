@@ -49,14 +49,20 @@ public class CheckOutItem extends javax.swing.JPanel implements ShoppingCartList
         iconLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         iconLabel.setText("Icon");
 
+        mainPanel.setBackground(new java.awt.Color(102, 102, 102));
+
+        amountLabel.setForeground(new java.awt.Color(255, 255, 255));
         amountLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         amountLabel.setText("0");
 
+        varorLabel.setForeground(new java.awt.Color(255, 255, 255));
         varorLabel.setText("varor");
 
+        totalPriceLabel.setForeground(new java.awt.Color(255, 255, 255));
         totalPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         totalPriceLabel.setText("0");
 
+        sekLabel.setForeground(new java.awt.Color(255, 255, 255));
         sekLabel.setText("SEK");
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);

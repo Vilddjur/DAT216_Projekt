@@ -196,7 +196,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        subHeadPanel.setBackground(new java.awt.Color(0, 0, 255));
+        subHeadPanel.setBackground(new java.awt.Color(100, 100, 100));
 
         checkOutItem2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
