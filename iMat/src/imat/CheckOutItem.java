@@ -6,6 +6,7 @@
 package imat;
 
 import se.chalmers.ait.dat215.project.CartEvent;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
 
@@ -20,6 +21,7 @@ public class CheckOutItem extends javax.swing.JPanel implements ShoppingCartList
      */
     public CheckOutItem() {
         initComponents();
+        cart = IMatDataHandler.getInstance().getShoppingCart();
     }
 
     /**

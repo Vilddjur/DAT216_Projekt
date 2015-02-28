@@ -64,7 +64,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
        //progressBar
         loadResourcesWithProgressBar();
         
-        IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(shoppingList);
+        imat.getShoppingCart().addShoppingCartListener(shoppingList);
+        imat.getShoppingCart().addShoppingCartListener(checkOutItem2);
     }
 
     /**

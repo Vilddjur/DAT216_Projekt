@@ -59,8 +59,6 @@ public class ShoppingItemListPanel extends javax.swing.JPanel implements Shoppin
 
     @Override
     public void shoppingCartChanged(CartEvent ce) {
-        System.out.println("ADDED");
-        System.out.println(ce.getShoppingItem().getProduct().getName());
+       
     }
-
 }
