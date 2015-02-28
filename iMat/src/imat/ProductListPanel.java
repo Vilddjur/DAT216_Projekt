@@ -25,11 +25,11 @@ public class ProductListPanel extends javax.swing.JPanel {
     }
     
     public void reset() {
-        this.removeAll();
+        super.removeAll();
     }
     
     public void updateProducts(List<Product> products) {
-        this.removeAll();
+        reset();
         if(products.size() > 8){
             grid.setRows((int)(products.size()/4));
         }else{
@@ -41,6 +41,7 @@ public class ProductListPanel extends javax.swing.JPanel {
         }
         
         this.revalidate();
+        this.repaint();
     }
 
     /**

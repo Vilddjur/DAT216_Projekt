@@ -32,6 +32,7 @@ public class SubcategoryList extends javax.swing.JPanel implements IObservable {
     
     public void clear() {
         listModel.removeAllElements();
+        list.setModel(listModel);
     }
     
     public void update(Object[] arr) {
