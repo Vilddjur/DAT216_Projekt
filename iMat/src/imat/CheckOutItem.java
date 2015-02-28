@@ -5,10 +5,12 @@
  */
 package imat;
 
+import java.util.ArrayList;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
@@ -120,6 +122,13 @@ public class CheckOutItem extends javax.swing.JPanel implements ShoppingCartList
     }
     
     private int getAmount(ShoppingCart cart){
-        return cart.getItems().size();
+        ArrayList list = (ArrayList) cart.getItems();
+        int sum = 0;
+        for(Object i : list){
+            ShoppingItem tmp = (ShoppingItem) i;
+            sum += tmp.getAmount();
+        }
+        return sum;
+        
     }
 }
