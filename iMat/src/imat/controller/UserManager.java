@@ -21,5 +21,13 @@ public class UserManager {
     public UserManager(){
         this.customer = IMatDataHandler.getInstance().getCustomer();
         this.user = IMatDataHandler.getInstance().getUser();
-    }   
+    }
+    
+    public Customer getCustomer(){
+        return this.customer;
+    }
+    
+    public User getUser(){
+        return this.user;
+    }
 }
