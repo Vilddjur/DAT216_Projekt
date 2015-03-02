@@ -66,6 +66,14 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
        //progressBar
         loadResourcesWithProgressBar();
         
+        //checkoutButtonHandler
+        shoppingPanel1.setCheckoutButtonPerformedListener(new ShowCheckoutContentHandler() {
+
+            @Override
+            public void showCheckoutContent() {
+                showCheckoutPage();
+            }
+        });
 //        imat.getShoppingCart().addShoppingCartListener(shoppingList);
         imat.getShoppingCart().addShoppingCartListener(checkOutItem2);
     }
@@ -452,12 +460,19 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         manager.show(mainContentPanel, "product");
     }
     
+    private void showCheckoutPage() {
+         CardLayout manager = (CardLayout) mainContentPanel.getLayout();
+        manager.show(mainContentPanel, "checkOutCard");
+    }
+    
     private void setList(MainProductCategory mainCategory) {
         List<Category> subcategories = mainCategory.getSubcategories();
         subcategories.add(0, mainCategory);
         Object[] arr = subcategories.toArray();
         subcategoryList.update(arr);
     }
+    
+    
 
     private void resetButtons() {
         fruitButton.reset();
