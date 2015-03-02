@@ -80,8 +80,8 @@ public class ShoppingPanel extends javax.swing.JPanel {
         shoppingListTab.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 3, 3));
         tabbedPane.addTab("t22ab2", shoppingListTab);
 
-        tabbedPane.setBackgroundAt(0, Color.RED);
-        tabbedPane.setBackgroundAt(1, Color.YELLOW);
+        tabbedPane.setBackgroundAt(0, Color.ORANGE);
+        tabbedPane.setBackgroundAt(1, Color.CYAN);
 
         add(tabbedPane);
         //remove(tabbedPane);

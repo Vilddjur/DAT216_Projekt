@@ -68,7 +68,7 @@
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//remove(tabbedPane);&#xa;//add(tabbedPane,java.awt.BorderLayout.EAST);"/>
-        <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="tabbedPane.setBackgroundAt(0, Color.RED);&#xa;tabbedPane.setBackgroundAt(1, Color.YELLOW);"/>
+        <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="tabbedPane.setBackgroundAt(0, Color.ORANGE);&#xa;tabbedPane.setBackgroundAt(1, Color.CYAN);"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
