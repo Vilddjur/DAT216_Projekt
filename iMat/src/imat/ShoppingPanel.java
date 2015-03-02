@@ -118,10 +118,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
         tabbedPane.setTabComponentAt(0, cartTabIcon);
         tabbedPane.setTabComponentAt(1, shoppingListTabIcon);
         SwingUtilities.updateComponentTreeUI(tabbedPane);
-        tabbedPane.setUI(new javax.swing.plaf.synth.SynthTabbedPaneUI() {
-            protected void paintContentBorder(Graphics g, int tabPlacement, int selectedIndex) {
-            }
-        });
+      
 
         
         
