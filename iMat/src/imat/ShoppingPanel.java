@@ -62,6 +62,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
+        tabbedPane.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         tabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         tabbedPane.setMinimumSize(new java.awt.Dimension(40, 25));
         tabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -140,6 +141,10 @@ public class ShoppingPanel extends javax.swing.JPanel {
         this.revalidate();
         contentVisible = show;
     }
+    
+     public void setCheckoutButtonPerformedListener(ShowCheckoutContentHandler handler) {
+         cartPanel.setCheckoutButtonPerformedListener(handler);
+     }
 
     public boolean isContentVisible() {
         return contentVisible;

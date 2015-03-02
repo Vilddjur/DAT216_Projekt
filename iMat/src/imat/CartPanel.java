@@ -146,14 +146,14 @@ public class CartPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutButtonActionPerformed
-        // TODO add your handling code here:
-        Product p = new Product();
-        p.setName("hash");
-        p.setPrice(100);
-        p.setUnit("st");
-        cart.addItem(new ShoppingItem(p,1));
+ 
+        showCheckoutContentHandler.showCheckoutContent();
     }//GEN-LAST:event_checkoutButtonActionPerformed
 
+    
+    public void setCheckoutButtonPerformedListener(ShowCheckoutContentHandler handler) {
+        showCheckoutContentHandler= handler;
+    }
     
     private void updateTotalValue() {
          totalValueLabel.setText(cart.getTotal() +" :-");
@@ -174,5 +174,6 @@ public class CartPanel extends javax.swing.JPanel {
     private ShoppingCart cart;
     private CartManager cartManager;
     private HashMap<ShoppingList,CartCategorizedItemListPanel> shoppingListPanels;
+    private ShowCheckoutContentHandler showCheckoutContentHandler;
 
 }

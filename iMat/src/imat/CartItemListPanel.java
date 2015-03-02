@@ -5,6 +5,9 @@
  */
 package imat;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.Product;
@@ -31,7 +34,7 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
         p2.setUnit("st");
         initComponents();
 
-        addShoppingItem(new ShoppingItem(p1, 1));
+        insertShoppingItem(new ShoppingItem(p1, 1),true);
 
         //addShoppingItem(new ShoppingItem(p2, 4));
     }
@@ -48,13 +51,32 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addShoppingItem(ShoppingItem item) {
-        CartItemPanel itemPanel = new CartItemPanel(item);
-        itemPanel.setName(System.currentTimeMillis()+ "");
-        System.out.println("ADDING NEW ITEMPANEL");
-        System.out.println("PANELID IS "+itemPanel.getName());
-        add(itemPanel);
-        cartItemPanels.put(item,itemPanel);
+    public void insertShoppingItem(ShoppingItem item, boolean increase) {
+        if (item == null || item.getAmount() <= 0) {
+            return;
+        }
+        System.out.println("Matching.. "+itemList.contains(item));
+        if (!itemList.contains(item) && increase) {
+            itemList.add(item);
+        } else {
+            itemList.remove(item);
+        }
+        Collections.sort(itemList, new Comparator<ShoppingItem>() {
+
+            @Override
+            public int compare(ShoppingItem o1, ShoppingItem o2) {
+                return o1.getProduct().getName().compareTo(o2.getProduct().getName());
+            }
+        });
+        updateList();
+    }
+
+    public void updateList() {
+        this.removeAll();
+
+        for (ShoppingItem item : itemList) {
+            add(new CartItemPanel(item));
+        }
         setSize(getPreferredSize());
         setMaximumSize(getPreferredSize());
         revalidate();
@@ -65,22 +87,10 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
     @Override
     public void shoppingCartChanged(CartEvent ce) {
         ShoppingItem item = ce.getShoppingItem();
-        if (ce.isAddEvent()) {
-            System.out.println("adding component");
-            addShoppingItem(item);
-        } else {
-            if (cartItemPanels.containsKey(item)) {
-                remove(cartItemPanels.remove(item));
-            }
-            else {
-                System.out.println("didnt find component");
-            }
-            if(cartItemPanels.isEmpty()) {
-                //this.getParent().remove(this);
-            }
-        }
-         revalidate();
+        insertShoppingItem(item, ce.isAddEvent());
+
     }
     HashMap<ShoppingItem, CartItemPanel> cartItemPanels = new HashMap<>();
+    ArrayList<ShoppingItem> itemList = new ArrayList<>();
 
 }
