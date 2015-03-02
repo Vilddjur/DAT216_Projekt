@@ -132,7 +132,7 @@
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="recipeButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="searchPanel" pref="277" max="32767" attributes="0"/>
+                              <Component id="searchPanel" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -367,6 +367,13 @@
                             <Property name="rows" type="int" value="0"/>
                           </Layout>
                         </Container>
+                        <Component class="imat.CheckOutPanel" name="checkOutPanel">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                              <CardConstraints cardName="checkOutCard"/>
+                            </Constraint>
+                          </Constraints>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>

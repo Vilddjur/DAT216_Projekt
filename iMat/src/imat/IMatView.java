@@ -107,6 +107,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         mainContentPanel = new javax.swing.JPanel();
         startPagePanel = new imat.StartPagePanel();
         productListPanel = new imat.ProductListPanel();
+        checkOutPanel = new imat.CheckOutPanel();
         shoppingPanel1 = new imat.ShoppingPanel();
         subcategoryList = new imat.SubcategoryList();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -185,7 +186,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
                 .addGap(10, 10, 10)
                 .addComponent(recipeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
+                .addComponent(searchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         topHeadPanelLayout.setVerticalGroup(
             topHeadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,6 +269,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
 
         productListPanel.setLayout(new java.awt.GridLayout(0, 4));
         mainContentPanel.add(productListPanel, "product");
+        mainContentPanel.add(checkOutPanel, "checkOutCard");
 
         contentScrollPane.setViewportView(mainContentPanel);
 
@@ -413,6 +415,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private imat.MainCategoryItem breadButton;
     private imat.MainCategoryItem charkButton;
     private imat.CheckOutItem checkOutItem2;
+    private imat.CheckOutPanel checkOutPanel;
     private javax.swing.JScrollPane contentScrollPane;
     private imat.MainCategoryItem diaryButton;
     private imat.MainCategoryItem dryButton;
