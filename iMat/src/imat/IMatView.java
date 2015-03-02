@@ -9,7 +9,6 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -450,36 +449,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
 
     private void resetProductList() {
         productListPanel.reset();
-    }
-
-    private void listProducts(String p) {
-        ArrayList<Product> list = new ArrayList<>();
-        if(p == "ALLA"){
-            list.addAll(lh.getProducts(getMainCategory()));
-        }else{
-            list.addAll(lh.getProducts(lh.parseString(p)));
-        }
-        
-        productListPanel.updateProducts(list);
-    }
-
-    private String getMainCategory() {
-        if(fruitButton.isHighlighted()){
-            return "FoG";
-        }else if(breadButton.isHighlighted()){
-            return "Bröd";
-        }else if(charkButton.isHighlighted()){
-            return "Chark";
-        }else if(dryButton.isHighlighted()){
-            return "Torr";
-        }else if(snacksButton.isHighlighted()){
-            return "DS";
-        }else if(diaryButton.isHighlighted()){
-            return "Mejeri";
-        }else if(recipeButton.isHighlighted()){
-            return null;
-        }
-        return null;
     }
 
     private void loadResourcesWithProgressBar() {
