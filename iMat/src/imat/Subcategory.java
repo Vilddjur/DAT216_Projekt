@@ -5,16 +5,19 @@
  */
 package imat;
 
+import java.util.List;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
 /**
  *
  * @author mats
  */
-public class ProductCategoryWrapper {
+public class Subcategory implements Category {
     private ProductCategory category;
     
-    public ProductCategoryWrapper(ProductCategory category) {
+    public Subcategory(ProductCategory category) {
         this.category = category;
     }
     
@@ -68,5 +71,11 @@ public class ProductCategoryWrapper {
                 return "Örtkryddor";
         }
         return "";
+    }
+
+    @Override
+    public List<Product> getProducts() {
+        IMatDataHandler imat = IMatDataHandler.getInstance();
+        return imat.getProducts(category);
     }
 }

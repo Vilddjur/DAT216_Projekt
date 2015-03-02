@@ -163,7 +163,7 @@
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="fruitButtonMouseClicked"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="fruitButton.setCategory(MainProductCategory.FRUIT_AND_VEGETABLES);"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="fruitButton.setCategory(new MainProductCategory(MainProductCategory.Name.FRUIT_AND_VEGETABLES));"/>
                       </AuxValues>
                     </Component>
                     <Component class="imat.MainCategoryItem" name="charkButton">
@@ -176,7 +176,7 @@
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="charkButtonMouseClicked"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="charkButton.setCategory(MainProductCategory.CHARK);"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="charkButton.setCategory(new MainProductCategory(MainProductCategory.Name.CHARK));"/>
                       </AuxValues>
                     </Component>
                     <Component class="imat.MainCategoryItem" name="diaryButton">
@@ -189,7 +189,7 @@
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="diaryButtonMouseClicked"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="diaryButton.setCategory(MainProductCategory.DIARIES);"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="diaryButton.setCategory(new MainProductCategory(MainProductCategory.Name.DIARIES));"/>
                       </AuxValues>
                     </Component>
                     <Component class="imat.MainCategoryItem" name="breadButton">
@@ -202,7 +202,7 @@
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="breadButtonMouseClicked"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="breadButton.setCategory(MainProductCategory.BREAD);"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="breadButton.setCategory(new MainProductCategory(MainProductCategory.Name.BREAD));"/>
                       </AuxValues>
                     </Component>
                     <Component class="imat.MainCategoryItem" name="snacksButton">
@@ -215,7 +215,7 @@
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="snacksButtonMouseClicked"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="snacksButton.setCategory(MainProductCategory.DRINKS_AND_SNACKS);"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="snacksButton.setCategory(new MainProductCategory(MainProductCategory.Name.DRINKS_AND_SNACKS));"/>
                       </AuxValues>
                     </Component>
                     <Component class="imat.MainCategoryItem" name="recipeButton">
@@ -238,7 +238,7 @@
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dryButtonMouseClicked"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="dryButton.setCategory(MainProductCategory.DRY);"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="dryButton.setCategory(new MainProductCategory(MainProductCategory.Name.DRY));"/>
                       </AuxValues>
                     </Component>
                     <Component class="imat.SearchPanel" name="searchPanel">

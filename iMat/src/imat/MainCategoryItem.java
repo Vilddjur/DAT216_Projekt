@@ -30,7 +30,7 @@ public class MainCategoryItem extends javax.swing.JPanel {
     
     public void setCategory(MainProductCategory category) {
         this.category = category;
-        this.categoryName.setText(category.toString());
+        this.categoryName.setText(category.getName());
     }
     
     public MainProductCategory getCategory() {

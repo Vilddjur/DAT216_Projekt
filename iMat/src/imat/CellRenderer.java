@@ -16,21 +16,36 @@ import javax.swing.ListCellRenderer;
  * @author Oskar
  */
 public class CellRenderer extends SubcategoryListItem
-        implements ListCellRenderer<ProductCategoryWrapper> {
+        implements ListCellRenderer<Category> {
     
     public CellRenderer() {
         setOpaque(true);
         setFont(new Font(this.getFont().getName(), Font.PLAIN, 18));
     }
 
+//    @Override
+//    public Component getListCellRendererComponent(JList<? extends ProductCategoryWrapper> list, ProductCategoryWrapper value, int index, boolean isSelected, boolean cellHasFocus) {
+//        setCategory(value);
+//        
+//        if (isSelected) {
+//            setBackground(Constants.HIGHLIGHT_COLOR);
+//        } else {
+//            setBackground(Constants.DEFAULT_COLOR);
+//        }
+//        
+//        return this;
+//    }
+
     @Override
-    public Component getListCellRendererComponent(JList<? extends ProductCategoryWrapper> list, ProductCategoryWrapper value, int index, boolean isSelected, boolean cellHasFocus) {
+    public Component getListCellRendererComponent(JList<? extends Category> list, Category value, int index, boolean isSelected, boolean cellHasFocus) {
         setCategory(value);
+        
         if (isSelected) {
             setBackground(Constants.HIGHLIGHT_COLOR);
         } else {
             setBackground(Constants.DEFAULT_COLOR);
         }
+        
         return this;
     }
 }

@@ -34,9 +34,9 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
      */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        ProductCategoryWrapper category = (ProductCategoryWrapper) evt.getNewValue();
+        Category category = (Category) evt.getNewValue();
         if (category != null) {
-            productListPanel.updateProducts(imat.getProducts(category.getProductCategory()));
+            productListPanel.updateProducts(category.getProducts());
         }
     }
     
@@ -83,18 +83,18 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         topTabsPanel = new javax.swing.JPanel();
         topHeadPanel = new javax.swing.JPanel();
         fruitButton = new imat.MainCategoryItem();
-        fruitButton.setCategory(MainProductCategory.FRUIT_AND_VEGETABLES);
+        fruitButton.setCategory(new MainProductCategory(MainProductCategory.Name.FRUIT_AND_VEGETABLES));
         charkButton = new imat.MainCategoryItem();
-        charkButton.setCategory(MainProductCategory.CHARK);
+        charkButton.setCategory(new MainProductCategory(MainProductCategory.Name.CHARK));
         diaryButton = new imat.MainCategoryItem();
-        diaryButton.setCategory(MainProductCategory.DIARIES);
+        diaryButton.setCategory(new MainProductCategory(MainProductCategory.Name.DIARIES));
         breadButton = new imat.MainCategoryItem();
-        breadButton.setCategory(MainProductCategory.BREAD);
+        breadButton.setCategory(new MainProductCategory(MainProductCategory.Name.BREAD));
         snacksButton = new imat.MainCategoryItem();
-        snacksButton.setCategory(MainProductCategory.DRINKS_AND_SNACKS);
+        snacksButton.setCategory(new MainProductCategory(MainProductCategory.Name.DRINKS_AND_SNACKS));
         recipeButton = new imat.MainCategoryItem();
         dryButton = new imat.MainCategoryItem();
-        dryButton.setCategory(MainProductCategory.DRY);
+        dryButton.setCategory(new MainProductCategory(MainProductCategory.Name.DRY));
         searchPanel = new imat.SearchPanel();
         subHeadPanel = new javax.swing.JPanel();
         checkOutItem2 = new imat.CheckOutItem();
@@ -430,7 +430,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     }
     
     private void setList(MainProductCategory mainCategory) {
-        List<ProductCategoryWrapper> subcategories = mainCategory.getSubcategories();
+        List<Category> subcategories = mainCategory.getSubcategories();
+        subcategories.add(0, mainCategory);
         Object[] arr = subcategories.toArray();
         subcategoryList.update(arr);
     }

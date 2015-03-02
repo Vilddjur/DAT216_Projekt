@@ -7,77 +7,110 @@ package imat;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
 /**
  *
  * @author mats
  */
-public enum MainProductCategory {
-    FRUIT_AND_VEGETABLES,
-    BREAD,
-    CHARK,
-    DIARIES,
-    DRY,
-    DRINKS_AND_SNACKS;
-    
-    public String toString() {
-        switch (this) {
-            case FRUIT_AND_VEGETABLES:
-                return "Frukt & grönt";
-            case BREAD:
-                return "Bröd";
-            case CHARK:
-                return "Chark";
-            case DIARIES:
-                return "Mejeri";
-            case DRY:
-                return "Torrvaror";
-            case DRINKS_AND_SNACKS:
-                return "Dryck & snacks";
+public class MainProductCategory implements Category {
+    private Name name;
+    private List<Subcategory> subCategories = new ArrayList<>();
+
+    @Override
+    public List<Product> getProducts() {
+        List<Product> products = new ArrayList<>();
+        
+        IMatDataHandler imat = IMatDataHandler.getInstance();
+        for (Subcategory category : subCategories) {
+            products.addAll(imat.getProducts(category.getProductCategory()));
         }
-        return "";
+        
+        return products;
     }
     
-    public List<ProductCategoryWrapper> getSubcategories() {
-        List<ProductCategoryWrapper> categories = new ArrayList<>();
+    public enum Name {
+        FRUIT_AND_VEGETABLES,
+        BREAD,
+        CHARK,
+        DIARIES,
+        DRY,
+        DRINKS_AND_SNACKS;
         
-        switch (this) {
+        public String toString() {
+            switch (this) {
+                case FRUIT_AND_VEGETABLES:
+                    return "Frukt & grönt";
+                case BREAD:
+                    return "Bröd";
+                case CHARK:
+                    return "Chark";
+                case DIARIES:
+                    return "Mejeri";
+                case DRY:
+                    return "Torrvaror";
+                case DRINKS_AND_SNACKS:
+                    return "Dryck & snacks";
+            }
+            return "";
+        }
+    }
+    
+    public String toString() {
+        return "Alla";
+    }
+    
+    public String getName() {
+        return name.toString();
+    }
+    
+    public MainProductCategory(Name name) {
+        this.name = name;
+        
+        switch (name) {
             case FRUIT_AND_VEGETABLES:
-                categories.add(new ProductCategoryWrapper(ProductCategory.POD));
-                categories.add(new ProductCategoryWrapper(ProductCategory.BERRY));
-                categories.add(new ProductCategoryWrapper(ProductCategory.CABBAGE));
-                categories.add(new ProductCategoryWrapper(ProductCategory.CITRUS_FRUIT));
-                categories.add(new ProductCategoryWrapper(ProductCategory.EXOTIC_FRUIT));
-                categories.add(new ProductCategoryWrapper(ProductCategory.FRUIT));
-                categories.add(new ProductCategoryWrapper(ProductCategory.HERB));
-                categories.add(new ProductCategoryWrapper(ProductCategory.MELONS));
-                categories.add(new ProductCategoryWrapper(ProductCategory.NUTS_AND_SEEDS));
-                categories.add(new ProductCategoryWrapper(ProductCategory.ROOT_VEGETABLE));
-                categories.add(new ProductCategoryWrapper(ProductCategory.VEGETABLE_FRUIT));
+                subCategories.add(new Subcategory(ProductCategory.POD));
+                subCategories.add(new Subcategory(ProductCategory.BERRY));
+                subCategories.add(new Subcategory(ProductCategory.CABBAGE));
+                subCategories.add(new Subcategory(ProductCategory.CITRUS_FRUIT));
+                subCategories.add(new Subcategory(ProductCategory.EXOTIC_FRUIT));
+                subCategories.add(new Subcategory(ProductCategory.FRUIT));
+                subCategories.add(new Subcategory(ProductCategory.HERB));
+                subCategories.add(new Subcategory(ProductCategory.MELONS));
+                subCategories.add(new Subcategory(ProductCategory.NUTS_AND_SEEDS));
+                subCategories.add(new Subcategory(ProductCategory.ROOT_VEGETABLE));
+                subCategories.add(new Subcategory(ProductCategory.VEGETABLE_FRUIT));
                 break;
             case BREAD:
-                categories.add(new ProductCategoryWrapper(ProductCategory.BREAD));
+                subCategories.add(new Subcategory(ProductCategory.BREAD));
                 break;
             case CHARK:
-                categories.add(new ProductCategoryWrapper(ProductCategory.FISH));
-                categories.add(new ProductCategoryWrapper(ProductCategory.MEAT));
+                subCategories.add(new Subcategory(ProductCategory.FISH));
+                subCategories.add(new Subcategory(ProductCategory.MEAT));
                 break;
             case DIARIES:
-                categories.add(new ProductCategoryWrapper(ProductCategory.DAIRIES));
+                subCategories.add(new Subcategory(ProductCategory.DAIRIES));
                 break;
             case DRY:
-                categories.add(new ProductCategoryWrapper(ProductCategory.FLOUR_SUGAR_SALT));
-                categories.add(new ProductCategoryWrapper(ProductCategory.PASTA));
-                categories.add(new ProductCategoryWrapper(ProductCategory.POTATO_RICE));
+                subCategories.add(new Subcategory(ProductCategory.FLOUR_SUGAR_SALT));
+                subCategories.add(new Subcategory(ProductCategory.PASTA));
+                subCategories.add(new Subcategory(ProductCategory.POTATO_RICE));
                 break;
             case DRINKS_AND_SNACKS:
-                categories.add(new ProductCategoryWrapper(ProductCategory.SWEET));
-                categories.add(new ProductCategoryWrapper(ProductCategory.COLD_DRINKS));
-                categories.add(new ProductCategoryWrapper(ProductCategory.HOT_DRINKS));
+                subCategories.add(new Subcategory(ProductCategory.SWEET));
+                subCategories.add(new Subcategory(ProductCategory.COLD_DRINKS));
+                subCategories.add(new Subcategory(ProductCategory.HOT_DRINKS));
                 break;
         }
-        
+    }
+    
+    public List<Category> getSubcategories() {
+        List<Category> categories = new ArrayList<>();
+        for (Subcategory subCategory : subCategories) {
+            categories.add((Category) subCategory);
+        }
         return categories;
     }
 }

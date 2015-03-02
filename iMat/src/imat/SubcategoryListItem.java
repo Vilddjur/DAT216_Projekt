@@ -12,16 +12,13 @@ import javax.swing.JLabel;
  * @author mats
  */
 public class SubcategoryListItem extends JLabel {
-    private ProductCategoryWrapper category;
-    
     public SubcategoryListItem() {}
     
-    public SubcategoryListItem(ProductCategoryWrapper category) {
+    public SubcategoryListItem(Category category) {
         setCategory(category);
     }
     
-    public void setCategory(ProductCategoryWrapper category) {
-        this.category = category;
+    public void setCategory(Category category) {
         super.setText(category.toString());
     }
 }
