@@ -5,6 +5,7 @@
  */
 package imat.controller;
 
+import imat.model.ShoppingList;
 import java.util.List;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
@@ -32,6 +33,10 @@ public class CartManager {
     }
     public List<ShoppingItem> getItems(){
         return cart.getItems();
+    }
+    
+    public ShoppingList getShoppingListForItem(ShoppingItem item) {
+        return null;
     }
     public double getTotal(){
         return cart.getTotal();
