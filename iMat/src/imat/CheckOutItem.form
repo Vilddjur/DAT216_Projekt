@@ -72,7 +72,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="varorLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="totalPriceLabel" pref="56" max="32767" attributes="0"/>
+                  <Component id="totalPriceLabel" max="32767" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="sekLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -110,7 +110,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="varor"/>
+            <Property name="text" type="java.lang.String" value="varor   &#xe1; "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="totalPriceLabel">

@@ -56,7 +56,7 @@ public class CheckOutItem extends javax.swing.JPanel implements ShoppingCartList
         amountLabel.setText("0");
 
         varorLabel.setForeground(new java.awt.Color(255, 255, 255));
-        varorLabel.setText("varor");
+        varorLabel.setText("varor   á ");
 
         totalPriceLabel.setForeground(new java.awt.Color(255, 255, 255));
         totalPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -74,7 +74,7 @@ public class CheckOutItem extends javax.swing.JPanel implements ShoppingCartList
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(varorLabel)
                 .addGap(18, 18, 18)
-                .addComponent(totalPriceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                .addComponent(totalPriceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(sekLabel)
                 .addContainerGap())

@@ -32,37 +32,6 @@ public class CheckOutPanel extends javax.swing.JPanel {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jSeparator4 = new javax.swing.JSeparator();
         mainPanel = new javax.swing.JPanel();
-        receiptPanel = new javax.swing.JPanel();
-        jSplitPane1 = new javax.swing.JSplitPane();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jLabel22 = new javax.swing.JLabel();
-        payPanel = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jComboBox3 = new javax.swing.JComboBox();
-        jComboBox4 = new javax.swing.JComboBox();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
         infoPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -87,248 +56,41 @@ public class CheckOutPanel extends javax.swing.JPanel {
         jComboBox1 = new javax.swing.JComboBox();
         jComboBox2 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
+        payPanel = new javax.swing.JPanel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jTextField10 = new javax.swing.JTextField();
+        jTextField11 = new javax.swing.JTextField();
+        jTextField12 = new javax.swing.JTextField();
+        jComboBox3 = new javax.swing.JComboBox();
+        jComboBox4 = new javax.swing.JComboBox();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        receiptPanel = new javax.swing.JPanel();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
 
         mainPanel.setBackground(new java.awt.Color(102, 102, 102));
         mainPanel.setLayout(new java.awt.CardLayout());
-
-        jLabel18.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel18.setText("Köp Genomfört!");
-
-        jLabel19.setText("Har du ingen profil?");
-
-        jLabel20.setText("Registrera dig");
-
-        jLabel21.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLabel21.setText("här");
-
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/complete_img.png"))); // NOI18N
-        jLabel23.setText("jLabel23");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel19)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel21))
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(67, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(jLabel21))
-                .addGap(39, 39, 39))
-        );
-
-        jSplitPane1.setRightComponent(jPanel1);
-
-        jButton3.setText("Skriv ut");
-
-        jLabel22.setText("Kvitto");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton3))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel22)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(170, Short.MAX_VALUE)
-                .addComponent(jLabel22)
-                .addGap(160, 160, 160)
-                .addComponent(jButton3)
-                .addContainerGap())
-        );
-
-        jSplitPane1.setLeftComponent(jPanel2);
-
-        javax.swing.GroupLayout receiptPanelLayout = new javax.swing.GroupLayout(receiptPanel);
-        receiptPanel.setLayout(receiptPanelLayout);
-        receiptPanelLayout.setHorizontalGroup(
-            receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
-        );
-        receiptPanelLayout.setVerticalGroup(
-            receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
-        );
-
-        mainPanel.add(receiptPanel, "receiptCard");
-
-        payPanel.setBackground(new java.awt.Color(102, 102, 102));
-
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setText("Faktura - Betala 14 dagar efter leverans (29,00 KR) ");
-
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setSelected(true);
-        jRadioButton2.setText("Kortbetalning");
-
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton3.setText("Postförskott");
-
-        jTextField10.setText("jTextField10");
-
-        jTextField11.setText("jTextField11");
-
-        jTextField12.setText("CCV");
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Februari", "Mars", "April" }));
-        jComboBox3.setSelectedIndex(3);
-
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2014", "2015", "2016", "2017", " " }));
-        jComboBox4.setSelectedIndex(3);
-
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("1337 KR");
-
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Summa");
-
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("0 KR");
-
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Leverans (Fri frakt)");
-
-        jLabel16.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("1337 KR");
-
-        jLabel17.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("Att betala");
-
-        jButton2.setText("Betala");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout payPanelLayout = new javax.swing.GroupLayout(payPanel);
-        payPanel.setLayout(payPanelLayout);
-        payPanelLayout.setHorizontalGroup(
-            payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jSeparator2)
-            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(payPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField10)
-                    .addGroup(payPanelLayout.createSequentialGroup()
-                        .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2)
-                            .addGroup(payPanelLayout.createSequentialGroup()
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jRadioButton3))
-                        .addGap(0, 18, Short.MAX_VALUE))
-                    .addGroup(payPanelLayout.createSequentialGroup()
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField12))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(88, 88, 88)
-                        .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap())
-            .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
-        );
-        payPanelLayout.setVerticalGroup(
-            payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(payPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jRadioButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(payPanelLayout.createSequentialGroup()
-                        .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(payPanelLayout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(24, 24, 24)
-                                .addComponent(jLabel15)
-                                .addGap(22, 22, 22)
-                                .addComponent(jLabel17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
-                    .addGroup(payPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel14)
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel16)))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-
-        mainPanel.add(payPanel, "payCard");
 
         infoPanel.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -391,7 +153,7 @@ public class CheckOutPanel extends javax.swing.JPanel {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", " " }));
         jComboBox2.setSelectedIndex(4);
 
-        jButton1.setText("Next");
+        jButton1.setText("Nästa");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -495,6 +257,254 @@ public class CheckOutPanel extends javax.swing.JPanel {
 
         mainPanel.add(infoPanel, "infoCard");
 
+        payPanel.setBackground(new java.awt.Color(102, 102, 102));
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton1.setText("Faktura - Betala 14 dagar efter leverans (29,00 KR) ");
+
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton2.setSelected(true);
+        jRadioButton2.setText("Kortbetalning");
+
+        buttonGroup1.add(jRadioButton3);
+        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton3.setText("Postförskott");
+
+        jTextField10.setText("jTextField10");
+
+        jTextField11.setText("jTextField11");
+
+        jTextField12.setText("CCV");
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Februari", "Mars", "April" }));
+        jComboBox3.setSelectedIndex(3);
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2014", "2015", "2016", "2017", " " }));
+        jComboBox4.setSelectedIndex(3);
+
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("1337 KR");
+
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Summa");
+
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("0 KR");
+
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Leverans (Fri frakt)");
+
+        jLabel16.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("1337 KR");
+
+        jLabel17.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Att betala");
+
+        jButton2.setText("Betala");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Bakåt");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout payPanelLayout = new javax.swing.GroupLayout(payPanel);
+        payPanel.setLayout(payPanelLayout);
+        payPanelLayout.setHorizontalGroup(
+            payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSeparator2)
+            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(payPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField10)
+                    .addGroup(payPanelLayout.createSequentialGroup()
+                        .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButton1)
+                            .addComponent(jRadioButton2)
+                            .addGroup(payPanelLayout.createSequentialGroup()
+                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jRadioButton3))
+                        .addGap(0, 18, Short.MAX_VALUE))
+                    .addGroup(payPanelLayout.createSequentialGroup()
+                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(88, 88, 88)
+                        .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payPanelLayout.createSequentialGroup()
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        payPanelLayout.setVerticalGroup(
+            payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(payPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jRadioButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(payPanelLayout.createSequentialGroup()
+                        .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(payPanelLayout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel15)
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(payPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel14)
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel16)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton4))
+                .addContainerGap())
+        );
+
+        mainPanel.add(payPanel, "payCard");
+
+        jLabel18.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel18.setText("Köp Genomfört!");
+
+        jLabel19.setText("Har du ingen profil?");
+
+        jLabel20.setText("Registrera dig");
+
+        jLabel21.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel21.setText("här");
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/complete_img.png"))); // NOI18N
+        jLabel23.setText("jLabel23");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel19)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel21))
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel21))
+                .addGap(39, 39, 39))
+        );
+
+        jSplitPane1.setRightComponent(jPanel1);
+
+        jButton3.setText("Skriv ut");
+
+        jLabel22.setText("Kvitto");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton3))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel22)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(170, Short.MAX_VALUE)
+                .addComponent(jLabel22)
+                .addGap(160, 160, 160)
+                .addComponent(jButton3)
+                .addContainerGap())
+        );
+
+        jSplitPane1.setLeftComponent(jPanel2);
+
+        javax.swing.GroupLayout receiptPanelLayout = new javax.swing.GroupLayout(receiptPanel);
+        receiptPanel.setLayout(receiptPanelLayout);
+        receiptPanelLayout.setHorizontalGroup(
+            receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane1)
+        );
+        receiptPanelLayout.setVerticalGroup(
+            receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane1)
+        );
+
+        mainPanel.add(receiptPanel, "receiptCard");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -517,6 +527,11 @@ public class CheckOutPanel extends javax.swing.JPanel {
         card.show(mainPanel, "receiptCard");
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "infoCard");
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -524,6 +539,7 @@ public class CheckOutPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
