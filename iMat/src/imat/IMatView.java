@@ -26,7 +26,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     
     private final IMatDataHandler imat = IMatDataHandler.getInstance();
     
-    private final ShoppingItemListPanel shoppingList;
+//    private final ShoppingItemListPanel shoppingList;
+    
     /**
      * Listens for changes in SubcategoryList
      * @param evt 
@@ -52,7 +53,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
      * Creates new form IMatView
      */
     public IMatView() {
-        this.shoppingList = new ShoppingItemListPanel();
+//        this.shoppingList = new ShoppingItemListPanel();
+        
         initComponents();
         
        //topPanel
@@ -64,7 +66,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
        //progressBar
         loadResourcesWithProgressBar();
         
-        imat.getShoppingCart().addShoppingCartListener(shoppingList);
+//        imat.getShoppingCart().addShoppingCartListener(shoppingList);
         imat.getShoppingCart().addShoppingCartListener(checkOutItem2);
     }
 
@@ -196,7 +198,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        subHeadPanel.setBackground(new java.awt.Color(100, 100, 100));
+        subHeadPanel.setBackground(new java.awt.Color(0, 0, 255));
 
         checkOutItem2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -235,7 +237,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         );
 
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/logo.jpg"))); // NOI18N
-        homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 homeButtonMouseClicked(evt);
