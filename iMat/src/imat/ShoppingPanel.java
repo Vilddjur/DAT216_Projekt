@@ -56,9 +56,9 @@ public class ShoppingPanel extends javax.swing.JPanel {
         ContentPanel.add(cartPanel, "cartCard");
         ContentPanel.add(shoppingListPanel, "shoppingListCard");
 
-        cartTabIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\win8\\Documents\\dat216\\DAT216_Projekt\\iMat\\src\\imat\\img\\shopping122.png")); // NOI18N
+        cartTabIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/shopping122.png"))); // NOI18N
 
-        shoppingListTabIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\win8\\Documents\\dat216\\DAT216_Projekt\\iMat\\src\\imat\\img\\lists.png")); // NOI18N
+        shoppingListTabIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/lists.png"))); // NOI18N
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
