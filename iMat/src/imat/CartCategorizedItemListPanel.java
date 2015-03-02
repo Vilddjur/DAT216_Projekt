@@ -5,11 +5,15 @@
  */
 package imat;
 
+import java.awt.Dimension;
+import se.chalmers.ait.dat215.project.CartEvent;
+import se.chalmers.ait.dat215.project.ShoppingCartListener;
+
 /**
  *
  * @author win8
  */
-public class CartCategorizedItemListPanel extends javax.swing.JPanel {
+public class CartCategorizedItemListPanel extends javax.swing.JPanel implements ShoppingCartListener{
 
     /**
      * Creates new form CategorizedShoppingListItemPanel
@@ -104,4 +108,15 @@ public class CartCategorizedItemListPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private imat.CartItemListPanel shoppingItemListPanel1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void shoppingCartChanged(CartEvent ce) {
+        shoppingItemListPanel1.shoppingCartChanged(ce);
+        
+        setSize(getPreferredSize());
+        setMaximumSize(getPreferredSize());
+        revalidate();
+    }
+
+   
 }

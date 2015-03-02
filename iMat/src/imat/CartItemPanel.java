@@ -5,6 +5,9 @@
  */
 package imat;
 
+import imat.controller.CartManager;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -14,13 +17,33 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 public class CartItemPanel extends javax.swing.JPanel {
 
+    CartManager cartManager;
+
     /**
      * Creates new form cartItemPanel
      */
     public CartItemPanel(ShoppingItem item) {
-        
+
         initComponents();
         setShoppingItem(item);
+
+        cartManager = new CartManager();
+
+        amountSpinner.addChangeListener(new ChangeListener() {
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if ((Integer) amountSpinner.getValue() != item.getAmount()) {
+                    CartItemPanel.this.amountSpinner.removeChangeListener(this);
+                    cartManager.removeItem(item);
+                    if ((Integer) amountSpinner.getValue() > 0) {
+                        System.out.println("" + (Integer) amountSpinner.getValue());
+                        cartManager.addProduct((Integer) amountSpinner.getValue(), item.getProduct());
+                    }
+                }
+
+            }
+        });
     }
 
     /**
@@ -39,12 +62,6 @@ public class CartItemPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
 
         productNameLabel.setText("Mjölk");
-
-        amountSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                amountSpinnerStateChanged(evt);
-            }
-        });
 
         productUnitLabel.setText("st");
 
@@ -88,10 +105,6 @@ public class CartItemPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void amountSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_amountSpinnerStateChanged
-        
-    }//GEN-LAST:event_amountSpinnerStateChanged
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner amountSpinner;
@@ -101,15 +114,14 @@ public class CartItemPanel extends javax.swing.JPanel {
     private javax.swing.JLabel productUnitLabel;
     // End of variables declaration//GEN-END:variables
     private ShoppingItem item;
+
     public void setShoppingItem(ShoppingItem item) {
         this.item = item;
         Product product = item.getProduct();
         productNameLabel.setText(product.getName());
-        productPriceLabel.setText(product.getPrice()+" :-");
+        productPriceLabel.setText(product.getPrice() + " :-");
         productUnitLabel.setText(product.getUnit());
         amountSpinner.setValue(item.getAmount());
     }
-    
-    
 
 }

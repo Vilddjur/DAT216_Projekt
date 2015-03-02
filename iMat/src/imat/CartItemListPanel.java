@@ -5,6 +5,7 @@
  */
 package imat;
 
+import java.util.HashMap;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
@@ -14,7 +15,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  *
  * @author win8
  */
-public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCartListener{
+public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCartListener {
 
     /**
      * Creates new form CartListPanel
@@ -29,14 +30,12 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
         p2.setPrice(100);
         p2.setUnit("st");
         initComponents();
-        
-        addShoppingItem(new ShoppingItem(p1,1));
-        
-        
-        addShoppingItem(new ShoppingItem(p2,4));
+
+        addShoppingItem(new ShoppingItem(p1, 1));
+
+        //addShoppingItem(new ShoppingItem(p2, 4));
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,16 +48,39 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
     }// </editor-fold>//GEN-END:initComponents
 
-    
     public void addShoppingItem(ShoppingItem item) {
-        add(new CartItemPanel(item));
+        CartItemPanel itemPanel = new CartItemPanel(item);
+        itemPanel.setName(System.currentTimeMillis()+ "");
+        System.out.println("ADDING NEW ITEMPANEL");
+        System.out.println("PANELID IS "+itemPanel.getName());
+        add(itemPanel);
+        cartItemPanels.put(item,itemPanel);
+        setSize(getPreferredSize());
+        setMaximumSize(getPreferredSize());
+        revalidate();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
     @Override
     public void shoppingCartChanged(CartEvent ce) {
-       
+        ShoppingItem item = ce.getShoppingItem();
+        if (ce.isAddEvent()) {
+            System.out.println("adding component");
+            addShoppingItem(item);
+        } else {
+            if (cartItemPanels.containsKey(item)) {
+                remove(cartItemPanels.remove(item));
+            }
+            else {
+                System.out.println("didnt find component");
+            }
+            if(cartItemPanels.isEmpty()) {
+                //this.getParent().remove(this);
+            }
+        }
+         revalidate();
     }
+    HashMap<ShoppingItem, CartItemPanel> cartItemPanels = new HashMap<>();
+
 }

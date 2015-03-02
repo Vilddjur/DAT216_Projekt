@@ -92,11 +92,6 @@
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="categorizedShoppingListItemPanel3.setMaximumSize(categorizedShoppingListItemPanel3.getPreferredSize());"/>
               </AuxValues>
             </Component>
-            <Component class="imat.CartCategorizedItemListPanel" name="categorizedShoppingListItemPanel2">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="categorizedShoppingListItemPanel2.setMaximumSize(categorizedShoppingListItemPanel2.getPreferredSize());"/>
-              </AuxValues>
-            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

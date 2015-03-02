@@ -48,9 +48,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="amountSpinner">
-      <Events>
-        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="amountSpinnerStateChanged"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="productUnitLabel">
       <Properties>

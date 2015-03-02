@@ -5,7 +5,10 @@
  */
 package imat;
 
+import imat.controller.CartManager;
+import imat.model.ShoppingList;
 import java.awt.Color;
+import java.util.HashMap;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
@@ -28,7 +31,7 @@ public class CartPanel extends javax.swing.JPanel {
         checkoutButton.setOpaque(true);
         checkoutButton.setContentAreaFilled(false);
         
-        
+        cartManager = new CartManager();
         cart = IMatDataHandler.getInstance().getShoppingCart();
         
         cart.addShoppingCartListener(new ShoppingCartListener() {
@@ -36,8 +39,13 @@ public class CartPanel extends javax.swing.JPanel {
             @Override
             public void shoppingCartChanged(CartEvent ce) {
                 if(ce.isAddEvent()) {
+                    categorizedShoppingListItemPanel3.shoppingCartChanged(ce);
+                }
+                else {
+                    categorizedShoppingListItemPanel3.shoppingCartChanged(ce);
                 }
                updateTotalValue();
+               
             }
         });
     }
@@ -56,7 +64,6 @@ public class CartPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         categorizedShoppingListItemPanel3 = new imat.CartCategorizedItemListPanel();
-        categorizedShoppingListItemPanel2 = new imat.CartCategorizedItemListPanel();
         jSeparator1 = new javax.swing.JSeparator();
         totalPanel = new javax.swing.JPanel();
         totalValueLabel = new javax.swing.JLabel();
@@ -83,9 +90,6 @@ public class CartPanel extends javax.swing.JPanel {
 
         categorizedShoppingListItemPanel3.setMaximumSize(categorizedShoppingListItemPanel3.getPreferredSize());
         jPanel1.add(categorizedShoppingListItemPanel3);
-
-        categorizedShoppingListItemPanel2.setMaximumSize(categorizedShoppingListItemPanel2.getPreferredSize());
-        jPanel1.add(categorizedShoppingListItemPanel2);
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -146,6 +150,7 @@ public class CartPanel extends javax.swing.JPanel {
         Product p = new Product();
         p.setName("hash");
         p.setPrice(100);
+        p.setUnit("st");
         cart.addItem(new ShoppingItem(p,1));
     }//GEN-LAST:event_checkoutButtonActionPerformed
 
@@ -155,7 +160,6 @@ public class CartPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private imat.CartCategorizedItemListPanel categorizedShoppingListItemPanel2;
     private imat.CartCategorizedItemListPanel categorizedShoppingListItemPanel3;
     private javax.swing.JButton checkoutButton;
     private javax.swing.JLabel jLabel1;
@@ -168,5 +172,7 @@ public class CartPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private ShoppingCart cart;
+    private CartManager cartManager;
+    private HashMap<ShoppingList,CartCategorizedItemListPanel> shoppingListPanels;
 
 }
