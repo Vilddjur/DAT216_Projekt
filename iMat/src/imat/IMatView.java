@@ -27,7 +27,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private final IMatDataHandler imat = IMatDataHandler.getInstance();
     
 //    private final ShoppingItemListPanel shoppingList;
-    
+
     /**
      * Listens for changes in SubcategoryList
      * @param evt 
@@ -54,7 +54,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
      */
     public IMatView() {
 //        this.shoppingList = new ShoppingItemListPanel();
-        
         initComponents();
         
        //topPanel
@@ -283,7 +282,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 

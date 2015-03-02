@@ -33,7 +33,9 @@ public class ProfileItem extends javax.swing.JPanel {
         setBackground(new java.awt.Color(102, 102, 102));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Icon");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/my-profile-icon.png"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(40, 40));
+        jLabel1.setMinimumSize(new java.awt.Dimension(40, 40));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText(" Min Profil");
@@ -49,8 +51,8 @@ public class ProfileItem extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

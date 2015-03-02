@@ -47,7 +47,7 @@ public class CheckOutItem extends javax.swing.JPanel implements ShoppingCartList
 
         iconLabel.setForeground(new java.awt.Color(255, 255, 255));
         iconLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        iconLabel.setText("Icon");
+        iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/shopping122.png"))); // NOI18N
 
         mainPanel.setBackground(new java.awt.Color(102, 102, 102));
 
