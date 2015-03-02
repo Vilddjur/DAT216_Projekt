@@ -45,7 +45,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         public void search(String str) {
             List<Product> results = imat.findProducts(str);
             productListPanel.updateProducts(results);
-            
+            showProductPage();
         }
     }
     
@@ -56,6 +56,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
 //        this.shoppingList = new ShoppingItemListPanel();
         initComponents();
         
+       //request focus so search panel isnt focus on start
+        homeButton.requestFocus();
        //topPanel
         searchPanel.addSearchButtonListener(new ConcreteSearchListener());
         

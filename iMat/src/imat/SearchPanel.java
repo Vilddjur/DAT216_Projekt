@@ -36,6 +36,11 @@ public class SearchPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(224, 60));
 
         searchField.setText("Sök...");
+        searchField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                searchFieldFocusGained(evt);
+            }
+        });
 
         searchButton.setText("Sök");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +74,10 @@ public class SearchPanel extends javax.swing.JPanel {
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         searchListener.search(searchField.getText());
     }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void searchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusGained
+        searchField.selectAll();
+    }//GEN-LAST:event_searchFieldFocusGained
 
     public void addSearchButtonListener(SearchListener listener) {
         this.searchListener = listener;
