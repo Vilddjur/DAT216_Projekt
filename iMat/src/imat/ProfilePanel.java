@@ -20,9 +20,8 @@ public class ProfilePanel extends javax.swing.JPanel {
      */
     public ProfilePanel() {
         initComponents();
-        this.uManager = new UserManager();
+        this.uManager = UserManager.getInstance();
         updateUserInfo();
-        
     }
     
     private void updateUserInfo(){
