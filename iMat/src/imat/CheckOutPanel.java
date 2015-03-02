@@ -6,18 +6,23 @@
 package imat;
 
 import java.awt.CardLayout;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.ShoppingCart;
 
 /**
  *
  * @author Albertsson
  */
 public class CheckOutPanel extends javax.swing.JPanel {
-
+    
+    private final ShoppingCart cart;
     /**
      * Creates new form CheckOutPanel
      */
     public CheckOutPanel() {
         initComponents();
+        this.cart = IMatDataHandler.getInstance().getShoppingCart();
+        
     }
 
     /**
@@ -55,7 +60,7 @@ public class CheckOutPanel extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jComboBox2 = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
         payPanel = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -66,13 +71,13 @@ public class CheckOutPanel extends javax.swing.JPanel {
         jComboBox3 = new javax.swing.JComboBox();
         jComboBox4 = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel12 = new javax.swing.JLabel();
+        amountLabel = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel16 = new javax.swing.JLabel();
+        totalAmountLabel = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jButton2 = new javax.swing.JButton();
@@ -89,7 +94,10 @@ public class CheckOutPanel extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(102, 102, 102));
+
         mainPanel.setBackground(new java.awt.Color(102, 102, 102));
+        mainPanel.setMinimumSize(new java.awt.Dimension(795, 403));
         mainPanel.setLayout(new java.awt.CardLayout());
 
         infoPanel.setBackground(new java.awt.Color(102, 102, 102));
@@ -153,10 +161,10 @@ public class CheckOutPanel extends javax.swing.JPanel {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", " " }));
         jComboBox2.setSelectedIndex(4);
 
-        jButton1.setText("Nästa");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        nextButton.setText("Nästa");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                nextButtonActionPerformed(evt);
             }
         });
 
@@ -202,7 +210,7 @@ public class CheckOutPanel extends javax.swing.JPanel {
                                 .addGap(0, 6, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(nextButton)))
                 .addContainerGap())
         );
         infoPanelLayout.setVerticalGroup(
@@ -251,7 +259,7 @@ public class CheckOutPanel extends javax.swing.JPanel {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(nextButton)
                 .addContainerGap())
         );
 
@@ -284,8 +292,8 @@ public class CheckOutPanel extends javax.swing.JPanel {
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2014", "2015", "2016", "2017", " " }));
         jComboBox4.setSelectedIndex(3);
 
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("1337 KR");
+        amountLabel.setForeground(new java.awt.Color(255, 255, 255));
+        amountLabel.setText("1337 KR");
 
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Summa");
@@ -296,9 +304,9 @@ public class CheckOutPanel extends javax.swing.JPanel {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Leverans (Fri frakt)");
 
-        jLabel16.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("1337 KR");
+        totalAmountLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        totalAmountLabel.setForeground(new java.awt.Color(255, 255, 255));
+        totalAmountLabel.setText("1337 KR");
 
         jLabel17.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -352,9 +360,9 @@ public class CheckOutPanel extends javax.swing.JPanel {
                             .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(88, 88, 88)
                         .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(amountLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(totalAmountLabel, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payPanelLayout.createSequentialGroup()
                         .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -401,11 +409,11 @@ public class CheckOutPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(payPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel12)
+                        .addComponent(amountLabel)
                         .addGap(24, 24, 24)
                         .addComponent(jLabel14)
                         .addGap(22, 22, 22)
-                        .addComponent(jLabel16)))
+                        .addComponent(totalAmountLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -509,18 +517,24 @@ public class CheckOutPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(342, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(156, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        amountLabel.setText("" + cart.getTotal());
+        totalAmountLabel.setText("" + cart.getTotal());
         CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "payCard");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         CardLayout card = (CardLayout)mainPanel.getLayout();
@@ -534,9 +548,9 @@ public class CheckOutPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel amountLabel;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel infoPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -547,11 +561,9 @@ public class CheckOutPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -591,7 +603,9 @@ public class CheckOutPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JButton nextButton;
     private javax.swing.JPanel payPanel;
     private javax.swing.JPanel receiptPanel;
+    private javax.swing.JLabel totalAmountLabel;
     // End of variables declaration//GEN-END:variables
 }

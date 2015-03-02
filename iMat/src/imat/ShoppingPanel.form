@@ -29,14 +29,14 @@
     <Component class="javax.swing.JLabel" name="cartTabIcon">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\win8\Documents\dat216\DAT216_Projekt\iMat\src\imat\img\shopping122.png"/>
+          <Image iconType="3" name="/imat/img/shopping122.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="shoppingListTabIcon">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\win8\Documents\dat216\DAT216_Projekt\iMat\src\imat\img\lists.png"/>
+          <Image iconType="3" name="/imat/img/lists.png"/>
         </Property>
       </Properties>
     </Component>
