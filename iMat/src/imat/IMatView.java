@@ -129,11 +129,11 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         contentScrollPane = new javax.swing.JScrollPane();
         mainContentPanel = new javax.swing.JPanel();
         startPagePanel = new imat.StartPagePanel();
-        productListPanel = new imat.ProductListPanel();
         checkOutPanel = new imat.CheckOutPanel();
         profilePanel = new imat.ProfilePanel();
         loginPanel = new imat.LoginPanel();
         registerPanel = new imat.RegisterPanel();
+        productListPanel = new imat.ProductListPanel();
         shoppingPanel1 = new imat.ShoppingPanel();
         subcategoryList = new imat.SubcategoryList();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -302,13 +302,11 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
 
         mainContentPanel.setLayout(new java.awt.CardLayout());
         mainContentPanel.add(startPagePanel, "start");
-
-        productListPanel.setLayout(new java.awt.GridLayout(0, 4));
-        mainContentPanel.add(productListPanel, "product");
         mainContentPanel.add(checkOutPanel, "checkOutCard");
         mainContentPanel.add(profilePanel, "profile");
         mainContentPanel.add(loginPanel, "login");
         mainContentPanel.add(registerPanel, "register");
+        mainContentPanel.add(productListPanel, "product");
 
         contentScrollPane.setViewportView(mainContentPanel);
 

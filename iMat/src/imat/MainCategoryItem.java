@@ -20,6 +20,7 @@ public class MainCategoryItem extends javax.swing.JPanel {
     
     private boolean mouseOver = false;
     private boolean mousePressed = false;
+    private boolean highlighted = false;
 
     /**
      * Creates new form MainCategoryItem
@@ -38,6 +39,8 @@ public class MainCategoryItem extends javax.swing.JPanel {
     }
     
     public void highlight() {
+        highlighted = true;
+        
         currentColor = Constants.HIGHLIGHT_COLOR;
         currentHoverColor = Constants.HIGHLIGHT_HOVER_COLOR;
         currentPressedColor = Constants.HIGHLIGHT_PRESSED_COLOR;
@@ -46,10 +49,7 @@ public class MainCategoryItem extends javax.swing.JPanel {
     }
     
     public boolean isHighlighted(){
-        if(currentColor == Constants.HIGHLIGHT_COLOR){
-            return true;
-        }
-        return false;
+        return highlighted;
     }
     
     private void updateBackgroundColor() {

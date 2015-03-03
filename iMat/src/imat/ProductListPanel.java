@@ -21,15 +21,16 @@ public class ProductListPanel extends javax.swing.JPanel {
     public ProductListPanel() {
         initComponents();
         grid = new GridLayout(2,4);
-        this.setLayout(grid);
+        gridPanel.setLayout(grid);
     }
     
     public void reset() {
-        super.removeAll();
+        gridPanel.removeAll();
     }
     
     public void updateProducts(List<Product> products) {
         reset();
+        
         if(products.size() > 8){
             grid.setRows((int)(products.size()/4));
         }else{
@@ -37,11 +38,10 @@ public class ProductListPanel extends javax.swing.JPanel {
         }
         for (Product product : products) {
             ProductPanel panel = new ProductPanel(product);
-            this.add(panel);
+            gridPanel.add(panel);
         }
         
-        this.revalidate();
-        this.repaint();
+        gridPanel.revalidate();
     }
 
     /**
@@ -53,10 +53,33 @@ public class ProductListPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setLayout(new java.awt.GridLayout(0, 4));
+        gridPanel = new javax.swing.JPanel();
+
+        setBackground(new java.awt.Color(246, 246, 246));
+
+        gridPanel.setBackground(new java.awt.Color(246, 246, 246));
+        gridPanel.setLayout(new java.awt.GridLayout());
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel gridPanel;
     // End of variables declaration//GEN-END:variables
 }
