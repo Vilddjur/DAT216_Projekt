@@ -22,10 +22,12 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.plaf.basic.BasicMenuUI;
+import javax.swing.plaf.basic.BasicTabbedPaneUI;
 
 /**
  *
@@ -106,7 +108,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
 
         button = new ExpandButton(20);
         initComponents();
-        
+
         cartTab.add(button);
 
         button.addChangeListener(new ChangeListener() {
@@ -119,16 +121,16 @@ public class ShoppingPanel extends javax.swing.JPanel {
         tabbedPane.setTabComponentAt(0, cartTabIcon);
         tabbedPane.setTabComponentAt(1, shoppingListTabIcon);
         SwingUtilities.updateComponentTreeUI(tabbedPane);
-      
+        UIManager.put("TabbedPane.selected", Color.TRANSLUCENT);
+        tabbedPane.setUI(new BasicTabbedPaneUI());
 
-        
-        
     }
 
     public void setContentPanel(String cardName) {
         ContentCardLayout.show(ContentPanel, cardName);
-        
+
     }
+
     public void showContent(boolean show) {
 
         //bug protection
@@ -141,10 +143,10 @@ public class ShoppingPanel extends javax.swing.JPanel {
         this.revalidate();
         contentVisible = show;
     }
-    
-     public void setCheckoutButtonPerformedListener(ShowCheckoutContentHandler handler) {
-         cartPanel.setCheckoutButtonPerformedListener(handler);
-     }
+
+    public void setCheckoutButtonPerformedListener(ShowCheckoutContentHandler handler) {
+        cartPanel.setCheckoutButtonPerformedListener(handler);
+    }
 
     public boolean isContentVisible() {
         return contentVisible;
@@ -160,6 +162,6 @@ public class ShoppingPanel extends javax.swing.JPanel {
     private javax.swing.JTabbedPane tabbedPane;
     // End of variables declaration//GEN-END:variables
 ExpandButton button;
-CardLayout ContentCardLayout;
+    CardLayout ContentCardLayout;
     boolean contentVisible = false;
 }
