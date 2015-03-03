@@ -118,14 +118,20 @@ public class ShoppingPanel extends javax.swing.JPanel {
         tabbedPane.setTabComponentAt(0, cartTabIcon);
         tabbedPane.setTabComponentAt(1, shoppingListTabIcon);
         SwingUtilities.updateComponentTreeUI(tabbedPane);
-        
+
         UIManager.put("TabbedPane.selected", Color.TRANSLUCENT);
         tabbedPane.setUI(new BasicTabbedPaneUI());
 
     }
 
-    public void setContentPanel(String cardName) {
-        switch(cardName) {
+    public void setContentToCart() {
+        tabbedPane.setSelectedIndex(0);
+    }
+    public void setContentToShoppingList() {
+        tabbedPane.setSelectedIndex(1);
+    }
+    private void setContentPanel(String cardName) {
+        switch (cardName) {
             case "cartCard":
                 cartTab.add(button);
                 break;
@@ -137,8 +143,16 @@ public class ShoppingPanel extends javax.swing.JPanel {
 
     }
 
-    public void showContent(boolean show) {
+    public String getCurrentCard() {
+            for(Component comp : ContentPanel.getComponents()) {
+                if(comp.isVisible()) {
+                    return comp== cartPanel ? "cartCard" : "shoppingListCard";
+                }
+            }
+            return null;
+    }
 
+    public void showContent(boolean show) {
         //bug protection
         if (show && !contentVisible) {
             add(ContentPanel);
@@ -148,6 +162,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
 
         this.revalidate();
         contentVisible = show;
+        button.setSelected(show);
     }
 
     public void setCheckoutButtonPerformedListener(ShowCheckoutContentHandler handler) {
