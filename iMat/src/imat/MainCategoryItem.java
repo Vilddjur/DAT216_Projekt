@@ -27,6 +27,8 @@ public class MainCategoryItem extends javax.swing.JPanel {
      */
     public MainCategoryItem() {
         initComponents();
+        
+        updateBackgroundColor();
     }
     
     public void setCategory(MainProductCategory category) {
