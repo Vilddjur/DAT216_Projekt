@@ -20,6 +20,8 @@ public final class Constants {
     public static final Color HIGHLIGHT_HOVER_COLOR = new Color(255, 238, 5);
     public static final Color HIGHLIGHT_PRESSED_COLOR = new Color(255, 219, 15);
     
+    public static final Color ERROR_COLOR = Color.RED;
+    
     private Constants() {
         throw new AssertionError();
     }

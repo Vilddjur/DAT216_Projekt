@@ -51,6 +51,9 @@ public class LoginPanel extends javax.swing.JPanel implements IObservable {
         registerLabel.setText("Ej medlem? Registrera dig här!");
         registerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registerLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerLabelMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 registerLabelMouseExited(evt);
             }
@@ -134,6 +137,10 @@ public class LoginPanel extends javax.swing.JPanel implements IObservable {
     private void registerLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerLabelMouseExited
         registerLabel.setFont(font);
     }//GEN-LAST:event_registerLabelMouseExited
+
+    private void registerLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerLabelMouseClicked
+        pcs.firePropertyChange("gotoRegister", null, null);
+    }//GEN-LAST:event_registerLabelMouseClicked
 
     private Font font;
     // Variables declaration - do not modify//GEN-BEGIN:variables

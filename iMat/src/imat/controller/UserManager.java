@@ -68,4 +68,28 @@ public class UserManager implements IObservable {
     public void addObserver(PropertyChangeListener pcl) {
         pcs.addPropertyChangeListener(pcl);
     }
+    
+    public boolean register(String persnbr, String address, String email,
+            String firstname, String lastname, String phoneNumber,
+            String city, String postCode, String password) {
+        
+        if (email.equals("") || password.equals("")) {
+            return false;
+        } else {
+            user.setUserName(email);
+            user.setPassword(password);
+            
+            customer.setAddress(address);
+            customer.setEmail(email);
+            customer.setFirstName(firstname);
+            customer.setLastName(lastname);
+            customer.setMobilePhoneNumber(phoneNumber);
+            customer.setPostAddress(city);
+            customer.setPostCode(postCode);
+            
+            login(email, password);
+        }
+        
+        return true;
+    }
 }

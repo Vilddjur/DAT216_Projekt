@@ -41,8 +41,13 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             if (category != null) {
                 productListPanel.updateProducts(category.getProducts());
             }
-        } else if (property.equals(("login"))) {
+        } else if (property.equals("login")) {
             showProfilePage();
+        } else if (property.equals("register")) {
+            showProfilePage();
+            profilePanel.updateUserInfo();
+        } else if (property.equals("gotoRegister")) {
+            showRegisterPage();
         }
     }
     
@@ -84,6 +89,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         imat.getShoppingCart().addShoppingCartListener(checkOutItem2);
         
         loginPanel.addObserver(this);
+        registerPanel.addObserver(this);
     }
 
     /**
@@ -118,7 +124,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         profileButton = new imat.ProfileItem();
         homeButton = new javax.swing.JLabel();
         jSplitPane1 = new javax.swing.JSplitPane();
-        leftSplitPanel = new javax.swing.JPanel();
+        rightSplitPane = new javax.swing.JPanel();
         contentScrollPane = new javax.swing.JScrollPane();
         mainContentPanel = new javax.swing.JPanel();
         startPagePanel = new imat.StartPagePanel();
@@ -126,6 +132,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         checkOutPanel = new imat.CheckOutPanel();
         profilePanel = new imat.ProfilePanel();
         loginPanel = new imat.LoginPanel();
+        registerPanel = new imat.RegisterPanel();
         shoppingPanel1 = new imat.ShoppingPanel();
         subcategoryList = new imat.SubcategoryList();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -300,25 +307,26 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         mainContentPanel.add(checkOutPanel, "checkOutCard");
         mainContentPanel.add(profilePanel, "profile");
         mainContentPanel.add(loginPanel, "login");
+        mainContentPanel.add(registerPanel, "register");
 
         contentScrollPane.setViewportView(mainContentPanel);
 
-        javax.swing.GroupLayout leftSplitPanelLayout = new javax.swing.GroupLayout(leftSplitPanel);
-        leftSplitPanel.setLayout(leftSplitPanelLayout);
-        leftSplitPanelLayout.setHorizontalGroup(
-            leftSplitPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(leftSplitPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout rightSplitPaneLayout = new javax.swing.GroupLayout(rightSplitPane);
+        rightSplitPane.setLayout(rightSplitPaneLayout);
+        rightSplitPaneLayout.setHorizontalGroup(
+            rightSplitPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rightSplitPaneLayout.createSequentialGroup()
                 .addComponent(contentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(shoppingPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        leftSplitPanelLayout.setVerticalGroup(
-            leftSplitPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        rightSplitPaneLayout.setVerticalGroup(
+            rightSplitPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(shoppingPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(contentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
         );
 
-        jSplitPane1.setRightComponent(leftSplitPanel);
+        jSplitPane1.setRightComponent(rightSplitPane);
         jSplitPane1.setLeftComponent(subcategoryList);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -471,7 +479,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JPanel leftSplitPanel;
     private imat.LoginPanel loginPanel;
     private javax.swing.JPanel mainContentPanel;
     private javax.swing.JPanel mainPanel;
@@ -479,6 +486,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private imat.ProfileItem profileButton;
     private imat.ProfilePanel profilePanel;
     private imat.MainCategoryItem recipeButton;
+    private imat.RegisterPanel registerPanel;
+    private javax.swing.JPanel rightSplitPane;
     private imat.SearchPanel searchPanel;
     private imat.ShoppingPanel shoppingPanel1;
     private imat.MainCategoryItem snacksButton;
@@ -514,6 +523,10 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     
     private void showLoginPage() {
         switchToCard("login");
+    }
+    
+    private void showRegisterPage() {
+        switchToCard("register");
     }
     
     private void setList(MainProductCategory mainCategory) {

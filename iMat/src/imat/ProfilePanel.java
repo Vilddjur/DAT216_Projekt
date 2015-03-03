@@ -24,7 +24,7 @@ public class ProfilePanel extends javax.swing.JPanel {
         updateUserInfo();
     }
     
-    private void updateUserInfo(){
+    public void updateUserInfo(){
         nameLabel.setText(uManager.getCustomer().getFirstName() + " " + uManager.getCustomer().getLastName());
         //persnbrLabel.setText(uManager.getCustomer().getPersNbr());
         emailLabel.setText(uManager.getCustomer().getEmail());
