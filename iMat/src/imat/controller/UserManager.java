@@ -46,7 +46,7 @@ public class UserManager implements IObservable {
     }
     
     public boolean login(String username, String password) {
-        if (user.getUserName().equals(username) && user.getPassword().equals(password)) {
+        if (user.getUserName().equalsIgnoreCase(username) && user.getPassword().equals(password)) {
             isLoggedIn = true;
         } else {
             isLoggedIn = false;
