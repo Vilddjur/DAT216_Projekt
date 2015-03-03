@@ -274,15 +274,30 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton1.setText("Faktura - Betala 14 dagar efter leverans (29,00 KR) ");
+        jRadioButton1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                paymentMethodChanged(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton2.setSelected(true);
         jRadioButton2.setText("Kortbetalning");
+        jRadioButton2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                paymentMethodChanged(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButton3);
         jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton3.setText("Postförskott");
+        jRadioButton3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                paymentMethodChanged(evt);
+            }
+        });
 
         jTextField10.setText("Kortnummer");
 
@@ -558,6 +573,10 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         card.show(mainPanel, "infoCard");
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void paymentMethodChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_paymentMethodChanged
+        updatePayValues();
+    }//GEN-LAST:event_paymentMethodChanged
+
     public void fillCreditCardFromUserProfile() {
         if (um.isLoggedIn()) {
 
@@ -666,7 +685,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         amountLabel.setText(cart.getTotal()+ " :-");
         //fast coded stuff
         double deliveryFee = getDeliveryFee();
-        jLabel14.setText(deliveryFee+ " :-");
+        //jLabel14.setText(deliveryFee+ " :-");
         totalAmountLabel.setText((cart.getTotal()+deliveryFee)+" :-");
     }
     @Override

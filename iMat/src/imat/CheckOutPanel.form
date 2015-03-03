@@ -507,6 +507,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Faktura - Betala 14 dagar efter leverans (29,00 KR) "/>
               </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="paymentMethodChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButton2">
               <Properties>
@@ -519,6 +522,9 @@
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Kortbetalning"/>
               </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="paymentMethodChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButton3">
               <Properties>
@@ -530,6 +536,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Postf&#xf6;rskott"/>
               </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="paymentMethodChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField10">
               <Properties>
