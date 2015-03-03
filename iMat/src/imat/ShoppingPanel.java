@@ -127,7 +127,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
     public void setContentPanel(String cardName) {
         switch(cardName) {
             case "cartCard":
-                setContentPanel("cartCard");
+                cartTab.add(button);
                 break;
             case "shoppingListCard":
                 shoppingListTab.add(button);
