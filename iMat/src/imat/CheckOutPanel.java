@@ -9,16 +9,18 @@ import imat.controller.UserManager;
 import java.awt.CardLayout;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.CreditCard;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.ShoppingCart;
+import se.chalmers.ait.dat215.project.ShoppingCartListener;
 
 /**
  *
  * @author Albertsson
  */
-public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeListener {
+public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeListener, ShoppingCartListener {
 
     private final ShoppingCart cart;
     private final UserManager um;
@@ -29,6 +31,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     public CheckOutPanel() {
         initComponents();
         this.cart = IMatDataHandler.getInstance().getShoppingCart();
+        cart.addShoppingCartListener(this);
         um = UserManager.getInstance();
     }
 
@@ -654,5 +657,20 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
             fillCreditCardFromUserProfile();
             fillFieldsFromCurrentUserProfile();
         }
+    }
+
+    private double getDeliveryFee() {
+        return jRadioButton1.isSelected() ? 29 : 0;
+    }
+    public void updatePayValues() {
+        amountLabel.setText(cart.getTotal()+ " :-");
+        //fast coded stuff
+        double deliveryFee = getDeliveryFee();
+        jLabel14.setText(deliveryFee+ " :-");
+        totalAmountLabel.setText((cart.getTotal()+deliveryFee)+" :-");
+    }
+    @Override
+    public void shoppingCartChanged(CartEvent ce) {
+        updatePayValues();
     }
 }
