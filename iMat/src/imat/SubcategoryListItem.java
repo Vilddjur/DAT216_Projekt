@@ -5,9 +5,6 @@
  */
 package imat;
 
-import java.awt.Color;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 
 /**

@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -23,6 +24,7 @@ public class CellRenderer extends SubcategoryListItem
     public CellRenderer() {
         setOpaque(true);
         setFont(new Font(this.getFont().getName(), Font.PLAIN, 18));
+        setBorder(new EmptyBorder(10, 10, 10, 10));
     }
 
     @Override
