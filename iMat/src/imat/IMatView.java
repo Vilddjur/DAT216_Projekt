@@ -305,6 +305,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
 
         contentScrollPane.setBorder(null);
 
+        mainContentPanel.setMinimumSize(new java.awt.Dimension(934, 602));
+        mainContentPanel.setPreferredSize(new java.awt.Dimension(100, 602));
         mainContentPanel.setLayout(new java.awt.CardLayout());
         mainContentPanel.add(startPagePanel, "startPage");
         mainContentPanel.add(checkOutPanel, "checkOut");
