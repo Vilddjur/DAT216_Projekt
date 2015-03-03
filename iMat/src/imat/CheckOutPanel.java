@@ -9,6 +9,7 @@ import imat.controller.UserManager;
 import java.awt.CardLayout;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import se.chalmers.ait.dat215.project.CreditCard;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.ShoppingCart;
@@ -17,10 +18,11 @@ import se.chalmers.ait.dat215.project.ShoppingCart;
  *
  * @author Albertsson
  */
-public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeListener{
-    
+public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeListener {
+
     private final ShoppingCart cart;
     private final UserManager um;
+
     /**
      * Creates new form CheckOutPanel
      */
@@ -285,8 +287,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
         jTextField12.setText("CCV");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Februari", "Mars", "April" }));
-        jComboBox3.setSelectedIndex(3);
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December" }));
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2014", "2015", "2016", "2017", " " }));
         jComboBox4.setSelectedIndex(3);
@@ -540,25 +541,37 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         amountLabel.setText("" + cart.getTotal());
         totalAmountLabel.setText("" + cart.getTotal());
-        CardLayout card = (CardLayout)mainPanel.getLayout();
+        CardLayout card = (CardLayout) mainPanel.getLayout();
         card.show(mainPanel, "payCard");
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        CardLayout card = (CardLayout)mainPanel.getLayout();
+        CardLayout card = (CardLayout) mainPanel.getLayout();
         card.show(mainPanel, "receiptCard");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        CardLayout card = (CardLayout)mainPanel.getLayout();
+        CardLayout card = (CardLayout) mainPanel.getLayout();
         card.show(mainPanel, "infoCard");
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    public void fillCreditCardFromUserProfile() {
+        if (um.isLoggedIn()) {
+
+            CreditCard card = um.getCard();
+            
+            jTextField10.setText(card.getCardNumber());
+            jTextField11.setText(card.getHoldersName());
+            jComboBox3.setSelectedIndex(card.getValidMonth()-1);
+            jComboBox4.setSelectedItem(card.getValidYear()+"");
+        }
+
+    }
 
     public void fillFieldsFromCurrentUserProfile() {
-        if(um.isLoggedIn()) {
+        if (um.isLoggedIn()) {
             Customer customerData = um.getCustomer();
-            
+
             prenameTextField.setText(customerData.getFirstName());
             lastnameTextField.setText(customerData.getLastName());
             emailTextField.setText(customerData.getEmail());
@@ -566,9 +579,9 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
             postadressTextField.setText(customerData.getPostAddress());
             postcodeTextField.setText(customerData.getPostCode());
             mobileTextField.setText(customerData.getMobilePhoneNumber());
-            
+
         }
-        
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adressLabel;
@@ -638,7 +651,8 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     public void propertyChange(PropertyChangeEvent evt) {
         String property = evt.getPropertyName();
         if (property.equals("login")) {
+            fillCreditCardFromUserProfile();
             fillFieldsFromCurrentUserProfile();
-        } 
+        }
     }
 }
