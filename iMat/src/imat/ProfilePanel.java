@@ -57,8 +57,9 @@ public class ProfilePanel extends javax.swing.JPanel {
     uManager.getCustomer().setPostAddress(cityTextField.getText());
     uManager.getCustomer().setPostCode(postadressTextField.getText());
     //Måste ändras då getPassword är char och userpassword är string
-    if(oldpasswrdField.getPassword().toString().equals(uManager.getUser().getPassword())){
-        uManager.getUser().setPassword(newpasswrdField.getPassword().toString());
+    String password = new String(oldpasswrdField.getPassword());
+    if(password.equals(uManager.getUser().getPassword())){
+        uManager.getUser().setPassword(password);
     }
     }
 
