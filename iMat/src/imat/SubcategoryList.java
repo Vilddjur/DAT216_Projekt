@@ -74,7 +74,9 @@ public class SubcategoryList extends javax.swing.JPanel implements IPropertyChan
     }// </editor-fold>//GEN-END:initComponents
 
     private void listValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listValueChanged
-        pcs.firePropertyChange("subcategoryChange", null, list.getSelectedValue());
+        if (!evt.getValueIsAdjusting()) {
+            pcs.firePropertyChange("subcategoryChange", null, list.getSelectedValue());
+        }
     }//GEN-LAST:event_listValueChanged
 
 

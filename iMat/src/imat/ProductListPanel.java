@@ -42,6 +42,7 @@ public class ProductListPanel extends javax.swing.JPanel {
         }
         
         gridPanel.revalidate();
+        gridPanel.repaint();
     }
 
     /**
