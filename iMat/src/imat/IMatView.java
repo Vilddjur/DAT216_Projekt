@@ -89,7 +89,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         imat.getShoppingCart().addShoppingCartListener(checkOutItem2);
         
         loginPanel.addObserver(this);
-        loginPanel.addObserver(checkOutPanel);
         registerPanel.addObserver(this);
     }
 
