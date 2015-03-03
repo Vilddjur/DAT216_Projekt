@@ -42,13 +42,23 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
     }// </editor-fold>//GEN-END:initComponents
 
-    public void insertShoppingItem(ShoppingItem item, boolean increase) {
+    public void insertShoppingItem(ShoppingItem item, boolean addItem) {
         if (item == null || item.getAmount() <= 0) {
             return;
         }
         System.out.println("Matching.. "+itemList.contains(item));
-        if (!itemList.contains(item) && increase) {
-            itemList.add(item);
+        if ( addItem) {
+            Product p = item.getProduct();
+            boolean foundItem = false;
+            for(ShoppingItem existingItem : itemList) {
+                if(existingItem.getProduct().equals(p)) {
+                    existingItem.setAmount(item.getAmount()+existingItem.getAmount());
+                    foundItem = true;
+                    break;
+                }
+            }
+            if(!foundItem)
+                itemList.add(item);
         } else {
             itemList.remove(item);
         }
