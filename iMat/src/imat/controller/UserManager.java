@@ -31,8 +31,6 @@ public class UserManager implements IObservable {
         
         user.setUserName("Mad Mats");
         user.setPassword("abc123");
-        
-        System.out.println(user.getUserName());
     }
     
     public static UserManager getInstance() {
