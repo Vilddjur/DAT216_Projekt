@@ -222,6 +222,11 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         subHeadPanel.setBackground(new java.awt.Color(102, 102, 102));
 
         checkOutItem2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        checkOutItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                checkOutItem2MouseClicked(evt);
+            }
+        });
 
         profileButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         profileButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -408,6 +413,14 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             showLoginPage();
         }
     }//GEN-LAST:event_profileButtonMouseClicked
+
+    private void checkOutItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkOutItem2MouseClicked
+
+        
+            shoppingPanel1.showContent(!(shoppingPanel1.getCurrentCard().equals("cartCard") && shoppingPanel1.isContentVisible()));
+            shoppingPanel1.setContentToCart();
+        
+    }//GEN-LAST:event_checkOutItem2MouseClicked
 
     /**
      * @param args the command line arguments
