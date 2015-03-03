@@ -23,7 +23,6 @@ public class CellRenderer extends SubcategoryListItem
     
     public CellRenderer() {
         setOpaque(true);
-        setFont(new Font(this.getFont().getName(), Font.PLAIN, 18));
         setBorder(new EmptyBorder(10, 10, 10, 10));
     }
 
