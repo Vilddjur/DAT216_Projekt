@@ -298,7 +298,10 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             .addComponent(homeButton)
         );
 
+        jSplitPane1.setBorder(null);
         jSplitPane1.setDividerSize(0);
+
+        contentScrollPane.setBorder(null);
 
         mainContentPanel.setLayout(new java.awt.CardLayout());
         mainContentPanel.add(startPagePanel, "start");
@@ -315,14 +318,14 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         rightSplitPaneLayout.setHorizontalGroup(
             rightSplitPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightSplitPaneLayout.createSequentialGroup()
-                .addComponent(contentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
+                .addComponent(contentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(shoppingPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         rightSplitPaneLayout.setVerticalGroup(
             rightSplitPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(shoppingPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(contentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
+            .addComponent(contentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
         );
 
         jSplitPane1.setRightComponent(rightSplitPane);
@@ -340,7 +343,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSplitPane1))
         );
 
         jMenu1.setText("File");
