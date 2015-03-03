@@ -68,18 +68,5 @@ public class ExpandButton extends JToggleButton {
         return shape.contains(x, y);
     }
 
-    public static void main(String[] args) {
-// Create a button with the label "Jackpot".
-        ExpandButton button = new ExpandButton(20);
-        button.setBackground(Color.green);
-
-// Create a frame in which to show the button.
-        JFrame frame = new JFrame();
-        frame.getContentPane().setBackground(Color.yellow);
-        frame.getContentPane().add(button);
-        frame.getContentPane().setLayout(new FlowLayout());
-        frame.setSize(150, 150);
-        frame.setVisible(true);
-    }
 
 }
