@@ -24,17 +24,8 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
      * Creates new form CartListPanel
      */
     public CartItemListPanel() {
-        Product p1 = new Product();
-        p1.setName("NAME");
-        p1.setPrice(100);
-        p1.setUnit("st");
-        Product p2 = new Product();
-        p2.setName("thas");
-        p2.setPrice(100);
-        p2.setUnit("st");
         initComponents();
 
-        insertShoppingItem(new ShoppingItem(p1, 1),true);
 
         //addShoppingItem(new ShoppingItem(p2, 4));
     }
