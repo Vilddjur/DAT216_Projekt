@@ -8,6 +8,7 @@ package imat.controller;
 import imat.IObservable;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import se.chalmers.ait.dat215.project.CreditCard;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.User;
@@ -24,11 +25,12 @@ public class UserManager implements IObservable {
     
     private final Customer customer;
     private final User user;
+    private final CreditCard card;
     
     private UserManager() {
         this.customer = IMatDataHandler.getInstance().getCustomer();
         this.user = IMatDataHandler.getInstance().getUser();
-        
+        this.card = IMatDataHandler.getInstance().getCreditCard();
         user.setUserName("Mad Mats");
         user.setPassword("abc123");
     }
@@ -45,6 +47,9 @@ public class UserManager implements IObservable {
         return this.user;
     }
     
+    public CreditCard getCard() {
+        return this.card;
+    }
     public boolean login(String username, String password) {
         if (user.getUserName().equalsIgnoreCase(username) && user.getPassword().equals(password)) {
             isLoggedIn = true;
