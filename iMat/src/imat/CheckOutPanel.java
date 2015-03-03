@@ -5,7 +5,11 @@
  */
 package imat;
 
+import imat.controller.UserManager;
 import java.awt.CardLayout;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 
@@ -13,16 +17,17 @@ import se.chalmers.ait.dat215.project.ShoppingCart;
  *
  * @author Albertsson
  */
-public class CheckOutPanel extends javax.swing.JPanel {
+public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeListener{
     
     private final ShoppingCart cart;
+    private final UserManager um;
     /**
      * Creates new form CheckOutPanel
      */
     public CheckOutPanel() {
         initComponents();
         this.cart = IMatDataHandler.getInstance().getShoppingCart();
-        
+        um = UserManager.getInstance();
     }
 
     /**
@@ -550,6 +555,21 @@ public class CheckOutPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
+    public void fillFieldsFromCurrentUserProfile() {
+        if(um.isLoggedIn()) {
+            Customer customerData = um.getCustomer();
+            
+            prenameTextField.setText(customerData.getFirstName());
+            lastnameTextField.setText(customerData.getLastName());
+            emailTextField.setText(customerData.getEmail());
+            adressTextField.setText(customerData.getAddress());
+            postadressTextField.setText(customerData.getPostAddress());
+            postcodeTextField.setText(customerData.getPostCode());
+            mobileTextField.setText(customerData.getMobilePhoneNumber());
+            
+        }
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adressLabel;
     private javax.swing.JTextField adressTextField;
@@ -613,4 +633,12 @@ public class CheckOutPanel extends javax.swing.JPanel {
     private javax.swing.JPanel receiptPanel;
     private javax.swing.JLabel totalAmountLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        String property = evt.getPropertyName();
+        if (property.equals("login")) {
+            fillFieldsFromCurrentUserProfile();
+        } 
+    }
 }
