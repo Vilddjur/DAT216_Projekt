@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.Map;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.User;
@@ -18,13 +19,16 @@ import se.chalmers.ait.dat215.project.User;
  *
  * @author mats
  */
-public class LoginPanel extends javax.swing.JPanel {
+public class LoginPanel extends javax.swing.JPanel implements IObservable {
+    
+    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     /**
      * Creates new form LoginPanel
      */
     public LoginPanel() {
         initComponents();
+        errorLabel.setVisible(false);
     }
 
     /**
@@ -37,13 +41,12 @@ public class LoginPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         usernameField = new javax.swing.JTextField();
-        passwordField = new javax.swing.JTextField();
         registerLabel = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
+        errorLabel = new javax.swing.JLabel();
+        passwordField = new javax.swing.JPasswordField();
 
         usernameField.setText("Användarnamn");
-
-        passwordField.setText("Lösenord");
 
         registerLabel.setText("Ej medlem? Registrera dig här!");
         registerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -63,6 +66,11 @@ public class LoginPanel extends javax.swing.JPanel {
             }
         });
 
+        errorLabel.setForeground(new java.awt.Color(255, 51, 0));
+        errorLabel.setText("Inloggning misslyckades!");
+
+        passwordField.setText("Lösenord");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,22 +78,27 @@ public class LoginPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(302, 302, 302)
+                        .addGap(293, 293, 293)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(passwordField)
-                            .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(loginButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(registerLabel))
+                            .addComponent(passwordField)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(371, 371, 371)
-                        .addComponent(loginButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(329, 329, 329)
-                        .addComponent(registerLabel)))
-                .addContainerGap(313, Short.MAX_VALUE))
+                        .addGap(335, 335, 335)
+                        .addComponent(errorLabel)))
+                .addContainerGap(310, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(196, 196, 196)
+                .addGap(151, 151, 151)
+                .addComponent(errorLabel)
+                .addGap(18, 18, 18)
                 .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -93,16 +106,22 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addComponent(loginButton)
                 .addGap(18, 18, 18)
                 .addComponent(registerLabel)
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addContainerGap(242, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         String username = usernameField.getText();
-        String password = passwordField.getText();
+        String password = new String(passwordField.getPassword());
         
         UserManager um = UserManager.getInstance();
         boolean result = um.login(username, password);
+        
+        if (result) {
+            pcs.firePropertyChange("login", null, null);
+        } else {
+            errorLabel.setVisible(true);
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void registerLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerLabelMouseEntered
@@ -118,10 +137,15 @@ public class LoginPanel extends javax.swing.JPanel {
 
     private Font font;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel errorLabel;
     private javax.swing.JButton loginButton;
-    private javax.swing.JTextField passwordField;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel registerLabel;
     private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 
+    @Override
+    public void addObserver(PropertyChangeListener pcl) {
+        pcs.addPropertyChangeListener(pcl);
+    }
 }
