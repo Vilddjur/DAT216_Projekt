@@ -33,7 +33,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         this.cart = IMatDataHandler.getInstance().getShoppingCart();
         cart.addShoppingCartListener(this);
         um = UserManager.getInstance();
-        um.addObserver(this);
+        um.addPropertyChangeListener(this);
     }
 
     /**

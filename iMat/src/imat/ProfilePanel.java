@@ -7,60 +7,48 @@ package imat;
 
 import imat.controller.UserManager;
 import java.awt.CardLayout;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import se.chalmers.ait.dat215.project.Customer;
 
 /**
  *
  * @author Albertsson
  */
-public class ProfilePanel extends javax.swing.JPanel {
+public class ProfilePanel extends javax.swing.JPanel
+        implements PropertyChangeListener {
     
-    private final UserManager uManager;
+    private final UserManager um = UserManager.getInstance();
+    
     /**
      * Creates new form profilePanel
      */
     public ProfilePanel() {
         initComponents();
-        this.uManager = UserManager.getInstance();
-        updateUserInfo();
+        um.addPropertyChangeListener(this);
+        
+        fillFields();
     }
     
-    public void updateUserInfo(){
-        nameLabel.setText(uManager.getCustomer().getFirstName() + " " + uManager.getCustomer().getLastName());
-        //persnbrLabel.setText(uManager.getCustomer().getPersNbr());
-        emailLabel.setText(uManager.getCustomer().getEmail());
-        phoneLabel.setText(uManager.getCustomer().getMobilePhoneNumber());
-        adressLabel.setText(uManager.getCustomer().getAddress());
-        postcodeLabel.setText(uManager.getCustomer().getPostCode());
-        cityLabel.setText(uManager.getCustomer().getPostAddress());
+    public void fillFields() {
+        Customer customer = um.getCustomer();
+        
+        nameLabel.setText(customer.getFirstName() + " " + customer.getLastName());
+        //persnbrLabel.setText(customer.getPersNbr());
+        emailLabel.setText(customer.getEmail());
+        phoneLabel.setText(customer.getMobilePhoneNumber());
+        adressLabel.setText(customer.getAddress());
+        postcodeLabel.setText(customer.getPostCode());
+        cityLabel.setText(customer.getPostAddress());
     }
     
-    private void updateEditUserField(){
-        prenameTextField.setText(uManager.getCustomer().getFirstName());
-        lastnameTextField.setText(uManager.getCustomer().getLastName());
-        //persnbrLabel.setText(uManager.getCustomer().getPersNbr());
-        emailTextField.setText(uManager.getCustomer().getEmail());
-        phoneTextField.setText(uManager.getCustomer().getMobilePhoneNumber());
-        adressTextField.setText(uManager.getCustomer().getAddress());
-        postadressTextField.setText(uManager.getCustomer().getPostCode());
-        cityTextField.setText(uManager.getCustomer().getPostAddress());
-        //skall vara bättre kod på password
-        newpasswrdField.setText(uManager.getUser().getPassword());
-        oldpasswrdField.setText(uManager.getUser().getPassword());
-    }
-    
-    private void setUserInfo(){
-    uManager.getCustomer().setFirstName(prenameTextField.getText());
-    uManager.getCustomer().setLastName(lastnameTextField.getText());
-    uManager.getCustomer().setEmail(emailTextField.getText());
-    uManager.getCustomer().setMobilePhoneNumber(phoneTextField.getText());
-    uManager.getCustomer().setAddress(adressTextField.getText());
-    uManager.getCustomer().setPostAddress(cityTextField.getText());
-    uManager.getCustomer().setPostCode(postadressTextField.getText());
-    //Måste ändras då getPassword är char och userpassword är string
-    String password = new String(oldpasswrdField.getPassword());
-    if(password.equals(uManager.getUser().getPassword())){
-        uManager.getUser().setPassword(password);
-    }
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+//        System.out.println(evt.getPropertyName());
+        if (evt.getPropertyName().equals("updateInfo")) {
+            fillFields();
+        }
     }
 
     /**
@@ -72,8 +60,6 @@ public class ProfilePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mainPanel = new javax.swing.JPanel();
-        profilePanel = new javax.swing.JPanel();
         nameLabel = new javax.swing.JLabel();
         headLabel = new javax.swing.JLabel();
         adressLabel = new javax.swing.JLabel();
@@ -83,31 +69,6 @@ public class ProfilePanel extends javax.swing.JPanel {
         cityLabel = new javax.swing.JLabel();
         phoneLabel = new javax.swing.JLabel();
         editButton = new javax.swing.JButton();
-        editProfilePanel = new javax.swing.JPanel();
-        eheadLabel = new javax.swing.JLabel();
-        persnbrTextField = new javax.swing.JTextField();
-        epersnbrLabel = new javax.swing.JLabel();
-        prenameTextField = new javax.swing.JTextField();
-        prenameLabel = new javax.swing.JLabel();
-        lastnameTextField = new javax.swing.JTextField();
-        lastnameLabel = new javax.swing.JLabel();
-        emailTextField = new javax.swing.JTextField();
-        eEmailLabel = new javax.swing.JLabel();
-        adressTextField = new javax.swing.JTextField();
-        eadressLabel = new javax.swing.JLabel();
-        postadressTextField = new javax.swing.JTextField();
-        epostadressLabel = new javax.swing.JLabel();
-        cityTextField = new javax.swing.JTextField();
-        ecityLabel = new javax.swing.JLabel();
-        phoneTextField = new javax.swing.JTextField();
-        ephoneLabel = new javax.swing.JLabel();
-        oldpasswrdLabel = new javax.swing.JLabel();
-        newpasswrdLabel = new javax.swing.JLabel();
-        oldpasswrdField = new javax.swing.JPasswordField();
-        newpasswrdField = new javax.swing.JPasswordField();
-        saveButton = new javax.swing.JButton();
-
-        mainPanel.setLayout(new java.awt.CardLayout());
 
         nameLabel.setText("Carl Albertsson");
 
@@ -133,15 +94,15 @@ public class ProfilePanel extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout profilePanelLayout = new javax.swing.GroupLayout(profilePanel);
-        profilePanel.setLayout(profilePanelLayout);
-        profilePanelLayout.setHorizontalGroup(
-            profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(profilePanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(adressLabel)
-                    .addGroup(profilePanelLayout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(postcodeLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cityLabel))
@@ -149,13 +110,15 @@ public class ProfilePanel extends javax.swing.JPanel {
                     .addComponent(nameLabel)
                     .addComponent(persnbrLabel)
                     .addComponent(emailLabel)
-                    .addComponent(phoneLabel)
-                    .addComponent(editButton))
+                    .addComponent(phoneLabel))
                 .addContainerGap(326, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(editButton)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        profilePanelLayout.setVerticalGroup(
-            profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(profilePanelLayout.createSequentialGroup()
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(headLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -166,226 +129,32 @@ public class ProfilePanel extends javax.swing.JPanel {
                 .addComponent(emailLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(phoneLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(adressLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cityLabel)
                     .addComponent(postcodeLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(editButton)
-                .addContainerGap(205, Short.MAX_VALUE))
-        );
-
-        mainPanel.add(profilePanel, "profileCard");
-
-        eheadLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        eheadLabel.setText("Kontaktupgifter");
-
-        persnbrTextField.setText("jTextField1");
-
-        epersnbrLabel.setText("Pers.nr:");
-
-        prenameTextField.setText("jTextField2");
-
-        prenameLabel.setText("Förnamn:");
-
-        lastnameTextField.setText("jTextField3");
-
-        lastnameLabel.setText("Efternamn:");
-
-        emailTextField.setText("jTextField5");
-
-        eEmailLabel.setText("E-postadress: ");
-
-        adressTextField.setText("jTextField6");
-
-        eadressLabel.setText("Gatuadress:");
-
-        postadressTextField.setText("jTextField7");
-
-        epostadressLabel.setText("Postnummer:");
-
-        cityTextField.setText("jTextField8");
-
-        ecityLabel.setBackground(new java.awt.Color(255, 255, 255));
-        ecityLabel.setText("Stad:");
-
-        phoneTextField.setText("jTextField9");
-
-        ephoneLabel.setText("Mobilnr:");
-
-        oldpasswrdLabel.setText("Gammalt lösenord:");
-
-        newpasswrdLabel.setText("Nytt Lösenord:");
-
-        oldpasswrdField.setText("jPasswordField1");
-
-        newpasswrdField.setText("jPasswordField2");
-
-        saveButton.setText("Spara ändringar");
-        saveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout editProfilePanelLayout = new javax.swing.GroupLayout(editProfilePanel);
-        editProfilePanel.setLayout(editProfilePanelLayout);
-        editProfilePanelLayout.setHorizontalGroup(
-            editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(editProfilePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(editProfilePanelLayout.createSequentialGroup()
-                        .addGroup(editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(epersnbrLabel)
-                            .addComponent(prenameLabel)
-                            .addComponent(lastnameLabel)
-                            .addComponent(eEmailLabel)
-                            .addComponent(eadressLabel)
-                            .addComponent(epostadressLabel)
-                            .addComponent(ecityLabel)
-                            .addComponent(ephoneLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(prenameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
-                            .addComponent(lastnameTextField)
-                            .addComponent(emailTextField)
-                            .addComponent(adressTextField)
-                            .addComponent(postadressTextField)
-                            .addComponent(cityTextField)
-                            .addComponent(phoneTextField)
-                            .addComponent(persnbrTextField)))
-                    .addGroup(editProfilePanelLayout.createSequentialGroup()
-                        .addComponent(eheadLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(editProfilePanelLayout.createSequentialGroup()
-                        .addGroup(editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(oldpasswrdLabel)
-                            .addComponent(newpasswrdLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(oldpasswrdField)
-                            .addComponent(newpasswrdField))))
-                .addContainerGap())
-            .addGroup(editProfilePanelLayout.createSequentialGroup()
-                .addComponent(saveButton)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        editProfilePanelLayout.setVerticalGroup(
-            editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(editProfilePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(editProfilePanelLayout.createSequentialGroup()
-                        .addComponent(eheadLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(epersnbrLabel)
-                            .addComponent(persnbrTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(prenameLabel)
-                            .addComponent(prenameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lastnameLabel)
-                            .addComponent(lastnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(eEmailLabel)
-                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(eadressLabel)
-                            .addComponent(adressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(epostadressLabel)
-                            .addComponent(postadressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ecityLabel)
-                            .addComponent(cityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ephoneLabel)
-                            .addComponent(phoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(oldpasswrdLabel))
-                    .addComponent(oldpasswrdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(editProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newpasswrdLabel)
-                    .addComponent(newpasswrdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(saveButton)
-                .addContainerGap(9, Short.MAX_VALUE))
-        );
-
-        mainPanel.add(editProfilePanel, "editprofileCard");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(217, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        updateEditUserField();
-        CardLayout card = (CardLayout)mainPanel.getLayout();
-        card.show(mainPanel, "editprofileCard");
+        firePropertyChange("showEditProfileCard", null, null);
     }//GEN-LAST:event_editButtonActionPerformed
-
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        setUserInfo();
-        updateUserInfo();
-        CardLayout card = (CardLayout)mainPanel.getLayout();
-        card.show(mainPanel, "profileCard");
-    }//GEN-LAST:event_saveButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adressLabel;
-    private javax.swing.JTextField adressTextField;
     private javax.swing.JLabel cityLabel;
-    private javax.swing.JTextField cityTextField;
-    private javax.swing.JLabel eEmailLabel;
-    private javax.swing.JLabel eadressLabel;
-    private javax.swing.JLabel ecityLabel;
     private javax.swing.JButton editButton;
-    private javax.swing.JPanel editProfilePanel;
-    private javax.swing.JLabel eheadLabel;
     private javax.swing.JLabel emailLabel;
-    private javax.swing.JTextField emailTextField;
-    private javax.swing.JLabel epersnbrLabel;
-    private javax.swing.JLabel ephoneLabel;
-    private javax.swing.JLabel epostadressLabel;
     private javax.swing.JLabel headLabel;
-    private javax.swing.JLabel lastnameLabel;
-    private javax.swing.JTextField lastnameTextField;
-    private javax.swing.JPanel mainPanel;
     private javax.swing.JLabel nameLabel;
-    private javax.swing.JPasswordField newpasswrdField;
-    private javax.swing.JLabel newpasswrdLabel;
-    private javax.swing.JPasswordField oldpasswrdField;
-    private javax.swing.JLabel oldpasswrdLabel;
     private javax.swing.JLabel persnbrLabel;
-    private javax.swing.JTextField persnbrTextField;
     private javax.swing.JLabel phoneLabel;
-    private javax.swing.JTextField phoneTextField;
-    private javax.swing.JTextField postadressTextField;
     private javax.swing.JLabel postcodeLabel;
-    private javax.swing.JLabel prenameLabel;
-    private javax.swing.JTextField prenameTextField;
-    private javax.swing.JPanel profilePanel;
-    private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 }

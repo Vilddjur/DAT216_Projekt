@@ -365,14 +365,14 @@
                         <Component class="imat.StartPagePanel" name="startPagePanel">
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                              <CardConstraints cardName="start"/>
+                              <CardConstraints cardName="startPage"/>
                             </Constraint>
                           </Constraints>
                         </Component>
                         <Component class="imat.CheckOutPanel" name="checkOutPanel">
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                              <CardConstraints cardName="checkOutCard"/>
+                              <CardConstraints cardName="checkOut"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -400,7 +400,14 @@
                         <Component class="imat.ProductListPanel" name="productListPanel">
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                              <CardConstraints cardName="product"/>
+                              <CardConstraints cardName="productList"/>
+                            </Constraint>
+                          </Constraints>
+                        </Component>
+                        <Component class="imat.EditProfilePanel" name="editProfilePanel">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                              <CardConstraints cardName="editProfile"/>
                             </Constraint>
                           </Constraints>
                         </Component>

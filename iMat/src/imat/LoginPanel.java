@@ -19,7 +19,7 @@ import se.chalmers.ait.dat215.project.User;
  *
  * @author mats
  */
-public class LoginPanel extends javax.swing.JPanel implements IObservable {
+public class LoginPanel extends javax.swing.JPanel implements IPropertyChangeSupport {
     
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
@@ -152,7 +152,7 @@ public class LoginPanel extends javax.swing.JPanel implements IObservable {
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void addObserver(PropertyChangeListener pcl) {
+    public void addPropertyChangeListener(PropertyChangeListener pcl) {
         pcs.addPropertyChangeListener(pcl);
     }
 }

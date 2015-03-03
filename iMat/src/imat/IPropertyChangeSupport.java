@@ -11,6 +11,6 @@ import java.beans.PropertyChangeListener;
  *
  * @author mats
  */
-public interface IObservable {
-    public void addObserver(PropertyChangeListener pcl);
+public interface IPropertyChangeSupport {
+    public void addPropertyChangeListener(PropertyChangeListener pcl);
 }

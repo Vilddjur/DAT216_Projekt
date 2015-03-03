@@ -22,11 +22,8 @@ import se.chalmers.ait.dat215.project.Product;
  * @author Oskar
  */
 public class IMatView extends javax.swing.JFrame implements PropertyChangeListener {
-    private final ListHandler lh = new ListHandler();
     
     private final IMatDataHandler imat = IMatDataHandler.getInstance();
-    
-//    private final ShoppingItemListPanel shoppingList;
 
     /**
      * Listens for changes in SubcategoryList
@@ -42,12 +39,15 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
                 productListPanel.updateProducts(category.getProducts());
             }
         } else if (property.equals("login")) {
-            showProfilePage();
+            switchToCard("login");
         } else if (property.equals("register")) {
-            showProfilePage();
-            profilePanel.updateUserInfo();
+            switchToCard("profile");
         } else if (property.equals("gotoRegister")) {
-            showRegisterPage();
+            switchToCard("register");
+        } else if (property.equals("showProfileCard")) {
+            switchToCard("profile");
+        } else if (property.equals("showEditProfileCard")) {
+            switchToCard("editProfile");
         }
     }
     
@@ -56,7 +56,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         public void search(String str) {
             List<Product> results = imat.findProducts(str);
             productListPanel.updateProducts(results);
-            showProductPage();
+            switchToCard("product");
         }
     }
     
@@ -73,7 +73,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         searchPanel.addSearchButtonListener(new ConcreteSearchListener());
         
         //sideBar
-        subcategoryList.addObserver(this);
+        subcategoryList.addPropertyChangeListener(this);
         
         //progressBar
         loadResourcesWithProgressBar();
@@ -82,14 +82,16 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         shoppingPanel1.setCheckoutButtonPerformedListener(new ShowCheckoutContentHandler() {
             @Override
             public void showCheckoutContent() {
-                showCheckoutPage();
+                switchToCard("checkOut");
             }
         });
         
         imat.getShoppingCart().addShoppingCartListener(checkOutItem2);
         
-        loginPanel.addObserver(this);
-        registerPanel.addObserver(this);
+        loginPanel.addPropertyChangeListener(this);
+        registerPanel.addPropertyChangeListener(this);
+        profilePanel.addPropertyChangeListener(this);
+        editProfilePanel.addPropertyChangeListener(this);
     }
 
     /**
@@ -133,6 +135,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         loginPanel = new imat.LoginPanel();
         registerPanel = new imat.RegisterPanel();
         productListPanel = new imat.ProductListPanel();
+        editProfilePanel = new imat.EditProfilePanel();
         shoppingPanel1 = new imat.ShoppingPanel();
         subcategoryList = new imat.SubcategoryList();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -303,12 +306,13 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         contentScrollPane.setBorder(null);
 
         mainContentPanel.setLayout(new java.awt.CardLayout());
-        mainContentPanel.add(startPagePanel, "start");
-        mainContentPanel.add(checkOutPanel, "checkOutCard");
+        mainContentPanel.add(startPagePanel, "startPage");
+        mainContentPanel.add(checkOutPanel, "checkOut");
         mainContentPanel.add(profilePanel, "profile");
         mainContentPanel.add(loginPanel, "login");
         mainContentPanel.add(registerPanel, "register");
-        mainContentPanel.add(productListPanel, "product");
+        mainContentPanel.add(productListPanel, "productList");
+        mainContentPanel.add(editProfilePanel, "editProfile");
 
         contentScrollPane.setViewportView(mainContentPanel);
 
@@ -401,7 +405,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         resetButtons();
         source.highlight();
         
-        showProductPage();
+        switchToCard("productList");
         
         setList(source.getCategory());
     }
@@ -412,14 +416,14 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         
         subcategoryList.clear();
         
-        showStartPage();
+        switchToCard("startPage");
     }//GEN-LAST:event_homeButtonMouseClicked
 
     private void profileButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileButtonMouseClicked
         if (UserManager.getInstance().isLoggedIn()) {
-            showProfilePage();
+            switchToCard("profile");
         } else {
-            showLoginPage();
+            switchToCard("login");
         }
     }//GEN-LAST:event_profileButtonMouseClicked
 
@@ -474,6 +478,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private javax.swing.JScrollPane contentScrollPane;
     private imat.MainCategoryItem diaryButton;
     private imat.MainCategoryItem dryButton;
+    private imat.EditProfilePanel editProfilePanel;
     private imat.MainCategoryItem fruitButton;
     private javax.swing.JLabel homeButton;
     private javax.swing.JMenu jMenu1;
@@ -501,33 +506,11 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     // End of variables declaration//GEN-END:variables
 
     private void switchToCard(String card) {
+        System.out.println("switchTocard: " + card);
+        
         CardLayout manager = (CardLayout) mainContentPanel.getLayout();
         manager.show(mainContentPanel, card);
         subcategoryList.clear();
-    }
-    
-    private void showStartPage() {
-        switchToCard("start");
-    }
-    
-    private void showProductPage() {
-        switchToCard("product");
-    }
-    
-    private void showCheckoutPage() {
-        switchToCard("checkOutCard");
-    }
-    
-    private void showProfilePage() {
-        switchToCard("profile");
-    }
-    
-    private void showLoginPage() {
-        switchToCard("login");
-    }
-    
-    private void showRegisterPage() {
-        switchToCard("register");
     }
     
     private void setList(MainProductCategory mainCategory) {

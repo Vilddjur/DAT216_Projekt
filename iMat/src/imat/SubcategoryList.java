@@ -15,7 +15,7 @@ import javax.swing.DefaultListModel;
  *
  * @author mats
  */
-public class SubcategoryList extends javax.swing.JPanel implements IObservable {
+public class SubcategoryList extends javax.swing.JPanel implements IPropertyChangeSupport {
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     
     private DefaultListModel listModel;
@@ -84,7 +84,7 @@ public class SubcategoryList extends javax.swing.JPanel implements IObservable {
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void addObserver(PropertyChangeListener pcl) {
+    public void addPropertyChangeListener(PropertyChangeListener pcl) {
         this.pcs.addPropertyChangeListener(pcl);
     }
 }

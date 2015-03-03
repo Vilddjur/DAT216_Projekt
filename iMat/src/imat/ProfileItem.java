@@ -22,7 +22,7 @@ public class ProfileItem extends javax.swing.JPanel implements PropertyChangeLis
     public ProfileItem() {
         initComponents();
         UserManager um = UserManager.getInstance();
-        um.addObserver(this);
+        um.addPropertyChangeListener(this);
     }
 
     /**

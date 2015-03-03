@@ -5,7 +5,7 @@
  */
 package imat.controller;
 
-import imat.IObservable;
+import imat.IPropertyChangeSupport;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import se.chalmers.ait.dat215.project.CreditCard;
@@ -17,11 +17,12 @@ import se.chalmers.ait.dat215.project.User;
  *
  * @author win8
  */
-public class UserManager implements IObservable {
+public class UserManager implements IPropertyChangeSupport {
     private static final UserManager instance = new UserManager();
-    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     
     private boolean isLoggedIn = false;
+    private boolean isRegistered = false;
     
     private final Customer customer;
     private final User user;
@@ -31,8 +32,6 @@ public class UserManager implements IObservable {
         this.customer = IMatDataHandler.getInstance().getCustomer();
         this.user = IMatDataHandler.getInstance().getUser();
         this.card = IMatDataHandler.getInstance().getCreditCard();
-        user.setUserName("Mad Mats");
-        user.setPassword("abc123");
     }
     
     public static UserManager getInstance() {
@@ -50,13 +49,14 @@ public class UserManager implements IObservable {
     public CreditCard getCard() {
         return this.card;
     }
+    
     public boolean login(String username, String password) {
-        if (user.getUserName().equalsIgnoreCase(username) && user.getPassword().equals(password)) {
+        if (isRegistered && user.getUserName().equalsIgnoreCase(username) && user.getPassword().equals(password)) {
             isLoggedIn = true;
+            pcs.firePropertyChange("login", null, null);
         } else {
             isLoggedIn = false;
         }
-        pcs.firePropertyChange("login", null, null);
         return isLoggedIn;
     }
     
@@ -68,33 +68,51 @@ public class UserManager implements IObservable {
     public boolean isLoggedIn() {
         return isLoggedIn;
     }
-
-    @Override
-    public void addObserver(PropertyChangeListener pcl) {
-        pcs.addPropertyChangeListener(pcl);
-    }
     
     public boolean register(String persnbr, String address, String email,
             String firstname, String lastname, String phoneNumber,
             String city, String postCode, String password) {
         
         if (email.equals("") || password.equals("")) {
-            return false;
+            isRegistered = false;
         } else {
-            user.setUserName(email);
-            user.setPassword(password);
+            isRegistered = true;
             
-            customer.setAddress(address);
-            customer.setEmail(email);
-            customer.setFirstName(firstname);
-            customer.setLastName(lastname);
-            customer.setMobilePhoneNumber(phoneNumber);
-            customer.setPostAddress(city);
-            customer.setPostCode(postCode);
-            
+            updateInfo(persnbr, address, email, firstname, lastname, phoneNumber, city, postCode);
+            setPassword(password);
             login(email, password);
         }
         
-        return true;
+        return isRegistered;
+    }
+    
+    public void updateInfo(String persnbr, String address, String email,
+            String firstname, String lastname, String phoneNumber,
+            String city, String postCode) {
+        
+        user.setUserName(email);
+
+        customer.setAddress(address);
+        customer.setEmail(email);
+        customer.setFirstName(firstname);
+        customer.setLastName(lastname);
+        customer.setMobilePhoneNumber(phoneNumber);
+        customer.setPostAddress(city);
+        customer.setPostCode(postCode);
+        
+        pcs.firePropertyChange("updateInfo", null, null);
+    }
+    
+    public void setPassword(String password) {
+        user.setPassword(password);
+    }
+    
+    public String getPassword() {
+        return user.getPassword();
+    }
+    
+    @Override
+    public void addPropertyChangeListener(PropertyChangeListener pcl) {
+        pcs.addPropertyChangeListener(pcl);
     }
 }

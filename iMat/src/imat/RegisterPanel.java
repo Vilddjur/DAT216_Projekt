@@ -15,9 +15,7 @@ import javax.swing.border.LineBorder;
  *
  * @author mats
  */
-public class RegisterPanel extends javax.swing.JPanel implements IObservable {
-
-    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+public class RegisterPanel extends javax.swing.JPanel {
     
     /**
      * Creates new form RegisterPanel
@@ -179,7 +177,7 @@ public class RegisterPanel extends javax.swing.JPanel implements IObservable {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phoneLabel)
                     .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,7 +216,7 @@ public class RegisterPanel extends javax.swing.JPanel implements IObservable {
             boolean result = um.register(persnbr, address, email, firstname, lastname, phoneNumber, city, postCode, password);
             
             if (result) {
-                pcs.firePropertyChange("register", null, null);
+                firePropertyChange("register", null, null);
             }
         }
     }//GEN-LAST:event_registerButtonActionPerformed
@@ -285,9 +283,4 @@ public class RegisterPanel extends javax.swing.JPanel implements IObservable {
     private javax.swing.JButton registerButton;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void addObserver(PropertyChangeListener pcl) {
-        pcs.addPropertyChangeListener(pcl);
-    }
 }
