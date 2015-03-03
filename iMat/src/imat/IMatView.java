@@ -56,7 +56,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         public void search(String str) {
             List<Product> results = imat.findProducts(str);
             productListPanel.updateProducts(results);
-            switchToCard("product");
+            switchToCard("productList");
         }
     }
     
@@ -506,7 +506,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     // End of variables declaration//GEN-END:variables
 
     private void switchToCard(String card) {
-        System.out.println("switchTocard: " + card);
+        System.out.println("switchToCard: " + card);
         
         CardLayout manager = (CardLayout) mainContentPanel.getLayout();
         manager.show(mainContentPanel, card);

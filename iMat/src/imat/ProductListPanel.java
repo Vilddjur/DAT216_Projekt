@@ -5,8 +5,10 @@
  */
 package imat;
 
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.List;
+import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.Product;
 
 /**
@@ -20,8 +22,7 @@ public class ProductListPanel extends javax.swing.JPanel {
      */
     public ProductListPanel() {
         initComponents();
-        grid = new GridLayout(2,4);
-        gridPanel.setLayout(grid);
+        gridPanel.setLayout(new WrapLayout(FlowLayout.LEFT));
     }
     
     public void reset() {
@@ -31,16 +32,31 @@ public class ProductListPanel extends javax.swing.JPanel {
     public void updateProducts(List<Product> products) {
         reset();
         
-        if(products.size() > 8){
-            grid.setRows((int)(products.size()/4));
-        }else{
-            grid.setRows(2);
-        }
         for (Product product : products) {
-            ProductPanel panel = new ProductPanel(product);
-            gridPanel.add(panel);
+            gridPanel.add(new ProductPanel(product));
         }
         
+//        JPanel row = new JPanel(new FlowLayout(FlowLayout.LEFT));
+//        row.setBackground(Constants.SECONDARY_BACKGROUND);
+//        
+//        for (int i = 0; i < products.size(); i++) {
+//            if (i % 4 == 0 && i != 0) {
+//                gridPanel.add(row);
+//                row = new JPanel(new FlowLayout(FlowLayout.LEFT));
+//                row.setBackground(Constants.SECONDARY_BACKGROUND);
+//            }
+//            row.add(new ProductPanel(products.get(i)));
+//        }
+//        gridPanel.add(row);
+        
+//        int rows = (products.size() > 8) ? 0 : 2;
+//        gridPanel.setLayout(new GridLayout(rows, 4));
+//        
+//        for (Product product : products) {
+//            ProductPanel panel = new ProductPanel(product);
+//            gridPanel.add(panel);
+//        }
+
         gridPanel.revalidate();
         gridPanel.repaint();
     }
@@ -59,7 +75,6 @@ public class ProductListPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(246, 246, 246));
 
         gridPanel.setBackground(new java.awt.Color(246, 246, 246));
-        gridPanel.setLayout(new java.awt.GridLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

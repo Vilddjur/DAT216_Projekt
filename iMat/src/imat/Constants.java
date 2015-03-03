@@ -29,6 +29,7 @@ public final class Constants {
     //public static final Color HIGHLIGHT_PRESSED_COLOR = new Color(255, 219, 15);
     
     public static final Color ERROR_COLOR = Color.RED;
+    public static final Color SECONDARY_BACKGROUND = new Color(0xF6F6F6);
     
     private Constants() {
         throw new AssertionError();
