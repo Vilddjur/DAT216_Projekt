@@ -58,7 +58,6 @@
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="tabbedPane">
       <Properties>
-        <Property name="tabLayoutPolicy" type="int" value="1"/>
         <Property name="tabPlacement" type="int" value="2"/>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[40, 25]"/>

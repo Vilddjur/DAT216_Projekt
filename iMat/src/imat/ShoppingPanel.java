@@ -64,7 +64,6 @@ public class ShoppingPanel extends javax.swing.JPanel {
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
-        tabbedPane.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         tabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         tabbedPane.setMinimumSize(new java.awt.Dimension(40, 25));
         tabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -94,10 +93,8 @@ public class ShoppingPanel extends javax.swing.JPanel {
     private void tabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedPaneStateChanged
 
         if (tabbedPane.getSelectedIndex() == 0) {
-            cartTab.add(button);
             setContentPanel("cartCard");
         } else {
-            shoppingListTab.add(button);
             setContentPanel("shoppingListCard");
 
         }
@@ -121,12 +118,21 @@ public class ShoppingPanel extends javax.swing.JPanel {
         tabbedPane.setTabComponentAt(0, cartTabIcon);
         tabbedPane.setTabComponentAt(1, shoppingListTabIcon);
         SwingUtilities.updateComponentTreeUI(tabbedPane);
+        
         UIManager.put("TabbedPane.selected", Color.TRANSLUCENT);
         tabbedPane.setUI(new BasicTabbedPaneUI());
 
     }
 
     public void setContentPanel(String cardName) {
+        switch(cardName) {
+            case "cartCard":
+                setContentPanel("cartCard");
+                break;
+            case "shoppingListCard":
+                shoppingListTab.add(button);
+                break;
+        }
         ContentCardLayout.show(ContentPanel, cardName);
 
     }
