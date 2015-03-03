@@ -33,7 +33,7 @@ public class CartPanel extends javax.swing.JPanel {
         
         cartManager = new CartManager();
         cart = IMatDataHandler.getInstance().getShoppingCart();
-        
+        updateTotalValue();
         cart.addShoppingCartListener(new ShoppingCartListener() {
 
             @Override
@@ -94,7 +94,7 @@ public class CartPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jPanel1);
 
         totalValueLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        totalValueLabel.setText("100 :-");
+        totalValueLabel.setText("0 :-");
 
         totalTextLabel.setText("Totalt:");
 
