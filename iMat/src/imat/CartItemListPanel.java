@@ -10,7 +10,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import se.chalmers.ait.dat215.project.CartEvent;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -46,18 +48,16 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
         if (item == null || item.getAmount() <= 0) {
             return;
         }
-        System.out.println("Matching.. "+itemList.contains(item));
         if ( addItem) {
             Product p = item.getProduct();
-            boolean foundItem = false;
             for(ShoppingItem existingItem : itemList) {
                 if(existingItem.getProduct().equals(p)) {
-                    existingItem.setAmount(item.getAmount()+existingItem.getAmount());
-                    foundItem = true;
+                    item.setAmount(item.getAmount()+existingItem.getAmount());
+                    cart.removeItem(existingItem);
+                    
                     break;
                 }
             }
-            if(!foundItem)
                 itemList.add(item);
         } else {
             itemList.remove(item);
@@ -85,6 +85,7 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+    ShoppingCart cart = IMatDataHandler.getInstance().getShoppingCart();
     @Override
     public void shoppingCartChanged(CartEvent ce) {
         ShoppingItem item = ce.getShoppingItem();
