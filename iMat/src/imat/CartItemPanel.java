@@ -119,8 +119,8 @@ public class CartItemPanel extends javax.swing.JPanel {
         this.item = item;
         Product product = item.getProduct();
         productNameLabel.setText(product.getName());
-        productPriceLabel.setText(product.getPrice() + " :-");
-        productUnitLabel.setText(product.getUnit());
+        productPriceLabel.setText(item.getTotal() + " :-");
+        productUnitLabel.setText(product.getUnitSuffix());
         amountSpinner.setValue(item.getAmount());
     }
 
