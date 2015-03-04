@@ -113,10 +113,13 @@ public class CartCategorizedItemListPanel extends javax.swing.JPanel implements 
     public void shoppingCartChanged(CartEvent ce) {
         shoppingItemListPanel1.shoppingCartChanged(ce);
         
+        updateSize();
+    }
+    
+    public void updateSize() {
         setSize(getPreferredSize());
         setMaximumSize(getPreferredSize());
         revalidate();
     }
-
    
 }

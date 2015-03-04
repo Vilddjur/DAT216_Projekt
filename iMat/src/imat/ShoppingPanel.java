@@ -139,6 +139,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
                 shoppingListTab.add(button);
                 break;
         }
+        cartPanel.updateSize();
         ContentCardLayout.show(ContentPanel, cardName);
 
     }

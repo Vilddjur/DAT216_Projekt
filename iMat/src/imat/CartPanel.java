@@ -159,6 +159,12 @@ public class CartPanel extends javax.swing.JPanel {
          totalValueLabel.setText(cart.getTotal() +" :-");
     }
 
+    public void updateSize() {
+        categorizedShoppingListItemPanel3.updateSize();
+        setSize(getPreferredSize());
+        setMaximumSize(getPreferredSize());
+        revalidate();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private imat.CartCategorizedItemListPanel categorizedShoppingListItemPanel3;
     private javax.swing.JButton checkoutButton;

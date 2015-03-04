@@ -78,9 +78,8 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
         for (ShoppingItem item : itemList) {
             add(new CartItemPanel(item));
         }
-        setSize(getPreferredSize());
-        setMaximumSize(getPreferredSize());
-        revalidate();
+        updateSize();
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -91,6 +90,12 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
         ShoppingItem item = ce.getShoppingItem();
         insertShoppingItem(item, ce.isAddEvent());
 
+    }
+    
+    public void updateSize() {
+        setSize(getPreferredSize());
+        setMaximumSize(getPreferredSize());
+        revalidate();
     }
     HashMap<ShoppingItem, CartItemPanel> cartItemPanels = new HashMap<>();
     ArrayList<ShoppingItem> itemList = new ArrayList<>();
