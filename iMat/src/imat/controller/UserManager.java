@@ -18,6 +18,8 @@ import se.chalmers.ait.dat215.project.User;
  * @author win8
  */
 public class UserManager implements IPropertyChangeSupport {
+    private String persnbr = "";
+    
     private static final UserManager instance = new UserManager();
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     
@@ -100,7 +102,13 @@ public class UserManager implements IPropertyChangeSupport {
         customer.setPostAddress(city);
         customer.setPostCode(postCode);
         
+        this.persnbr = persnbr;
+        
         pcs.firePropertyChange("updateInfo", null, null);
+    }
+    
+    public String getPersnbr() {
+        return this.persnbr;
     }
     
     public void setPassword(String password) {

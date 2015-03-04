@@ -601,7 +601,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
             postadressTextField.setText(customerData.getPostAddress());
             postcodeTextField.setText(customerData.getPostCode());
             mobileTextField.setText(customerData.getMobilePhoneNumber());
-
+            persnbrTextField.setText(um.getPersnbr());
         }
 
     }

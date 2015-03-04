@@ -35,7 +35,7 @@ public class ProfilePanel extends javax.swing.JPanel
         Customer customer = um.getCustomer();
         
         nameLabel.setText(customer.getFirstName() + " " + customer.getLastName());
-        //persnbrLabel.setText(customer.getPersNbr());
+        persnbrLabel.setText(um.getPersnbr());
         emailLabel.setText(customer.getEmail());
         phoneLabel.setText(customer.getMobilePhoneNumber());
         adressLabel.setText(customer.getAddress());
@@ -45,7 +45,6 @@ public class ProfilePanel extends javax.swing.JPanel
     
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-//        System.out.println(evt.getPropertyName());
         if (evt.getPropertyName().equals("updateInfo")) {
             fillFields();
         }

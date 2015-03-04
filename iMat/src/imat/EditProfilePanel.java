@@ -33,7 +33,7 @@ public class EditProfilePanel extends javax.swing.JPanel implements PropertyChan
         
         prenameTextField.setText(customer.getFirstName());
         lastnameTextField.setText(customer.getLastName());
-        //persnbrLabel.setText(customer.getPersNbr());
+        persnbrTextField.setText(um.getPersnbr());
         emailTextField.setText(customer.getEmail());
         phoneTextField.setText(customer.getMobilePhoneNumber());
         adressTextField.setText(customer.getAddress());

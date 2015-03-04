@@ -210,7 +210,6 @@ public class RegisterPanel extends javax.swing.JPanel {
             String postCode = postCodeField.getText();
 
             String password = new String(passwordField.getPassword());
-            String confirmedPassword = new String(confirmPasswordField.getPassword());
             
             UserManager um = UserManager.getInstance();
             boolean result = um.register(persnbr, address, email, firstname, lastname, phoneNumber, city, postCode, password);
