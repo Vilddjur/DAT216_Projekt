@@ -54,6 +54,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private class ConcreteSearchListener implements SearchListener {
         @Override
         public void search(String str) {
+            resetButtons();
             List<Product> results = imat.findProducts(str);
             productListPanel.updateProducts(results);
             switchToCard("productList");
