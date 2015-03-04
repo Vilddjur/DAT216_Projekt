@@ -82,6 +82,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         shoppingPanel1.setCheckoutButtonPerformedListener(new ShowCheckoutContentHandler() {
             @Override
             public void showCheckoutContent() {
+                resetButtons();
                 switchToCard("checkOut");
             }
         });
@@ -422,6 +423,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     }//GEN-LAST:event_homeButtonMouseClicked
 
     private void profileButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileButtonMouseClicked
+        resetButtons();
         if (UserManager.getInstance().isLoggedIn()) {
             switchToCard("profile");
         } else {
