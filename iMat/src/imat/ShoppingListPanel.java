@@ -50,7 +50,7 @@ public class ShoppingListPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INKÖPSLISTA");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vardagsmat", "Student", "Party" }));
 
         totalValueLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         totalValueLabel.setText("100 :-");
