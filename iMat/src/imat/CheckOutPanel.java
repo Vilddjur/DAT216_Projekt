@@ -672,7 +672,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         String property = evt.getPropertyName();
-        if (property.equals("login")) {
+        if (property.equals("login") || property.equals("updateInfo")) {
             fillCreditCardFromUserProfile();
             fillFieldsFromCurrentUserProfile();
         }

@@ -73,15 +73,12 @@ public class ProfileItem extends javax.swing.JPanel implements PropertyChangeLis
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if (evt.getPropertyName().equals("login")) {
+        String property = evt.getPropertyName();
+        if (property.equals("login") || property.equals("updateInfo")) {
             UserManager um = UserManager.getInstance();
-            if (um.isLoggedIn()) {
-                User user = um.getUser();
-                label.setText(user.getUserName());
-            } else {
-                label.setText("Logga in");
-            }
-        } else if (evt.getPropertyName().equals("logout")) {
+            User user = um.getUser();
+            label.setText(user.getUserName());
+        } else if (property.equals("logout")) {
             label.setText("Logga in");
         }
     }
