@@ -5,6 +5,7 @@
  */
 package imat;
 
+import imat.controller.OrderManager;
 import imat.controller.UserManager;
 import java.awt.CardLayout;
 import java.beans.PropertyChangeEvent;
@@ -564,6 +565,9 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        OrderManager om = OrderManager.getInstance();
+        om.placeOrder();
+        
         CardLayout card = (CardLayout) mainPanel.getLayout();
         card.show(mainPanel, "receiptCard");
     }//GEN-LAST:event_jButton2ActionPerformed

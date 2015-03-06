@@ -41,5 +41,4 @@ public class CartManager {
     public double getTotal(){
         return cart.getTotal();
     }
-    
 }

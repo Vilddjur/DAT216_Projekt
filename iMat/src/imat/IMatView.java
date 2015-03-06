@@ -41,7 +41,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
                 productListPanel.updateProducts(category.getProducts());
             }
         } else if (property.equals("login")) {
-            switchToCard("login");
+            switchToCard("profile");
         } else if (property.equals("register")) {
             switchToCard("profile");
         } else if (property.equals("gotoRegister")) {
@@ -69,6 +69,9 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
      * Creates new form IMatView
      */
     public IMatView() {
+        //progressBar
+        loadResourcesWithProgressBar();
+        
         initComponents();
         
         this.addWindowListener(new WindowAdapter() {
@@ -86,9 +89,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         
         //sideBar
         subcategoryList.addPropertyChangeListener(this);
-        
-        //progressBar
-        loadResourcesWithProgressBar();
         
         //checkoutButtonHandler
         shoppingPanel1.setCheckoutButtonPerformedListener(new ShowCheckoutContentHandler() {
@@ -291,7 +291,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         );
 
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/logo.jpg"))); // NOI18N
-        homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 homeButtonMouseClicked(evt);
