@@ -23,6 +23,8 @@ public class ProductListPanel extends javax.swing.JPanel {
     public ProductListPanel() {
         initComponents();
         gridPanel.setLayout(new WrapLayout(FlowLayout.LEFT));
+        
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(8);
     }
     
     public void reset() {

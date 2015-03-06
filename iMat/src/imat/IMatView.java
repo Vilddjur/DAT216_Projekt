@@ -156,6 +156,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iMat - Mat..Mat!");
+        setMinimumSize(new java.awt.Dimension(1350, 800));
+        setSize(new java.awt.Dimension(1350, 800));
 
         fruitButton.setMinimumSize(new java.awt.Dimension(100, 60));
         fruitButton.setName(""); // NOI18N
@@ -331,7 +333,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         rightSplitPaneLayout.setHorizontalGroup(
             rightSplitPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightSplitPaneLayout.createSequentialGroup()
-                .addComponent(mainContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 876, Short.MAX_VALUE)
+                .addComponent(mainContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1106, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
                 .addComponent(shoppingPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
