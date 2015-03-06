@@ -36,9 +36,11 @@ public class CartItemPanel extends javax.swing.JPanel {
             public void stateChanged(ChangeEvent e) {
                 if ((Integer) amountSpinner.getValue() != item.getAmount()) {
                     CartItemPanel.this.amountSpinner.removeChangeListener(this);
-                    cartManager.removeItem(item);
                     if ((Integer) amountSpinner.getValue() > 0) {
-                        cartManager.addProduct((Integer) amountSpinner.getValue(), item.getProduct());
+                        cartManager.setAmountOfItem(item, (Integer)amountSpinner.getValue());
+                    }
+                    else {
+                        cartManager.removeItem(item);
                     }
                 }
 

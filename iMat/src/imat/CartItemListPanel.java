@@ -5,6 +5,7 @@
  */
 package imat;
 
+import imat.controller.CartManager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -43,24 +44,21 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
     }// </editor-fold>//GEN-END:initComponents
 
-    public void insertShoppingItem(ShoppingItem item, boolean addItem) {
+    public void insertShoppingItem(ShoppingItem item) {
         if (item == null || item.getAmount() <= 0) {
             return;
         }
-        if (addItem) {
-            Product p = item.getProduct();
-            for (ShoppingItem existingItem : itemList) {
-                if (existingItem.getProduct().equals(p)) {
-                    item.setAmount(item.getAmount() + existingItem.getAmount());
-                    cart.removeItem(existingItem);
+        Product p = item.getProduct();
+        for (ShoppingItem existingItem : itemList) {
+            if (existingItem.getProduct().equals(p)) {
+                item.setAmount(item.getAmount() + existingItem.getAmount());
+                cart.removeItem(existingItem);
 
-                    break;
-                }
+                break;
             }
-            itemList.add(item);
-        } else {
-            itemList.remove(item);
         }
+        itemList.add(item);
+
         Collections.sort(itemList, new Comparator<ShoppingItem>() {
 
             @Override
@@ -68,6 +66,11 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
                 return o1.getProduct().getName().compareTo(o2.getProduct().getName());
             }
         });
+        updateList();
+    }
+
+    public void removeItem(ShoppingItem item) {
+        itemList.remove(item);
         updateList();
     }
 
@@ -89,7 +92,7 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
     ShoppingCart cart = IMatDataHandler.getInstance().getShoppingCart();
-
+    CartManager cartManager = CartManager.getInstance();
     @Override
     public void shoppingCartChanged(CartEvent ce) {
 
@@ -97,10 +100,15 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
 
         if (item == null && cart.getItems().isEmpty()) {
             clearList();
-        } else {
-            insertShoppingItem(item, ce.isAddEvent());
+        } else if (ce.isAddEvent()) {
+            insertShoppingItem(item);
+        } else if (!cartManager.containsShoppingItem(item)) {
+            System.out.println("remove item");
+            removeItem(item);
         }
-
+        else { //amount was changed
+            updateList();
+        }
     }
 
     public void updateSize() {
