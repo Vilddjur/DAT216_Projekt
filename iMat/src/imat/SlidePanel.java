@@ -46,6 +46,8 @@ public class SlidePanel extends javax.swing.JPanel implements ActionListener{
 
         mainLabel = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(800, 280));
+
         mainLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

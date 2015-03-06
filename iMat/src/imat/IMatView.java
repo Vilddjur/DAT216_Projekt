@@ -69,6 +69,9 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
      * Creates new form IMatView
      */
     public IMatView() {
+        //progressBar
+        loadResourcesWithProgressBar();
+        
         initComponents();
         
         this.addWindowListener(new WindowAdapter() {
@@ -86,9 +89,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         
         //sideBar
         subcategoryList.addPropertyChangeListener(this);
-        
-        //progressBar
-        loadResourcesWithProgressBar();
         
         //checkoutButtonHandler
         shoppingPanel1.setCheckoutButtonPerformedListener(new ShowCheckoutContentHandler() {

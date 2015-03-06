@@ -14,9 +14,14 @@ import se.chalmers.ait.dat215.project.Product;
  * @author Oskar
  */
 public class ProductPanel extends javax.swing.JPanel {
-    private final Product product;
-    private final Icon emptyIcon;
-    private final Icon filledIcon;
+    private Product product = null;
+    private final Icon emptyIcon = new ImageIcon(getClass().getResource("/imat/img/favoriteStartEmpty.png"));
+    private final Icon filledIcon = new ImageIcon(getClass().getResource("/imat/img/favoriteStartFilled.png"));
+    
+    public ProductPanel(){
+        initComponents();
+    }
+    
     /**
      * Creates new form ProductPanel
      * @param product
@@ -28,8 +33,6 @@ public class ProductPanel extends javax.swing.JPanel {
         nameLabel.setText(product.getName());
         priceLabel.setText(product.getPrice() + " " + product.getUnit());
         imageLabel.setIcon(ResourceHandler.getInstance().getImage(product.getImageName()));
-        emptyIcon = new ImageIcon(getClass().getResource("/imat/img/favoriteStartEmpty.png"));
-        filledIcon = new ImageIcon(getClass().getResource("/imat/img/favoriteStartFilled.png"));
         if(IMatDataHandler.getInstance().isFavorite(product)){
             favoriteButton.setIcon(filledIcon);
         }
@@ -41,6 +44,16 @@ public class ProductPanel extends javax.swing.JPanel {
     }
     public Product getProduct(){
         return product;
+    }
+    public void setProduct(Product product){
+        this.product = product;
+        
+        nameLabel.setText(product.getName());
+        priceLabel.setText(product.getPrice() + " " + product.getUnit());
+        imageLabel.setIcon(ResourceHandler.getInstance().getImage(product.getImageName()));
+        if(IMatDataHandler.getInstance().isFavorite(product)){
+            favoriteButton.setIcon(filledIcon);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
