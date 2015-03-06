@@ -8,6 +8,8 @@ package imat;
 import imat.controller.UserManager;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
@@ -68,6 +70,13 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
      */
     public IMatView() {
         initComponents();
+        
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent evt) {
+                imat.shutDown();
+            }
+        });
         
         //request focus so search panel isnt focus on start
         homeButton.requestFocus();
