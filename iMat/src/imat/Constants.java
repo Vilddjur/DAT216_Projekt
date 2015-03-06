@@ -31,6 +31,8 @@ public final class Constants {
     public static final Color ERROR_COLOR = Color.RED;
     public static final Color SECONDARY_BACKGROUND = new Color(0xF6F6F6);
     
+    public static final Color SOFT_HIGHLIGHT_COLOR = new Color(0xFFFFE5);
+    
     private Constants() {
         throw new AssertionError();
     }

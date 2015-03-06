@@ -5,6 +5,8 @@
  */
 package imat;
 
+import java.awt.Color;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.ait.dat215.project.Order;
@@ -24,18 +26,30 @@ public class OrderHistoryItem extends javax.swing.JPanel {
         updateFields(order);
     }
     
+    public OrderHistoryItem() {
+        initComponents();
+    }
+    
     public void updateFields(Order order) {
-        dateLabel.setText(order.getDate().toString());
+        dateLabel.setText(new SimpleDateFormat("yyyy-MM-dd").format(order.getDate()));
         orderNumberLabel.setText(order.getOrderNumber() + "");
         
-        List<ShoppingItem> items = new ArrayList<>();
-        itemCountLabel.setText(items.size() + "");
+        List<ShoppingItem> items = order.getItems();
+        itemCountLabel.setText(items.size() + " st");
         
         int price = 0;
         for (ShoppingItem item : items) {
             price += item.getTotal();
         }
-        priceLabel.setText(price + "");
+        priceLabel.setText(price + " kr");
+    }
+    
+    public void highlight() {
+        labels.setBackground(Constants.SOFT_HIGHLIGHT_COLOR);
+    }
+    
+    public void reset() {
+        labels.setBackground(Color.WHITE);
     }
 
     /**
@@ -48,45 +62,83 @@ public class OrderHistoryItem extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
+        labels = new javax.swing.JPanel();
         dateLabel = new javax.swing.JLabel();
         orderNumberLabel = new javax.swing.JLabel();
         itemCountLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
+        infoButton = new javax.swing.JButton();
 
-        dateLabel.setText("Datum");
+        labels.setBackground(new java.awt.Color(255, 255, 255));
+        labels.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+        labels.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        labels.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelsMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                labelsMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                labelsMouseEntered(evt);
+            }
+        });
 
-        orderNumberLabel.setText("Ordernummer");
+        dateLabel.setText("2014-01-01");
+        dateLabel.setMaximumSize(new java.awt.Dimension(100, 16));
+        dateLabel.setMinimumSize(new java.awt.Dimension(100, 16));
+        dateLabel.setPreferredSize(new java.awt.Dimension(100, 16));
+        dateLabel.setSize(new java.awt.Dimension(100, 16));
 
-        itemCountLabel.setText("Antal varor");
+        orderNumberLabel.setText("1241");
+
+        itemCountLabel.setText("15");
 
         priceLabel.setText("Pris");
+
+        infoButton.setText("Visa info");
+
+        javax.swing.GroupLayout labelsLayout = new javax.swing.GroupLayout(labels);
+        labels.setLayout(labelsLayout);
+        labelsLayout.setHorizontalGroup(
+            labelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(labelsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(orderNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(itemCountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(infoButton)
+                .addContainerGap())
+        );
+        labelsLayout.setVerticalGroup(
+            labelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(orderNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(itemCountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(labelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(infoButton))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(orderNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(itemCountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(priceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(labels, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(orderNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(itemCountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(labels, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -98,19 +150,31 @@ public class OrderHistoryItem extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, 0)
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void labelsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelsMouseClicked
+        
+    }//GEN-LAST:event_labelsMouseClicked
+
+    private void labelsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelsMouseEntered
+        highlight();
+    }//GEN-LAST:event_labelsMouseEntered
+
+    private void labelsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelsMouseExited
+        reset();
+    }//GEN-LAST:event_labelsMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel dateLabel;
+    private javax.swing.JButton infoButton;
     private javax.swing.JLabel itemCountLabel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel labels;
     private javax.swing.JLabel orderNumberLabel;
     private javax.swing.JLabel priceLabel;
     // End of variables declaration//GEN-END:variables
