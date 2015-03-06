@@ -18,7 +18,7 @@ import javax.swing.Timer;
  * @author Oskar
  */
 public class SlidePanel extends javax.swing.JPanel implements ActionListener{
-    private final String[] imageNames = {"product_15.jpg", "product_60.jpg", "product_10.jpg"};
+    private final String[] imageNames = {"25ah_coop.jpg", "Thumbnail.jpg", "cookies.jpg"};
     private final int DELAY = 3000;
     
     private int index = 0;
@@ -72,7 +72,8 @@ public class SlidePanel extends javax.swing.JPanel implements ActionListener{
     }
 
     private Icon getImage(String s, int w, int h) {
-        String path = System.getProperty("user.home") + "/.dat215/imat/images/" + s;
+        //String path = System.getProperty("user.home") + "/.dat215/imat/images/" + s;
+        String path = "src/imat/img/" + s;
         ImageIcon tmp = new ImageIcon(path);
         Image image = tmp.getImage(); // transform it 
         Image newimg = image.getScaledInstance(w, h,  Image.SCALE_SMOOTH); // scale it the smooth way  

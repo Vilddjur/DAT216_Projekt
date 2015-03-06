@@ -5,6 +5,8 @@
  */
 package imat;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 /**
@@ -13,7 +15,8 @@ import se.chalmers.ait.dat215.project.Product;
  */
 public class ProductPanel extends javax.swing.JPanel {
     private final Product product;
-    
+    private final Icon emptyIcon;
+    private final Icon filledIcon;
     /**
      * Creates new form ProductPanel
      * @param product
@@ -25,7 +28,11 @@ public class ProductPanel extends javax.swing.JPanel {
         nameLabel.setText(product.getName());
         priceLabel.setText(product.getPrice() + " " + product.getUnit());
         imageLabel.setIcon(ResourceHandler.getInstance().getImage(product.getImageName()));
-        
+        emptyIcon = new ImageIcon(getClass().getResource("/imat/img/favoriteStartEmpty.png"));
+        filledIcon = new ImageIcon(getClass().getResource("/imat/img/favoriteStartFilled.png"));
+        if(IMatDataHandler.getInstance().isFavorite(product)){
+            favoriteButton.setIcon(filledIcon);
+        }
         this.setVisible(true);
     }
     public double getAmount(){
@@ -51,6 +58,7 @@ public class ProductPanel extends javax.swing.JPanel {
         priceLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         imageLabel = new javax.swing.JLabel();
+        favoriteButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(246, 246, 246));
 
@@ -72,7 +80,7 @@ public class ProductPanel extends javax.swing.JPanel {
         priceLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         priceLabel.setText("100 :-/st");
 
-        nameLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nameLabel.setText("VARA");
 
@@ -95,13 +103,20 @@ public class ProductPanel extends javax.swing.JPanel {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(priceLabel)
                 .addContainerGap())
         );
+
+        favoriteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/favoriteStartEmpty.png"))); // NOI18N
+        favoriteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                favoriteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,11 +131,15 @@ public class ProductPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(addToCartButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(favoriteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(favoriteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -141,9 +160,8 @@ public class ProductPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -151,10 +169,21 @@ public class ProductPanel extends javax.swing.JPanel {
         IMatDataHandler.getInstance().getShoppingCart().addProduct(product, getAmount());
     }//GEN-LAST:event_addToCartButtonActionPerformed
 
+    private void favoriteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favoriteButtonActionPerformed
+      if(IMatDataHandler.getInstance().isFavorite(product)){
+          IMatDataHandler.getInstance().removeFavorite(product);
+          favoriteButton.setIcon(emptyIcon);
+      }else{
+          IMatDataHandler.getInstance().addFavorite(product);
+          favoriteButton.setIcon(filledIcon);
+      }
+    }//GEN-LAST:event_favoriteButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addToCartButton;
     private javax.swing.JSpinner amountSpinner;
+    private javax.swing.JButton favoriteButton;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel mainPanel;

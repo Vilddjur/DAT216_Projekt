@@ -122,6 +122,9 @@ public class ShoppingPanel extends javax.swing.JPanel {
         UIManager.put("TabbedPane.selected", Color.TRANSLUCENT);
         tabbedPane.setUI(new BasicTabbedPaneUI());
 
+        cartTabIcon.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
+        shoppingListTabIcon.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
+
     }
 
     public void setContentToCart() {

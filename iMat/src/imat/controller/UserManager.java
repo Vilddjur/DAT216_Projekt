@@ -24,7 +24,6 @@ public class UserManager implements IPropertyChangeSupport {
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     
     private boolean isLoggedIn = false;
-    private boolean isRegistered = false;
     
     private final Customer customer;
     private final User user;
@@ -53,7 +52,7 @@ public class UserManager implements IPropertyChangeSupport {
     }
     
     public boolean login(String username, String password) {
-        if (isRegistered && user.getUserName().equalsIgnoreCase(username) && user.getPassword().equals(password)) {
+        if (user.getUserName().equalsIgnoreCase(username) && user.getPassword().equals(password)) {
             isLoggedIn = true;
             pcs.firePropertyChange("login", null, null);
         } else {
@@ -76,16 +75,13 @@ public class UserManager implements IPropertyChangeSupport {
             String city, String postCode, String password) {
         
         if (email.equals("") || password.equals("")) {
-            isRegistered = false;
+            return false;
         } else {
-            isRegistered = true;
-            
             updateInfo(persnbr, address, email, firstname, lastname, phoneNumber, city, postCode);
             setPassword(password);
             login(email, password);
+            return true;
         }
-        
-        return isRegistered;
     }
     
     public void updateInfo(String persnbr, String address, String email,

@@ -6,6 +6,7 @@
 package imat;
 
 import java.util.List;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 
 /**
