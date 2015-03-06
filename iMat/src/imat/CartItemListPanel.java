@@ -28,7 +28,6 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
     public CartItemListPanel() {
         initComponents();
 
-
         //addShoppingItem(new ShoppingItem(p2, 4));
     }
 
@@ -48,17 +47,17 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
         if (item == null || item.getAmount() <= 0) {
             return;
         }
-        if ( addItem) {
+        if (addItem) {
             Product p = item.getProduct();
-            for(ShoppingItem existingItem : itemList) {
-                if(existingItem.getProduct().equals(p)) {
-                    item.setAmount(item.getAmount()+existingItem.getAmount());
+            for (ShoppingItem existingItem : itemList) {
+                if (existingItem.getProduct().equals(p)) {
+                    item.setAmount(item.getAmount() + existingItem.getAmount());
                     cart.removeItem(existingItem);
-                    
+
                     break;
                 }
             }
-                itemList.add(item);
+            itemList.add(item);
         } else {
             itemList.remove(item);
         }
@@ -72,6 +71,11 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
         updateList();
     }
 
+    public void clearList() {
+        itemList.clear();
+        updateList();
+    }
+
     public void updateList() {
         this.removeAll();
 
@@ -79,19 +83,26 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
             add(new CartItemPanel(item));
         }
         updateSize();
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
     ShoppingCart cart = IMatDataHandler.getInstance().getShoppingCart();
+
     @Override
     public void shoppingCartChanged(CartEvent ce) {
+
         ShoppingItem item = ce.getShoppingItem();
-        insertShoppingItem(item, ce.isAddEvent());
+
+        if (item == null && cart.getItems().isEmpty()) {
+            clearList();
+        } else {
+            insertShoppingItem(item, ce.isAddEvent());
+        }
 
     }
-    
+
     public void updateSize() {
         setSize(getPreferredSize());
         setMaximumSize(getPreferredSize());
