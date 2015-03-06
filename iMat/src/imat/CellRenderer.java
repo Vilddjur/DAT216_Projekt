@@ -5,11 +5,9 @@
  */
 package imat;
 
-import java.awt.Color;
 import java.awt.Component;
-import java.awt.Font;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import javax.swing.border.EmptyBorder;
@@ -20,7 +18,8 @@ import javax.swing.border.EmptyBorder;
  */
 public class CellRenderer extends SubcategoryListItem
         implements ListCellRenderer<Category> {
-    
+    private MouseAdapter    handler;
+    private int             hoverIndex = -1;
     public CellRenderer() {
         setOpaque(true);
         setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -33,9 +32,46 @@ public class CellRenderer extends SubcategoryListItem
         if (isSelected) {
             setBackground(Constants.HIGHLIGHT_COLOR);
         } else {
-            setBackground(Constants.DEFAULT_COLOR);
+            if(index == hoverIndex){
+                setBackground(Constants.HIGHLIGHT_HOVER_COLOR);
+            }
+            else{
+                setBackground(Constants.DEFAULT_COLOR);
+            }
         }
         
         return this;
+    }
+    public MouseAdapter getHandler(JList list){
+        if(handler == null){
+            handler = new HoverHandler(list);
+        }
+        return handler;
+    }
+
+    private class HoverHandler extends MouseAdapter {
+        private final JList list;
+        public HoverHandler(JList list) {
+            this.list = list;
+        }
+        @Override
+        public void mouseExited(MouseEvent e) {
+            setHoverIndex(-1);
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent e) {
+            if(list.getModel().getSize()!=0){
+                int index = list.locationToIndex(e.getPoint());
+                setHoverIndex(list.getCellBounds(index, index).contains(e.getPoint())
+                  ? index : -1);
+            }
+        }
+
+        private void setHoverIndex(int index) {
+        if (hoverIndex == index) return;
+            hoverIndex = index;
+            list.repaint();
+        }
     }
 }

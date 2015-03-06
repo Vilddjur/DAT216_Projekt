@@ -7,8 +7,6 @@ package imat;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.Observable;
-import java.util.Observer;
 import javax.swing.DefaultListModel;
 
 /**
@@ -18,14 +16,17 @@ import javax.swing.DefaultListModel;
 public class SubcategoryList extends javax.swing.JPanel implements IPropertyChangeSupport {
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     
-    private DefaultListModel listModel;
+    private final DefaultListModel listModel;
     
     /**
      * Creates new form SubCategoryList
      */
     public SubcategoryList() {
         initComponents();
-        list.setCellRenderer(new CellRenderer());
+        CellRenderer renderer = new CellRenderer();
+        list.setCellRenderer(renderer);
+        list.addMouseListener(renderer.getHandler(list));
+        list.addMouseMotionListener(renderer.getHandler(list));
         listModel = new DefaultListModel();
         list.setModel(listModel);
     }

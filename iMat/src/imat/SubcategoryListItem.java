@@ -11,7 +11,7 @@ import javax.swing.JLabel;
  *
  * @author mats
  */
-public class SubcategoryListItem extends JLabel {
+public class SubcategoryListItem extends JLabel{
     public SubcategoryListItem() {}
     
     public SubcategoryListItem(Category category) {
