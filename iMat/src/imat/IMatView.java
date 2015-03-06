@@ -26,7 +26,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private final IMatDataHandler imat = IMatDataHandler.getInstance();
 
     /**
-     * Listens for changes in SubcategoryList
+     * Listens for changes in {@link SubcategoryList}
      * @param evt 
      */
     @Override
@@ -50,7 +50,9 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             switchToCard("editProfile");
         }
     }
-    
+    /**
+     * Hidden class {@link ConcreteSearchListener}, listens to when a search is made, thereafter displays the corresponding products.
+     */
     private class ConcreteSearchListener implements SearchListener {
         @Override
         public void search(String str) {
@@ -280,7 +282,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         );
 
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/logo.jpg"))); // NOI18N
-        homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 homeButtonMouseClicked(evt);
@@ -374,35 +376,60 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Redirects to handleClick(evt), @see #handleClick(MouseEvent evt)
+     * @param evt 
+     */
     private void fruitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fruitButtonMouseClicked
         handleClick(evt);
     }//GEN-LAST:event_fruitButtonMouseClicked
-
+    /**
+     * Redirects to handleClick(evt), @see #handleClick(MouseEvent evt)
+     * @param evt 
+     */
     private void breadButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_breadButtonMouseClicked
         handleClick(evt);
     }//GEN-LAST:event_breadButtonMouseClicked
-
+    /**
+     * Redirects to handleClick(evt), @see #handleClick(MouseEvent evt)
+     * @param evt 
+     */
     private void charkButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_charkButtonMouseClicked
         handleClick(evt);
     }//GEN-LAST:event_charkButtonMouseClicked
-
+    /**
+     * Redirects to handleClick(evt), @see #handleClick(MouseEvent evt)
+     * @param evt 
+     */
     private void diaryButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_diaryButtonMouseClicked
         handleClick(evt);
     }//GEN-LAST:event_diaryButtonMouseClicked
-
+    /**
+     * Redirects to handleClick(evt), @see #handleClick(MouseEvent evt)
+     * @param evt 
+     */
     private void dryButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dryButtonMouseClicked
         handleClick(evt);
     }//GEN-LAST:event_dryButtonMouseClicked
-
+    /**
+     * Redirects to handleClick(evt), @see #handleClick(MouseEvent evt)
+     * @param evt 
+     */
     private void snacksButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_snacksButtonMouseClicked
         handleClick(evt);
     }//GEN-LAST:event_snacksButtonMouseClicked
-
+    /**
+     * Redirects to handleClick(evt), @see #handleClick(MouseEvent evt)
+     * @param evt 
+     */
     private void recipeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recipeButtonMouseClicked
         handleClick(evt);
     }//GEN-LAST:event_recipeButtonMouseClicked
-
+    
+    /**
+     * Handles the clicks of the maincategory buttons, reads the source and displays the corresponding products.
+     * @param evt 
+     */
     private void handleClick(java.awt.event.MouseEvent evt) {
         MainCategoryItem source = (MainCategoryItem)evt.getSource();
   
@@ -413,16 +440,20 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         
         setList(source.getCategory());
     }
-    
+    /**
+     * Resets all buttons, product list, subcategorylist and displays start page.
+     * @param evt 
+     */
     private void homeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeButtonMouseClicked
         resetButtons();
         resetProductList();
         
-        subcategoryList.clear();
-        
         switchToCard("startPage");
     }//GEN-LAST:event_homeButtonMouseClicked
-
+    /**
+     * Checks the state of {@link UserManager}, logged in, switch to profile, not logged in, switch to loginform.
+     * @param evt 
+     */
     private void profileButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileButtonMouseClicked
         resetButtons();
         if (UserManager.getInstance().isLoggedIn()) {
@@ -431,10 +462,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             switchToCard("login");
         }
     }//GEN-LAST:event_profileButtonMouseClicked
-
+    
     private void checkOutItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkOutItem2MouseClicked
-
-        
             shoppingPanel1.showContent(!(shoppingPanel1.getCurrentCard().equals("cartCard") && shoppingPanel1.isContentVisible()));
             shoppingPanel1.setContentToCart();
         
@@ -509,24 +538,28 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private javax.swing.JPanel topPanel;
     private javax.swing.JPanel topTabsPanel;
     // End of variables declaration//GEN-END:variables
-
-    private void switchToCard(String card) {
-        System.out.println("switchToCard: " + card);
-        
+    /**
+     * Generic card switcher, also clear {@link SubcategoryList}
+     * @param card 
+     */
+    private void switchToCard(String card) {       
         CardLayout manager = (CardLayout) mainContentPanel.getLayout();
         manager.show(mainContentPanel, card);
         subcategoryList.clear();
     }
-    
+    /**
+     * Sets the {@link SubcategoryList} to the corresponding {@link Category}s
+     * @param mainCategory 
+     */
     private void setList(MainProductCategory mainCategory) {
         List<Category> subcategories = mainCategory.getSubcategories();
         subcategories.add(0, mainCategory);
         Object[] arr = subcategories.toArray();
         subcategoryList.update(arr);
     }
-    
-    
-
+    /**
+     * Resets all {@link MainCategoryItem}s
+     */
     private void resetButtons() {
         fruitButton.reset();
         breadButton.reset();
@@ -536,11 +569,13 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         diaryButton.reset();
         recipeButton.reset();
     }
-
+    /**
+     * 
+     */
     private void resetProductList() {
         productListPanel.reset();
     }
-
+    
     private void loadResourcesWithProgressBar() {
         final JDialog dlg = new JDialog(this, "Loading Resources...", true);
         JProgressBar bar = new JProgressBar(0,500);

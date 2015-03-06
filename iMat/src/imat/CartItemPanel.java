@@ -21,6 +21,7 @@ public class CartItemPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form cartItemPanel
+     * @param item
      */
     public CartItemPanel(ShoppingItem item) {
 
@@ -37,7 +38,6 @@ public class CartItemPanel extends javax.swing.JPanel {
                     CartItemPanel.this.amountSpinner.removeChangeListener(this);
                     cartManager.removeItem(item);
                     if ((Integer) amountSpinner.getValue() > 0) {
-                        System.out.println("" + (Integer) amountSpinner.getValue());
                         cartManager.addProduct((Integer) amountSpinner.getValue(), item.getProduct());
                     }
                 }
