@@ -19,8 +19,14 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 public class CartManager {
     private final ShoppingCart cart;
     
+    private static final CartManager instance= new CartManager();
+    
     public CartManager(){
         this.cart = IMatDataHandler.getInstance().getShoppingCart();
+    }
+    
+    public static CartManager getInstance() {
+        return instance;
     }
     public void addProduct(double amount,Product item){
         cart.addProduct(item, amount);
@@ -35,6 +41,18 @@ public class CartManager {
         return cart.getItems();
     }
     
+   public void setAmountOfItem(ShoppingItem item, double amount) {
+       if(amount <=0 ) {
+           cart.removeItem(item);
+           return;
+       }
+       item.setAmount(amount);
+       cart.fireShoppingCartChanged(item, false);
+   }
+    
+   public boolean containsShoppingItem(ShoppingItem item) {
+       return cart.getItems().contains(item);
+   }
     public ShoppingList getShoppingListForItem(ShoppingItem item) {
         return null;
     }
