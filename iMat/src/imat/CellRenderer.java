@@ -33,7 +33,7 @@ public class CellRenderer extends SubcategoryListItem
             setBackground(Constants.HIGHLIGHT_COLOR);
         } else {
             if(index == hoverIndex){
-                setBackground(Constants.HIGHLIGHT_HOVER_COLOR);
+                setBackground(Constants.HOVER_COLOR);
             }
             else{
                 setBackground(Constants.DEFAULT_COLOR);
