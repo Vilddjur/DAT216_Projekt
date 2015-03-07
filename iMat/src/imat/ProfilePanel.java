@@ -68,7 +68,7 @@ public class ProfilePanel extends javax.swing.JPanel
         cityLabel = new javax.swing.JLabel();
         phoneLabel = new javax.swing.JLabel();
         editButton = new javax.swing.JButton();
-        orderHistoryPanel1 = new imat.OrderHistoryPanel();
+        orderHistoryPanel2 = new imat.OrderHistoryPanel();
 
         nameLabel.setText("Carl Albertsson");
 
@@ -99,26 +99,21 @@ public class ProfilePanel extends javax.swing.JPanel
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(editButton)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(orderHistoryPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(adressLabel)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(adressLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(postcodeLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cityLabel))
-                            .addComponent(headLabel)
-                            .addComponent(nameLabel)
-                            .addComponent(persnbrLabel)
-                            .addComponent(emailLabel)
-                            .addComponent(phoneLabel))
-                        .addGap(0, 678, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(postcodeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cityLabel))
+                    .addComponent(headLabel)
+                    .addComponent(nameLabel)
+                    .addComponent(persnbrLabel)
+                    .addComponent(emailLabel)
+                    .addComponent(phoneLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(editButton)
+            .addComponent(orderHistoryPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,9 +136,9 @@ public class ProfilePanel extends javax.swing.JPanel
                     .addComponent(postcodeLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(editButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(orderHistoryPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(orderHistoryPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -159,7 +154,7 @@ public class ProfilePanel extends javax.swing.JPanel
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel headLabel;
     private javax.swing.JLabel nameLabel;
-    private imat.OrderHistoryPanel orderHistoryPanel1;
+    private imat.OrderHistoryPanel orderHistoryPanel2;
     private javax.swing.JLabel persnbrLabel;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JLabel postcodeLabel;

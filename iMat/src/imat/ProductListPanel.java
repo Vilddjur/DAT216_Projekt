@@ -23,6 +23,8 @@ public class ProductListPanel extends javax.swing.JPanel {
     public ProductListPanel() {
         initComponents();
         gridPanel.setLayout(new WrapLayout(FlowLayout.LEFT));
+        
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(8);
     }
     
     public void reset() {
@@ -35,27 +37,6 @@ public class ProductListPanel extends javax.swing.JPanel {
         for (Product product : products) {
             gridPanel.add(new ProductPanel(product));
         }
-        
-//        JPanel row = new JPanel(new FlowLayout(FlowLayout.LEFT));
-//        row.setBackground(Constants.SECONDARY_BACKGROUND);
-//        
-//        for (int i = 0; i < products.size(); i++) {
-//            if (i % 4 == 0 && i != 0) {
-//                gridPanel.add(row);
-//                row = new JPanel(new FlowLayout(FlowLayout.LEFT));
-//                row.setBackground(Constants.SECONDARY_BACKGROUND);
-//            }
-//            row.add(new ProductPanel(products.get(i)));
-//        }
-//        gridPanel.add(row);
-        
-//        int rows = (products.size() > 8) ? 0 : 2;
-//        gridPanel.setLayout(new GridLayout(rows, 4));
-//        
-//        for (Product product : products) {
-//            ProductPanel panel = new ProductPanel(product);
-//            gridPanel.add(panel);
-//        }
 
         gridPanel.revalidate();
         gridPanel.repaint();
@@ -70,32 +51,51 @@ public class ProductListPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         gridPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(246, 246, 246));
 
+        jScrollPane1.setBorder(null);
+
         gridPanel.setBackground(new java.awt.Color(246, 246, 246));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+
+        jScrollPane1.setViewportView(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel gridPanel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
