@@ -40,6 +40,28 @@
         </Property>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="cartLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Courier New" size="13" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;K&lt;BR&gt;U&lt;BR&gt;N&lt;BR&gt;D&lt;BR&gt;V&lt;BR&gt;A&lt;BR&gt;G&lt;BR&gt;N&lt;/html&gt;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="shoppingListLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Courier New" size="13" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#x200a;&#x200b;&#x200c;&#x200d;&#x200e;&#x200f;I&lt;BR&gt;N&lt;BR&gt;K&lt;BR&gt;&#xd6;&lt;BR&gt;P&lt;BR&gt;S&lt;BR&gt;L&lt;BR&gt;I&lt;BR&gt;S&lt;BR&gt;T&lt;BR&gt;A&lt;/html&gt;&#xa;"/>
+        <Property name="focusable" type="boolean" value="false"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="&lt;html&gt;.I&lt;BR&gt;N&lt;BR&gt;K&lt;BR&gt;&#xd6;&lt;BR&gt;P&lt;BR&gt;S&lt;BR&gt;L&lt;BR&gt;I&lt;BR&gt;S&lt;BR&gt;T&lt;BR&gt;A&lt;/html&gt;&#xa;"/>
+      </AccessibilityProperties>
+    </Component>
   </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -65,6 +87,7 @@
       </Properties>
       <Events>
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="tabbedPaneStateChanged"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabbedPaneMouseClicked"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//remove(tabbedPane);&#xa;//add(tabbedPane,java.awt.BorderLayout.EAST);"/>
@@ -82,6 +105,9 @@
               <Dimension value="[23, 300]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cartTabMouseClicked"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="tab1">
@@ -104,6 +130,9 @@
               <Dimension value="[23, 300]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="shoppingListTabMouseClicked"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="t22ab2">

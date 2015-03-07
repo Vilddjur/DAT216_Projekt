@@ -49,6 +49,8 @@ public class ShoppingPanel extends javax.swing.JPanel {
         shoppingListPanel = new imat.ShoppingListPanel();
         cartTabIcon = new javax.swing.JLabel();
         shoppingListTabIcon = new javax.swing.JLabel();
+        cartLabel = new javax.swing.JLabel();
+        shoppingListLabel = new javax.swing.JLabel();
         tabbedPane = new javax.swing.JTabbedPane();
         cartTab = new javax.swing.JPanel();
         shoppingListTab = new javax.swing.JPanel();
@@ -62,6 +64,16 @@ public class ShoppingPanel extends javax.swing.JPanel {
 
         shoppingListTabIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/lists.png"))); // NOI18N
 
+        cartLabel.setFont(new java.awt.Font("Courier New", 1, 13)); // NOI18N
+        cartLabel.setText("<html>K<BR>U<BR>N<BR>D<BR>V<BR>A<BR>G<BR>N</html>");
+
+        shoppingListLabel.setFont(new java.awt.Font("Courier New", 1, 13)); // NOI18N
+        shoppingListLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        shoppingListLabel.setText("<html> ​‌‍‎‏I<BR>N<BR>K<BR>Ö<BR>P<BR>S<BR>L<BR>I<BR>S<BR>T<BR>A</html>\n");
+        shoppingListLabel.setFocusable(false);
+        shoppingListLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        shoppingListLabel.getAccessibleContext().setAccessibleName("<html>.I<BR>N<BR>K<BR>Ö<BR>P<BR>S<BR>L<BR>I<BR>S<BR>T<BR>A</html>\n");
+
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
         tabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
@@ -71,14 +83,29 @@ public class ShoppingPanel extends javax.swing.JPanel {
                 tabbedPaneStateChanged(evt);
             }
         });
+        tabbedPane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabbedPaneMouseClicked(evt);
+            }
+        });
 
         cartTab.setBackground(java.awt.Color.orange);
         cartTab.setPreferredSize(new java.awt.Dimension(23, 300));
+        cartTab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cartTabMouseClicked(evt);
+            }
+        });
         cartTab.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 3, 3));
         tabbedPane.addTab("tab1", cartTab);
 
         shoppingListTab.setBackground(java.awt.Color.cyan);
         shoppingListTab.setPreferredSize(new java.awt.Dimension(23, 300));
+        shoppingListTab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                shoppingListTabMouseClicked(evt);
+            }
+        });
         shoppingListTab.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 3, 3));
         tabbedPane.addTab("t22ab2", shoppingListTab);
 
@@ -101,13 +128,27 @@ public class ShoppingPanel extends javax.swing.JPanel {
 // TODO add your handling code here:
     }//GEN-LAST:event_tabbedPaneStateChanged
 
+    private void tabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabbedPaneMouseClicked
+       if(!isContentVisible()){
+           showContent(true);
+       }
+    }//GEN-LAST:event_tabbedPaneMouseClicked
+
+    private void cartTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartTabMouseClicked
+           //makes this area not trigger any events for mouselisteners listening to whole tabbedpane
+    }//GEN-LAST:event_cartTabMouseClicked
+
+    private void shoppingListTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shoppingListTabMouseClicked
+        //makes this area not trigger any events for mouselisteners listening to whole tabbedpane
+    }//GEN-LAST:event_shoppingListTabMouseClicked
+
     public ShoppingPanel() {
 
         button = new ExpandButton(20);
         initComponents();
 
         cartTab.add(button);
-
+        cartTab.add(cartLabel);
         button.addChangeListener(new ChangeListener() {
 
             @Override
@@ -137,9 +178,11 @@ public class ShoppingPanel extends javax.swing.JPanel {
         switch (cardName) {
             case "cartCard":
                 cartTab.add(button);
+                cartTab.add(cartLabel);
                 break;
             case "shoppingListCard":
                 shoppingListTab.add(button);
+                shoppingListTab.add(shoppingListLabel);
                 break;
         }
         cartPanel.updateSize();
@@ -178,9 +221,11 @@ public class ShoppingPanel extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ContentPanel;
+    private javax.swing.JLabel cartLabel;
     private imat.CartPanel cartPanel;
     private javax.swing.JPanel cartTab;
     private javax.swing.JLabel cartTabIcon;
+    private javax.swing.JLabel shoppingListLabel;
     private imat.ShoppingListPanel shoppingListPanel;
     private javax.swing.JPanel shoppingListTab;
     private javax.swing.JLabel shoppingListTabIcon;
