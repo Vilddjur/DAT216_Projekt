@@ -147,8 +147,11 @@ public class ShoppingPanel extends javax.swing.JPanel {
         button = new ExpandButton(20);
         initComponents();
 
-        cartTab.add(button);
-        cartTab.add(cartLabel);
+        //cartTab.add(button);
+        //cartTab.add(cartLabel);
+        shoppingListTab.add(button);
+        shoppingListTab.add(shoppingListLabel);
+        tabbedPane.setSelectedIndex(1);
         button.addChangeListener(new ChangeListener() {
 
             @Override
