@@ -8,11 +8,15 @@ package imat;
 import imat.controller.OrderManager;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.ListCellRenderer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -23,6 +27,10 @@ import se.chalmers.ait.dat215.project.Order;
  * @author mats
  */
 public class OrderHistoryPanel extends javax.swing.JPanel implements PropertyChangeListener {
+    
+    private static final int LABEL_HEIGHT = 43;
+            
+    private List<Order> orders;
     
     /**
      * Creates new form OrderHistoryPanel
@@ -38,10 +46,12 @@ public class OrderHistoryPanel extends javax.swing.JPanel implements PropertyCha
         list.removeAll();
         
         IMatDataHandler imat = IMatDataHandler.getInstance();
-        List<Order> orders = imat.getOrders();
+        orders = imat.getOrders();
         
         for (Order order : orders) {
-            list.add(new OrderHistoryItem(order));
+            OrderHistoryItem panel = new OrderHistoryItem(order);
+            list.add(panel);
+            panel.addPropertyChangeListener(this);
         }
         
         list.revalidate();
@@ -51,6 +61,9 @@ public class OrderHistoryPanel extends javax.swing.JPanel implements PropertyCha
     public void propertyChange(PropertyChangeEvent evt) {
         if (evt.getPropertyName().equals("order")) {
             updatePanel();
+        } else if (evt.getPropertyName().equals("click")) {
+            System.out.println("click");
+            // do stuff...
         }
     }
 
@@ -124,7 +137,7 @@ public class OrderHistoryPanel extends javax.swing.JPanel implements PropertyCha
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(list, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
+                .addComponent(list, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
