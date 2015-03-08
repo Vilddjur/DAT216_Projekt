@@ -46,10 +46,13 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             switchToCard("profile");
         } else if (property.equals("gotoRegister")) {
             switchToCard("register");
+            registerPanel.focusFirstField();
         } else if (property.equals("showProfileCard")) {
             switchToCard("profile");
         } else if (property.equals("showEditProfileCard")) {
             switchToCard("editProfile");
+        } else if (property.equals("showLoginCard")) {
+            switchToCard("login");
         }
     }
     /**

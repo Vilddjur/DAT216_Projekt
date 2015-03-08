@@ -28,7 +28,7 @@ public final class Constants {
     //public static final Color HIGHLIGHT_HOVER_COLOR = new Color(255, 238, 5);
     //public static final Color HIGHLIGHT_PRESSED_COLOR = new Color(255, 219, 15);
     
-    public static final Color ERROR_COLOR = Color.RED;
+    public static final Color ERROR_COLOR = new Color(0xe80000);
     public static final Color SECONDARY_BACKGROUND = new Color(0xF6F6F6);
     
     public static final Color SOFT_HIGHLIGHT_COLOR = new Color(0xFFFFE5);
