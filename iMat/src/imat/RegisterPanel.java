@@ -8,6 +8,8 @@ package imat;
 import imat.controller.UserManager;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -43,9 +45,6 @@ public class RegisterPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        backPanel = new javax.swing.JPanel();
-        backLabel = new javax.swing.JLabel();
-        backButton = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         cityField = new javax.swing.JTextField();
         persnbrField = new javax.swing.JTextField();
@@ -74,55 +73,11 @@ public class RegisterPanel extends javax.swing.JPanel {
         phoneLabel = new javax.swing.JLabel();
         persnbrLabel = new javax.swing.JLabel();
         titleLabel = new javax.swing.JLabel();
+        backButton = new imat.BackButton();
 
         setBackground(new java.awt.Color(246, 246, 246));
 
-        backPanel.setBackground(new java.awt.Color(246, 246, 246));
-        backPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        backPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backButtonMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                backPanelMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                backPanelMouseEntered(evt);
-            }
-        });
-
-        backLabel.setText("Tillbaka");
-
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/left224.png"))); // NOI18N
-
-        javax.swing.GroupLayout backPanelLayout = new javax.swing.GroupLayout(backPanel);
-        backPanel.setLayout(backPanelLayout);
-        backPanelLayout.setHorizontalGroup(
-            backPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(backPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(backButton)
-                .addGap(5, 5, 5)
-                .addComponent(backLabel)
-                .addGap(0, 0, 0))
-        );
-        backPanelLayout.setVerticalGroup(
-            backPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(backPanelLayout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(backPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backButton)
-                    .addComponent(backLabel))
-                .addGap(2, 2, 2))
-        );
-
         jPanel1.setBackground(new java.awt.Color(246, 246, 246));
-
-        cityField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cityFieldActionPerformed(evt);
-            }
-        });
 
         passwordStarLabel.setText("*");
 
@@ -300,6 +255,12 @@ public class RegisterPanel extends javax.swing.JPanel {
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -309,16 +270,16 @@ public class RegisterPanel extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(100, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(backPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(backPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(14, 14, 14)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -358,29 +319,6 @@ public class RegisterPanel extends javax.swing.JPanel {
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
         firePropertyChange("showLoginCard", null, null);
     }//GEN-LAST:event_backButtonMouseClicked
-
-    private void cityFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cityFieldActionPerformed
-
-    private void backPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backPanelMouseEntered
-        underlineLabel(backLabel, true);
-    }//GEN-LAST:event_backPanelMouseEntered
-
-    private void backPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backPanelMouseExited
-        underlineLabel(backLabel, false);
-    }//GEN-LAST:event_backPanelMouseExited
-
-    private void underlineLabel(JLabel label, boolean on) {
-        Font font = label.getFont();
-        Map attributes = font.getAttributes();
-        if (on) {
-            attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-        } else {
-            attributes.put(TextAttribute.UNDERLINE, -1);
-        }
-        label.setFont(font.deriveFont(attributes));
-    }
     
     private void resetLabels() {
         emailLabel.setForeground(Color.BLACK);
@@ -556,9 +494,7 @@ public class RegisterPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressField;
     private javax.swing.JLabel addressLabel;
-    private javax.swing.JLabel backButton;
-    private javax.swing.JLabel backLabel;
-    private javax.swing.JPanel backPanel;
+    private imat.BackButton backButton;
     private javax.swing.JTextField cityField;
     private javax.swing.JLabel cityLabel;
     private javax.swing.JPasswordField confirmPasswordField;
