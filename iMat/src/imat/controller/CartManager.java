@@ -6,6 +6,8 @@
 package imat.controller;
 
 import imat.model.ShoppingList;
+import imat.model.SubShoppingCart;
+import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
@@ -18,7 +20,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 public class CartManager {
     private final ShoppingCart cart;
-    
+    private List<SubShoppingCart> subcarts = new ArrayList<>();
     private static final CartManager instance= new CartManager();
     
     public CartManager(){
@@ -50,10 +52,25 @@ public class CartManager {
        cart.fireShoppingCartChanged(item, false);
    }
     
+   
+   public void addShoppingListToCart(ShoppingList shoppingList) {
+       SubShoppingCart subcart = new SubShoppingCart();
+       subcart.setName(shoppingList.getName());
+       for( ShoppingItem item : shoppingList.getItems()) {
+           subcart.addItem(new ShoppingItem(item.getProduct(),item.getAmount()));
+       }
+       
+       subcarts.add(subcart);
+   }
    public boolean containsShoppingItem(ShoppingItem item) {
        return cart.getItems().contains(item);
    }
-    public ShoppingList getShoppingListForItem(ShoppingItem item) {
+    public SubShoppingCart getSubCartForItem(ShoppingItem item) {
+        for(SubShoppingCart subcart : subcarts) {
+            if(subcart.getItems().contains(item)) {
+                return subcart;
+            }
+        }
         return null;
     }
     public double getTotal(){
