@@ -159,8 +159,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iMat - Mat..Mat!");
-        setMinimumSize(new java.awt.Dimension(1350, 800));
-        setSize(new java.awt.Dimension(1350, 800));
 
         fruitButton.setMinimumSize(new java.awt.Dimension(100, 60));
         fruitButton.setName(""); // NOI18N
@@ -295,7 +293,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         );
 
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/logo.jpg"))); // NOI18N
-        homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 homeButtonMouseClicked(evt);
