@@ -37,15 +37,14 @@ public class ProfileItem extends javax.swing.JPanel implements PropertyChangeLis
         jLabel1 = new javax.swing.JLabel();
         label = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(102, 102, 102));
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setBackground(new java.awt.Color(230, 193, 151));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/my-profile-icon.png"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(40, 40));
         jLabel1.setMinimumSize(new java.awt.Dimension(40, 40));
 
-        label.setForeground(new java.awt.Color(255, 255, 255));
         label.setText("Logga in");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

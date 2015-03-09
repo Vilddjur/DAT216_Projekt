@@ -42,28 +42,23 @@ public class CheckOutItem extends javax.swing.JPanel implements ShoppingCartList
         totalPriceLabel = new javax.swing.JLabel();
         sekLabel = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(102, 102, 102));
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setBackground(new java.awt.Color(230, 193, 151));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         iconLabel.setForeground(new java.awt.Color(255, 255, 255));
         iconLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/shopping122.png"))); // NOI18N
 
-        mainPanel.setBackground(new java.awt.Color(102, 102, 102));
+        mainPanel.setBackground(new java.awt.Color(230, 193, 151));
 
-        amountLabel.setForeground(new java.awt.Color(255, 255, 255));
         amountLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         amountLabel.setText("0");
 
-        varorLabel.setForeground(new java.awt.Color(255, 255, 255));
         varorLabel.setText("varor   á ");
 
-        totalPriceLabel.setForeground(new java.awt.Color(255, 255, 255));
         totalPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         totalPriceLabel.setText("0");
 
-        sekLabel.setForeground(new java.awt.Color(255, 255, 255));
         sekLabel.setText("SEK");
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
