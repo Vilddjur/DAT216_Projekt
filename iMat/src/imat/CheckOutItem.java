@@ -43,14 +43,14 @@ public class CheckOutItem extends javax.swing.JPanel implements ShoppingCartList
         totalPriceLabel = new javax.swing.JLabel();
         sekLabel = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(230, 193, 151));
+        setBackground(Constants.BANNER_COLOR);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         iconLabel.setForeground(new java.awt.Color(255, 255, 255));
         iconLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/shopping122.png"))); // NOI18N
 
-        mainPanel.setBackground(new java.awt.Color(230, 193, 151));
+        mainPanel.setBackground(Constants.BANNER_COLOR);
 
         amountLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         amountLabel.setText("0");

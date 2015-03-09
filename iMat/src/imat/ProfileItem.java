@@ -37,7 +37,7 @@ public class ProfileItem extends javax.swing.JPanel implements PropertyChangeLis
         jLabel1 = new javax.swing.JLabel();
         label = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(230, 193, 151));
+        setBackground(Constants.BANNER_COLOR);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));

@@ -65,8 +65,8 @@
           <SubComponents>
             <Container class="javax.swing.JPanel" name="gridPanel">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f6" green="f6" red="f6" type="rgb"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.MAIN_BACKGROUND" type="code"/>
                 </Property>
               </Properties>
 

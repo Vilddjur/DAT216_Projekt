@@ -59,7 +59,7 @@ public class ProductListPanel extends javax.swing.JPanel {
 
         jScrollPane1.setBorder(null);
 
-        gridPanel.setBackground(new java.awt.Color(246, 246, 246));
+        gridPanel.setBackground(Constants.MAIN_BACKGROUND);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

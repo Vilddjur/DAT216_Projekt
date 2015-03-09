@@ -73,7 +73,7 @@ public class ProductPanel extends javax.swing.JPanel {
         imageLabel = new javax.swing.JLabel();
         favoriteButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(246, 246, 246));
+        setBackground(Constants.MAIN_BACKGROUND);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235)));

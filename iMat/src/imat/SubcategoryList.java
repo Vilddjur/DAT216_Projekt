@@ -53,8 +53,11 @@ public class SubcategoryList extends javax.swing.JPanel implements IPropertyChan
         scrollPane = new javax.swing.JScrollPane();
         list = new javax.swing.JList();
 
+        setBackground(Constants.MAIN_BACKGROUND);
+
         scrollPane.setBorder(null);
 
+        list.setBackground(Constants.MAIN_BACKGROUND);
         list.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 listValueChanged(evt);
