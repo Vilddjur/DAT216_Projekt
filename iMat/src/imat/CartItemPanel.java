@@ -6,6 +6,7 @@
 package imat;
 
 import imat.controller.CartManager;
+import java.text.DecimalFormat;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import se.chalmers.ait.dat215.project.Product;
@@ -121,7 +122,8 @@ public class CartItemPanel extends javax.swing.JPanel {
         this.item = item;
         Product product = item.getProduct();
         productNameLabel.setText(product.getName());
-        productPriceLabel.setText(item.getTotal() + " :-");
+        DecimalFormat df = new DecimalFormat("0.00##");
+        productPriceLabel.setText(df.format(item.getTotal()) + " :-");
         productUnitLabel.setText(product.getUnitSuffix());
         amountSpinner.setValue(item.getAmount());
     }

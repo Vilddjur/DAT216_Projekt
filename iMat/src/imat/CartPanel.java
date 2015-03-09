@@ -8,6 +8,7 @@ package imat;
 import imat.controller.CartManager;
 import imat.model.ShoppingList;
 import java.awt.Color;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -156,7 +157,8 @@ public class CartPanel extends javax.swing.JPanel {
     }
     
     private void updateTotalValue() {
-         totalValueLabel.setText(cart.getTotal() +" :-");
+        DecimalFormat df = new DecimalFormat("0.00##");
+         totalValueLabel.setText(df.format(cart.getTotal()) +" :-");
     }
 
     public void updateSize() {

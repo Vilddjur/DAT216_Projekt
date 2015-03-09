@@ -5,6 +5,7 @@
  */
 package imat;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -124,7 +125,8 @@ public class CheckOutItem extends javax.swing.JPanel implements ShoppingCartList
     
     @Override
     public void shoppingCartChanged(CartEvent ce) {
-        totalPriceLabel.setText(""+cart.getTotal());
+        DecimalFormat df = new DecimalFormat("0.00##");
+        totalPriceLabel.setText(""+df.format(cart.getTotal()));
         amountLabel.setText(""+getAmount(cart));
     }
     
