@@ -106,49 +106,37 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         jLabel23 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
-        jLabel22 = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(102, 102, 102));
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         mainPanel.setBackground(new java.awt.Color(102, 102, 102));
         mainPanel.setMinimumSize(new java.awt.Dimension(795, 403));
         mainPanel.setLayout(new java.awt.CardLayout());
 
-        infoPanel.setBackground(new java.awt.Color(102, 102, 102));
-
-        persnbrLabel.setForeground(new java.awt.Color(255, 255, 255));
         persnbrLabel.setText("Pers.nr:");
 
-        prenameLabel.setForeground(new java.awt.Color(255, 255, 255));
         prenameLabel.setText("Förnamn:");
 
-        lastnameLabel.setForeground(new java.awt.Color(255, 255, 255));
         lastnameLabel.setText("Efternamn:");
 
-        conameLabel.setForeground(new java.awt.Color(255, 255, 255));
         conameLabel.setText("c/o Namn:");
 
-        emailLabel.setForeground(new java.awt.Color(255, 255, 255));
         emailLabel.setText("E-postadress: ");
 
-        adressLabel.setForeground(new java.awt.Color(255, 255, 255));
         adressLabel.setText("Gatuadress:");
 
-        postcodeLabel.setForeground(new java.awt.Color(255, 255, 255));
         postcodeLabel.setText("Postnummer:");
 
         postadressLabel.setBackground(new java.awt.Color(255, 255, 255));
-        postadressLabel.setForeground(new java.awt.Color(255, 255, 255));
         postadressLabel.setText("Stad:");
 
-        mobileLabel.setForeground(new java.awt.Color(255, 255, 255));
         mobileLabel.setText("Mobilnr:");
 
         getLabel.setBackground(new java.awt.Color(255, 255, 255));
         getLabel.setForeground(new java.awt.Color(204, 204, 204));
         getLabel.setText("Hämta");
 
-        dateLabel.setForeground(new java.awt.Color(255, 255, 255));
         dateLabel.setText("Leveransdatum:");
 
         dayComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", " " }));
@@ -165,7 +153,6 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         });
 
         jLabel12.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Leveransuppgifter");
 
         javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
@@ -207,7 +194,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                                         .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 7, Short.MAX_VALUE))))
+                                .addGap(0, 15, Short.MAX_VALUE))))
                     .addGroup(infoPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(nextButton)))
@@ -264,17 +251,14 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                     .addComponent(dateLabel)
                     .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(nextButton)
                 .addContainerGap())
         );
 
         mainPanel.add(infoPanel, "infoCard");
 
-        payPanel.setBackground(new java.awt.Color(102, 102, 102));
-
         buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton1.setText("Faktura - Betala 14 dagar efter leverans (29,00 KR) ");
         jRadioButton1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -283,7 +267,6 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         });
 
         buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton2.setSelected(true);
         jRadioButton2.setText("Kortbetalning");
         jRadioButton2.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -293,7 +276,6 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         });
 
         buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton3.setText("Postförskott");
         jRadioButton3.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -312,28 +294,21 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2014", "2015", "2016", "2017", " " }));
         jComboBox4.setSelectedIndex(3);
 
-        amountLabel.setForeground(new java.awt.Color(255, 255, 255));
         amountLabel.setText("1337 KR");
 
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Summa");
 
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("0 KR");
 
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Leverans (Fri frakt)");
 
         totalAmountLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        totalAmountLabel.setForeground(new java.awt.Color(255, 255, 255));
         totalAmountLabel.setText("1337 KR");
 
         jLabel17.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Att betala");
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Betalningsuppgifter");
 
         jButton2.setText("Betala");
@@ -378,7 +353,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                                         .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jRadioButton3)
                                     .addComponent(jLabel1))
-                                .addGap(0, 60, Short.MAX_VALUE))
+                                .addGap(0, 68, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payPanelLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,7 +421,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                 .addGroup(payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
                     .addComponent(jButton4))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         mainPanel.add(payPanel, "payCard");
@@ -469,7 +444,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(68, 68, 68)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel19)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -478,7 +453,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                         .addComponent(jLabel21))
                     .addComponent(jLabel18)
                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -487,7 +462,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -498,30 +473,40 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
         jSplitPane1.setRightComponent(jPanel1);
 
+        jPanel2.setPreferredSize(new java.awt.Dimension(300, 468));
+
         jButton3.setText("Skriv ut");
 
-        jLabel22.setText("Kvitto");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/kvitto.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(jPanel3);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton3))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel22)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jButton3)
+                .addContainerGap(55, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(256, Short.MAX_VALUE)
-                .addComponent(jLabel22)
-                .addGap(160, 160, 160)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
                 .addContainerGap())
         );
@@ -532,7 +517,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         receiptPanel.setLayout(receiptPanelLayout);
         receiptPanelLayout.setHorizontalGroup(
             receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
         );
         receiptPanelLayout.setVerticalGroup(
             receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -547,13 +532,13 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addContainerGap(340, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -635,15 +620,17 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
