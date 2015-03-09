@@ -6,6 +6,8 @@
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator4">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="dateButtonGroup">
+    </Component>
   </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -71,7 +73,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="223" max="32767" attributes="0"/>
+                      <EmptySpace pref="149" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -87,61 +89,74 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel12" alignment="1" min="-2" pref="447" max="-2" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="persnbrLabel" min="-2" max="-2" attributes="0"/>
-                                              <Component id="prenameLabel" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lastnameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="conameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="emailLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="adressLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="postcodeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="mobileLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="dateLabel" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="dateLabel" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="prenameTextField" min="-2" pref="300" max="-2" attributes="0"/>
-                                              <Component id="lastnameTextField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                              <Component id="conameTextField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                              <Component id="emailTextField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="persnbrTextField" min="-2" pref="150" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                                  <Component id="getLabel" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
                                                   <Component id="dayComboBox" min="-2" pref="61" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="monthComboBox" min="-2" pref="73" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="mobileTextField" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                                  <Component id="nextButton" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="postcodeTextField" min="-2" pref="75" max="-2" attributes="0"/>
-                                                          <EmptySpace max="32767" attributes="0"/>
-                                                          <Component id="postadressLabel" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="postadressTextField" min="-2" pref="150" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Component id="adressTextField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
+                                              <Component id="jRadioButton4" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jRadioButton5" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="nextButton" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jSeparator6" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jSeparator6" max="32767" attributes="0"/>
+                                      <Component id="jSeparator7" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
                           </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="persnbrLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="prenameLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="lastnameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="conameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="emailLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="adressLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="postcodeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="mobileLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="prenameTextField" min="-2" pref="300" max="-2" attributes="0"/>
+                              <Component id="lastnameTextField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                              <Component id="conameTextField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                              <Component id="emailTextField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="persnbrTextField" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="getLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="mobileTextField" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="postcodeTextField" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="postadressLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="postadressTextField" min="-2" pref="150" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="adressTextField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -197,11 +212,19 @@
                           <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="dateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRadioButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jRadioButton5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="dayComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="monthComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="dateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jSeparator7" min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="nextButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -347,6 +370,24 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator6">
                 </Component>
+                <Component class="javax.swing.JRadioButton" name="jRadioButton4">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="dateButtonGroup"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value=" S&#xe5; fort som m&#xf6;jligt"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="jRadioButton5">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="dateButtonGroup"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value=" V&#xe4;lj datum..."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JSeparator" name="jSeparator7">
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -366,14 +407,14 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="388" max="32767" attributes="0"/>
-                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="389" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="backButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="1062" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -401,18 +442,50 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jButton2" alignment="1" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel13" min="-2" pref="115" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="amountLabel" min="-2" pref="134" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel17" min="-2" pref="138" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="totalAmountLabel" min="-2" pref="134" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jSeparator3" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jSeparator2" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jSeparator1" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jTextField10" max="32767" attributes="0"/>
+                                  <Component id="jSeparator5" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                                  <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel14" max="32767" attributes="0"/>
+                                  <Component id="jTextField10" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel15" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jLabel14" min="-2" pref="134" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
@@ -434,30 +507,11 @@
                                               <Component id="jRadioButton3" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               </Group>
-                          </Group>
-                      </Group>
-                      <Group type="103" alignment="1" groupAlignment="1" attributes="0">
-                          <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jSeparator2" alignment="1" max="32767" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Component id="jSeparator5" max="32767" attributes="0"/>
-                              <Component id="jSeparator3" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="amountLabel" min="-2" pref="134" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="totalAmountLabel" min="-2" pref="128" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jButton2" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -509,7 +563,7 @@
                           <Component id="jSeparator5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -608,6 +662,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel13">
                   <Properties>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="text" type="java.lang.String" value="Summa"/>
                   </Properties>
                 </Component>
@@ -621,6 +676,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel15">
                   <Properties>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="text" type="java.lang.String" value="Leverans (Fri frakt)"/>
                   </Properties>
                 </Component>
@@ -640,6 +696,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Lucida Grande" size="13" style="1"/>
                     </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="text" type="java.lang.String" value="Att betala"/>
                   </Properties>
                 </Component>
