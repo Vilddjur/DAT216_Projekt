@@ -8,6 +8,7 @@ package imat;
 import imat.controller.OrderManager;
 import imat.controller.UserManager;
 import java.awt.CardLayout;
+import java.awt.Container;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import se.chalmers.ait.dat215.project.CartEvent;
@@ -682,5 +683,9 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     @Override
     public void shoppingCartChanged(CartEvent ce) {
         updatePayValues();
+    }
+
+    Container getMainPanel() {
+        return mainPanel;
     }
 }

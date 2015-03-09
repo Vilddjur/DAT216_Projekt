@@ -550,6 +550,10 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
      */
     private void switchToCard(String card) {       
         CardLayout manager = (CardLayout) mainContentPanel.getLayout();
+        if(card=="checkOut"){
+            CardLayout tmp = (CardLayout) checkOutPanel.getMainPanel().getLayout();
+            tmp.show(checkOutPanel.getMainPanel(), "infoCard");
+        }
         manager.show(mainContentPanel, card);
         subcategoryList.clear();
     }
