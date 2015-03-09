@@ -40,7 +40,6 @@ public class LoginPanel extends javax.swing.JPanel implements IPropertyChangeSup
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        backButton1 = new imat.BackButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         usernameField = new javax.swing.JTextField();
@@ -50,12 +49,6 @@ public class LoginPanel extends javax.swing.JPanel implements IPropertyChangeSup
         passwordField = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(246, 246, 246));
-
-        backButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backButton1MouseClicked(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(246, 246, 246));
 
@@ -134,21 +127,14 @@ public class LoginPanel extends javax.swing.JPanel implements IPropertyChangeSup
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(backButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(100, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(100, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(backButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
+                .addGap(157, 157, 157)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(69, Short.MAX_VALUE))
         );
@@ -183,13 +169,8 @@ public class LoginPanel extends javax.swing.JPanel implements IPropertyChangeSup
         pcs.firePropertyChange("gotoRegister", null, null);
     }//GEN-LAST:event_registerLabelMouseClicked
 
-    private void backButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButton1MouseClicked
-        pcs.firePropertyChange(null);
-    }//GEN-LAST:event_backButton1MouseClicked
-
     private Font font;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private imat.BackButton backButton1;
     private javax.swing.JLabel errorLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
