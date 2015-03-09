@@ -16,7 +16,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  *
  * @author Albertsson
  */
-public class CheckOutItem extends javax.swing.JPanel implements ShoppingCartListener{
+public class CheckOutItem extends javax.swing.JPanel implements ShoppingCartListener {
 
     /**
      * Creates new form CheckOutItem

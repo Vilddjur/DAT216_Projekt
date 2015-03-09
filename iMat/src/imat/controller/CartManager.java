@@ -59,4 +59,8 @@ public class CartManager {
     public double getTotal(){
         return cart.getTotal();
     }
+    
+    public void clear() {
+        cart.clear();
+    }
 }

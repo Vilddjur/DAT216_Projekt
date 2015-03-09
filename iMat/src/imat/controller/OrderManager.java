@@ -31,8 +31,10 @@ public class OrderManager implements IPropertyChangeSupport {
     public void placeOrder() {
         UserManager um = UserManager.getInstance();
         if (um.isLoggedIn()) {
-            imat.placeOrder(true);
+            imat.placeOrder(false);
         }
+        CartManager cm = CartManager.getInstance();
+        cm.clear();
         pcs.firePropertyChange("order", null, null);
     }
 
