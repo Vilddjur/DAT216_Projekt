@@ -21,14 +21,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace pref="100" max="32767" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="100" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Component id="backButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="571" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -38,9 +38,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Component id="backButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace pref="45" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -57,70 +57,62 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jLabel2" alignment="1" min="-2" pref="294" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="persnbrLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="firstnameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lastnameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="addressLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="postCodeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="emailLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="postCodeField" min="-2" pref="75" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="cityLabel" min="-2" pref="40" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="cityField" min="-2" pref="150" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="addressField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                          <Component id="lastnameField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                          <Component id="firstnameField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                          <Component id="emailField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                          <Component id="persnbrField" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="emailStarLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="persnbrLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="firstnameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lastnameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="addressLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="postCodeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="emailLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="passwordLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="confirmPasswordLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="phoneLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" pref="294" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="registerButton" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="passwordField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                      <Component id="confirmPasswordField" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
-                                      <Component id="phoneField" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="postCodeField" min="-2" pref="75" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="cityLabel" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="cityField" min="-2" pref="150" max="-2" attributes="0"/>
                                   </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="confirmPasswordStarLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="passwordStarLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="addressField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="lastnameField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="firstnameField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="emailField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="persnbrField" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <Component id="titleLabel" max="32767" attributes="0"/>
+                      <Component id="titleLabel" alignment="1" min="-2" pref="438" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="passwordLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="confirmPasswordLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="phoneLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="passwordField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="confirmPasswordField" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
+                                  <Component id="phoneField" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="registerButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -133,7 +125,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="emailField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="emailStarLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -173,19 +164,17 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="passwordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="passwordField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="passwordStarLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="confirmPasswordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="confirmPasswordField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="confirmPasswordStarLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="registerButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="100" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -194,11 +183,6 @@
         <Component class="javax.swing.JTextField" name="cityField">
         </Component>
         <Component class="javax.swing.JTextField" name="persnbrField">
-        </Component>
-        <Component class="javax.swing.JLabel" name="passwordStarLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="*"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="firstnameLabel">
           <Properties>
@@ -239,11 +223,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="phoneField">
         </Component>
-        <Component class="javax.swing.JLabel" name="emailStarLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="*"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="registerButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Registrera"/>
@@ -274,13 +253,13 @@
         <Component class="javax.swing.JLabel" name="passwordLabel">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="L&#xf6;senord"/>
+            <Property name="text" type="java.lang.String" value="* L&#xf6;senord"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="emailLabel">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="E-postadress"/>
+            <Property name="text" type="java.lang.String" value="* E-postadress"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="addressLabel">
@@ -292,17 +271,12 @@
         <Component class="javax.swing.JLabel" name="confirmPasswordLabel">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Bekr&#xe4;fta l&#xf6;senord"/>
+            <Property name="text" type="java.lang.String" value="* Bekr&#xe4;fta l&#xf6;senord"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="lastnameField">
         </Component>
         <Component class="javax.swing.JTextField" name="firstnameField">
-        </Component>
-        <Component class="javax.swing.JLabel" name="confirmPasswordStarLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="*"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="phoneLabel">
           <Properties>

@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.Calendar;
@@ -27,7 +28,7 @@ import javax.swing.border.LineBorder;
  *
  * @author mats
  */
-public class RegisterPanel extends javax.swing.JPanel {
+public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeListener {
     
     /**
      * Creates new form RegisterPanel
@@ -48,7 +49,6 @@ public class RegisterPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         cityField = new javax.swing.JTextField();
         persnbrField = new javax.swing.JTextField();
-        passwordStarLabel = new javax.swing.JLabel();
         firstnameLabel = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
@@ -57,7 +57,6 @@ public class RegisterPanel extends javax.swing.JPanel {
         emailField = new javax.swing.JTextField();
         postCodeField = new javax.swing.JTextField();
         phoneField = new javax.swing.JTextField();
-        emailStarLabel = new javax.swing.JLabel();
         registerButton = new javax.swing.JButton();
         cityLabel = new javax.swing.JLabel();
         addressField = new javax.swing.JTextField();
@@ -69,7 +68,6 @@ public class RegisterPanel extends javax.swing.JPanel {
         confirmPasswordLabel = new javax.swing.JLabel();
         lastnameField = new javax.swing.JTextField();
         firstnameField = new javax.swing.JTextField();
-        confirmPasswordStarLabel = new javax.swing.JLabel();
         phoneLabel = new javax.swing.JLabel();
         persnbrLabel = new javax.swing.JLabel();
         titleLabel = new javax.swing.JLabel();
@@ -78,8 +76,6 @@ public class RegisterPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(246, 246, 246));
 
         jPanel1.setBackground(new java.awt.Color(246, 246, 246));
-
-        passwordStarLabel.setText("*");
 
         firstnameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         firstnameLabel.setText("Förnamn");
@@ -98,8 +94,6 @@ public class RegisterPanel extends javax.swing.JPanel {
                 fieldFocusGained(evt);
             }
         });
-
-        emailStarLabel.setText("*");
 
         registerButton.setText("Registrera");
         registerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -121,18 +115,16 @@ public class RegisterPanel extends javax.swing.JPanel {
         postCodeLabel.setText("Postnummer");
 
         passwordLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        passwordLabel.setText("Lösenord");
+        passwordLabel.setText("* Lösenord");
 
         emailLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        emailLabel.setText("E-postadress");
+        emailLabel.setText("* E-postadress");
 
         addressLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         addressLabel.setText("Gatuadress");
 
         confirmPasswordLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        confirmPasswordLabel.setText("Bekräfta lösenord");
-
-        confirmPasswordStarLabel.setText("*");
+        confirmPasswordLabel.setText("* Bekräfta lösenord");
 
         phoneLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         phoneLabel.setText("Mobilnummer");
@@ -149,56 +141,50 @@ public class RegisterPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(persnbrLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(firstnameLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lastnameLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(addressLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(postCodeLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(emailLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(persnbrLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(firstnameLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lastnameLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(addressLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(postCodeLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(emailLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(postCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(postCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(cityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(addressField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lastnameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(firstnameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(emailField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(persnbrField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(emailStarLabel))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(passwordLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(confirmPasswordLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(phoneLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(registerButton)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(passwordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(phoneField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(jLabel1)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(confirmPasswordStarLabel)
-                                .addComponent(passwordStarLabel))))
-                    .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(addressField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lastnameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(firstnameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(emailField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(persnbrField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(titleLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(passwordLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(confirmPasswordLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(phoneLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(passwordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(phoneField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(registerButton)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel1)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,8 +194,7 @@ public class RegisterPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLabel)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailStarLabel))
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -241,18 +226,16 @@ public class RegisterPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordStarLabel))
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmPasswordLabel)
-                    .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confirmPasswordStarLabel))
+                    .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(registerButton)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -266,12 +249,12 @@ public class RegisterPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(571, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -279,9 +262,9 @@ public class RegisterPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(100, 100, 100))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -322,14 +305,11 @@ public class RegisterPanel extends javax.swing.JPanel {
     
     private void resetLabels() {
         emailLabel.setForeground(Color.BLACK);
-        emailStarLabel.setForeground(Color.BLACK);
         persnbrLabel.setForeground(Color.BLACK);
         postCodeLabel.setForeground(Color.BLACK);
         phoneLabel.setForeground(Color.BLACK);
         passwordLabel.setForeground(Color.BLACK);
-        passwordStarLabel.setForeground(Color.BLACK);
         confirmPasswordLabel.setForeground(Color.BLACK);
-        confirmPasswordStarLabel.setForeground(Color.BLACK);
     }
     
     public void focusFirstField() {
@@ -341,7 +321,6 @@ public class RegisterPanel extends javax.swing.JPanel {
         
         if (!FieldValidations.isValidEmail(emailField.getText())) {
             emailLabel.setForeground(Constants.ERROR_COLOR);
-            emailStarLabel.setForeground(Constants.ERROR_COLOR);
             error = true;
         }
         
@@ -371,11 +350,7 @@ public class RegisterPanel extends javax.swing.JPanel {
         
         if (!password.equals(confirmedPassword) || password.equals("") || confirmedPassword.equals("")) {
             passwordLabel.setForeground(Constants.ERROR_COLOR);
-            passwordStarLabel.setForeground(Constants.ERROR_COLOR);
-            
             confirmPasswordLabel.setForeground(Constants.ERROR_COLOR);
-            confirmPasswordStarLabel.setForeground(Constants.ERROR_COLOR);
-            
             error = true;
         }
         
@@ -394,10 +369,8 @@ public class RegisterPanel extends javax.swing.JPanel {
     private javax.swing.JLabel cityLabel;
     private javax.swing.JPasswordField confirmPasswordField;
     private javax.swing.JLabel confirmPasswordLabel;
-    private javax.swing.JLabel confirmPasswordStarLabel;
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel emailLabel;
-    private javax.swing.JLabel emailStarLabel;
     private javax.swing.JTextField firstnameField;
     private javax.swing.JLabel firstnameLabel;
     private javax.swing.JLabel jLabel1;
@@ -407,7 +380,6 @@ public class RegisterPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lastnameLabel;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
-    private javax.swing.JLabel passwordStarLabel;
     private javax.swing.JTextField persnbrField;
     private javax.swing.JLabel persnbrLabel;
     private javax.swing.JTextField phoneField;
@@ -417,4 +389,9 @@ public class RegisterPanel extends javax.swing.JPanel {
     private javax.swing.JButton registerButton;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        
+    }
 }

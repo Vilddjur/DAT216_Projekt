@@ -8,11 +8,22 @@ package imat;
 import imat.controller.OrderManager;
 import imat.controller.UserManager;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.ItemEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.DocumentFilter;
+import javax.swing.text.PlainDocument;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.CreditCard;
 import se.chalmers.ait.dat215.project.Customer;
@@ -28,6 +39,15 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
     private final ShoppingCart cart;
     private final UserManager um;
+    
+    private class CustomDocument extends PlainDocument {
+        @Override
+        public void insertString(int offset, String string, AttributeSet attr) throws BadLocationException {
+            if (getLength() < 4) {
+                super.insertString(offset, string, attr);
+            }
+        }
+    }
 
     /**
      * Creates new form CheckOutPanel
@@ -52,10 +72,36 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         jRadioButton5.addItemListener((ItemEvent e) -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 dayComboBox.setEnabled(true);
+                monthComboBox.setEnabled(true);
             } else if (e.getStateChange() == ItemEvent.DESELECTED) {
                 dayComboBox.setEnabled(false);
+                monthComboBox.setEnabled(false);
             }
         });
+        
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_MONTH, 5);
+        dayComboBox.setSelectedIndex(cal.get(Calendar.DAY_OF_MONTH) - 1);
+        monthComboBox.setSelectedIndex(cal.get(Calendar.MONTH));
+        
+        cardField1.setDocument(new CustomDocument());
+        cardField2.setDocument(new CustomDocument());
+        cardField3.setDocument(new CustomDocument());
+        cardField4.setDocument(new CustomDocument());
+        
+        // TA BORT INNAN REDOVISNING
+        demoFillFields();
+    }
+    
+    private void demoFillFields() {
+        persnbrTextField.setText("9306151979");
+        prenameTextField.setText("Mats");
+        lastnameTextField.setText("Högberg");
+        emailTextField.setText("mats@hgbrg.se");
+        adressTextField.setText("Gatan");
+        postcodeTextField.setText("41280");
+        postadressTextField.setText("Göteborg");
+        mobileTextField.setText("0730308425");
     }
 
     /**
@@ -119,12 +165,12 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         cardInfo = new javax.swing.JPanel();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
+        cardField2 = new javax.swing.JTextField();
+        cardField3 = new javax.swing.JTextField();
+        cardField1 = new javax.swing.JTextField();
         jComboBox3 = new javax.swing.JComboBox();
         jTextField12 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
+        cardField4 = new javax.swing.JTextField();
         jTextField11 = new javax.swing.JTextField();
         jComboBox4 = new javax.swing.JComboBox();
         backButton1 = new imat.BackButton();
@@ -148,24 +194,78 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
         jPanel4.setBackground(new java.awt.Color(246, 246, 246));
 
-        persnbrLabel.setText("Personnummer");
+        persnbrLabel.setText("* Personnummer");
 
-        prenameLabel.setText("Förnamn");
+        prenameLabel.setText("* Förnamn");
 
-        lastnameLabel.setText("Efternamn");
+        lastnameLabel.setText("* Efternamn");
 
         conameLabel.setText("C/o");
 
-        emailLabel.setText("E-postadress");
+        emailLabel.setText("* E-postadress");
 
-        adressLabel.setText("Gatuadress");
+        adressLabel.setText("* Gatuadress");
 
-        postcodeLabel.setText("Postnummer");
+        postcodeLabel.setText("* Postnummer");
 
         postadressLabel.setBackground(new java.awt.Color(255, 255, 255));
-        postadressLabel.setText("Stad");
+        postadressLabel.setText("* Stad");
 
-        mobileLabel.setText("Mobilnummer");
+        mobileLabel.setText("* Mobilnummer");
+
+        persnbrTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        prenameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        lastnameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        conameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        emailTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        adressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        postcodeTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        postadressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        mobileTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
 
         getLabel.setBackground(new java.awt.Color(255, 255, 255));
         getLabel.setForeground(new java.awt.Color(204, 204, 204));
@@ -173,12 +273,10 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
         dateLabel.setText("Önskat leveransdatum");
 
-        dayComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", " " }));
-        dayComboBox.setSelectedIndex(6);
+        dayComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         dayComboBox.setEnabled(false);
 
-        monthComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", " " }));
-        monthComboBox.setSelectedIndex(4);
+        monthComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December" }));
         monthComboBox.setEnabled(false);
 
         nextButton.setText("Nästa");
@@ -214,14 +312,14 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                                 .addComponent(dateLabel)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButton4)
+                                    .addComponent(jRadioButton5)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addGap(29, 29, 29)
-                                        .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jRadioButton4)
-                                    .addComponent(jRadioButton5))
-                                .addGap(131, 131, 131))
+                                        .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(71, 71, 71))
                             .addComponent(nextButton, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,13 +502,19 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
         cardInfo.setBackground(Constants.MAIN_BACKGROUND);
 
-        jTextField13.addFocusListener(new java.awt.event.FocusAdapter() {
+        cardField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 fieldFocusGained(evt);
             }
         });
 
-        jTextField10.addFocusListener(new java.awt.event.FocusAdapter() {
+        cardField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        cardField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 fieldFocusGained(evt);
             }
@@ -420,6 +524,12 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
         jTextField12.setText("CCV");
         jTextField12.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        cardField4.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 fieldFocusGained(evt);
             }
@@ -450,13 +560,13 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(cardInfoLayout.createSequentialGroup()
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardField1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardField2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardField3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cardField4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, 0))
         );
         cardInfoLayout.setVerticalGroup(
@@ -464,10 +574,10 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
             .addGroup(cardInfoLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(cardInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cardField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cardField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cardField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cardField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(cardInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -611,7 +721,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
         registerInfo.setBackground(Constants.MAIN_BACKGROUND);
 
-        jButton1.setText("Registrera mig nu");
+        jButton1.setText("Registrera nu");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -671,7 +781,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(registerInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout receiptPanelLayout = new javax.swing.GroupLayout(receiptPanel);
@@ -688,7 +798,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
             .addGroup(receiptPanelLayout.createSequentialGroup()
                 .addGap(84, 84, 84)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(336, Short.MAX_VALUE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
 
         mainPanel.add(receiptPanel, "receiptCard");
@@ -705,11 +815,80 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void resetInfoLabels() {
+        emailLabel.setForeground(Color.BLACK);
+        persnbrLabel.setForeground(Color.BLACK);
+        mobileLabel.setForeground(Color.BLACK);
+        postcodeLabel.setForeground(Color.BLACK);
+        prenameLabel.setForeground(Color.BLACK);
+        lastnameLabel.setForeground(Color.BLACK);
+        adressLabel.setForeground(Color.BLACK);
+        postadressLabel.setForeground(Color.BLACK);
+    }
+    
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-        amountLabel.setText("" + cart.getTotal());
-        totalAmountLabel.setText("" + cart.getTotal());
-        CardLayout card = (CardLayout) mainPanel.getLayout();
-        card.show(mainPanel, "payCard");
+        resetInfoLabels();
+        
+        boolean error = false;
+        
+        if (!FieldValidations.isValidEmail(emailTextField.getText())) {
+            emailLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (!FieldValidations.isValidPersnbr(persnbrTextField.getText())) {
+            persnbrLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (!FieldValidations.isValidPhoneNumber(mobileTextField.getText())) {
+            mobileLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (!FieldValidations.isValidPostCode(postcodeTextField.getText())) {
+            postcodeLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (prenameTextField.getText().trim().equals("")) {
+            prenameLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (lastnameTextField.getText().trim().equals("")) {
+            lastnameLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (adressTextField.getText().trim().equals("")) {
+            adressLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (postadressTextField.getText().trim().equals("")) {
+            postadressLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (!error) {
+            UserManager um = UserManager.getInstance();
+            um.updateInfo(
+                    persnbrTextField.getText(),
+                    adressTextField.getText(), 
+                    emailTextField.getText(),
+                    prenameTextField.getText(),
+                    lastnameTextField.getText(),
+                    mobileTextField.getText(),
+                    postadressTextField.getText(),
+                    postcodeTextField.getText()
+            );
+            
+            amountLabel.setText("" + cart.getTotal());
+            totalAmountLabel.setText("" + cart.getTotal());
+            CardLayout card = (CardLayout) mainPanel.getLayout();
+            card.show(mainPanel, "payCard");
+        }
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -747,7 +926,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
             CreditCard card = um.getCard();
             
-            jTextField10.setText(card.getCardNumber());
+            cardField1.setText(card.getCardNumber());
             jTextField11.setText(card.getHoldersName());
             jComboBox3.setSelectedIndex(card.getValidMonth()-1);
             jComboBox4.setSelectedItem(card.getValidYear()+"");
@@ -776,6 +955,10 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     private javax.swing.JLabel amountLabel;
     private imat.BackButton backButton1;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTextField cardField1;
+    private javax.swing.JTextField cardField2;
+    private javax.swing.JTextField cardField3;
+    private javax.swing.JTextField cardField4;
     private javax.swing.JPanel cardInfo;
     private javax.swing.JLabel conameLabel;
     private javax.swing.JTextField conameTextField;
@@ -818,12 +1001,8 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
     private javax.swing.JLabel lastnameLabel;
     private javax.swing.JTextField lastnameTextField;
     private javax.swing.JPanel mainPanel;
@@ -845,6 +1024,8 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     private javax.swing.JLabel totalAmountLabel;
     // End of variables declaration//GEN-END:variables
 
+    private JTextField[] cardFields = {cardField1, cardField2, cardField2, cardField3};
+    
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         String property = evt.getPropertyName();

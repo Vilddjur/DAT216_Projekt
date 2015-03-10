@@ -121,7 +121,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         });
         
         //request focus so search panel isnt focus on start
-        homeButton.requestFocus();
+//        homeButton.requestFocus();
         
         //topPanel
         searchPanel.addSearchButtonListener(new ConcreteSearchListener());
