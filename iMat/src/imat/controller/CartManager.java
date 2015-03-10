@@ -19,64 +19,76 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  * @author win8
  */
 public class CartManager {
+
     private final ShoppingCart cart;
     private List<SubShoppingCart> subcarts = new ArrayList<>();
-    private static final CartManager instance= new CartManager();
-    
-    public CartManager(){
+    private static final CartManager instance = new CartManager();
+
+    public CartManager() {
         this.cart = IMatDataHandler.getInstance().getShoppingCart();
     }
-    
+
     public static CartManager getInstance() {
         return instance;
     }
-    public void addProduct(double amount,Product item){
+
+    public void addProduct(double amount, Product item) {
         cart.addProduct(item, amount);
     }
-    public void removeItem(int i){
+
+    public void removeItem(int i) {
         cart.removeItem(i);
     }
-    public void removeItem(ShoppingItem item){
+
+    public void removeItem(ShoppingItem item) {
         cart.removeItem(item);
     }
-    public List<ShoppingItem> getItems(){
+
+    public List<ShoppingItem> getItems() {
         return cart.getItems();
     }
-    
-   public void setAmountOfItem(ShoppingItem item, double amount) {
-       if(amount <=0 ) {
-           cart.removeItem(item);
-           return;
-       }
-       item.setAmount(amount);
-       cart.fireShoppingCartChanged(item, false);
-   }
-    
-   
-   public void addShoppingListToCart(ShoppingList shoppingList) {
-       SubShoppingCart subcart = new SubShoppingCart();
-       subcart.setName(shoppingList.getName());
-       for( ShoppingItem item : shoppingList.getItems()) {
-           subcart.addItem(new ShoppingItem(item.getProduct(),item.getAmount()));
-       }
-       
-       subcarts.add(subcart);
-   }
-   public boolean containsShoppingItem(ShoppingItem item) {
-       return cart.getItems().contains(item);
-   }
+
+    public void setAmountOfItem(ShoppingItem item, double amount) {
+        if (amount <= 0) {
+            cart.removeItem(item);
+            return;
+        }
+        item.setAmount(amount);
+        cart.fireShoppingCartChanged(item, false);
+    }
+
+    public void addShoppingListToCart(ShoppingList shoppingList) {
+        SubShoppingCart subcart = new SubShoppingCart();
+        
+        subcart.setName(shoppingList.getName());
+        
+        subcarts.add(subcart);
+        for (ShoppingItem item : shoppingList.getItems()) {
+            subcart.addItem(new ShoppingItem(item.getProduct(), item.getAmount()));
+        }
+        
+    }
+
+    public boolean containsShoppingItem(ShoppingItem item) {
+        return cart.getItems().contains(item);
+    }
+
+    public List<SubShoppingCart> getSubShoppingCartList() {
+        return subcarts;
+    }
     public SubShoppingCart getSubCartForItem(ShoppingItem item) {
-        for(SubShoppingCart subcart : subcarts) {
-            if(subcart.getItems().contains(item)) {
+        for (SubShoppingCart subcart : subcarts) {
+            if (subcart.getItems().contains(item)) {
                 return subcart;
             }
         }
         return null;
     }
-    public double getTotal(){
+
+    public double getTotal() {
         return cart.getTotal();
     }
-    
+
     public void clear() {
         cart.clear();
     }
