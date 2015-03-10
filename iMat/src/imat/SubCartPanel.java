@@ -5,9 +5,11 @@
  */
 package imat;
 
+import imat.controller.CartManager;
 import imat.model.SubShoppingCart;
 import java.awt.Dimension;
 import se.chalmers.ait.dat215.project.CartEvent;
+import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -29,11 +31,27 @@ public class SubCartPanel extends javax.swing.JPanel implements ShoppingCartList
         initComponents();
         categoryNameLabel.setText(cart.getName());
         if (cart != null) {
+            shoppingItemListPanel1.setItemPanelListener(new ShoppingItemPanelListener() {
+
+                @Override
+                public void amountChanged(ShoppingItem item, double changedTo) {
+                    System.out.println("changed");
+                    cartManager.setAmountOfItem(item, changedTo);
+                }
+
+                @Override
+                public void itemRemoved(ShoppingItem item) {
+                    cartManager.removeItem(item);
+                }
+            }
+            );
             cart.addShoppingCartListener(this);
             for (ShoppingItem item : cart.getItems()) {
                 shoppingItemListPanel1.insertShoppingItem(item);
             }
+            
         }
+
     }
 
     /**
@@ -120,14 +138,37 @@ public class SubCartPanel extends javax.swing.JPanel implements ShoppingCartList
     // End of variables declaration//GEN-END:variables
 
     private SubShoppingCart cart;
+    private CartManager cartManager = CartManager.getInstance();
 
     @Override
     public void shoppingCartChanged(CartEvent ce) {
         if (cart.getItems().isEmpty()) {
-           // cart.removeShoppingCartListener(this);
+            // cart.removeShoppingCartListener(this);
             this.getParent().remove(this);
         } else {
-            shoppingItemListPanel1.shoppingCartChanged(ce);
+            ShoppingItem item = ce.getShoppingItem();
+
+            if (item == null && cart.getItems().isEmpty()) {
+                shoppingItemListPanel1.clearList();
+            } else if (ce.isAddEvent()) {
+                if (item == null || item.getAmount() <= 0) {
+                    return;
+                }
+                Product p = item.getProduct();
+                for (ShoppingItem existingItem : cart.getItems()) {
+                    if (existingItem.getProduct().equals(p) && existingItem != item) {
+                        item.setAmount(item.getAmount() + existingItem.getAmount());
+                        cart.removeItem(existingItem);
+
+                        break;
+                    }
+                }
+                shoppingItemListPanel1.insertShoppingItem(item);
+            } else if (!cartManager.containsShoppingItem(item)) {
+                shoppingItemListPanel1.removeItem(item);
+            } else { //amount was changed
+                shoppingItemListPanel1.updateList();
+            }
             updateSize();
         }
     }

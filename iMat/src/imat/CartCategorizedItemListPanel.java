@@ -5,15 +5,20 @@
  */
 package imat;
 
+import imat.controller.CartManager;
 import java.awt.Dimension;
 import se.chalmers.ait.dat215.project.CartEvent;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
  * @author win8
  */
-public class CartCategorizedItemListPanel extends javax.swing.JPanel implements ShoppingCartListener{
+public class CartCategorizedItemListPanel extends javax.swing.JPanel implements ShoppingCartListener {
 
     /**
      * Creates new form CategorizedShoppingListItemPanel
@@ -21,9 +26,27 @@ public class CartCategorizedItemListPanel extends javax.swing.JPanel implements 
     public CartCategorizedItemListPanel() {
         this("En Kategori");
     }
+
     public CartCategorizedItemListPanel(String categoryName) {
         initComponents();
         categoryNameLabel.setText(categoryName);
+
+        shoppingItemListPanel1.setItemPanelListener(new ShoppingItemPanelListener() {
+
+            @Override
+            public void amountChanged(ShoppingItem item, double changedTo) {
+                cartManager.setAmountOfItem(item, changedTo);
+            }
+
+            @Override
+            public void itemRemoved(ShoppingItem item) {
+                cartManager.removeItem(item);
+            }
+        }
+        );
+        for (ShoppingItem item : cart.getItems()) {
+            shoppingItemListPanel1.insertShoppingItem(item);
+        }
     }
 
     /**
@@ -108,19 +131,45 @@ public class CartCategorizedItemListPanel extends javax.swing.JPanel implements 
     private javax.swing.JSeparator jSeparator2;
     private imat.CartItemListPanel shoppingItemListPanel1;
     // End of variables declaration//GEN-END:variables
+    private ShoppingCart cart = IMatDataHandler.getInstance().getShoppingCart();
+    private CartManager cartManager = CartManager.getInstance();
 
     @Override
     public void shoppingCartChanged(CartEvent ce) {
-        shoppingItemListPanel1.shoppingCartChanged(ce);
-        
+
+        ShoppingItem item = ce.getShoppingItem();
+
+        if (item == null && cart.getItems().isEmpty()) {
+            shoppingItemListPanel1.clearList();
+        } else if (ce.isAddEvent()) {
+            if (item == null || item.getAmount() <= 0) {
+                return;
+            }
+            Product p = item.getProduct();
+            for (ShoppingItem existingItem : cart.getItems()) {
+                if (existingItem.getProduct().equals(p) && existingItem != item) {
+                    item.setAmount(item.getAmount() + existingItem.getAmount());
+                    cart.removeItem(existingItem);
+                    System.out.println("removed");
+                    break;
+                }
+            }
+            System.out.println("add");
+            shoppingItemListPanel1.insertShoppingItem(item);
+        } else if (!cartManager.containsShoppingItem(item)) {
+            shoppingItemListPanel1.removeItem(item);
+        } else { //amount was changed
+            shoppingItemListPanel1.updateList();
+        }
+
         updateSize();
     }
-    
+
     public void updateSize() {
         shoppingItemListPanel1.updateSize();
         setSize(getPreferredSize());
         setMaximumSize(getPreferredSize());
         revalidate();
     }
-   
+
 }

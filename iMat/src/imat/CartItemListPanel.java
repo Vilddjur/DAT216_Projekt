@@ -5,25 +5,16 @@
  */
 package imat;
 
-import imat.controller.CartManager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import se.chalmers.ait.dat215.project.CartEvent;
-import se.chalmers.ait.dat215.project.IMatDataHandler;
-import se.chalmers.ait.dat215.project.Product;
-import se.chalmers.ait.dat215.project.ShoppingCart;
-import se.chalmers.ait.dat215.project.ShoppingCartListener;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
  * @author win8
  */
-public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCartListener {
+public class CartItemListPanel extends javax.swing.JPanel  {
 
     /**
      * Creates new form CartListPanel
@@ -47,18 +38,7 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
     }// </editor-fold>//GEN-END:initComponents
 
     public void insertShoppingItem(ShoppingItem item) {
-        if (item == null || item.getAmount() <= 0) {
-            return;
-        }
-        Product p = item.getProduct();
-        for (ShoppingItem existingItem : itemList) {
-            if (existingItem.getProduct().equals(p)) {
-                item.setAmount(item.getAmount() + existingItem.getAmount());
-                cart.removeItem(existingItem);
 
-                break;
-            }
-        }
         itemList.add(item);
 
         Collections.sort(itemList, new Comparator<ShoppingItem>() {
@@ -86,22 +66,8 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
 
         for (ShoppingItem item : itemList) {
             CartItemPanel cartItemPanel = new CartItemPanel(item);
-            cartItemPanel.addAmountChangeListener(new ChangeListener() {
-
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                if (cartItemPanel.getAmount() != item.getAmount()) {
-                    cartItemPanel.removeChangeListener(this);
-                    if (cartItemPanel.getAmount() > 0) {
-                        cartManager.setAmountOfItem(item, cartItemPanel.getAmount());
-                    }
-                    else {
-                        cartManager.removeItem(item);
-                    }
-                }
-
-            }
-        });
+            cartItemPanel.setPanelListener(listener);
+          
             add(cartItemPanel);
         }
         updateSize();
@@ -110,32 +76,19 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-    ShoppingCart cart = IMatDataHandler.getInstance().getShoppingCart();
-    CartManager cartManager = CartManager.getInstance();
-    @Override
-    public void shoppingCartChanged(CartEvent ce) {
-
-        ShoppingItem item = ce.getShoppingItem();
-
-        if (item == null && cart.getItems().isEmpty()) {
-            clearList();
-        } else if (ce.isAddEvent()) {
-            insertShoppingItem(item);
-        } else if (!cartManager.containsShoppingItem(item)) {
-            System.out.println("remove item");
-            removeItem(item);
-        }
-        else { //amount was changed
-            updateList();
-        }
+   
+    ShoppingItemPanelListener listener;
+    
+    public void setItemPanelListener(ShoppingItemPanelListener listener) {
+        this.listener = listener;
     }
+
 
     public void updateSize() {
         setSize(getPreferredSize());
         setMaximumSize(getPreferredSize());
         revalidate();
     }
-    HashMap<ShoppingItem, CartItemPanel> cartItemPanels = new HashMap<>();
     ArrayList<ShoppingItem> itemList = new ArrayList<>();
 
 }

@@ -5,7 +5,6 @@
  */
 package imat;
 
-import imat.controller.CartManager;
 import java.text.DecimalFormat;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -18,26 +17,37 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 public class CartItemPanel extends javax.swing.JPanel {
 
-    
     /**
      * Creates new form cartItemPanel
+     *
      * @param item
      */
     public CartItemPanel(ShoppingItem item) {
 
         initComponents();
         setShoppingItem(item);
+        amountSpinner.addChangeListener(new ChangeListener() {
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                System.out.println("here");
+                if (listener != null) {
+                    if (getAmount() != item.getAmount()) {
+                        if(getAmount() > 0) {
+                            System.out.println("notify change");
+                            listener.amountChanged(item, getAmount());
+                        }
+                        else {
+                            listener.itemRemoved(item);
+                        }
+                    }
+                }
+            }
+        });
 
     }
 
-    
-    public void addAmountChangeListener(ChangeListener listener) {
-        amountSpinner.addChangeListener(listener);
-    }
-    
-    public void removeChangeListener(ChangeListener listener) {
-        amountSpinner.removeChangeListener(listener);
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,11 +116,16 @@ public class CartItemPanel extends javax.swing.JPanel {
     private javax.swing.JLabel productUnitLabel;
     // End of variables declaration//GEN-END:variables
     private ShoppingItem item;
+    private ShoppingItemPanelListener listener;
 
-    
+    public void setPanelListener(ShoppingItemPanelListener listener) {
+        this.listener = listener;
+    }
+
     public double getAmount() {
         return (Integer) amountSpinner.getValue();
     }
+
     public void setShoppingItem(ShoppingItem item) {
         this.item = item;
         Product product = item.getProduct();
