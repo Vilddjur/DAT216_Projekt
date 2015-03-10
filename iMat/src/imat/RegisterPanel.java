@@ -382,6 +382,10 @@ public class RegisterPanel extends javax.swing.JPanel {
         return error;
     }
     
+    public void showBackButton(boolean b) {
+        backButton.setVisible(b);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressField;
     private javax.swing.JLabel addressLabel;

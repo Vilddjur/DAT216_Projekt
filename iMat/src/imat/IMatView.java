@@ -62,6 +62,13 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
 
         } else if (property.equals("gotoRegister")) {
             switchToCard("register");
+            
+            if (evt.getNewValue() != null && evt.getNewValue().equals("hideBackButton")) {
+                registerPanel.showBackButton(false);
+            } else {
+                registerPanel.showBackButton(true);
+            }
+            
             subcategoryList.clear();
             registerPanel.focusFirstField();
         } else if (property.equals("showEditProfileCard")) {
@@ -133,6 +140,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         registerPanel.addPropertyChangeListener(this);
         profilePanel.addPropertyChangeListener(this);
         editProfilePanel.addPropertyChangeListener(this);
+        checkOutPanel.addPropertyChangeListener(this);
     }
 
     /**
