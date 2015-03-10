@@ -83,6 +83,9 @@ public class OrderHistoryPanel extends javax.swing.JPanel implements PropertyCha
         priceLabel = new javax.swing.JLabel();
         list = new javax.swing.JPanel();
 
+        setBackground(Constants.MAIN_BACKGROUND);
+
+        jPanel1.setBackground(Constants.MAIN_BACKGROUND);
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         dateLabel.setText("Datum");
@@ -120,6 +123,7 @@ public class OrderHistoryPanel extends javax.swing.JPanel implements PropertyCha
                 .addGap(0, 0, 0))
         );
 
+        list.setBackground(Constants.MAIN_BACKGROUND);
         list.setLayout(new javax.swing.BoxLayout(list, javax.swing.BoxLayout.Y_AXIS));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

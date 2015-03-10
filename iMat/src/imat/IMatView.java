@@ -12,6 +12,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -36,23 +37,43 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         String property = evt.getPropertyName();
         
         if (property.equals("subcategoryChange")) {
-            Category category = (Category) evt.getNewValue();
-            if (category != null) {
-                productListPanel.updateProducts(category.getProducts());
+            if (evt.getNewValue() instanceof Category) {
+                Category category = (Category) evt.getNewValue();
+                if (category != null) {
+                    productListPanel.updateProducts(category.getProducts());
+                }
+            } else if (evt.getNewValue() instanceof ProfileSubListItem) {
+                ProfileSubListItem item = (ProfileSubListItem) evt.getNewValue();
+                switchToCard(item.getCard());
             }
-        } else if (property.equals("login")) {
+        } else if (property.equals("login")
+                || property.equals("register")
+                || property.equals("showProfileCard")) {
             switchToCard("profile");
-        } else if (property.equals("register")) {
-            switchToCard("profile");
+            subcategoryList.clear();
+            
+            List<ProfileSubListItem> list = new ArrayList<>();
+            list.add(new ProfileSubListItem("Profil", "profile"));
+            list.add(new ProfileSubListItem("Orderhistorik", "orderHistory"));
+            list.add(new ProfileSubListItem("Favoriter", "favourites"));
+            Object[] arr = list.toArray();
+            subcategoryList.update(arr);
         } else if (property.equals("gotoRegister")) {
             switchToCard("register");
+            subcategoryList.clear();
             registerPanel.focusFirstField();
-        } else if (property.equals("showProfileCard")) {
-            switchToCard("profile");
         } else if (property.equals("showEditProfileCard")) {
             switchToCard("editProfile");
+            subcategoryList.clear();
+            
+            List<ProfileSubListItem> list = new ArrayList<>();
+            list.add(new ProfileSubListItem("Profil", "e"));
+            list.add(new ProfileSubListItem("Orderhistorik", "orderHistory"));
+            list.add(new ProfileSubListItem("Favoriter", "favourites"));
+            subcategoryList.update(list.toArray());
         } else if (property.equals("showLoginCard")) {
             switchToCard("login");
+            subcategoryList.clear();
         }
     }
     /**
@@ -65,6 +86,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             List<Product> results = imat.findProducts(str);
             productListPanel.updateProducts(results);
             switchToCard("productList");
+            subcategoryList.clear();
         }
     }
     
@@ -99,6 +121,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             public void showCheckoutContent() {
                 resetButtons();
                 switchToCard("checkOut");
+                subcategoryList.clear();
             }
         });
         
@@ -152,6 +175,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         registerPanel = new imat.RegisterPanel();
         productListPanel = new imat.ProductListPanel();
         editProfilePanel = new imat.EditProfilePanel();
+        orderHistoryMainPanel1 = new imat.OrderHistoryMainPanel();
+        favouritesPanel1 = new imat.FavouritesPanel();
         shoppingPanel1 = new imat.ShoppingPanel();
         subcategoryList = new imat.SubcategoryList();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -350,6 +375,20 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         mainContentPanel.add(registerPanel, "register");
         mainContentPanel.add(productListPanel, "productList");
         mainContentPanel.add(editProfilePanel, "editProfile");
+        mainContentPanel.add(orderHistoryMainPanel1, "orderHistory");
+
+        javax.swing.GroupLayout favouritesPanel1Layout = new javax.swing.GroupLayout(favouritesPanel1);
+        favouritesPanel1.setLayout(favouritesPanel1Layout);
+        favouritesPanel1Layout.setHorizontalGroup(
+            favouritesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1106, Short.MAX_VALUE)
+        );
+        favouritesPanel1Layout.setVerticalGroup(
+            favouritesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 602, Short.MAX_VALUE)
+        );
+
+        mainContentPanel.add(favouritesPanel1, "favourites");
 
         javax.swing.GroupLayout rightSplitPaneLayout = new javax.swing.GroupLayout(rightSplitPane);
         rightSplitPane.setLayout(rightSplitPaneLayout);
@@ -466,6 +505,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         source.highlight();
         
         switchToCard("productList");
+        subcategoryList.clear();
         
         setList(source.getCategory());
     }
@@ -478,6 +518,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         resetProductList();
         
         switchToCard("startPage");
+        subcategoryList.clear();
     }//GEN-LAST:event_homeButtonMouseClicked
     /**
      * Checks the state of {@link UserManager}, logged in, switch to profile, not logged in, switch to loginform.
@@ -487,8 +528,17 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         resetButtons();
         if (UserManager.getInstance().isLoggedIn()) {
             switchToCard("profile");
+            subcategoryList.clear();
+            
+            List<ProfileSubListItem> list = new ArrayList<>();
+            list.add(new ProfileSubListItem("Profil", "profile"));
+            list.add(new ProfileSubListItem("Orderhistorik", "orderHistory"));
+            list.add(new ProfileSubListItem("Favoriter", "favourites"));
+            Object[] arr = list.toArray();
+            subcategoryList.update(arr);
         } else {
             switchToCard("login");
+            subcategoryList.clear();
         }
     }//GEN-LAST:event_profileButtonMouseClicked
     
@@ -541,6 +591,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private imat.MainCategoryItem diaryButton;
     private imat.MainCategoryItem dryButton;
     private imat.EditProfilePanel editProfilePanel;
+    private imat.FavouritesPanel favouritesPanel1;
     private imat.MainCategoryItem fruitButton;
     private javax.swing.JLabel homeButton;
     private javax.swing.JLabel jLabel2;
@@ -551,6 +602,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private imat.LoginPanel loginPanel;
     private javax.swing.JPanel mainContentPanel;
     private javax.swing.JPanel mainPanel;
+    private imat.OrderHistoryMainPanel orderHistoryMainPanel1;
     private imat.ProductListPanel productListPanel;
     private imat.ProfileItem profileButton;
     private imat.ProfilePanel profilePanel;
@@ -578,7 +630,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             tmp.show(checkOutPanel.getMainPanel(), "infoCard");
         }
         manager.show(mainContentPanel, card);
-        subcategoryList.clear();
     }
     /**
      * Sets the {@link SubcategoryList} to the corresponding {@link Category}s

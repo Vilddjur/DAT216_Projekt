@@ -83,6 +83,7 @@ public class OrderHistoryItem extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         productList = new javax.swing.JPanel();
 
+        wrapper.setBackground(Constants.MAIN_BACKGROUND);
         wrapper.setPreferredSize(new java.awt.Dimension(0, 0));
 
         labels.setBackground(new java.awt.Color(255, 255, 255));

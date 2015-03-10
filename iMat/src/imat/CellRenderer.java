@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import javax.swing.ListModel;
@@ -19,8 +20,8 @@ import javax.swing.border.MatteBorder;
  *
  * @author Oskar
  */
-public class CellRenderer extends SubcategoryListItem
-        implements ListCellRenderer<Category> {
+public class CellRenderer extends JLabel
+        implements ListCellRenderer<SubListItem> {
     private MouseAdapter    handler;
     private int             hoverIndex = -1;
     public CellRenderer() {
@@ -29,8 +30,8 @@ public class CellRenderer extends SubcategoryListItem
     }
 
     @Override
-    public Component getListCellRendererComponent(JList<? extends Category> list, Category value, int index, boolean isSelected, boolean cellHasFocus) {
-        setCategory(value);
+    public Component getListCellRendererComponent(JList<? extends SubListItem> list, SubListItem value, int index, boolean isSelected, boolean cellHasFocus) {
+        setText(value.toString());
         
         if (isSelected) {
             setBackground(Constants.HIGHLIGHT_COLOR);
@@ -45,6 +46,7 @@ public class CellRenderer extends SubcategoryListItem
         
         return this;
     }
+    
     public MouseAdapter getHandler(JList list){
         if(handler == null){
             handler = new HoverHandler(list);

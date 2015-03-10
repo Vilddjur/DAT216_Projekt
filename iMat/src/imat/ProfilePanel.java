@@ -69,8 +69,12 @@ public class ProfilePanel extends javax.swing.JPanel
         cityLabel = new javax.swing.JLabel();
         phoneLabel = new javax.swing.JLabel();
         editButton = new javax.swing.JButton();
-        orderHistoryPanel2 = new imat.OrderHistoryPanel();
         nameLabel = new javax.swing.JLabel();
+
+        jScrollPane1.setBackground(Constants.MAIN_BACKGROUND);
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jPanel1.setBackground(Constants.MAIN_BACKGROUND);
 
         headLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         headLabel.setText("Kontaktupgifter");
@@ -100,12 +104,11 @@ public class ProfilePanel extends javax.swing.JPanel
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 887, Short.MAX_VALUE)
+            .addGap(0, 889, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(orderHistoryPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 875, Short.MAX_VALUE)
                         .addComponent(adressLabel)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(postcodeLabel)
@@ -117,11 +120,11 @@ public class ProfilePanel extends javax.swing.JPanel
                         .addComponent(phoneLabel)
                         .addComponent(nameLabel)
                         .addComponent(editButton))
-                    .addContainerGap()))
+                    .addContainerGap(713, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 658, Short.MAX_VALUE)
+            .addGap(0, 660, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -142,9 +145,7 @@ public class ProfilePanel extends javax.swing.JPanel
                         .addComponent(postcodeLabel))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(editButton)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(orderHistoryPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
-                    .addContainerGap()))
+                    .addContainerGap(465, Short.MAX_VALUE)))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -179,7 +180,6 @@ public class ProfilePanel extends javax.swing.JPanel
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nameLabel;
-    private imat.OrderHistoryPanel orderHistoryPanel2;
     private javax.swing.JLabel persnbrLabel;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JLabel postcodeLabel;

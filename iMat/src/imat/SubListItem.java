@@ -5,13 +5,10 @@
  */
 package imat;
 
-import java.util.List;
-import se.chalmers.ait.dat215.project.Product;
-
 /**
  *
  * @author mats
  */
-public interface Category extends SubListItem {
-    public List<Product> getProducts();
+public interface SubListItem {
+    
 }
