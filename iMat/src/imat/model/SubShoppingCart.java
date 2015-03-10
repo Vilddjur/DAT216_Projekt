@@ -22,6 +22,9 @@ public class SubShoppingCart extends ShoppingCart implements ShoppingCartListene
     private final ShoppingCart mainCart = IMatDataHandler.getInstance().getShoppingCart();
     private String name;
 
+    public SubShoppingCart() {
+        mainCart.addShoppingCartListener(this);
+    }
     public String getName() {
         return name;
     }
@@ -76,7 +79,7 @@ public class SubShoppingCart extends ShoppingCart implements ShoppingCartListene
         else if(this.getItems().contains(item)) {
             if(!mainCart.getItems().contains(item)) {
                 //item was removed from main cart
-                this.removeItem(item);
+                super.removeItem(item);
             }
             else {
                 //item was probably modified pass on event
