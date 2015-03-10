@@ -78,6 +78,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
 
         tabbedPane.setBackground(Constants.MAIN_BACKGROUND);
         tabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        tabbedPane.setToolTipText("");
         tabbedPane.setMinimumSize(new java.awt.Dimension(40, 25));
         tabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -98,7 +99,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
             }
         });
         cartTab.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 3, 3));
-        tabbedPane.addTab("tab1", cartTab);
+        tabbedPane.addTab("tab1", null, cartTab, "Visa kundvagnen");
 
         shoppingListTab.setBackground(Constants.LIST_COLOR);
         shoppingListTab.setPreferredSize(new java.awt.Dimension(23, 300));
@@ -108,7 +109,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
             }
         });
         shoppingListTab.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 3, 3));
-        tabbedPane.addTab("t22ab2", shoppingListTab);
+        tabbedPane.addTab("t22ab2", null, shoppingListTab, "Visa inköpslistor");
 
         tabbedPane.setBackgroundAt(0, Constants.CART_COLOR);
         tabbedPane.setBackgroundAt(1, Constants.LIST_COLOR);
@@ -146,6 +147,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
     public ShoppingPanel() {
 
         button = new ExpandButton(20);
+        button.setToolTipText("Minimera kundvagn/inköpslista");
         initComponents();
 
         //cartTab.add(button);

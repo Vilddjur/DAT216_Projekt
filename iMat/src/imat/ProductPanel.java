@@ -125,6 +125,7 @@ public class ProductPanel extends javax.swing.JPanel {
         );
 
         favoriteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/favoriteStartEmpty.png"))); // NOI18N
+        favoriteButton.setToolTipText("Spara som favorit");
         favoriteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 favoriteButtonActionPerformed(evt);

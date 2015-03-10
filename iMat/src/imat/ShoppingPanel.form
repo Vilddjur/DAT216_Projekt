@@ -84,6 +84,7 @@
           <Connection code="Constants.MAIN_BACKGROUND" type="code"/>
         </Property>
         <Property name="tabPlacement" type="int" value="2"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[40, 25]"/>
         </Property>
@@ -113,8 +114,9 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="tab1">
+              <JTabbedPaneConstraints tabName="tab1" toolTip="Visa kundvagnen">
                 <Property name="tabTitle" type="java.lang.String" value="tab1"/>
+                <Property name="tabToolTip" type="java.lang.String" value="Visa kundvagnen"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -138,8 +140,9 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="t22ab2">
+              <JTabbedPaneConstraints tabName="t22ab2" toolTip="Visa ink&#xf6;pslistor">
                 <Property name="tabTitle" type="java.lang.String" value="t22ab2"/>
+                <Property name="tabToolTip" type="java.lang.String" value="Visa ink&#xf6;pslistor"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
