@@ -69,8 +69,8 @@
                   <Component id="amountLabel" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="varorLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="totalPriceLabel" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="totalPriceLabel" pref="44" max="32767" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="sekLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -102,7 +102,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="varorLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="varor   &#xe1; "/>
+            <Property name="text" type="java.lang.String" value="varor  &#xe1; "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="totalPriceLabel">

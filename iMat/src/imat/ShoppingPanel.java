@@ -76,6 +76,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
+        tabbedPane.setBackground(Constants.MAIN_BACKGROUND);
         tabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         tabbedPane.setMinimumSize(new java.awt.Dimension(40, 25));
         tabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -89,7 +90,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
             }
         });
 
-        cartTab.setBackground(java.awt.Color.orange);
+        cartTab.setBackground(Constants.CART_COLOR);
         cartTab.setPreferredSize(new java.awt.Dimension(23, 300));
         cartTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -99,7 +100,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
         cartTab.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 3, 3));
         tabbedPane.addTab("tab1", cartTab);
 
-        shoppingListTab.setBackground(java.awt.Color.cyan);
+        shoppingListTab.setBackground(Constants.LIST_COLOR);
         shoppingListTab.setPreferredSize(new java.awt.Dimension(23, 300));
         shoppingListTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -109,8 +110,8 @@ public class ShoppingPanel extends javax.swing.JPanel {
         shoppingListTab.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 3, 3));
         tabbedPane.addTab("t22ab2", shoppingListTab);
 
-        tabbedPane.setBackgroundAt(0, Color.ORANGE);
-        tabbedPane.setBackgroundAt(1, Color.CYAN);
+        tabbedPane.setBackgroundAt(0, Constants.CART_COLOR);
+        tabbedPane.setBackgroundAt(1, Constants.LIST_COLOR);
 
         add(tabbedPane);
         //remove(tabbedPane);

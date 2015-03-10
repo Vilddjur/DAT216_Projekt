@@ -35,7 +35,7 @@ public class ShoppingListPanel extends javax.swing.JPanel {
         totalTextLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
-        addToCartButton.setBackground(java.awt.Color.orange);
+        addToCartButton.setBackground(Constants.CART_COLOR);
         addToCartButton.setText("LÄGG I KUNDVAGNEN");
         addToCartButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         addToCartButton.setBorderPainted(false);

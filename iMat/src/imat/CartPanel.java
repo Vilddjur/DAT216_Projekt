@@ -30,7 +30,6 @@ public class CartPanel extends javax.swing.JPanel {
      */
     public CartPanel() {
         initComponents();
-        checkoutButton.setBackground(Color.GREEN);
         checkoutButton.setOpaque(true);
         checkoutButton.setContentAreaFilled(false);
 
@@ -85,7 +84,7 @@ public class CartPanel extends javax.swing.JPanel {
         totalValueLabel = new javax.swing.JLabel();
         totalTextLabel = new javax.swing.JLabel();
 
-        checkoutButton.setBackground(java.awt.Color.green);
+        checkoutButton.setBackground(Constants.CHECKOUT_BUTTON_COLOR);
         checkoutButton.setText("GÅ TILL KASSAN");
         checkoutButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         checkoutButton.setBorderPainted(false);
