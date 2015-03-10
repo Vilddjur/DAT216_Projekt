@@ -10,7 +10,6 @@ import imat.controller.UserManager;
 import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.JTextField;
@@ -42,25 +41,19 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         
         cardInfo.setVisible(false);
         
-        jRadioButton2.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                if (e.getStateChange() == ItemEvent.SELECTED) {
-                    cardInfo.setVisible(true);
-                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
-                    cardInfo.setVisible(false);
-                }
+        jRadioButton2.addItemListener((ItemEvent e) -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                cardInfo.setVisible(true);
+            } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                cardInfo.setVisible(false);
             }
         });
         
-        jRadioButton5.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                if (e.getStateChange() == ItemEvent.SELECTED) {
-                    dayComboBox.setEnabled(true);
-                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
-                    dayComboBox.setEnabled(false);
-                }
+        jRadioButton5.addItemListener((ItemEvent e) -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                dayComboBox.setEnabled(true);
+            } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                dayComboBox.setEnabled(false);
             }
         });
     }
