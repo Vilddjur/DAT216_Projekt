@@ -9,7 +9,9 @@ import imat.controller.CartManager;
 import imat.model.ShoppingList;
 import java.awt.Color;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
@@ -31,7 +33,7 @@ public class CartPanel extends javax.swing.JPanel {
         checkoutButton.setBackground(Color.GREEN);
         checkoutButton.setOpaque(true);
         checkoutButton.setContentAreaFilled(false);
-        
+
         cartManager = new CartManager();
         cart = IMatDataHandler.getInstance().getShoppingCart();
         updateTotalValue();
@@ -39,16 +41,29 @@ public class CartPanel extends javax.swing.JPanel {
 
             @Override
             public void shoppingCartChanged(CartEvent ce) {
-                if(ce.isAddEvent()) {
-                    categorizedShoppingListItemPanel3.shoppingCartChanged(ce);
+                if (cartManager.getSubCartForItem(ce.getShoppingItem()) == null) {
+                    if (ce.isAddEvent()) {
+                        categorizedShoppingListItemPanel3.shoppingCartChanged(ce);
+                    } else {
+                        categorizedShoppingListItemPanel3.shoppingCartChanged(ce);
+                    }
                 }
-                else {
-                    categorizedShoppingListItemPanel3.shoppingCartChanged(ce);
-                }
-               updateTotalValue();
-               
+                updateTotalValue();
+
             }
         });
+
+        List<ShoppingItem> items = new ArrayList<>();
+
+//        Product p = new Product();
+//        p.setName("Chebab");
+//        p.setPrice(100);
+//        p.setUnit("st");
+//        ShoppingItem it = new ShoppingItem(p, 1);
+//        items.add(it);
+//        ShoppingList shoppingList = new ShoppingList("Vardag", items);
+//        cartManager.addShoppingListToCart(shoppingList);
+//        jPanel1.add(new SubCartPanel(cartManager.getSubShoppingCartList().get(0)));
     }
 
     /**
@@ -147,18 +162,17 @@ public class CartPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutButtonActionPerformed
- 
+
         showCheckoutContentHandler.showCheckoutContent();
     }//GEN-LAST:event_checkoutButtonActionPerformed
 
-    
     public void setCheckoutButtonPerformedListener(ShowCheckoutContentHandler handler) {
-        showCheckoutContentHandler= handler;
+        showCheckoutContentHandler = handler;
     }
-    
+
     private void updateTotalValue() {
         DecimalFormat df = new DecimalFormat("0.00##");
-         totalValueLabel.setText(df.format(cart.getTotal()) +" :-");
+        totalValueLabel.setText(df.format(cart.getTotal()) + " :-");
     }
 
     public void updateSize() {
@@ -181,7 +195,7 @@ public class CartPanel extends javax.swing.JPanel {
 
     private ShoppingCart cart;
     private CartManager cartManager;
-    private HashMap<ShoppingList,CartCategorizedItemListPanel> shoppingListPanels;
+    private HashMap<ShoppingList, CartCategorizedItemListPanel> shoppingListPanels;
     private ShowCheckoutContentHandler showCheckoutContentHandler;
 
 }
