@@ -124,7 +124,7 @@ public class SubCartPanel extends javax.swing.JPanel implements ShoppingCartList
     @Override
     public void shoppingCartChanged(CartEvent ce) {
         if (cart.getItems().isEmpty()) {
-            cart.removeShoppingCartListener(this);
+           // cart.removeShoppingCartListener(this);
             this.getParent().remove(this);
         } else {
             shoppingItemListPanel1.shoppingCartChanged(ce);
