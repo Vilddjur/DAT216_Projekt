@@ -18,8 +18,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 public class CartItemPanel extends javax.swing.JPanel {
 
-    CartManager cartManager;
-
+    
     /**
      * Creates new form cartItemPanel
      * @param item
@@ -29,26 +28,16 @@ public class CartItemPanel extends javax.swing.JPanel {
         initComponents();
         setShoppingItem(item);
 
-        cartManager = new CartManager();
-
-        amountSpinner.addChangeListener(new ChangeListener() {
-
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                if ((Integer) amountSpinner.getValue() != item.getAmount()) {
-                    CartItemPanel.this.amountSpinner.removeChangeListener(this);
-                    if ((Integer) amountSpinner.getValue() > 0) {
-                        cartManager.setAmountOfItem(item, (Integer)amountSpinner.getValue());
-                    }
-                    else {
-                        cartManager.removeItem(item);
-                    }
-                }
-
-            }
-        });
     }
 
+    
+    public void addAmountChangeListener(ChangeListener listener) {
+        amountSpinner.addChangeListener(listener);
+    }
+    
+    public void removeChangeListener(ChangeListener listener) {
+        amountSpinner.removeChangeListener(listener);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -118,6 +107,10 @@ public class CartItemPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     private ShoppingItem item;
 
+    
+    public double getAmount() {
+        return (Integer) amountSpinner.getValue();
+    }
     public void setShoppingItem(ShoppingItem item) {
         this.item = item;
         Product product = item.getProduct();

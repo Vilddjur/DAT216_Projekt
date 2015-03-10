@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
@@ -83,7 +85,24 @@ public class CartItemListPanel extends javax.swing.JPanel implements ShoppingCar
         this.removeAll();
 
         for (ShoppingItem item : itemList) {
-            add(new CartItemPanel(item));
+            CartItemPanel cartItemPanel = new CartItemPanel(item);
+            cartItemPanel.addAmountChangeListener(new ChangeListener() {
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if (cartItemPanel.getAmount() != item.getAmount()) {
+                    cartItemPanel.removeChangeListener(this);
+                    if (cartItemPanel.getAmount() > 0) {
+                        cartManager.setAmountOfItem(item, cartItemPanel.getAmount());
+                    }
+                    else {
+                        cartManager.removeItem(item);
+                    }
+                }
+
+            }
+        });
+            add(cartItemPanel);
         }
         updateSize();
 
