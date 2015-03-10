@@ -14,6 +14,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.input.DataFormat;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
@@ -58,6 +59,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             list.add(new ProfileSubListItem("Favoriter", "favourites"));
             Object[] arr = list.toArray();
             subcategoryList.update(arr);
+
         } else if (property.equals("gotoRegister")) {
             switchToCard("register");
             subcategoryList.clear();
@@ -175,7 +177,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         productListPanel = new imat.ProductListPanel();
         editProfilePanel = new imat.EditProfilePanel();
         orderHistoryMainPanel1 = new imat.OrderHistoryMainPanel();
-        favouritesPanel1 = new imat.FavouritesPanel();
+        favoritesPanel = new imat.ProductListPanel();
         shoppingPanel1 = new imat.ShoppingPanel();
         subcategoryList = new imat.SubcategoryList();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -365,19 +367,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         mainContentPanel.add(productListPanel, "productList");
         mainContentPanel.add(editProfilePanel, "editProfile");
         mainContentPanel.add(orderHistoryMainPanel1, "orderHistory");
-
-        javax.swing.GroupLayout favouritesPanel1Layout = new javax.swing.GroupLayout(favouritesPanel1);
-        favouritesPanel1.setLayout(favouritesPanel1Layout);
-        favouritesPanel1Layout.setHorizontalGroup(
-            favouritesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1106, Short.MAX_VALUE)
-        );
-        favouritesPanel1Layout.setVerticalGroup(
-            favouritesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 742, Short.MAX_VALUE)
-        );
-
-        mainContentPanel.add(favouritesPanel1, "favourites");
+        mainContentPanel.add(favoritesPanel, "favourites");
 
         javax.swing.GroupLayout rightSplitPaneLayout = new javax.swing.GroupLayout(rightSplitPane);
         rightSplitPane.setLayout(rightSplitPaneLayout);
@@ -526,6 +516,9 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             list.add(new ProfileSubListItem("Favoriter", "favourites"));
             Object[] arr = list.toArray();
             subcategoryList.update(arr);
+            
+        //Update favourites
+            favoritesPanel.updateProducts(IMatDataHandler.getInstance().favorites());
         } else {
             switchToCard("login");
             subcategoryList.clear();
@@ -581,7 +574,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private imat.MainCategoryItem diaryButton;
     private imat.MainCategoryItem dryButton;
     private imat.EditProfilePanel editProfilePanel;
-    private imat.FavouritesPanel favouritesPanel1;
+    private imat.ProductListPanel favoritesPanel;
     private imat.MainCategoryItem fruitButton;
     private javax.swing.JLabel homeButton;
     private javax.swing.JLabel jLabel2;

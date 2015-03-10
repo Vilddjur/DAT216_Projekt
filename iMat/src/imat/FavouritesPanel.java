@@ -5,17 +5,28 @@
  */
 package imat;
 
+import java.util.List;
+import javax.swing.JPanel;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Product;
+
 /**
  *
  * @author mats
  */
-public class FavouritesPanel extends javax.swing.JPanel {
+public class FavouritesPanel extends JPanel{
 
     /**
      * Creates new form FavouritesPanel
      */
     public FavouritesPanel() {
         initComponents();
+        List<Product> list = IMatDataHandler.getInstance().favorites();
+        for(Product p: list){
+            this.add(new ProductPanel(p));
+            System.err.println("asdf");
+        }      
+        revalidate();
     }
 
     /**
