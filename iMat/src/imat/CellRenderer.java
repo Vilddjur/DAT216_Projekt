@@ -38,8 +38,7 @@ public class CellRenderer extends JLabel
         } else {
             if(index == hoverIndex){
                 setBackground(Constants.HOVER_COLOR);
-            }
-            else{
+            } else {
                 setBackground(Constants.DEFAULT_COLOR);
             }
         }

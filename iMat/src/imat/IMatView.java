@@ -28,6 +28,7 @@ import se.chalmers.ait.dat215.project.Product;
 public class IMatView extends javax.swing.JFrame implements PropertyChangeListener {
     
     private final IMatDataHandler imat = IMatDataHandler.getInstance();
+    private int originalDividerLocation;
 
     /**
      * Listens for changes in {@link SubcategoryList}
@@ -107,6 +108,10 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         loadResourcesWithProgressBar();
         
         initComponents();
+        
+        originalDividerLocation = jSplitPane1.getDividerLocation();
+        
+        showSubcategoryList(false);
         
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -393,6 +398,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         );
 
         jSplitPane1.setRightComponent(rightSplitPane);
+
+        subcategoryList.setBackground(new java.awt.Color(255, 255, 255));
         jSplitPane1.setLeftComponent(subcategoryList);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -506,8 +513,20 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         resetProductList();
         
         switchToCard("startPage");
+        jSplitPane1.setDividerLocation(0);
+        showSubcategoryList(false);
         subcategoryList.clear();
     }//GEN-LAST:event_homeButtonMouseClicked
+    
+    private void showSubcategoryList(boolean b) {
+        if (b) {
+            jSplitPane1.setDividerLocation(originalDividerLocation);
+        } else {
+            jSplitPane1.setDividerLocation(0);
+        }
+        subcategoryList.setVisible(b);
+    }
+    
     /**
      * Checks the state of {@link UserManager}, logged in, switch to profile, not logged in, switch to loginform.
      * @param evt 
@@ -615,10 +634,20 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
      */
     private void switchToCard(String card) {       
         CardLayout manager = (CardLayout) mainContentPanel.getLayout();
-        if(card=="checkOut"){
+        if(card.equals("checkOut")) {
             CardLayout tmp = (CardLayout) checkOutPanel.getMainPanel().getLayout();
             tmp.show(checkOutPanel.getMainPanel(), "infoCard");
         }
+        
+        if (card.equals("startPage")
+                || card.equals("login")
+                || card.equals("register")
+                || card.equals("checkOut")) {
+            showSubcategoryList(false);
+        } else {
+            showSubcategoryList(true);
+        }
+        
         manager.show(mainContentPanel, card);
     }
     /**
