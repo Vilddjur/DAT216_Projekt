@@ -59,6 +59,7 @@ public class ProfilePanel extends javax.swing.JPanel
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToggleButton1 = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         headLabel = new javax.swing.JLabel();
@@ -71,7 +72,9 @@ public class ProfilePanel extends javax.swing.JPanel
         editButton = new javax.swing.JButton();
         nameLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        creditCardPanel1 = new imat.CreditCardPanel();
+        creditCardPanel2 = new imat.CreditCardPanel();
+
+        jToggleButton1.setText("jToggleButton1");
 
         jScrollPane1.setBackground(Constants.MAIN_BACKGROUND);
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -113,8 +116,8 @@ public class ProfilePanel extends javax.swing.JPanel
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(creditCardPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(379, Short.MAX_VALUE))
+                    .addComponent(creditCardPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(388, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -138,8 +141,8 @@ public class ProfilePanel extends javax.swing.JPanel
                 .addGap(228, 228, 228)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(creditCardPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addComponent(creditCardPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -160,7 +163,7 @@ public class ProfilePanel extends javax.swing.JPanel
                         .addComponent(postcodeLabel))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(editButton)
-                    .addContainerGap(467, Short.MAX_VALUE)))
+                    .addContainerGap(473, Short.MAX_VALUE)))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -189,13 +192,14 @@ public class ProfilePanel extends javax.swing.JPanel
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adressLabel;
     private javax.swing.JLabel cityLabel;
-    private imat.CreditCardPanel creditCardPanel1;
+    private imat.CreditCardPanel creditCardPanel2;
     private javax.swing.JButton editButton;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel headLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel persnbrLabel;
     private javax.swing.JLabel phoneLabel;
