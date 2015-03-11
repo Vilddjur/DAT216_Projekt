@@ -263,6 +263,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
 
         topHeadPanel.setBackground(new java.awt.Color(183, 227, 176));
 
+        fruitButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 1, new java.awt.Color(102, 255, 102)));
         fruitButton.setMinimumSize(new java.awt.Dimension(100, 60));
         fruitButton.setName(""); // NOI18N
         fruitButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -271,6 +272,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             }
         });
 
+        charkButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(102, 255, 102)));
         charkButton.setMinimumSize(new java.awt.Dimension(100, 60));
         charkButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -278,6 +280,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             }
         });
 
+        diaryButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(102, 255, 102)));
         diaryButton.setMinimumSize(new java.awt.Dimension(100, 60));
         diaryButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -285,6 +288,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             }
         });
 
+        breadButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(102, 255, 102)));
         breadButton.setMinimumSize(new java.awt.Dimension(100, 60));
         breadButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -292,6 +296,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             }
         });
 
+        snacksButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(102, 255, 102)));
         snacksButton.setMinimumSize(new java.awt.Dimension(100, 60));
         snacksButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -306,6 +311,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             }
         });
 
+        dryButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(102, 255, 102)));
         dryButton.setMinimumSize(new java.awt.Dimension(100, 60));
         dryButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -381,7 +387,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         rightSplitPaneLayout.setHorizontalGroup(
             rightSplitPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightSplitPaneLayout.createSequentialGroup()
-                .addComponent(mainContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1106, Short.MAX_VALUE)
+                .addComponent(mainContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1203, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
                 .addComponent(shoppingPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -392,23 +398,21 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         );
 
         jSplitPane1.setRightComponent(rightSplitPane);
-
-        subcategoryList.setBackground(new java.awt.Color(255, 255, 255));
         jSplitPane1.setLeftComponent(subcategoryList);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1350, Short.MAX_VALUE)
-            .addComponent(jSplitPane1)
+            .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1443, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1443, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
