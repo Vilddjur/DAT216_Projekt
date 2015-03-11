@@ -411,13 +411,13 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
         if(password.length() == 0){
             strengthProgressBar.setValue(0);
         }
-        else if(password.length() < 4){
+        else if(password.length() < 5){
             strengthProgressBar.setValue(33);
             strengthProgressBar.setForeground(Color.red);
-        }else if(password.length() < 8){
+        }else if(password.length() < 10){
             strengthProgressBar.setValue(67);
             strengthProgressBar.setForeground(Color.yellow);
-        }else{
+        }else if(password.length() >= 10){
             strengthProgressBar.setValue(100);
             strengthProgressBar.setForeground(Color.green);
         }
