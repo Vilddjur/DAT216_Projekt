@@ -41,14 +41,13 @@ public class ShoppingListPanel extends javax.swing.JPanel {
 
             @Override
             public void amountChanged(ShoppingItem item, double changedTo) {
-                item.setAmount(changedTo);
-                cartList.updateList();
+                shoppingListManager.modifyItemInActiveList(item, changedTo);
             }
 
             @Override
             public void itemRemoved(ShoppingItem item) {
                 shoppingListManager.removeItemInCurrentList(item);
-                cartList.removeItem(item);
+                
 
             }
         });
@@ -70,6 +69,24 @@ public class ShoppingListPanel extends javax.swing.JPanel {
                 }
                 updateTotal();
                 jPanel1.revalidate();
+            }
+
+            @Override
+            public void itemAddedToActiveList(ShoppingItem item) {
+                cartList.insertShoppingItem(item);
+                updateTotal();
+            }
+
+            @Override
+            public void itemModifiedInActiveList(ShoppingItem item) {
+                updateTotal();
+            }
+
+            @Override
+            public void itemDeletedInActiveList(ShoppingItem item) {
+                cartList.removeItem(item);
+                
+                updateTotal();
             }
         });
         updateTotal();

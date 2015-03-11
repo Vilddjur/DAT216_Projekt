@@ -76,11 +76,51 @@ public class ShoppingListManager {
         if (availableLists.indexOf(currentList) != index) {
             currentList = availableLists.get(index);
             for(ShoppingListManagerListener listener : listeners) {
-                listener.changedActiveList(currentList);;
+                listener.changedActiveList(currentList);
             }
         }
     }
+    
+    public void addItemToActiveList(Product p, double amount) {
+        if(!currentList.hasProduct(p)){
+            ShoppingItem item = new ShoppingItem(p, amount);
+            currentList.addItem(item);
+            for(ShoppingListManagerListener listener : listeners) {
+                listener.itemAddedToActiveList(item);
+            }
+        }
+        else {
+            ShoppingItem item = currentList.getShoppingItemByProduct(p);
+            modifyItemInActiveList(item, item.getAmount()+amount);
+        }
+    }
 
+    public void modifyItemInActiveList(ShoppingItem item, double changeAmountTo) {
+        if(!currentList.getItems().contains(item)) {
+            return;
+        }
+        if(changeAmountTo > 0) {
+            item.setAmount(changeAmountTo);
+            for(ShoppingListManagerListener listener : listeners) {
+                listener.itemModifiedInActiveList(item);
+            }
+        }
+        else  {
+            deleteItemInActiveList(item);             
+        }
+    }
+    
+    public void deleteItemInActiveList(ShoppingItem item) {
+        if(!currentList.getItems().contains(item)) {
+            return;
+        }
+        currentList.removeItem(item);
+         for(ShoppingListManagerListener listener : listeners) {
+                listener.itemDeletedInActiveList(item);
+            }
+        
+        
+    }
     public void addShoppingList(ShoppingList list) {
         if (list != null && !availableLists.contains(list)) {
             availableLists.add(list);

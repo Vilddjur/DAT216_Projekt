@@ -5,6 +5,7 @@
  */
 package imat;
 
+import imat.controller.ShoppingListManager;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -72,7 +73,7 @@ public class ProductPanel extends javax.swing.JPanel {
         nameLabel = new javax.swing.JLabel();
         imageLabel = new javax.swing.JLabel();
         favoriteButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        addToListButton = new javax.swing.JButton();
 
         setBackground(Constants.MAIN_BACKGROUND);
 
@@ -133,9 +134,14 @@ public class ProductPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/add.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
+        addToListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/add.png"))); // NOI18N
+        addToListButton.setBorderPainted(false);
+        addToListButton.setContentAreaFilled(false);
+        addToListButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addToListButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -152,7 +158,7 @@ public class ProductPanel extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addToListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(favoriteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -160,7 +166,7 @@ public class ProductPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(addToListButton)
                     .addComponent(favoriteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -203,13 +209,21 @@ public class ProductPanel extends javax.swing.JPanel {
       }
     }//GEN-LAST:event_favoriteButtonActionPerformed
 
+    private void addToListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToListButtonActionPerformed
+
+        ShoppingListManager shoppingListManager = ShoppingListManager.getInstance();
+        shoppingListManager.addItemToActiveList(product, getAmount());
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_addToListButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addToCartButton;
+    private javax.swing.JButton addToListButton;
     private javax.swing.JSpinner amountSpinner;
     private javax.swing.JButton favoriteButton;
     private javax.swing.JLabel imageLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JLabel nameLabel;

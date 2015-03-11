@@ -7,6 +7,7 @@ package imat.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
@@ -63,6 +64,22 @@ public class ShoppingList {
 
     }
 
+    public boolean hasProduct(Product p) {
+        for(ShoppingItem item : items) {
+            if(item.getProduct().getProductId() == p.getProductId())
+                return true;
+        }
+        return false;
+    }
+    
+    public ShoppingItem getShoppingItemByProduct(Product p) {
+        for(ShoppingItem item : items) {
+            if(item.getProduct().getProductId() == p.getProductId())
+                return item;
+        }
+        return null;
+        
+    }
     public double getTotal() {
         double sum = 0;
         for(ShoppingItem item : items)

@@ -5,6 +5,8 @@
  */
 package imat.model;
 
+import se.chalmers.ait.dat215.project.ShoppingItem;
+
 /**
  *
  * @author win8
@@ -12,4 +14,9 @@ package imat.model;
 public interface ShoppingListManagerListener {
     
     public void changedActiveList(ShoppingList shoppingList);
+    
+    public void itemAddedToActiveList(ShoppingItem item);
+    public void itemModifiedInActiveList(ShoppingItem item);
+    public void itemDeletedInActiveList(ShoppingItem item);
+    
 }
