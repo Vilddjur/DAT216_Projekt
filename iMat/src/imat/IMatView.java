@@ -211,7 +211,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         topPanel.setBackground(Constants.BANNER_COLOR);
         topPanel.setPreferredSize(new java.awt.Dimension(1120, 160));
 
-        jPanel1.setBackground(Constants.MAIN_BACKGROUND);
+        jPanel1.setBackground(Constants.BANNER_BACKGROUND_COLOR);
 
         homeButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/logo.jpg"))); // NOI18N
@@ -222,7 +222,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Marker Felt", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Marker Felt", 1, 56)); // NOI18N
         jLabel2.setForeground(Constants.FONT_BANNER_COLOR);
         jLabel2.setText("Din matbutik i molnet");
 
@@ -244,7 +244,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -274,6 +274,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         );
 
         topHeadPanel.setBackground(new java.awt.Color(183, 227, 176));
+        topHeadPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(204, 204, 204)));
 
         fruitButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 1, new java.awt.Color(110, 184, 98)));
         fruitButton.setMinimumSize(new java.awt.Dimension(100, 60));

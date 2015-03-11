@@ -6,6 +6,7 @@
 package imat;
 
 import java.awt.Color;
+import javax.swing.border.MatteBorder;
 
 /**
  *

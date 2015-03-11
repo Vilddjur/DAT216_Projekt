@@ -33,7 +33,7 @@ public class SearchPanel extends javax.swing.JPanel {
         searchField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
 
-        setBackground(Constants.BANNER_COLOR);
+        setBackground(Constants.BANNER_BACKGROUND_COLOR);
         setPreferredSize(new java.awt.Dimension(224, 60));
 
         searchField.setText("Sök...");
