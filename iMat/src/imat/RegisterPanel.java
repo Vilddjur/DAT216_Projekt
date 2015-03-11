@@ -50,6 +50,8 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jProgressBar2 = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         cityField = new javax.swing.JTextField();
         persnbrField = new javax.swing.JTextField();
@@ -75,6 +77,8 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
         phoneLabel = new javax.swing.JLabel();
         persnbrLabel = new javax.swing.JLabel();
         titleLabel = new javax.swing.JLabel();
+        strengthProgressBar = new javax.swing.JProgressBar();
+        jLabel3 = new javax.swing.JLabel();
         backButton = new imat.BackButton();
 
         setBackground(new java.awt.Color(246, 246, 246));
@@ -83,6 +87,12 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
 
         firstnameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         firstnameLabel.setText("Förnamn");
+
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyPressed(evt);
+            }
+        });
 
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("<html>E-postadressen du fyller i kommer fungera som användarnamn vid inloggning</html>");
@@ -140,6 +150,8 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel.setText("Registrering");
 
+        jLabel3.setText("Lösenordets styrka");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -179,15 +191,18 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
                             .addComponent(confirmPasswordLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(phoneLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(passwordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(phoneField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(confirmPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(registerButton)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jLabel1)))))
+                                .addComponent(jLabel1))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(strengthProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -232,14 +247,18 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
                     .addComponent(passwordLabel)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(strengthProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmPasswordLabel)
                     .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(registerButton)
-                .addContainerGap())
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -268,7 +287,7 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
                 .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -306,6 +325,10 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
         firePropertyChange("showLoginCard", null, null);
     }//GEN-LAST:event_backButtonMouseClicked
+
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
+        updatePasswordStenght();
+    }//GEN-LAST:event_passwordFieldKeyPressed
     
     private void resetLabels() {
         emailLabel.setForeground(Color.BLACK);
@@ -383,6 +406,23 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
         }
     }
     
+    private void updatePasswordStenght(){
+        String password = new String(passwordField.getPassword());
+        if(password.length() == 0){
+            strengthProgressBar.setValue(0);
+        }
+        else if(password.length() < 4){
+            strengthProgressBar.setValue(33);
+            strengthProgressBar.setForeground(Color.red);
+        }else if(password.length() < 8){
+            strengthProgressBar.setValue(67);
+            strengthProgressBar.setForeground(Color.yellow);
+        }else{
+            strengthProgressBar.setValue(100);
+            strengthProgressBar.setForeground(Color.green);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressField;
     private javax.swing.JLabel addressLabel;
@@ -397,7 +437,10 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
     private javax.swing.JLabel firstnameLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JProgressBar jProgressBar2;
     private javax.swing.JTextField lastnameField;
     private javax.swing.JLabel lastnameLabel;
     private javax.swing.JPasswordField passwordField;
@@ -409,6 +452,7 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
     private javax.swing.JTextField postCodeField;
     private javax.swing.JLabel postCodeLabel;
     private javax.swing.JButton registerButton;
+    private javax.swing.JProgressBar strengthProgressBar;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
