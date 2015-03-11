@@ -63,8 +63,7 @@ public class ShoppingListPanel extends javax.swing.JPanel {
         shoppingListManager.addListener(new ShoppingListManagerListener() {
 
             @Override
-            public void currentListChanged(ShoppingList shoppingList) {
-                System.out.println("Kill em");
+            public void changedActiveList(ShoppingList shoppingList) {
                 cartList.clearList();
                 for (ShoppingItem item : shoppingList.getItems()) {
                     cartList.insertShoppingItem(item);

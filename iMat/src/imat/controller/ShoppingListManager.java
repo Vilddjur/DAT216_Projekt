@@ -76,7 +76,7 @@ public class ShoppingListManager {
         if (availableLists.indexOf(currentList) != index) {
             currentList = availableLists.get(index);
             for(ShoppingListManagerListener listener : listeners) {
-                listener.currentListChanged(currentList);;
+                listener.changedActiveList(currentList);;
             }
         }
     }

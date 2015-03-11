@@ -11,5 +11,5 @@ package imat.model;
  */
 public interface ShoppingListManagerListener {
     
-    public void currentListChanged(ShoppingList shoppingList);
+    public void changedActiveList(ShoppingList shoppingList);
 }
