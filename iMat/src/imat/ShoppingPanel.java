@@ -74,12 +74,13 @@ public class ShoppingPanel extends javax.swing.JPanel {
         shoppingListLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         shoppingListLabel.getAccessibleContext().setAccessibleName("<html>.I<BR>N<BR>K<BR>Ö<BR>P<BR>S<BR>L<BR>I<BR>S<BR>T<BR>A</html>\n");
 
+        setBackground(Constants.MAIN_BACKGROUND);
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
         tabbedPane.setBackground(Constants.MAIN_BACKGROUND);
         tabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         tabbedPane.setToolTipText("");
-        tabbedPane.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tabbedPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tabbedPane.setMinimumSize(new java.awt.Dimension(40, 25));
         tabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {

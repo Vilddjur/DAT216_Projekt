@@ -64,7 +64,7 @@
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Handmark&#xf6;r"/>
+          <Color id="Default Cursor"/>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
@@ -128,6 +128,11 @@
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
@@ -136,12 +141,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="183" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="187" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="139" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="143" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

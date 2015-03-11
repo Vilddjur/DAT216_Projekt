@@ -117,7 +117,7 @@ public class ShoppingListPanel extends javax.swing.JPanel {
         addToCartButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         addToCartButton.setBorderPainted(false);
         addToCartButton.setContentAreaFilled(false);
-        addToCartButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addToCartButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addToCartButton.setOpaque(true);
         addToCartButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,15 +161,17 @@ public class ShoppingListPanel extends javax.swing.JPanel {
                 .addComponent(totalValueLabel))
         );
 
+        jScrollPane1.setBorder(null);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 183, Short.MAX_VALUE)
+            .addGap(0, 187, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 139, Short.MAX_VALUE)
+            .addGap(0, 143, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(jPanel1);
