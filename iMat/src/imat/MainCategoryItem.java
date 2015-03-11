@@ -45,8 +45,8 @@ public class MainCategoryItem extends javax.swing.JPanel {
         highlighted = true;
         
         currentColor = Constants.HIGHLIGHT_COLOR;
-        currentHoverColor = Constants.HIGHLIGHT_HOVER_COLOR;
-        currentPressedColor = Constants.HIGHLIGHT_PRESSED_COLOR;
+        currentHoverColor = Constants.HIGHLIGHT_COLOR;
+        currentPressedColor = Constants.HIGHLIGHT_COLOR;
         
         updateBackgroundColor();
     }
