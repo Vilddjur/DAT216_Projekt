@@ -170,7 +170,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         breadButton.setCategory(new MainProductCategory(MainProductCategory.Name.BREAD));
         snacksButton = new imat.MainCategoryItem();
         snacksButton.setCategory(new MainProductCategory(MainProductCategory.Name.DRINKS_AND_SNACKS));
-        recipeButton = new imat.MainCategoryItem();
         dryButton = new imat.MainCategoryItem();
         dryButton.setCategory(new MainProductCategory(MainProductCategory.Name.DRY));
         jSplitPane1 = new javax.swing.JSplitPane();
@@ -304,13 +303,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             }
         });
 
-        recipeButton.setMinimumSize(new java.awt.Dimension(100, 60));
-        recipeButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                recipeButtonMouseClicked(evt);
-            }
-        });
-
         dryButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(110, 184, 98)));
         dryButton.setMinimumSize(new java.awt.Dimension(100, 60));
         dryButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -336,8 +328,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
                 .addComponent(dryButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(snacksButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(recipeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         topHeadPanelLayout.setVerticalGroup(
@@ -347,7 +337,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             .addComponent(diaryButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(breadButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(snacksButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(recipeButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(dryButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -404,7 +393,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1443, Short.MAX_VALUE)
+            .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1447, Short.MAX_VALUE)
             .addComponent(jSplitPane1)
         );
         mainPanelLayout.setVerticalGroup(
@@ -479,14 +468,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private void snacksButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_snacksButtonMouseClicked
         handleClick(evt);
     }//GEN-LAST:event_snacksButtonMouseClicked
-    /**
-     * Redirects to handleClick(evt), @see #handleClick(MouseEvent evt)
-     * @param evt 
-     */
-    private void recipeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recipeButtonMouseClicked
-        handleClick(evt);
-    }//GEN-LAST:event_recipeButtonMouseClicked
-    
+
+   
     /**
      * Handles the clicks of the maincategory buttons, reads the source and displays the corresponding products.
      * @param evt 
@@ -616,7 +599,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private imat.ProductListPanel productListPanel;
     private imat.ProfileItem profileButton;
     private imat.ProfilePanel profilePanel;
-    private imat.MainCategoryItem recipeButton;
     private imat.RegisterPanel registerPanel;
     private javax.swing.JPanel rightSplitPane;
     private imat.SearchPanel searchPanel;

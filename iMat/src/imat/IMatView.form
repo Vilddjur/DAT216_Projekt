@@ -61,7 +61,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="topPanel" pref="1443" max="32767" attributes="0"/>
+              <Component id="topPanel" pref="1447" max="32767" attributes="0"/>
               <Component id="jSplitPane1" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
@@ -164,7 +164,7 @@
                       <Image iconType="3" name="/imat/img/logo.jpg"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Standardmark&#xf6;r"/>
+                      <Color id="Default Cursor"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -219,8 +219,6 @@
                           <Component id="dryButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="snacksButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                          <Component id="recipeButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -232,7 +230,6 @@
                       <Component id="diaryButton" alignment="1" max="32767" attributes="0"/>
                       <Component id="breadButton" alignment="1" max="32767" attributes="0"/>
                       <Component id="snacksButton" alignment="1" max="32767" attributes="0"/>
-                      <Component id="recipeButton" alignment="1" max="32767" attributes="0"/>
                       <Component id="dryButton" alignment="1" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
@@ -338,16 +335,6 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="snacksButton.setCategory(new MainProductCategory(MainProductCategory.Name.DRINKS_AND_SNACKS));"/>
                   </AuxValues>
-                </Component>
-                <Component class="imat.MainCategoryItem" name="recipeButton">
-                  <Properties>
-                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[100, 60]"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="recipeButtonMouseClicked"/>
-                  </Events>
                 </Component>
                 <Component class="imat.MainCategoryItem" name="dryButton">
                   <Properties>
