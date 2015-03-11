@@ -196,8 +196,14 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="cityField">
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldFocusGained"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="persnbrField">
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldFocusGained"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="firstnameLabel">
           <Properties>
@@ -207,6 +213,7 @@
         </Component>
         <Component class="javax.swing.JPasswordField" name="passwordField">
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldFocusGained"/>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="passwordFieldKeyReleased"/>
           </Events>
         </Component>
@@ -238,8 +245,14 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="postCodeField">
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldFocusGained"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="phoneField">
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldFocusGained"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="registerButton">
           <Properties>
@@ -267,6 +280,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="confirmPasswordField">
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldFocusGained"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="passwordLabel">
           <Properties>
@@ -293,8 +309,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="lastnameField">
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldFocusGained"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="firstnameField">
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldFocusGained"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="phoneLabel">
           <Properties>

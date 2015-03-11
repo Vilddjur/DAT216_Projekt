@@ -85,9 +85,26 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
 
         jPanel1.setBackground(new java.awt.Color(246, 246, 246));
 
+        cityField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        persnbrField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
         firstnameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         firstnameLabel.setText("Förnamn");
 
+        passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
         passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 passwordFieldKeyReleased(evt);
@@ -104,6 +121,18 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
         jLabel1.setText("Fält markerade med * måste fyllas i");
 
         emailField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        postCodeField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        phoneField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 fieldFocusGained(evt);
             }
@@ -128,6 +157,12 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
         postCodeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         postCodeLabel.setText("Postnummer");
 
+        confirmPasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
         passwordLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         passwordLabel.setText("* Lösenord");
 
@@ -139,6 +174,18 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
 
         confirmPasswordLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         confirmPasswordLabel.setText("* Bekräfta lösenord");
+
+        lastnameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        firstnameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
 
         phoneLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         phoneLabel.setText("Mobilnummer");

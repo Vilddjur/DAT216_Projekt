@@ -103,7 +103,8 @@ public class FieldValidations {
     }
     
     public static boolean isValidPhoneNumber(String number) {
-        return number.matches("^(\\+?46|0)7\\d{8}$");
+        return number.replaceFirst("-", "").replace(" ", "").matches("^(\\+?46|0)7\\d{8}$")
+                && !number.contains("  ");
     }
     
     public static int daysInMonth(int m, int y) {
