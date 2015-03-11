@@ -85,8 +85,9 @@ public class MainCategoryItem extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(100, 60));
-        setPreferredSize(new java.awt.Dimension(100, 60));
+        setMaximumSize(new java.awt.Dimension(120, 60));
+        setMinimumSize(new java.awt.Dimension(120, 60));
+        setPreferredSize(new java.awt.Dimension(120, 60));
         setSize(new java.awt.Dimension(100, 60));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -112,7 +113,7 @@ public class MainCategoryItem extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(categoryName, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                .addComponent(categoryName, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(

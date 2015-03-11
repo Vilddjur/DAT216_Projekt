@@ -27,11 +27,13 @@ public final class Constants {
     public static final Color CART_COLOR = new Color(0xFFFFE5);
     public static final Color LIST_COLOR = new Color(0xA0B7C3);
     
-    public static final Color BANNER_COLOR = new Color(0xFFE9CE);
+    public static final Color BANNER_COLOR = new Color(0xF6F6F6);
     public static final Color FONT_BANNER_COLOR = new Color(0x6B9937);
     
     public static final Color ADD_TO_CHECKOUT_BUTTON_COLOR = new Color(0xB7E3B0);
     public static final Color CHECKOUT_BUTTON_COLOR = new Color(0x89d57c);
+    public static final Color HOVER_ADD_TO_CHECKOUT_BUTTON_COLOR = new Color(0xB7E3B0);
+    public static final Color HOVER_CHECKOUT_BUTTON_COLOR = new Color(0x89d57c);
     
     private Constants() {
         throw new AssertionError();
