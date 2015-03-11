@@ -544,12 +544,13 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             Object[] arr = list.toArray();
             subcategoryList.update(arr);
             
-        //Update favourites
-            favoritesPanel.updateProducts(IMatDataHandler.getInstance().favorites());
         } else {
             switchToCard("login");
             subcategoryList.clear();
         }
+        
+    //Update favourites
+        favoritesPanel.updateProducts(IMatDataHandler.getInstance().favorites());
     }//GEN-LAST:event_profileButtonMouseClicked
     
     private void checkOutItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkOutItem2MouseClicked
