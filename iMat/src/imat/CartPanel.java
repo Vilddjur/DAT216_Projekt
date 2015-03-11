@@ -9,10 +9,14 @@ import imat.controller.CartManager;
 import imat.model.ShoppingList;
 import imat.model.SubShoppingCart;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.font.TextAttribute;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javax.swing.JLabel;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
@@ -88,6 +92,7 @@ public class CartPanel extends javax.swing.JPanel  {
         totalPanel = new javax.swing.JPanel();
         totalValueLabel = new javax.swing.JLabel();
         totalTextLabel = new javax.swing.JLabel();
+        emptyCartLabel = new javax.swing.JLabel();
 
         checkoutButton.setBackground(Constants.CHECKOUT_BUTTON_COLOR);
         checkoutButton.setText("GÅ TILL KASSAN");
@@ -136,6 +141,20 @@ public class CartPanel extends javax.swing.JPanel  {
                 .addComponent(totalValueLabel))
         );
 
+        emptyCartLabel.setText("(Töm kundvagn)");
+        emptyCartLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        emptyCartLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                emptyCartLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                emptyCartLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                emptyCartLabelMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,6 +168,10 @@ public class CartPanel extends javax.swing.JPanel  {
                     .addComponent(jSeparator1)
                     .addComponent(totalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(emptyCartLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +181,9 @@ public class CartPanel extends javax.swing.JPanel  {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(emptyCartLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(totalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -170,6 +195,20 @@ public class CartPanel extends javax.swing.JPanel  {
 
         showCheckoutContentHandler.showCheckoutContent();
     }//GEN-LAST:event_checkoutButtonActionPerformed
+
+    private void emptyCartLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emptyCartLabelMouseEntered
+
+        underlineLabel(emptyCartLabel, true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emptyCartLabelMouseEntered
+
+    private void emptyCartLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emptyCartLabelMouseExited
+         underlineLabel(emptyCartLabel, false);
+    }//GEN-LAST:event_emptyCartLabelMouseExited
+
+    private void emptyCartLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emptyCartLabelMouseClicked
+        cart.clear();
+    }//GEN-LAST:event_emptyCartLabelMouseClicked
 
     public void setCheckoutButtonPerformedListener(ShowCheckoutContentHandler handler) {
         showCheckoutContentHandler = handler;
@@ -186,9 +225,21 @@ public class CartPanel extends javax.swing.JPanel  {
         setMaximumSize(getPreferredSize());
         revalidate();
     }
+    
+    private void underlineLabel(JLabel label, boolean on) {
+        Font font = label.getFont();
+        Map attributes = font.getAttributes();
+        if (on) {
+            attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        } else {
+            attributes.put(TextAttribute.UNDERLINE, -1);
+        }
+        label.setFont(font.deriveFont(attributes));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private imat.CartCategorizedItemListPanel categorizedShoppingListItemPanel3;
     private javax.swing.JButton checkoutButton;
+    private javax.swing.JLabel emptyCartLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
