@@ -137,6 +137,7 @@ public class ProductPanel extends javax.swing.JPanel {
         });
 
         addToListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/add.png"))); // NOI18N
+        addToListButton.setToolTipText("Lägg till vara i inköpslista");
         addToListButton.setBorderPainted(false);
         addToListButton.setContentAreaFilled(false);
         addToListButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
