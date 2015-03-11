@@ -70,6 +70,8 @@ public class CartItemPanel extends javax.swing.JPanel {
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\win8\\Documents\\dat216\\delete.png")); // NOI18N
         jButton1.setText("jButton1");
 
+        setMaximumSize(new java.awt.Dimension(339, 48));
+
         productNameLabel.setText("Mjölk");
 
         productUnitLabel.setText("st");
