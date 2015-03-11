@@ -18,13 +18,13 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  * @author win8
  */
 public class ShoppingListManager {
-    private static final ShoppingListManager  instance = new ShoppingListManager();
-    
-    
+
+    private static final ShoppingListManager instance = new ShoppingListManager();
+
     private List<ShoppingList> availableLists = new ArrayList();
     private ShoppingList currentList;
     private List<ShoppingListManagerListener> listeners = new ArrayList();
-    
+
     private ShoppingListManager() {
         IMatDataHandler data = IMatDataHandler.getInstance();
         List<ShoppingItem> items = new ArrayList<>();
@@ -34,7 +34,7 @@ public class ShoppingListManager {
         items.add(new ShoppingItem(data.getProduct(4), 5));
         items.add(new ShoppingItem(data.getProduct(5), 4));
         currentList = new ShoppingList("Vardag", items);
-                List<ShoppingItem> items2 = new ArrayList<>();
+        List<ShoppingItem> items2 = new ArrayList<>();
         items2.add(new ShoppingItem(data.getProduct(6), 3));
         items2.add(new ShoppingItem(data.getProduct(7), 3));
         items2.add(new ShoppingItem(data.getProduct(8), 7));
@@ -44,40 +44,49 @@ public class ShoppingListManager {
         availableLists.add(new ShoppingList("Arabpack", items2));
 
     }
+
     public static ShoppingListManager getInstance() {
         return instance;
     }
-    
-    
+
     public void removeItemInCurrentList(ShoppingItem item) {
         currentList.removeItem(item);
     }
+
     public void addShoppingItemToCurrentShoppingList(Product p, double amount) {
-        currentList.addItem(new ShoppingItem(p,amount));
+        currentList.addItem(new ShoppingItem(p, amount));
     }
-    
+
     public List<ShoppingList> getListOfShoppingLists() {
         return availableLists;
     }
-    
+
     public ShoppingList getCurrentList() {
         return currentList;
     }
-    
+
     public void setCurrentShoppingList(ShoppingList list) {
-        if(!availableLists.contains(list)) {
+        if (!availableLists.contains(list)) {
             throw new IllegalArgumentException("Not possible to set an list that is not added to manager");
         }
         setCurrentShoppingList(availableLists.indexOf(list));
     }
+
     public void setCurrentShoppingList(int index) {
-        currentList = availableLists.get(index);
+        if (availableLists.indexOf(currentList) != index) {
+            currentList = availableLists.get(index);
+            for(ShoppingListManagerListener listener : listeners) {
+                listener.currentListChanged(currentList);;
+            }
+        }
     }
+
     public void addShoppingList(ShoppingList list) {
-        if(list != null && !availableLists.contains(list))
+        if (list != null && !availableLists.contains(list)) {
             availableLists.add(list);
+        }
     }
-    
+
     public void addListener(ShoppingListManagerListener listener) {
         listeners.add(listener);
     }

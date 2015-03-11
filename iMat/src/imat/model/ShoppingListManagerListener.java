@@ -10,4 +10,6 @@ package imat.model;
  * @author win8
  */
 public interface ShoppingListManagerListener {
+    
+    public void currentListChanged(ShoppingList shoppingList);
 }

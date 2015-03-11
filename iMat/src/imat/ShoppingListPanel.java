@@ -8,9 +8,12 @@ package imat;
 import imat.controller.CartManager;
 import imat.controller.ShoppingListManager;
 import imat.model.ShoppingList;
+import imat.model.ShoppingListManagerListener;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -23,15 +26,17 @@ public class ShoppingListPanel extends javax.swing.JPanel {
 
     private CartManager cartManager = CartManager.getInstance();
     private ShoppingListManager shoppingListManager = ShoppingListManager.getInstance();
-
+    private CartItemListPanel cartList;
+    private DefaultComboBoxModel comboBoxModel;
     /**
      * Creates new form ShoppingListPanel
      */
     public ShoppingListPanel() {
         initComponents();
-        
-        
-        CartItemListPanel cartList = new CartItemListPanel();
+
+        comboBoxModel = (DefaultComboBoxModel)jComboBox1.getModel();
+       
+        cartList= new CartItemListPanel();
         cartList.setItemPanelListener(new ShoppingItemPanelListener() {
 
             @Override
@@ -47,11 +52,27 @@ public class ShoppingListPanel extends javax.swing.JPanel {
 
             }
         });
+         for(ShoppingList list : shoppingListManager.getListOfShoppingLists())
+            comboBoxModel.addElement(list);
+         comboBoxModel.setSelectedItem(shoppingListManager.getCurrentList());
         for (ShoppingItem item : shoppingListManager.getCurrentList().getItems()) {
             cartList.insertShoppingItem(item);
         }
         jPanel1.add(cartList);
         jPanel1.revalidate();
+        shoppingListManager.addListener(new ShoppingListManagerListener() {
+
+            @Override
+            public void currentListChanged(ShoppingList shoppingList) {
+                System.out.println("Kill em");
+                cartList.clearList();
+                for (ShoppingItem item : shoppingList.getItems()) {
+                    cartList.insertShoppingItem(item);
+                }
+                updateTotal();
+                jPanel1.revalidate();
+            }
+        });
         updateTotal();
     }
 
@@ -89,7 +110,16 @@ public class ShoppingListPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INKÖPSLISTA");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vardagsmat", "Student", "Party" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         totalValueLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         totalValueLabel.setText("100 :-");
@@ -130,7 +160,7 @@ public class ShoppingListPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(addToCartButton, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+            .addComponent(addToCartButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -149,7 +179,7 @@ public class ShoppingListPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -163,6 +193,19 @@ public class ShoppingListPanel extends javax.swing.JPanel {
         cartManager.addShoppingListToCart(shoppingListManager.getCurrentList());
     }//GEN-LAST:event_addToCartButtonActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+
+        ShoppingList selected = (ShoppingList) jComboBox1.getSelectedItem();
+        if(selected != shoppingListManager.getCurrentList()) {
+            shoppingListManager.setCurrentShoppingList(selected);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     public void updateTotal() {
         DecimalFormat df = new DecimalFormat("0.00##");
