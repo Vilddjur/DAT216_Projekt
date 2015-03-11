@@ -31,7 +31,7 @@ public final class Constants {
     public static final Color FONT_BANNER_COLOR = new Color(0x6B9937);
     
     public static final Color ADD_TO_CHECKOUT_BUTTON_COLOR = new Color(0xB7E3B0);
-    public static final Color CHECKOUT_BUTTON_COLOR = new Color(0xB7E3B0);
+    public static final Color CHECKOUT_BUTTON_COLOR = new Color(0x89d57c);
     
     private Constants() {
         throw new AssertionError();
