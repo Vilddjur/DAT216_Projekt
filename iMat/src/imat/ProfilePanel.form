@@ -17,7 +17,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jScrollPane1" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="891" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -25,7 +25,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jScrollPane1" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="662" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -56,7 +56,14 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="889" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" pref="217" max="-2" attributes="0"/>
+                          <Component id="creditCardPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="379" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -74,14 +81,20 @@
                               <Component id="nameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="editButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="713" max="32767" attributes="0"/>
+                          <EmptySpace pref="715" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="660" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="creditCardPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="33" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -103,7 +116,7 @@
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="editButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="465" max="32767" attributes="0"/>
+                          <EmptySpace pref="467" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -160,6 +173,16 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Carl Albertsson"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lucida Grande" size="18" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Kreditkortsuppgifter"/>
+              </Properties>
+            </Component>
+            <Component class="imat.CreditCardPanel" name="creditCardPanel1">
             </Component>
           </SubComponents>
         </Container>

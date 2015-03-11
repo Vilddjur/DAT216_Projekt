@@ -49,19 +49,19 @@
               <Group type="102" attributes="0">
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" pref="80" max="-2" attributes="0"/>
+                  <Component id="nbr1TextField" min="-2" pref="80" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="jTextField2" min="-2" pref="83" max="-2" attributes="0"/>
+                  <Component id="nbr2TextField" min="-2" pref="83" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="jTextField3" min="-2" pref="84" max="-2" attributes="0"/>
+                  <Component id="nb3TextField" min="-2" pref="84" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="jTextField4" min="-2" pref="80" max="-2" attributes="0"/>
+                  <Component id="nbr4TextField" min="-2" pref="80" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -108,10 +108,10 @@
                       <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextField4" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextField2" max="32767" attributes="0"/>
-                      <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="nb3TextField" alignment="0" max="32767" attributes="0"/>
+                      <Component id="nbr4TextField" alignment="0" max="32767" attributes="0"/>
+                      <Component id="nbr2TextField" max="32767" attributes="0"/>
+                      <Component id="nbr1TextField" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
@@ -165,7 +165,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="nbr1TextField">
           <Properties>
             <Property name="text" type="java.lang.String" value="5623"/>
           </Properties>
@@ -177,7 +177,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="nbr2TextField">
           <Properties>
             <Property name="text" type="java.lang.String" value="4567"/>
           </Properties>
@@ -189,7 +189,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="nb3TextField">
           <Properties>
             <Property name="text" type="java.lang.String" value="5678"/>
           </Properties>
@@ -201,7 +201,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField4">
+        <Component class="javax.swing.JTextField" name="nbr4TextField">
           <Properties>
             <Property name="text" type="java.lang.String" value="5678"/>
           </Properties>

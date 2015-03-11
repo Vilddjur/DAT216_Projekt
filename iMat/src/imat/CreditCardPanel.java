@@ -30,13 +30,13 @@ public class CreditCardPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nbr1TextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        nbr2TextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        nb3TextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        nbr4TextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -59,19 +59,19 @@ public class CreditCardPanel extends javax.swing.JPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_02.jpg"))); // NOI18N
 
-        jTextField1.setText("5623");
+        nbr1TextField.setText("5623");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_04.jpg"))); // NOI18N
 
-        jTextField2.setText("4567");
+        nbr2TextField.setText("4567");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_06.jpg"))); // NOI18N
 
-        jTextField3.setText("5678");
+        nb3TextField.setText("5678");
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_08.jpg"))); // NOI18N
 
-        jTextField4.setText("5678");
+        nbr4TextField.setText("5678");
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_10.jpg"))); // NOI18N
 
@@ -106,19 +106,19 @@ public class CreditCardPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel2)
                 .addGap(0, 0, 0)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nbr1TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel3)
                 .addGap(0, 0, 0)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nbr2TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel4)
                 .addGap(0, 0, 0)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nb3TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel5)
                 .addGap(0, 0, 0)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nbr4TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel6)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -157,10 +157,10 @@ public class CreditCardPanel extends javax.swing.JPanel {
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField1))
+                    .addComponent(nb3TextField)
+                    .addComponent(nbr4TextField)
+                    .addComponent(nbr2TextField)
+                    .addComponent(nbr1TextField))
                 .addGap(0, 0, 0)
                 .addComponent(jLabel7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,12 +217,12 @@ public class CreditCardPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField nb3TextField;
+    private javax.swing.JTextField nbr1TextField;
+    private javax.swing.JTextField nbr2TextField;
+    private javax.swing.JTextField nbr4TextField;
     // End of variables declaration//GEN-END:variables
 }
