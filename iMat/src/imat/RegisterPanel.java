@@ -366,21 +366,19 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
     }
     
     public void updateFields() {
-        Customer c = um.getCustomer();
-        
-        persnbrField.setText(um.getPersnbr());
-        addressField.setText(c.getAddress());
-        emailField.setText(c.getEmail());
-        firstnameField.setText(c.getFirstName());
-        lastnameField.setText(c.getLastName());
-        phoneField.setText(c.getMobilePhoneNumber());
-        cityField.setText(c.getPostAddress());
-        postCodeField.setText(c.getPostCode());
+        persnbrField.setText(um.getRegPersnbr());
+        addressField.setText(um.getRegAddress());
+        emailField.setText(um.getRegEmail());
+        firstnameField.setText(um.getRegFirstName());
+        lastnameField.setText(um.getRegLastName());
+        phoneField.setText(um.getRegPhoneNumber());
+        cityField.setText(um.getRegCity());
+        postCodeField.setText(um.getRegPostCode());
     }
     
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if (evt.getPropertyName().equals("updateInfo")) {
+        if (evt.getPropertyName().equals("updateRegisterInfo")) {
             updateFields();
         }
     }

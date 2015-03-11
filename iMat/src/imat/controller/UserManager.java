@@ -20,6 +20,15 @@ import se.chalmers.ait.dat215.project.User;
 public class UserManager implements IPropertyChangeSupport {
     private String persnbr = "";
     
+    private String regPersnbr;
+    private String regAddress;
+    private String regEmail;
+    private String regFirstname;
+    private String regLastname;
+    private String regPhoneNumber;
+    private String regCity;
+    private String regPostCode;
+    
     private static final UserManager instance = new UserManager();
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     
@@ -101,6 +110,53 @@ public class UserManager implements IPropertyChangeSupport {
         this.persnbr = persnbr;
         
         pcs.firePropertyChange("updateInfo", null, null);
+    }
+    
+    public void updateRegisterInfo(String persnbr, String address, String email,
+            String firstname, String lastname, String phoneNumber,
+            String city, String postCode) {
+        this.regPersnbr = persnbr;
+        this.regAddress = address;
+        this.regEmail = email;
+        this.regFirstname = firstname;
+        this.regLastname = lastname;
+        this.regPhoneNumber = phoneNumber;
+        this.regCity = regCity;
+        this.regPostCode = postCode;
+        
+        pcs.firePropertyChange("updateRegisterInfo", null, null);
+    }
+    
+    public String getRegPersnbr() {
+        return regPersnbr;
+    }
+    
+    public String getRegAddress() {
+        return regAddress;
+    }
+    
+    public String getRegEmail() {
+        return regEmail;
+    }
+    
+    public String getRegFirstName() {
+        return regFirstname;
+    }
+    
+    public String getRegLastName() {
+        return regLastname;
+    }
+    
+    public String getRegPhoneNumber() {
+        return regPhoneNumber;
+    }
+    
+    public String getRegCity() {
+        return regCity;
+    }
+    
+    public String getRegPostCode() {
+        return regPostCode;
     }
     
     public String getPersnbr() {

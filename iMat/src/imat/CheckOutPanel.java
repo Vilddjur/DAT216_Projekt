@@ -877,18 +877,6 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         }
         
         if (!error) {
-            UserManager um = UserManager.getInstance();
-            um.updateInfo(
-                    persnbrTextField.getText(),
-                    adressTextField.getText(), 
-                    emailTextField.getText(),
-                    prenameTextField.getText(),
-                    lastnameTextField.getText(),
-                    mobileTextField.getText(),
-                    postadressTextField.getText(),
-                    postcodeTextField.getText()
-            );
-            
             amountLabel.setText("" + cart.getTotal());
             totalAmountLabel.setText("" + cart.getTotal());
             CardLayout card = (CardLayout) mainPanel.getLayout();
@@ -897,6 +885,18 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        UserManager um = UserManager.getInstance();
+        um.updateRegisterInfo(
+            persnbrTextField.getText(),
+            adressTextField.getText(), 
+            emailTextField.getText(),
+            prenameTextField.getText(),
+            lastnameTextField.getText(),
+            mobileTextField.getText(),
+            postadressTextField.getText(),
+            postcodeTextField.getText()
+        );
+        
         OrderManager om = OrderManager.getInstance();
         om.placeOrder();
         
