@@ -39,15 +39,6 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
     private final ShoppingCart cart;
     private final UserManager um;
-    
-    private class CustomDocument extends PlainDocument {
-        @Override
-        public void insertString(int offset, String string, AttributeSet attr) throws BadLocationException {
-            if (getLength() < 4) {
-                super.insertString(offset, string, attr);
-            }
-        }
-    }
 
     /**
      * Creates new form CheckOutPanel

@@ -7,6 +7,9 @@ package imat;
 
 import java.awt.Color;
 import javax.swing.JTextField;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 import se.chalmers.ait.dat215.project.CreditCard;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 
@@ -16,7 +19,7 @@ import se.chalmers.ait.dat215.project.IMatDataHandler;
  */
 public class CreditCardPanel extends javax.swing.JPanel {
     
-    CreditCard card = IMatDataHandler.getInstance().getCreditCard();
+    private CreditCard card = IMatDataHandler.getInstance().getCreditCard();
     private boolean editState;
 
     /**
@@ -26,6 +29,12 @@ public class CreditCardPanel extends javax.swing.JPanel {
         initComponents();
         editState=false;
         setFieldsEditable(false);
+        
+        nbr1TextField.setDocument(new CustomDocument());
+        nbr2TextField.setDocument(new CustomDocument());
+        nbr3TextField.setDocument(new CustomDocument());
+        nbr4TextField.setDocument(new CustomDocument());
+        
         updateCardInfo();
     }
 
