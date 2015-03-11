@@ -89,8 +89,8 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
         firstnameLabel.setText("Förnamn");
 
         passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                passwordFieldKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyReleased(evt);
             }
         });
 
@@ -331,9 +331,9 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
         firePropertyChange("showLoginCard", null, null);
     }//GEN-LAST:event_backButtonMouseClicked
 
-    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
+    private void passwordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyReleased
         updatePasswordStenght();
-    }//GEN-LAST:event_passwordFieldKeyPressed
+    }//GEN-LAST:event_passwordFieldKeyReleased
     
     private void resetLabels() {
         emailLabel.setForeground(Color.BLACK);

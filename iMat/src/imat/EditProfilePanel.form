@@ -250,6 +250,9 @@
         <Component class="javax.swing.JTextField" name="adressTextField">
         </Component>
         <Component class="javax.swing.JPasswordField" name="newpasswrdField">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="newpasswrdFieldKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="eadressLabel">
           <Properties>

@@ -131,6 +131,23 @@ public class EditProfilePanel extends javax.swing.JPanel implements PropertyChan
             prefillForm();
         }
     }
+    
+     private void updatePasswordStenght(){
+        String password = new String(newpasswrdField.getPassword());
+        if(password.length() == 0){
+            strengthProgressBar.setValue(0);
+        }
+        else if(password.length() < 5){
+            strengthProgressBar.setValue(33);
+            strengthProgressBar.setForeground(Color.red);
+        }else if(password.length() < 10){
+            strengthProgressBar.setValue(67);
+            strengthProgressBar.setForeground(Color.yellow);
+        }else if(password.length() >= 10){
+            strengthProgressBar.setValue(100);
+            strengthProgressBar.setForeground(Color.green);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -191,6 +208,12 @@ public class EditProfilePanel extends javax.swing.JPanel implements PropertyChan
         newpasswrdLabel.setText("Nytt Lösenord");
 
         eEmailLabel.setText("* E-postadress");
+
+        newpasswrdField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                newpasswrdFieldKeyReleased(evt);
+            }
+        });
 
         eadressLabel.setText("Gatuadress");
 
@@ -415,6 +438,10 @@ public class EditProfilePanel extends javax.swing.JPanel implements PropertyChan
         prefillForm();
         firePropertyChange("showProfileCard", null, null);
     }//GEN-LAST:event_backButton1MouseClicked
+
+    private void newpasswrdFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newpasswrdFieldKeyReleased
+        updatePasswordStenght();
+    }//GEN-LAST:event_newpasswrdFieldKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
