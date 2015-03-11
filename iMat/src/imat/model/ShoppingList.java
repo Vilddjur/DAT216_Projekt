@@ -63,5 +63,8 @@ public class ShoppingList {
 
     }
 
+    public String toString() {
+        return name;
+    }
     
 }
