@@ -88,9 +88,25 @@ public class UserManager implements IPropertyChangeSupport {
         } else {
             updateInfo(persnbr, address, email, firstname, lastname, phoneNumber, city, postCode);
             setPassword(password);
+            resetCreditCard(firstname + " " + lastname);
             login(email, password);
             return true;
         }
+    }
+    
+    private void resetCreditCard(String lastname) {
+        card.setCardNumber("");
+        card.setCardType("");
+        if (!lastname.trim().equals("")) {
+            card.setHoldersName(lastname);
+        } else {
+            card.setHoldersName("");
+        }
+        card.setValidMonth(1);
+        card.setValidYear(2015);
+        card.setVerificationCode(123);
+        
+        pcs.firePropertyChange("resetCreditCard", null, null);
     }
     
     public void updateInfo(String persnbr, String address, String email,

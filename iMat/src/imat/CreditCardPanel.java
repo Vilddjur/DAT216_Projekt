@@ -5,7 +5,10 @@
  */
 package imat;
 
+import imat.controller.UserManager;
 import java.awt.Color;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -17,7 +20,7 @@ import se.chalmers.ait.dat215.project.IMatDataHandler;
  *
  * @author Albertsson
  */
-public class CreditCardPanel extends javax.swing.JPanel {
+public class CreditCardPanel extends javax.swing.JPanel implements PropertyChangeListener {
     
     private CreditCard card = IMatDataHandler.getInstance().getCreditCard();
     private boolean editState;
@@ -29,6 +32,8 @@ public class CreditCardPanel extends javax.swing.JPanel {
         initComponents();
         editState=false;
         setFieldsEditable(false);
+        
+        UserManager.getInstance().addPropertyChangeListener(this);
         
         nbr1TextField.setDocument(new CustomDocument());
         nbr2TextField.setDocument(new CustomDocument());
@@ -49,6 +54,11 @@ public class CreditCardPanel extends javax.swing.JPanel {
             nbr2TextField.setText(cardNumber.substring(4, 8));
             nbr3TextField.setText(cardNumber.substring(8, 12));
             nbr4TextField.setText(cardNumber.substring(12, 16));
+        } else {
+            nbr1TextField.setText("");
+            nbr2TextField.setText("");
+            nbr3TextField.setText("");
+            nbr4TextField.setText("");
         }
     }
     /**
@@ -364,6 +374,13 @@ public class CreditCardPanel extends javax.swing.JPanel {
             field.setBackground(Color.WHITE);
         } else {
             field.setBackground(Constants.DISABLED_TEXT_FIELD_COLOR);
+        }
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if (evt.getPropertyName().equals("resetCreditCard")) {
+            updateCardInfo();
         }
     }
 }
