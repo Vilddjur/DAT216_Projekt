@@ -79,6 +79,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
         tabbedPane.setBackground(Constants.MAIN_BACKGROUND);
         tabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         tabbedPane.setToolTipText("");
+        tabbedPane.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tabbedPane.setMinimumSize(new java.awt.Dimension(40, 25));
         tabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -92,7 +93,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
         });
 
         cartTab.setBackground(Constants.CART_COLOR);
-        cartTab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cartTab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cartTab.setPreferredSize(new java.awt.Dimension(23, 300));
         cartTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -103,7 +104,7 @@ public class ShoppingPanel extends javax.swing.JPanel {
         tabbedPane.addTab("tab1", null, cartTab, "Visa kundvagnen");
 
         shoppingListTab.setBackground(Constants.LIST_COLOR);
-        shoppingListTab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        shoppingListTab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         shoppingListTab.setPreferredSize(new java.awt.Dimension(23, 300));
         shoppingListTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
