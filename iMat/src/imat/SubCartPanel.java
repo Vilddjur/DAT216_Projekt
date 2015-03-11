@@ -51,6 +51,8 @@ public class SubCartPanel extends javax.swing.JPanel implements ShoppingCartList
             }
             
         }
+        
+        updateSize();
 
     }
 

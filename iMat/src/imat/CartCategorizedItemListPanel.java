@@ -150,11 +150,9 @@ public class CartCategorizedItemListPanel extends javax.swing.JPanel implements 
                 if (existingItem.getProduct().equals(p) && existingItem != item && cartManager.getSubCartForItem(existingItem) == null) {
                     item.setAmount(item.getAmount() + existingItem.getAmount());
                     cart.removeItem(existingItem);
-                    System.out.println("removed");
                     break;
                 }
             }
-            System.out.println("add");
             shoppingItemListPanel1.insertShoppingItem(item);
         } else if (!cartManager.containsShoppingItem(item)) {
             shoppingItemListPanel1.removeItem(item);

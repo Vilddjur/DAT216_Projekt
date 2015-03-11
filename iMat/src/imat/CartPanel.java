@@ -62,7 +62,11 @@ public class CartPanel extends javax.swing.JPanel  {
             @Override
             public void subCartAdded(SubShoppingCart subcart) {
                 System.out.println("sub cart panel ");
+                
                 jPanel1.add(new SubCartPanel(subcart));
+                jPanel1.add(categorizedShoppingListItemPanel3);
+                
+                jPanel1.setMaximumSize(jPanel1.getPreferredSize());
             }
 
             @Override
