@@ -63,6 +63,12 @@ public class ShoppingList {
 
     }
 
+    public double getTotal() {
+        double sum = 0;
+        for(ShoppingItem item : items)
+                sum += item.getTotal();
+        return sum;
+    }
     public String toString() {
         return name;
     }

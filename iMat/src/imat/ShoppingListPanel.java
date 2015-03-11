@@ -6,7 +6,9 @@
 package imat;
 
 import imat.controller.CartManager;
+import imat.controller.ShoppingListManager;
 import imat.model.ShoppingList;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -18,26 +20,17 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  * @author win8
  */
 public class ShoppingListPanel extends javax.swing.JPanel {
-    private CartManager cartManager = CartManager.getInstance();
 
-        ShoppingList shoppingList;
+    private CartManager cartManager = CartManager.getInstance();
+    private ShoppingListManager shoppingListManager = ShoppingListManager.getInstance();
+
     /**
      * Creates new form ShoppingListPanel
      */
     public ShoppingListPanel() {
         initComponents();
-        Product p = new Product();
-        IMatDataHandler data = IMatDataHandler.getInstance();
-        List<ShoppingItem> items = new ArrayList<>();
-        items.add(new ShoppingItem(data.getProduct(1),3));
-        items.add(new ShoppingItem(data.getProduct(2),3));
-        items.add(new ShoppingItem(data.getProduct(3),7));
-        items.add(new ShoppingItem(data.getProduct(4),5));
-        items.add(new ShoppingItem(data.getProduct(5),4));
         
         
-        
-        shoppingList = new ShoppingList("Vardag", items);
         CartItemListPanel cartList = new CartItemListPanel();
         cartList.setItemPanelListener(new ShoppingItemPanelListener() {
 
@@ -49,16 +42,17 @@ public class ShoppingListPanel extends javax.swing.JPanel {
 
             @Override
             public void itemRemoved(ShoppingItem item) {
-                shoppingList.removeItem(item);
+                shoppingListManager.removeItemInCurrentList(item);
                 cartList.removeItem(item);
-                
+
             }
         });
-        for(ShoppingItem item : shoppingList.getItems()) {
+        for (ShoppingItem item : shoppingListManager.getCurrentList().getItems()) {
             cartList.insertShoppingItem(item);
         }
         jPanel1.add(cartList);
         jPanel1.revalidate();
+        updateTotal();
     }
 
     /**
@@ -166,10 +160,14 @@ public class ShoppingListPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addToCartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartButtonActionPerformed
-        cartManager.addShoppingListToCart(shoppingList);
+        cartManager.addShoppingListToCart(shoppingListManager.getCurrentList());
     }//GEN-LAST:event_addToCartButtonActionPerformed
 
 
+    public void updateTotal() {
+        DecimalFormat df = new DecimalFormat("0.00##");
+        totalValueLabel.setText(df.format(shoppingListManager.getCurrentList().getTotal()) + " :-");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addToCartButton;
     private javax.swing.JComboBox jComboBox1;
