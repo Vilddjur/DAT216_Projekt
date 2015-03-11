@@ -23,6 +23,7 @@ import javax.mail.internet.InternetAddress;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+import se.chalmers.ait.dat215.project.Customer;
 
 /**
  *
@@ -30,11 +31,14 @@ import javax.swing.border.LineBorder;
  */
 public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeListener {
     
+    UserManager um = UserManager.getInstance();
+    
     /**
      * Creates new form RegisterPanel
      */
     public RegisterPanel() {
         initComponents();
+        um.addPropertyChangeListener(this);
     }
 
     /**
@@ -361,6 +365,26 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
         backButton.setVisible(b);
     }
     
+    public void updateFields() {
+        Customer c = um.getCustomer();
+        
+        persnbrField.setText(um.getPersnbr());
+        addressField.setText(c.getAddress());
+        emailField.setText(c.getEmail());
+        firstnameField.setText(c.getFirstName());
+        lastnameField.setText(c.getLastName());
+        phoneField.setText(c.getMobilePhoneNumber());
+        cityField.setText(c.getPostAddress());
+        postCodeField.setText(c.getPostCode());
+    }
+    
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if (evt.getPropertyName().equals("updateInfo")) {
+            updateFields();
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressField;
     private javax.swing.JLabel addressLabel;
@@ -389,9 +413,4 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
     private javax.swing.JButton registerButton;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        
-    }
 }
