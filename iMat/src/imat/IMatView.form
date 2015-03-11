@@ -62,7 +62,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="topPanel" pref="1443" max="32767" attributes="0"/>
-              <Component id="jSplitPane1" alignment="0" pref="1443" max="32767" attributes="0"/>
+              <Component id="jSplitPane1" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -209,15 +209,15 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
                           <Component id="fruitButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="breadButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="charkButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="diaryButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="dryButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="snacksButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                           <Component id="recipeButton" min="-2" max="-2" attributes="0"/>
@@ -243,7 +243,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="0" left="1" right="1" top="0">
-                          <Color PropertyName="color" blue="66" green="ff" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="62" green="b8" red="6e" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -264,7 +264,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="0" left="0" right="1" top="0">
-                          <Color PropertyName="color" blue="66" green="ff" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="62" green="b8" red="6e" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -284,7 +284,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="0" left="0" right="1" top="0">
-                          <Color PropertyName="color" blue="66" green="ff" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="62" green="b8" red="6e" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -304,7 +304,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="0" left="0" right="1" top="0">
-                          <Color PropertyName="color" blue="66" green="ff" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="62" green="b8" red="6e" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -324,7 +324,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="0" left="0" right="1" top="0">
-                          <Color PropertyName="color" blue="66" green="ff" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="62" green="b8" red="6e" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
@@ -354,7 +354,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="0" left="0" right="1" top="0">
-                          <Color PropertyName="color" blue="66" green="ff" red="66" type="rgb"/>
+                          <Color PropertyName="color" blue="62" green="b8" red="6e" type="rgb"/>
                         </MatteColorBorder>
                       </Border>
                     </Property>
