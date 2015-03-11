@@ -46,7 +46,7 @@ public class ShoppingListPanel extends javax.swing.JPanel {
 
             @Override
             public void itemRemoved(ShoppingItem item) {
-                shoppingListManager.removeItemInCurrentList(item);
+                shoppingListManager.deleteItemInActiveList(item);
                 
 
             }
@@ -79,6 +79,7 @@ public class ShoppingListPanel extends javax.swing.JPanel {
 
             @Override
             public void itemModifiedInActiveList(ShoppingItem item) {
+                cartList.updateList();
                 updateTotal();
             }
 

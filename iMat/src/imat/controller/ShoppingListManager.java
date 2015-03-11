@@ -49,14 +49,6 @@ public class ShoppingListManager {
         return instance;
     }
 
-    public void removeItemInCurrentList(ShoppingItem item) {
-        currentList.removeItem(item);
-    }
-
-    public void addShoppingItemToCurrentShoppingList(Product p, double amount) {
-        currentList.addItem(new ShoppingItem(p, amount));
-    }
-
     public List<ShoppingList> getListOfShoppingLists() {
         return availableLists;
     }
@@ -111,6 +103,7 @@ public class ShoppingListManager {
     }
     
     public void deleteItemInActiveList(ShoppingItem item) {
+        System.out.println("deleted");
         if(!currentList.getItems().contains(item)) {
             return;
         }
