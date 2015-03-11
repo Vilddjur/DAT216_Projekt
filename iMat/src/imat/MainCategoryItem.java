@@ -84,7 +84,7 @@ public class MainCategoryItem extends javax.swing.JPanel {
         categoryName = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximumSize(new java.awt.Dimension(100, 60));
         setPreferredSize(new java.awt.Dimension(100, 60));
         setSize(new java.awt.Dimension(100, 60));
@@ -104,7 +104,7 @@ public class MainCategoryItem extends javax.swing.JPanel {
         });
 
         categoryName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        categoryName.setText("Label");
+        categoryName.setText("Recept");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
