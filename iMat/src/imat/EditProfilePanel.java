@@ -6,6 +6,7 @@
 package imat;
 
 import imat.controller.UserManager;
+import java.awt.Color;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -41,7 +42,7 @@ public class EditProfilePanel extends javax.swing.JPanel implements PropertyChan
         cityTextField.setText(customer.getPostAddress());
     }
     
-    private boolean saveUserInfo() {
+    private void saveUserInfo() {
         String persnbr = persnbrTextField.getText();
         
         String address = adressTextField.getText();
@@ -57,16 +58,71 @@ public class EditProfilePanel extends javax.swing.JPanel implements PropertyChan
         
         um.updateInfo(persnbr, address, email, firstname, lastname, phoneNumber, city, postCode);
         
-        if (!(oldPassword.equals("") && newPassword.equals(""))) {
-            if (um.getPassword().equals(oldPassword)) {
-                um.setPassword(newPassword);
-            } else {
-                oldpasswrdLabel.setForeground(Constants.ERROR_COLOR);
-                return false;
+        if (!um.getPassword().equals(oldPassword) && !newPassword.equals("")) {
+            um.setPassword(newPassword);
+        }
+    }
+    
+    private void resetFields() {
+        eEmailLabel.setForeground(Color.BLACK);
+        epersnbrLabel.setForeground(Color.BLACK);
+        epostadressLabel.setForeground(Color.BLACK);
+        ephoneLabel.setForeground(Color.BLACK);
+        oldpasswrdLabel.setForeground(Color.BLACK);
+        newpasswrdLabel.setForeground(Color.BLACK);
+    }
+    
+    private boolean validateFields() {
+        resetFields();
+        
+        boolean error = false;
+        
+        if (!FieldValidations.isValidEmail(emailTextField.getText())) {
+            eEmailLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (!persnbrTextField.getText().equals("")) {
+            if (!FieldValidations.isValidPersnbr(persnbrTextField.getText())) {
+                epersnbrLabel.setForeground(Constants.ERROR_COLOR);
+                error = true;
             }
         }
         
-        return true;
+        if (!postadressTextField.getText().equals("")) {
+            if (!FieldValidations.isValidPostCode(postadressTextField.getText())) {
+                epostadressLabel.setForeground(Constants.ERROR_COLOR);
+                error = true;
+            }
+        }
+        
+        if (!phoneTextField.getText().equals("")) {
+            if (!FieldValidations.isValidPhoneNumber(phoneTextField.getText())) {
+                ephoneLabel.setForeground(Constants.ERROR_COLOR);
+                error = true;
+            }
+        }
+        
+        String oldPassword = new String(oldpasswrdField.getPassword());
+        String newPassword = new String(newpasswrdField.getPassword());
+        
+        
+        if (!oldPassword.equals("") && !um.getPassword().equals(oldPassword)) {
+            oldpasswrdLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (!oldPassword.equals("") && um.getPassword().equals(oldPassword) && newPassword.equals("")) {
+            newpasswrdLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (oldPassword.equals("") && !newPassword.equals("")) {
+            oldpasswrdLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        return error;
     }
     
     @Override
@@ -323,10 +379,12 @@ public class EditProfilePanel extends javax.swing.JPanel implements PropertyChan
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        if (saveUserInfo()) {
+        if (!validateFields()) {
+            saveUserInfo();
             oldpasswrdField.setText("");
             newpasswrdField.setText("");
             firePropertyChange("showProfileCard", null, null);
+            System.out.println("test");
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 
