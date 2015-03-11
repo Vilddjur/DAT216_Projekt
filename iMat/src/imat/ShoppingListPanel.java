@@ -120,7 +120,7 @@ public class ShoppingListPanel extends javax.swing.JPanel {
         addToCartButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         addToCartButton.setBorderPainted(false);
         addToCartButton.setContentAreaFilled(false);
-        addToCartButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addToCartButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addToCartButton.setOpaque(true);
         addToCartButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
