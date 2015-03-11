@@ -35,6 +35,8 @@ public final class Constants {
     public static final Color HOVER_ADD_TO_CHECKOUT_BUTTON_COLOR = new Color(0xB7E3B0);
     public static final Color HOVER_CHECKOUT_BUTTON_COLOR = new Color(0x89d57c);
     
+    public static final Color DISABLED_TEXT_FIELD_COLOR = new Color(0xD6D6D6);
+    
     private Constants() {
         throw new AssertionError();
     }

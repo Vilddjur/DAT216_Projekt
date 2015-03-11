@@ -5,6 +5,8 @@
  */
 package imat;
 
+import java.awt.Color;
+import javax.swing.JTextField;
 import se.chalmers.ait.dat215.project.CreditCard;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 
@@ -270,12 +272,21 @@ public class CreditCardPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void setFieldsEditable(boolean b) {
-        ccvTextField.setEditable(b);
-        dateTextField.setEditable(b);
-        nameTextField.setEditable(b);
-        nbr3TextField.setEditable(b);
-        nbr2TextField.setEditable(b);
-        nbr4TextField.setEditable(b);
-        nbr1TextField.setEditable(b);
+        enableField(ccvTextField, b);
+        enableField(dateTextField, b);
+        enableField(nameTextField, b);
+        enableField(nbr3TextField, b);
+        enableField(nbr2TextField, b);
+        enableField(nbr4TextField, b);
+        enableField(nbr1TextField, b);
+    }
+    
+    private static void enableField(JTextField field, boolean b) {
+        field.setEditable(b);
+        if (b) {
+            field.setBackground(Color.WHITE);
+        } else {
+            field.setBackground(Constants.DISABLED_TEXT_FIELD_COLOR);
+        }
     }
 }
