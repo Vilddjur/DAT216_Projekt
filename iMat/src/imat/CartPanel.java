@@ -10,6 +10,8 @@ import imat.model.ShoppingList;
 import imat.model.SubShoppingCart;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.awt.font.TextAttribute;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  *
  * @author win8
  */
-public class CartPanel extends javax.swing.JPanel  {
+public class CartPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form CartPanel
@@ -37,6 +39,12 @@ public class CartPanel extends javax.swing.JPanel  {
         initComponents();
         checkoutButton.setOpaque(true);
         checkoutButton.setContentAreaFilled(false);
+        jScrollPane1.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                e.getAdjustable().setValue(e.getAdjustable().getMaximum());
+            }
+
+        });
 
         cartManager = CartManager.getInstance();
         cart = IMatDataHandler.getInstance().getShoppingCart();
@@ -56,16 +64,16 @@ public class CartPanel extends javax.swing.JPanel  {
 
             }
         });
-        
+
         cartManager.addCartManagerListener(new CartManagerListener() {
 
             @Override
             public void subCartAdded(SubShoppingCart subcart) {
                 System.out.println("sub cart panel ");
-                
+
                 jPanel1.add(new SubCartPanel(subcart));
                 jPanel1.add(categorizedShoppingListItemPanel3);
-                
+
                 jPanel1.setMaximumSize(jPanel1.getPreferredSize());
             }
 
@@ -74,7 +82,6 @@ public class CartPanel extends javax.swing.JPanel  {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
-
 
     }
 
@@ -207,7 +214,7 @@ public class CartPanel extends javax.swing.JPanel  {
     }//GEN-LAST:event_emptyCartLabelMouseEntered
 
     private void emptyCartLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emptyCartLabelMouseExited
-         underlineLabel(emptyCartLabel, false);
+        underlineLabel(emptyCartLabel, false);
     }//GEN-LAST:event_emptyCartLabelMouseExited
 
     private void emptyCartLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emptyCartLabelMouseClicked
@@ -229,7 +236,7 @@ public class CartPanel extends javax.swing.JPanel  {
         setMaximumSize(getPreferredSize());
         revalidate();
     }
-    
+
     private void underlineLabel(JLabel label, boolean on) {
         Font font = label.getFont();
         Map attributes = font.getAttributes();
