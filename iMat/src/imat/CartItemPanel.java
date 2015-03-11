@@ -69,7 +69,6 @@ public class CartItemPanel extends javax.swing.JPanel {
 
         jLabel1.setText("jLabel1");
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\win8\\Documents\\dat216\\delete.png")); // NOI18N
         jButton1.setText("jButton1");
 
         setMaximumSize(new java.awt.Dimension(339, 48));
@@ -86,6 +85,7 @@ public class CartItemPanel extends javax.swing.JPanel {
         Image newimg = image.getScaledInstance(16, 16,  Image.SCALE_SMOOTH); // scale it the smooth way
         tmp = new ImageIcon(newimg);  // transform it back
         jLabel2.setIcon(tmp);
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.setMaximumSize(new java.awt.Dimension(16, 16));
         jLabel2.setMinimumSize(new java.awt.Dimension(16, 16));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
