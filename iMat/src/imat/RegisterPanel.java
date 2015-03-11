@@ -314,6 +314,10 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
             if (result) {
                 firePropertyChange("register", null, null);
             }
+            
+            um.resetRegisterInfo();
+            
+            
         }
     }//GEN-LAST:event_registerButtonActionPerformed
 
@@ -397,6 +401,8 @@ public class RegisterPanel extends javax.swing.JPanel implements PropertyChangeL
         phoneField.setText(um.getRegPhoneNumber());
         cityField.setText(um.getRegCity());
         postCodeField.setText(um.getRegPostCode());
+        passwordField.setText("");
+        confirmPasswordField.setText("");
     }
     
     @Override

@@ -143,6 +143,10 @@ public class UserManager implements IPropertyChangeSupport {
         pcs.firePropertyChange("updateRegisterInfo", null, null);
     }
     
+    public void resetRegisterInfo() {
+        updateRegisterInfo("","","","","","","","");
+    }
+    
     public String getRegPersnbr() {
         return regPersnbr;
     }
