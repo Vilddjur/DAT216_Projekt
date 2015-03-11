@@ -74,13 +74,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             registerPanel.focusFirstField();
         } else if (property.equals("showEditProfileCard")) {
             switchToCard("editProfile");
-            subcategoryList.clear();
-            
-            List<ProfileSubListItem> list = new ArrayList<>();
-            list.add(new ProfileSubListItem("Profil", "e"));
-            list.add(new ProfileSubListItem("Orderhistorik", "orderHistory"));
-            list.add(new ProfileSubListItem("Favoriter", "favourites"));
-            subcategoryList.update(list.toArray());
+            editProfilePanel.prefillForm();
         } else if (property.equals("showLoginCard")) {
             switchToCard("login");
             subcategoryList.clear();

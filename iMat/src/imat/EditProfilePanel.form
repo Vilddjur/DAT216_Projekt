@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+      <Connection code="Constants.MAIN_BACKGROUND" type="code"/>
+    </Property>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -16,214 +21,334 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="eheadLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="epersnbrLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="eEmailLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="prenameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="eadressLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ephoneLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lastnameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="epostadressLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ecityLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="oldpasswrdLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="newpasswrdLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="saveButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="prenameTextField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="lastnameTextField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="emailTextField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="adressTextField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="postadressTextField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="cityTextField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="phoneTextField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="persnbrTextField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="oldpasswrdField" alignment="0" pref="389" max="32767" attributes="0"/>
-                          <Component id="newpasswrdField" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="100" max="32767" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="100" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Component id="backButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="eheadLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="epersnbrLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="persnbrTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="prenameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="prenameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lastnameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lastnameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="eEmailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="emailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="eadressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="adressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="epostadressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="postadressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cityTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ecityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="ephoneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="phoneTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                      <Component id="oldpasswrdField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="oldpasswrdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="newpasswrdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="newpasswrdField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="saveButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Component id="backButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="127" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="prenameLabel">
+    <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="F&#xf6;rnamn:"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Constants.MAIN_BACKGROUND" type="code"/>
+        </Property>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="phoneTextField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="lastnameTextField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="ephoneLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Mobilnr:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lastnameLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Efternamn:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="oldpasswrdLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Gammalt l&#xf6;senord:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="emailTextField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="newpasswrdLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Nytt L&#xf6;senord:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="eEmailLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="E-postadress: "/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JPasswordField" name="oldpasswrdField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="adressTextField">
-    </Component>
-    <Component class="javax.swing.JPasswordField" name="newpasswrdField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="eadressLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Gatuadress:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="saveButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Spara &#xe4;ndringar"/>
-      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel2" alignment="1" min="-2" pref="294" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="eEmailLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="epersnbrLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="prenameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lastnameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="eadressLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="epostadressLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ephoneLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                          <Component id="jLabel8" min="-2" pref="247" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="emailTextField" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
+                                          <Component id="prenameTextField" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
+                                          <Component id="lastnameTextField" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
+                                          <Component id="adressTextField" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="postadressTextField" min="-2" pref="75" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="ecityLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="cityTextField" min="-2" pref="150" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="persnbrTextField" min="-2" pref="150" max="-2" attributes="0"/>
+                                          <Component id="phoneTextField" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jSeparator1" alignment="1" min="-2" pref="433" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                  <Component id="jPanel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="oldpasswrdLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="newpasswrdLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="oldpasswrdField" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="newpasswrdField" alignment="1" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="saveButton" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="eheadLabel" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="eheadLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="emailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="eEmailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="persnbrTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="epersnbrLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="prenameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="prenameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lastnameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lastnameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="adressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="eadressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="postadressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="epostadressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cityTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ecityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="phoneTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ephoneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="oldpasswrdField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="oldpasswrdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="newpasswrdField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="newpasswrdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="saveButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="prenameLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="F&#xf6;rnamn"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="phoneTextField">
+        </Component>
+        <Component class="javax.swing.JTextField" name="lastnameTextField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="ephoneLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mobilnr"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lastnameLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Efternamn"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="oldpasswrdLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Gammalt l&#xf6;senord"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="emailTextField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="newpasswrdLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nytt L&#xf6;senord"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="eEmailLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="* E-postadress"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="oldpasswrdField">
+        </Component>
+        <Component class="javax.swing.JTextField" name="adressTextField">
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="newpasswrdField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="eadressLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Gatuadress"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="saveButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Spara &#xe4;ndringar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="eheadLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="24" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Redigera kontaktuppgifter"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="postadressTextField">
+        </Component>
+        <Component class="javax.swing.JTextField" name="persnbrTextField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="epostadressLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Postnummer"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="epersnbrLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Personnummer"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="cityTextField">
+        </Component>
+        <Component class="javax.swing.JTextField" name="prenameTextField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="ecityLabel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Stad"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="66" red="66" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;E-postadressen du fyller i kommer fungera som anv&#xe4;ndarnamn vid inloggning&lt;/html&gt;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel8">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="66" red="66" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="F&#xe4;lt markerade med * m&#xe5;ste fyllas i"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="jSeparator1">
+        </Component>
+        <Container class="javax.swing.JPanel" name="jPanel2">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Constants.MAIN_BACKGROUND" type="code"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel1" alignment="1" pref="294" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel1" min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Constants.MAIN_BACKGROUND" type="code"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;Du beh&#xf6;ver bara fylla i n&#xe5;got nedan om du vill byta fr&#xe5;n ditt gamla l&#xf6;senord&lt;/html&gt;"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Component class="imat.BackButton" name="backButton1">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveButtonActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="backButton1MouseClicked"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="eheadLabel">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Lucida Grande" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Kontaktupgifter"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="postadressTextField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="persnbrTextField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="epostadressLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Postnummer:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="epersnbrLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Pers.nr:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="cityTextField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="prenameTextField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="ecityLabel">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Stad:"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>
