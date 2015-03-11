@@ -7,6 +7,7 @@ package imat;
 
 import imat.controller.CartManager;
 import imat.model.ShoppingList;
+import imat.model.SubShoppingCart;
 import java.awt.Color;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  *
  * @author win8
  */
-public class CartPanel extends javax.swing.JPanel {
+public class CartPanel extends javax.swing.JPanel  {
 
     /**
      * Creates new form CartPanel
@@ -33,7 +34,7 @@ public class CartPanel extends javax.swing.JPanel {
         checkoutButton.setOpaque(true);
         checkoutButton.setContentAreaFilled(false);
 
-        cartManager = new CartManager();
+        cartManager = CartManager.getInstance();
         cart = IMatDataHandler.getInstance().getShoppingCart();
         updateTotalValue();
         cart.addShoppingCartListener(new ShoppingCartListener() {
@@ -51,18 +52,22 @@ public class CartPanel extends javax.swing.JPanel {
 
             }
         });
+        
+        cartManager.addCartManagerListener(new CartManagerListener() {
 
-        List<ShoppingItem> items = new ArrayList<>();
+            @Override
+            public void subCartAdded(SubShoppingCart subcart) {
+                System.out.println("sub cart panel ");
+                jPanel1.add(new SubCartPanel(subcart));
+            }
 
-//        Product p = new Product();
-//        p.setName("Chebab");
-//        p.setPrice(100);
-//        p.setUnit("st");
-//        ShoppingItem it = new ShoppingItem(p, 1);
-//        items.add(it);
-//        ShoppingList shoppingList = new ShoppingList("Vardag", items);
-//        cartManager.addShoppingListToCart(shoppingList);
-//        jPanel1.add(new SubCartPanel(cartManager.getSubShoppingCartList().get(0)));
+            @Override
+            public void subCartRemoved(SubShoppingCart cart) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+
+
     }
 
     /**
@@ -194,7 +199,6 @@ public class CartPanel extends javax.swing.JPanel {
 
     private ShoppingCart cart;
     private CartManager cartManager;
-    private HashMap<ShoppingList, CartCategorizedItemListPanel> shoppingListPanels;
     private ShowCheckoutContentHandler showCheckoutContentHandler;
 
 }

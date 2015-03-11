@@ -69,6 +69,7 @@ public class CartManager {
         for (ShoppingItem item : shoppingList.getItems()) {
             subcart.addItem(new ShoppingItem(item.getProduct(), item.getAmount()));
         }
+        System.out.println("reporting to listener");
          for(CartManagerListener listener : managerListeners) {
             listener.subCartAdded(subcart);
         }
