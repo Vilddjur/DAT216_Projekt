@@ -41,7 +41,7 @@ public class CartPanel extends javax.swing.JPanel {
         checkoutButton.setContentAreaFilled(false);
         jScrollPane1.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
             public void adjustmentValueChanged(AdjustmentEvent e) {
-                e.getAdjustable().setValue(e.getAdjustable().getMaximum());
+               // e.getAdjustable().setValue(e.getAdjustable().getMaximum());
             }
 
         });
