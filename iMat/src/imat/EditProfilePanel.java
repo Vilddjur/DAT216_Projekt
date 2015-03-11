@@ -169,6 +169,11 @@ public class EditProfilePanel extends javax.swing.JPanel implements PropertyChan
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        newpasswrdLabel1 = new javax.swing.JLabel();
+        newpasswrdField1 = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
+        strengthProgressBar = new javax.swing.JProgressBar();
+        jSeparator2 = new javax.swing.JSeparator();
         backButton1 = new imat.BackButton();
 
         setBackground(Constants.MAIN_BACKGROUND);
@@ -235,6 +240,10 @@ public class EditProfilePanel extends javax.swing.JPanel implements PropertyChan
                 .addGap(0, 2, Short.MAX_VALUE))
         );
 
+        newpasswrdLabel1.setText("Bekräfta lösenord");
+
+        jLabel3.setText("Lösenordets styrka");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -242,9 +251,26 @@ public class EditProfilePanel extends javax.swing.JPanel implements PropertyChan
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(oldpasswrdLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(newpasswrdLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(newpasswrdLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(oldpasswrdField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(newpasswrdField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(newpasswrdField1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(eheadLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(strengthProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,30 +298,18 @@ public class EditProfilePanel extends javax.swing.JPanel implements PropertyChan
                                             .addGap(18, 18, 18)
                                             .addComponent(cityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(persnbrTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(phoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(phoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(oldpasswrdLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(newpasswrdLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(oldpasswrdField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(newpasswrdField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(saveButton)
-                                            .addGap(158, 158, 158))))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(eheadLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addComponent(saveButton)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(eheadLabel)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -343,9 +357,18 @@ public class EditProfilePanel extends javax.swing.JPanel implements PropertyChan
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newpasswrdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newpasswrdLabel))
-                .addGap(18, 18, 18)
-                .addComponent(saveButton)
-                .addContainerGap())
+                .addGap(8, 8, 8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(strengthProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newpasswrdField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newpasswrdLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(saveButton))
         );
 
         backButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -408,14 +431,18 @@ public class EditProfilePanel extends javax.swing.JPanel implements PropertyChan
     private javax.swing.JLabel epostadressLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lastnameLabel;
     private javax.swing.JTextField lastnameTextField;
     private javax.swing.JPasswordField newpasswrdField;
+    private javax.swing.JPasswordField newpasswrdField1;
     private javax.swing.JLabel newpasswrdLabel;
+    private javax.swing.JLabel newpasswrdLabel1;
     private javax.swing.JPasswordField oldpasswrdField;
     private javax.swing.JLabel oldpasswrdLabel;
     private javax.swing.JTextField persnbrTextField;
@@ -424,5 +451,6 @@ public class EditProfilePanel extends javax.swing.JPanel implements PropertyChan
     private javax.swing.JLabel prenameLabel;
     private javax.swing.JTextField prenameTextField;
     private javax.swing.JButton saveButton;
+    private javax.swing.JProgressBar strengthProgressBar;
     // End of variables declaration//GEN-END:variables
 }
