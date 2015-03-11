@@ -5,6 +5,7 @@
  */
 package imat;
 
+import imat.controller.FavouritesManager;
 import imat.controller.UserManager;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -78,6 +79,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         } else if (property.equals("showLoginCard")) {
             switchToCard("login");
             subcategoryList.clear();
+        } else if (property.equals("addFavourite") || property.equals("removeFavourite")){
+            favoritesPanel.updateProducts(IMatDataHandler.getInstance().favorites());
         }
     }
     /**
@@ -140,6 +143,9 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         profilePanel.addPropertyChangeListener(this);
         editProfilePanel.addPropertyChangeListener(this);
         checkOutPanel.addPropertyChangeListener(this);
+        FavouritesManager.getInstance().addPropertyChangeListener(this);
+        
+        favoritesPanel.updateProducts(IMatDataHandler.getInstance().favorites());
     }
 
     /**
@@ -529,9 +535,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             switchToCard("login");
             subcategoryList.clear();
         }
-        
-    //Update favourites
-        favoritesPanel.updateProducts(IMatDataHandler.getInstance().favorites());
+       
     }//GEN-LAST:event_profileButtonMouseClicked
     
     private void checkOutItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkOutItem2MouseClicked

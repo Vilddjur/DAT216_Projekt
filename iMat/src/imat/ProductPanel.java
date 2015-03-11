@@ -5,6 +5,7 @@
  */
 package imat;
 
+import imat.controller.FavouritesManager;
 import imat.controller.ShoppingListManager;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -200,13 +201,13 @@ public class ProductPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_addToCartButtonActionPerformed
 
     private void favoriteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favoriteButtonActionPerformed
-      if(IMatDataHandler.getInstance().isFavorite(product)){
-          IMatDataHandler.getInstance().removeFavorite(product);
-          favoriteButton.setIcon(emptyIcon);
-      }else{
-          IMatDataHandler.getInstance().addFavorite(product);
-          favoriteButton.setIcon(filledIcon);
-      }
+        if(IMatDataHandler.getInstance().isFavorite(product)){
+            favoriteButton.setIcon(emptyIcon);
+        }else{
+            favoriteButton.setIcon(filledIcon);
+        }
+        FavouritesManager manager = FavouritesManager.getInstance();
+        manager.toggleFavourite(product);
     }//GEN-LAST:event_favoriteButtonActionPerformed
 
     private void addToListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToListButtonActionPerformed
