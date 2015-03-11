@@ -229,26 +229,94 @@ public class CreditCardPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void resetFieldBackgrounds() {
+        nbr1TextField.setBackground(Color.WHITE);
+        nbr2TextField.setBackground(Color.WHITE);
+        nbr3TextField.setBackground(Color.WHITE);
+        nbr4TextField.setBackground(Color.WHITE);
+        ccvTextField.setBackground(Color.WHITE);
+        nameTextField.setBackground(Color.WHITE);
+    }
+    
+    private boolean validateFields() {
+        resetFieldBackgrounds();
+        
+        boolean error = false;
+        
+        if (!(nbr1TextField.getText().equals("")
+                && nbr2TextField.getText().equals("")
+                && nbr3TextField.getText().equals("")
+                && nbr4TextField.getText().equals(""))) {
+            
+            if (nbr1TextField.getText().length() != 4 || !isNumeric(nbr1TextField.getText())) {
+                nbr1TextField.setBackground(Constants.ERROR_COLOR);
+                error = true;
+            }
+            
+            if (nbr2TextField.getText().length() != 4 || !isNumeric(nbr2TextField.getText())) {
+                nbr2TextField.setBackground(Constants.ERROR_COLOR);
+                error = true;
+            }
+            
+            if (nbr3TextField.getText().length() != 4 || !isNumeric(nbr3TextField.getText())) {
+                nbr3TextField.setBackground(Constants.ERROR_COLOR);
+                error = true;
+            }
+            
+            if (nbr4TextField.getText().length() != 4 || !isNumeric(nbr4TextField.getText())) {
+                nbr4TextField.setBackground(Constants.ERROR_COLOR);
+                error = true;
+            }
+        }
+        
+        if (!ccvTextField.getText().equals("")
+                && ccvTextField.getText().length() != 4
+                && !isNumeric(ccvTextField.getText())) {
+            ccvTextField.setBackground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (!nameTextField.getText().equals("")
+                && nameTextField.getText().trim().equals("")) {
+            nameTextField.setBackground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        return error;
+    }
+    
+    private boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+    
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         if(!editState) {
             setFieldsEditable(true);
             editState=true;
             editButton.setText("Spara");
         }else{
-            editState=false;
-            card.setHoldersName(nameTextField.getText());
-            if(dateTextField.getText().contains("/")){
-                String[] my = dateTextField.getText().split("/");
-                try{
-                    card.setValidMonth(Integer.parseInt(my[0]));
-                    card.setValidYear(Integer.parseInt(my[1]));
-                }catch(NumberFormatException e){
-                    
+            if (!validateFields()) {
+                card.setHoldersName(nameTextField.getText());
+                if(dateTextField.getText().contains("/")){
+                    String[] my = dateTextField.getText().split("/");
+                    try{
+                        card.setValidMonth(Integer.parseInt(my[0]));
+                        card.setValidYear(Integer.parseInt(my[1]));
+                    }catch(NumberFormatException e){
+
+                    }
                 }
+                card.setCardNumber(nbr1TextField.getText() + nbr2TextField.getText() + nbr3TextField.getText() + nbr4TextField.getText());
+                editButton.setText("Redigera");
+                setFieldsEditable(false);
+                
+                editState=false;
             }
-            card.setCardNumber(nbr1TextField.getText() + nbr2TextField.getText() + nbr3TextField.getText() + nbr4TextField.getText());
-            editButton.setText("Redigera");
-            setFieldsEditable(false);
         }
     }//GEN-LAST:event_editButtonActionPerformed
 
