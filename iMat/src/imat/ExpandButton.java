@@ -5,6 +5,7 @@
  */
 package imat;
 
+import com.sun.glass.ui.Cursor;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -26,6 +27,7 @@ public class ExpandButton extends JToggleButton {
     public ExpandButton(int size) {
         setSize(size, size);
         this.setPreferredSize(new Dimension(size, size));
+        this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     }
 
     // Paint the border of the button using a simple stroke.

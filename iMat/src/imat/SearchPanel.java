@@ -49,6 +49,7 @@ public class SearchPanel extends javax.swing.JPanel {
         });
 
         searchButton.setText("Sök");
+        searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);

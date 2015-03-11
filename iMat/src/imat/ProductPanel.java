@@ -85,6 +85,7 @@ public class ProductPanel extends javax.swing.JPanel {
 
         addToCartButton.setBackground(new java.awt.Color(102, 255, 102));
         addToCartButton.setText("Lägg till i kundvagnen");
+        addToCartButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addToCartButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addToCartButtonActionPerformed(evt);
@@ -129,6 +130,7 @@ public class ProductPanel extends javax.swing.JPanel {
 
         favoriteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/favoriteStartEmpty.png"))); // NOI18N
         favoriteButton.setToolTipText("Spara som favorit");
+        favoriteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         favoriteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 favoriteButtonActionPerformed(evt);
@@ -138,6 +140,7 @@ public class ProductPanel extends javax.swing.JPanel {
         addToListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/add.png"))); // NOI18N
         addToListButton.setBorderPainted(false);
         addToListButton.setContentAreaFilled(false);
+        addToListButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addToListButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addToListButtonActionPerformed(evt);

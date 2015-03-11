@@ -28,20 +28,14 @@ public class CartItemPanel extends javax.swing.JPanel {
 
         initComponents();
         setShoppingItem(item);
-        amountSpinner.addChangeListener(new ChangeListener() {
-
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                System.out.println("here");
-                if (listener != null) {
-                    if (getAmount() != item.getAmount()) {
-                        if(getAmount() > 0) {
-                            System.out.println("notify change");
-                            listener.amountChanged(item, getAmount());
-                        }
-                        else {
-                            listener.itemRemoved(item);
-                        }
+        amountSpinner.addChangeListener((ChangeEvent e) -> {
+            if (listener != null) {
+                if (getAmount() != item.getAmount()) {
+                    if(getAmount() > 0) {
+                        listener.amountChanged(item, getAmount());
+                    }
+                    else {
+                        listener.itemRemoved(item);
                     }
                 }
             }

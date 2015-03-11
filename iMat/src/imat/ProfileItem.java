@@ -38,7 +38,7 @@ public class ProfileItem extends javax.swing.JPanel implements PropertyChangeLis
         label = new javax.swing.JLabel();
 
         setBackground(Constants.BANNER_COLOR);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/my-profile-icon.png"))); // NOI18N

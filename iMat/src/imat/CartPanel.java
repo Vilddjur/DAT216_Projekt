@@ -94,6 +94,7 @@ public class CartPanel extends javax.swing.JPanel  {
         checkoutButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         checkoutButton.setBorderPainted(false);
         checkoutButton.setContentAreaFilled(false);
+        checkoutButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         checkoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkoutButtonActionPerformed(evt);

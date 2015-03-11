@@ -47,7 +47,7 @@ public class CheckOutItem extends javax.swing.JPanel implements ShoppingCartList
         sekLabel = new javax.swing.JLabel();
 
         setBackground(Constants.BANNER_COLOR);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         iconLabel.setForeground(new java.awt.Color(255, 255, 255));
         iconLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

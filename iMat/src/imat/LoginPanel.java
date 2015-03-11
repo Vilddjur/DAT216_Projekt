@@ -72,6 +72,7 @@ public class LoginPanel extends javax.swing.JPanel implements IPropertyChangeSup
         registerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         loginButton.setText("Logga in");
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
@@ -90,6 +91,7 @@ public class LoginPanel extends javax.swing.JPanel implements IPropertyChangeSup
         });
 
         jButton1.setText("Registrera nu");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
