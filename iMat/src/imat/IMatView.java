@@ -651,7 +651,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         dryButton.reset();
         snacksButton.reset();
         diaryButton.reset();
-        recipeButton.reset();
     }
     /**
      * 
