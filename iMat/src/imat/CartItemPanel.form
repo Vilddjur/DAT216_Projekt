@@ -52,20 +52,18 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="productNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="amountSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="productUnitLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="productPriceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="productNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="amountSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="productUnitLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="productPriceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -91,13 +89,22 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\win8\Documents\dat216\delete.png"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="tmp" type="code"/>
+        </Property>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[16, 16]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[16, 16]"/>
         </Property>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel2MouseClicked"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ImageIcon tmp = new javax.swing.ImageIcon(getClass().getResource(&quot;/imat/img/delete.png&quot;));&#xa;            Image image = tmp.getImage(); // transform it &#xa;            Image newimg = image.getScaledInstance(16, 16,  Image.SCALE_SMOOTH); // scale it the smooth way  &#xa;            tmp = new ImageIcon(newimg);  // transform it back"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

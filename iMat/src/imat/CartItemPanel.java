@@ -5,7 +5,9 @@
  */
 package imat;
 
+import java.awt.Image;
 import java.text.DecimalFormat;
+import javax.swing.ImageIcon;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import se.chalmers.ait.dat215.project.Product;
@@ -79,7 +81,13 @@ public class CartItemPanel extends javax.swing.JPanel {
         productPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         productPriceLabel.setText("10 :-");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\win8\\Documents\\dat216\\delete.png")); // NOI18N
+        ImageIcon tmp = new javax.swing.ImageIcon(getClass().getResource("/imat/img/delete.png"));
+        Image image = tmp.getImage(); // transform it
+        Image newimg = image.getScaledInstance(16, 16,  Image.SCALE_SMOOTH); // scale it the smooth way
+        tmp = new ImageIcon(newimg);  // transform it back
+        jLabel2.setIcon(tmp);
+        jLabel2.setMaximumSize(new java.awt.Dimension(16, 16));
+        jLabel2.setMinimumSize(new java.awt.Dimension(16, 16));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
@@ -104,18 +112,16 @@ public class CartItemPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(productNameLabel)
-                    .addComponent(amountSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(productUnitLabel)
-                    .addComponent(productPriceLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(productNameLabel)
+                        .addComponent(amountSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(productUnitLabel)
+                        .addComponent(productPriceLabel)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
