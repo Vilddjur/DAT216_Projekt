@@ -25,6 +25,9 @@ public class CheckOutItem extends javax.swing.JPanel implements ShoppingCartList
     public CheckOutItem() {
         initComponents();
         cart = IMatDataHandler.getInstance().getShoppingCart();
+        DecimalFormat df = new DecimalFormat("0.00##");
+        totalPriceLabel.setText(""+df.format(cart.getTotal()));
+        amountLabel.setText(""+getAmount(cart));
     }
 
     /**
