@@ -7,6 +7,9 @@ package imat;
 
 import imat.controller.FavouritesManager;
 import imat.controller.ShoppingListManager;
+import imat.controller.UserManager;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -30,14 +33,7 @@ public class ProductPanel extends javax.swing.JPanel {
      */
     public ProductPanel(Product product) {
         initComponents();
-        this.product = product;
-        
-        nameLabel.setText(product.getName());
-        priceLabel.setText(product.getPrice() + " " + product.getUnit());
-        imageLabel.setIcon(ResourceHandler.getInstance().getImage(product.getImageName()));
-        if(IMatDataHandler.getInstance().isFavorite(product)){
-            favoriteButton.setIcon(filledIcon);
-        }
+        setProduct(product);
         this.setVisible(true);
     }
     public double getAmount(){
@@ -55,6 +51,9 @@ public class ProductPanel extends javax.swing.JPanel {
         imageLabel.setIcon(ResourceHandler.getInstance().getImage(product.getImageName()));
         if(IMatDataHandler.getInstance().isFavorite(product)){
             favoriteButton.setIcon(filledIcon);
+        }
+        if(!UserManager.getInstance().isLoggedIn()){
+            favoriteButton.setVisible(false);
         }
     }
     /**
@@ -211,6 +210,7 @@ public class ProductPanel extends javax.swing.JPanel {
         }
         FavouritesManager manager = FavouritesManager.getInstance();
         manager.toggleFavourite(product);
+        
     }//GEN-LAST:event_favoriteButtonActionPerformed
 
     private void addToListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToListButtonActionPerformed
@@ -233,4 +233,8 @@ public class ProductPanel extends javax.swing.JPanel {
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel priceLabel;
     // End of variables declaration//GEN-END:variables
+
+    void showFavouriteButton(boolean b) {
+        favoriteButton.setVisible(b);
+    }
 }

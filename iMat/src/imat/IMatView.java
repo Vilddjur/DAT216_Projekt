@@ -47,7 +47,12 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
                 }
             } else if (evt.getNewValue() instanceof ProfileSubListItem) {
                 ProfileSubListItem item = (ProfileSubListItem) evt.getNewValue();
-                switchToCard(item.getCard());
+                if(item.getCard().equals("logout")){
+                    UserManager.getInstance().logout();
+                    switchToCard("startPage");
+                }else{
+                    switchToCard(item.getCard());
+                }
             }
         } else if (property.equals("login")
                 || property.equals("register")
@@ -59,6 +64,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             list.add(new ProfileSubListItem("Profil", "profile"));
             list.add(new ProfileSubListItem("Orderhistorik", "orderHistory"));
             list.add(new ProfileSubListItem("Favoriter", "favourites"));
+            list.add(new ProfileSubListItem("Logga ut", "logout"));
             Object[] arr = list.toArray();
             subcategoryList.update(arr);
 
@@ -81,7 +87,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             subcategoryList.clear();
         } else if (property.equals("addFavourite") || property.equals("removeFavourite")){
             favoritesPanel.updateProducts(IMatDataHandler.getInstance().favorites());
-        }
+        } 
+        
     }
     /**
      * Hidden class {@link ConcreteSearchListener}, listens to when a search is made, thereafter displays the corresponding products.
@@ -144,7 +151,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         editProfilePanel.addPropertyChangeListener(this);
         checkOutPanel.addPropertyChangeListener(this);
         FavouritesManager.getInstance().addPropertyChangeListener(this);
-        
+
         favoritesPanel.updateProducts(IMatDataHandler.getInstance().favorites());
     }
 
@@ -528,6 +535,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             list.add(new ProfileSubListItem("Profil", "profile"));
             list.add(new ProfileSubListItem("Orderhistorik", "orderHistory"));
             list.add(new ProfileSubListItem("Favoriter", "favourites"));
+            list.add(new ProfileSubListItem("Logga ut", "logout"));
             Object[] arr = list.toArray();
             subcategoryList.update(arr);
             

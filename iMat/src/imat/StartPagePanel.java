@@ -5,7 +5,11 @@
  */
 package imat;
 
+import imat.controller.FavouritesManager;
+import imat.controller.UserManager;
 import java.awt.Color;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import javax.swing.BorderFactory;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 
@@ -13,7 +17,7 @@ import se.chalmers.ait.dat215.project.IMatDataHandler;
  *
  * @author Oskar
  */
-public class StartPagePanel extends javax.swing.JPanel {
+public class StartPagePanel extends javax.swing.JPanel implements PropertyChangeListener {
 
     
     
@@ -28,8 +32,9 @@ public class StartPagePanel extends javax.swing.JPanel {
         productPanel1.setProduct(dh.getProduct(1));
         productPanel2.setProduct(dh.getProduct(2));
         productPanel3.setProduct(dh.getProduct(3));
+        
+        UserManager.getInstance().addPropertyChangeListener(this);
     }
-
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -134,4 +139,19 @@ public class StartPagePanel extends javax.swing.JPanel {
     private imat.SlidePanel slidePanel1;
     private javax.swing.JPanel slidePanelWrapper;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if (evt.getPropertyName().equals("login")) {
+            productPanel1.showFavouriteButton(true);
+            productPanel2.showFavouriteButton(true);
+            productPanel3.showFavouriteButton(true);
+
+        }else if(evt.getPropertyName().equals("logout")){
+            productPanel1.showFavouriteButton(false);
+            productPanel2.showFavouriteButton(false);
+            productPanel3.showFavouriteButton(false);
+
+        }
+    }
 }

@@ -94,7 +94,16 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         postadressTextField.setText("Göteborg");
         mobileTextField.setText("0730308425");
     }
-
+    private void clearAllFields() {
+            persnbrTextField.setText("");
+            adressTextField.setText(""); 
+            emailTextField.setText("");
+            prenameTextField.setText("");
+            lastnameTextField.setText("");
+            mobileTextField.setText("");
+            postadressTextField.setText("");
+            postcodeTextField.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1036,6 +1045,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
             fillFieldsFromCurrentUserProfile();
         } else if (property.equals("logout")) {
             showRegisterInfo(true);
+            clearAllFields();
         }
     }
     
