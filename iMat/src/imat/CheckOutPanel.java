@@ -8,11 +8,22 @@ package imat;
 import imat.controller.OrderManager;
 import imat.controller.UserManager;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.ItemEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.DocumentFilter;
+import javax.swing.text.PlainDocument;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.CreditCard;
 import se.chalmers.ait.dat215.project.Customer;
@@ -28,6 +39,15 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
     private final ShoppingCart cart;
     private final UserManager um;
+    
+    private class CustomDocument extends PlainDocument {
+        @Override
+        public void insertString(int offset, String string, AttributeSet attr) throws BadLocationException {
+            if (getLength() < 4) {
+                super.insertString(offset, string, attr);
+            }
+        }
+    }
 
     /**
      * Creates new form CheckOutPanel
@@ -52,10 +72,36 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         jRadioButton5.addItemListener((ItemEvent e) -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 dayComboBox.setEnabled(true);
+                monthComboBox.setEnabled(true);
             } else if (e.getStateChange() == ItemEvent.DESELECTED) {
                 dayComboBox.setEnabled(false);
+                monthComboBox.setEnabled(false);
             }
         });
+        
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_MONTH, 5);
+        dayComboBox.setSelectedIndex(cal.get(Calendar.DAY_OF_MONTH) - 1);
+        monthComboBox.setSelectedIndex(cal.get(Calendar.MONTH));
+        
+        cardField1.setDocument(new CustomDocument());
+        cardField2.setDocument(new CustomDocument());
+        cardField3.setDocument(new CustomDocument());
+        cardField4.setDocument(new CustomDocument());
+        
+        // TA BORT INNAN REDOVISNING
+        demoFillFields();
+    }
+    
+    private void demoFillFields() {
+        persnbrTextField.setText("9306151979");
+        prenameTextField.setText("Mats");
+        lastnameTextField.setText("Högberg");
+        emailTextField.setText("mats@hgbrg.se");
+        adressTextField.setText("Gatan");
+        postcodeTextField.setText("41280");
+        postadressTextField.setText("Göteborg");
+        mobileTextField.setText("0730308425");
     }
 
     /**
@@ -119,28 +165,26 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         cardInfo = new javax.swing.JPanel();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
+        cardField2 = new javax.swing.JTextField();
+        cardField3 = new javax.swing.JTextField();
+        cardField1 = new javax.swing.JTextField();
         jComboBox3 = new javax.swing.JComboBox();
         jTextField12 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
+        cardField4 = new javax.swing.JTextField();
         jTextField11 = new javax.swing.JTextField();
         jComboBox4 = new javax.swing.JComboBox();
         backButton1 = new imat.BackButton();
         receiptPanel = new javax.swing.JPanel();
-        jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        registerInfo = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
 
         mainPanel.setBackground(new java.awt.Color(102, 102, 102));
         mainPanel.setMinimumSize(new java.awt.Dimension(795, 403));
@@ -150,24 +194,78 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
         jPanel4.setBackground(new java.awt.Color(246, 246, 246));
 
-        persnbrLabel.setText("Personnummer");
+        persnbrLabel.setText("* Personnummer");
 
-        prenameLabel.setText("Förnamn");
+        prenameLabel.setText("* Förnamn");
 
-        lastnameLabel.setText("Efternamn");
+        lastnameLabel.setText("* Efternamn");
 
         conameLabel.setText("C/o");
 
-        emailLabel.setText("E-postadress");
+        emailLabel.setText("* E-postadress");
 
-        adressLabel.setText("Gatuadress");
+        adressLabel.setText("* Gatuadress");
 
-        postcodeLabel.setText("Postnummer");
+        postcodeLabel.setText("* Postnummer");
 
         postadressLabel.setBackground(new java.awt.Color(255, 255, 255));
-        postadressLabel.setText("Stad");
+        postadressLabel.setText("* Stad");
 
-        mobileLabel.setText("Mobilnummer");
+        mobileLabel.setText("* Mobilnummer");
+
+        persnbrTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        prenameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        lastnameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        conameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        emailTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        adressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        postcodeTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        postadressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        mobileTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
 
         getLabel.setBackground(new java.awt.Color(255, 255, 255));
         getLabel.setForeground(new java.awt.Color(204, 204, 204));
@@ -175,12 +273,10 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
         dateLabel.setText("Önskat leveransdatum");
 
-        dayComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", " " }));
-        dayComboBox.setSelectedIndex(6);
+        dayComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         dayComboBox.setEnabled(false);
 
-        monthComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", " " }));
-        monthComboBox.setSelectedIndex(4);
+        monthComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December" }));
         monthComboBox.setEnabled(false);
 
         nextButton.setText("Nästa");
@@ -216,14 +312,14 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                                 .addComponent(dateLabel)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButton4)
+                                    .addComponent(jRadioButton5)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addGap(29, 29, 29)
-                                        .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jRadioButton4)
-                                    .addComponent(jRadioButton5))
-                                .addGap(131, 131, 131))
+                                        .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(71, 71, 71))
                             .addComponent(nextButton, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,16 +421,16 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         infoPanelLayout.setHorizontalGroup(
             infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoPanelLayout.createSequentialGroup()
-                .addContainerGap(344, Short.MAX_VALUE)
+                .addContainerGap(382, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(344, Short.MAX_VALUE))
+                .addContainerGap(383, Short.MAX_VALUE))
         );
         infoPanelLayout.setVerticalGroup(
             infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoPanelLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(364, Short.MAX_VALUE))
         );
 
         mainPanel.add(infoPanel, "infoCard");
@@ -406,13 +502,19 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
         cardInfo.setBackground(Constants.MAIN_BACKGROUND);
 
-        jTextField13.addFocusListener(new java.awt.event.FocusAdapter() {
+        cardField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 fieldFocusGained(evt);
             }
         });
 
-        jTextField10.addFocusListener(new java.awt.event.FocusAdapter() {
+        cardField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        cardField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 fieldFocusGained(evt);
             }
@@ -422,6 +524,12 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
         jTextField12.setText("CCV");
         jTextField12.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
+        cardField4.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 fieldFocusGained(evt);
             }
@@ -452,13 +560,13 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(cardInfoLayout.createSequentialGroup()
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardField1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardField2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardField3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cardField4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, 0))
         );
         cardInfoLayout.setVerticalGroup(
@@ -466,10 +574,10 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
             .addGroup(cardInfoLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(cardInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cardField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cardField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cardField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cardField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(cardInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -539,15 +647,15 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                 .addComponent(jRadioButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(amountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(amountLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -576,9 +684,9 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                 .addComponent(backButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, payPanelLayout.createSequentialGroup()
-                .addContainerGap(381, Short.MAX_VALUE)
+                .addContainerGap(420, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(381, Short.MAX_VALUE))
+                .addContainerGap(420, Short.MAX_VALUE))
         );
         payPanelLayout.setVerticalGroup(
             payPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -587,107 +695,110 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                 .addComponent(backButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addContainerGap(443, Short.MAX_VALUE))
         );
 
         mainPanel.add(payPanel, "payCard");
 
-        jLabel18.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel18.setText("Köp Genomfört!");
+        receiptPanel.setBackground(Constants.MAIN_BACKGROUND);
 
-        jLabel19.setText("Har du ingen profil?");
+        jPanel1.setBackground(Constants.MAIN_BACKGROUND);
 
-        jLabel20.setText("Registrera dig");
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Bekräftelse");
 
-        jLabel21.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLabel21.setText("här");
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/complete_img.png"))); // NOI18N
 
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/complete_img.png"))); // NOI18N
-        jLabel23.setText("jLabel23");
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Tack för din beställning!");
+
+        jLabel6.setText("<html>En orderbekräftelse har skickats till e-postadressen du angav.</html>");
+
+        jLabel7.setText("<html>Ditt paket väntas levereras {date}. Har du frågor angående din beställning kan du kontakta oss på <b>kundtjanst@imat.se</b>.</html>");
+
+        registerInfo.setBackground(Constants.MAIN_BACKGROUND);
+
+        jButton1.setText("Registrera nu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("<html>Med ett iMat-konto får du tillgång till exklusiva erbjudanden och möjlighet till att bland annat spara favoritprodukter och inköpslistor. <b>Vill du registrera dig nu?</b></html>");
+
+        javax.swing.GroupLayout registerInfoLayout = new javax.swing.GroupLayout(registerInfo);
+        registerInfo.setLayout(registerInfoLayout);
+        registerInfoLayout.setHorizontalGroup(
+            registerInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator8)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerInfoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+        registerInfoLayout.setVerticalGroup(
+            registerInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerInfoLayout.createSequentialGroup()
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel19)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel21))
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(632, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(registerInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 434, Short.MAX_VALUE)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(jLabel21))
-                .addGap(39, 39, 39))
-        );
-
-        jSplitPane1.setRightComponent(jPanel1);
-
-        jPanel2.setPreferredSize(new java.awt.Dimension(300, 468));
-
-        jButton3.setText("Skriv ut");
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/kvitto.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jScrollPane1.setViewportView(jPanel3);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel2)
                 .addGap(45, 45, 45)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(jLabel4)
+                .addGap(50, 50, 50)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(registerInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        jSplitPane1.setLeftComponent(jPanel2);
 
         javax.swing.GroupLayout receiptPanelLayout = new javax.swing.GroupLayout(receiptPanel);
         receiptPanel.setLayout(receiptPanelLayout);
         receiptPanelLayout.setHorizontalGroup(
             receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addGroup(receiptPanelLayout.createSequentialGroup()
+                .addContainerGap(326, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(327, Short.MAX_VALUE))
         );
         receiptPanelLayout.setVerticalGroup(
             receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addGroup(receiptPanelLayout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(214, Short.MAX_VALUE))
         );
 
         mainPanel.add(receiptPanel, "receiptCard");
@@ -704,11 +815,80 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void resetInfoLabels() {
+        emailLabel.setForeground(Color.BLACK);
+        persnbrLabel.setForeground(Color.BLACK);
+        mobileLabel.setForeground(Color.BLACK);
+        postcodeLabel.setForeground(Color.BLACK);
+        prenameLabel.setForeground(Color.BLACK);
+        lastnameLabel.setForeground(Color.BLACK);
+        adressLabel.setForeground(Color.BLACK);
+        postadressLabel.setForeground(Color.BLACK);
+    }
+    
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-        amountLabel.setText("" + cart.getTotal());
-        totalAmountLabel.setText("" + cart.getTotal());
-        CardLayout card = (CardLayout) mainPanel.getLayout();
-        card.show(mainPanel, "payCard");
+        resetInfoLabels();
+        
+        boolean error = false;
+        
+        if (!FieldValidations.isValidEmail(emailTextField.getText())) {
+            emailLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (!FieldValidations.isValidPersnbr(persnbrTextField.getText())) {
+            persnbrLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (!FieldValidations.isValidPhoneNumber(mobileTextField.getText())) {
+            mobileLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (!FieldValidations.isValidPostCode(postcodeTextField.getText())) {
+            postcodeLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (prenameTextField.getText().trim().equals("")) {
+            prenameLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (lastnameTextField.getText().trim().equals("")) {
+            lastnameLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (adressTextField.getText().trim().equals("")) {
+            adressLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (postadressTextField.getText().trim().equals("")) {
+            postadressLabel.setForeground(Constants.ERROR_COLOR);
+            error = true;
+        }
+        
+        if (!error) {
+            UserManager um = UserManager.getInstance();
+            um.updateInfo(
+                    persnbrTextField.getText(),
+                    adressTextField.getText(), 
+                    emailTextField.getText(),
+                    prenameTextField.getText(),
+                    lastnameTextField.getText(),
+                    mobileTextField.getText(),
+                    postadressTextField.getText(),
+                    postcodeTextField.getText()
+            );
+            
+            amountLabel.setText("" + cart.getTotal());
+            totalAmountLabel.setText("" + cart.getTotal());
+            CardLayout card = (CardLayout) mainPanel.getLayout();
+            card.show(mainPanel, "payCard");
+        }
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -737,12 +917,16 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        firePropertyChange("gotoRegister", null, "hideBackButton");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void fillCreditCardFromUserProfile() {
         if (um.isLoggedIn()) {
 
             CreditCard card = um.getCard();
             
-            jTextField10.setText(card.getCardNumber());
+            cardField1.setText(card.getCardNumber());
             jTextField11.setText(card.getHoldersName());
             jComboBox3.setSelectedIndex(card.getValidMonth()-1);
             jComboBox4.setSelectedItem(card.getValidYear()+"");
@@ -771,6 +955,10 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     private javax.swing.JLabel amountLabel;
     private imat.BackButton backButton1;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTextField cardField1;
+    private javax.swing.JTextField cardField2;
+    private javax.swing.JTextField cardField3;
+    private javax.swing.JTextField cardField4;
     private javax.swing.JPanel cardInfo;
     private javax.swing.JLabel conameLabel;
     private javax.swing.JTextField conameTextField;
@@ -781,8 +969,8 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     private javax.swing.JTextField emailTextField;
     private javax.swing.JLabel getLabel;
     private javax.swing.JPanel infoPanel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox4;
     private javax.swing.JLabel jLabel1;
@@ -791,15 +979,13 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JRadioButton jRadioButton1;
@@ -807,7 +993,6 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -815,13 +1000,9 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTextField jTextField10;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
     private javax.swing.JLabel lastnameLabel;
     private javax.swing.JTextField lastnameTextField;
     private javax.swing.JPanel mainPanel;
@@ -839,16 +1020,28 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     private javax.swing.JLabel prenameLabel;
     private javax.swing.JTextField prenameTextField;
     private javax.swing.JPanel receiptPanel;
+    private javax.swing.JPanel registerInfo;
     private javax.swing.JLabel totalAmountLabel;
     // End of variables declaration//GEN-END:variables
 
+    private JTextField[] cardFields = {cardField1, cardField2, cardField2, cardField3};
+    
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         String property = evt.getPropertyName();
         if (property.equals("login") || property.equals("updateInfo")) {
+            if (property.equals("login")) {
+                showRegisterInfo(false);
+            }
             fillCreditCardFromUserProfile();
             fillFieldsFromCurrentUserProfile();
+        } else if (property.equals("logout")) {
+            showRegisterInfo(true);
         }
+    }
+    
+    private void showRegisterInfo(boolean b) {
+        registerInfo.setVisible(b);
     }
 
     private double getDeliveryFee() {

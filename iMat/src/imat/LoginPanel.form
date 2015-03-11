@@ -61,7 +61,7 @@
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="registerLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="passwordField" alignment="0" pref="250" max="32767" attributes="0"/>
+                      <Component id="passwordField" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="errorLabel" min="-2" max="-2" attributes="0"/>
@@ -105,12 +105,15 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Anv&#xe4;ndarnamn"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="usernameFieldFocusGained"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="registerLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ej medlem? Registrera dig h&#xe4;r!"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="Standardmark&#xf6;r"/>
             </Property>
           </Properties>
           <Events>
@@ -139,6 +142,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="L&#xf6;senord"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="passwordFieldFocusGained"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

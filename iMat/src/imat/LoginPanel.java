@@ -57,9 +57,14 @@ public class LoginPanel extends javax.swing.JPanel implements IPropertyChangeSup
         jLabel1.setText("Logga in");
 
         usernameField.setText("Användarnamn");
+        usernameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                usernameFieldFocusGained(evt);
+            }
+        });
 
         registerLabel.setText("Ej medlem? Registrera dig här!");
-        registerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registerLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         registerLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerLabelMouseClicked(evt);
@@ -83,6 +88,11 @@ public class LoginPanel extends javax.swing.JPanel implements IPropertyChangeSup
         errorLabel.setText("Inloggning misslyckades!");
 
         passwordField.setText("Lösenord");
+        passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordFieldFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -98,7 +108,7 @@ public class LoginPanel extends javax.swing.JPanel implements IPropertyChangeSup
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(registerLabel))
-                    .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(passwordField)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(errorLabel))
@@ -168,6 +178,14 @@ public class LoginPanel extends javax.swing.JPanel implements IPropertyChangeSup
     private void registerLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerLabelMouseClicked
         pcs.firePropertyChange("gotoRegister", null, null);
     }//GEN-LAST:event_registerLabelMouseClicked
+
+    private void usernameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFieldFocusGained
+        usernameField.selectAll();
+    }//GEN-LAST:event_usernameFieldFocusGained
+
+    private void passwordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFieldFocusGained
+        passwordField.selectAll();
+    }//GEN-LAST:event_passwordFieldFocusGained
 
     private Font font;
     // Variables declaration - do not modify//GEN-BEGIN:variables

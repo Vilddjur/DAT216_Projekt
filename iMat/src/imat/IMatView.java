@@ -14,6 +14,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.input.DataFormat;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
@@ -27,6 +28,7 @@ import se.chalmers.ait.dat215.project.Product;
 public class IMatView extends javax.swing.JFrame implements PropertyChangeListener {
     
     private final IMatDataHandler imat = IMatDataHandler.getInstance();
+    private int originalDividerLocation;
 
     /**
      * Listens for changes in {@link SubcategoryList}
@@ -58,8 +60,16 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             list.add(new ProfileSubListItem("Favoriter", "favourites"));
             Object[] arr = list.toArray();
             subcategoryList.update(arr);
+
         } else if (property.equals("gotoRegister")) {
             switchToCard("register");
+            
+            if (evt.getNewValue() != null && evt.getNewValue().equals("hideBackButton")) {
+                registerPanel.showBackButton(false);
+            } else {
+                registerPanel.showBackButton(true);
+            }
+            
             subcategoryList.clear();
             registerPanel.focusFirstField();
         } else if (property.equals("showEditProfileCard")) {
@@ -99,6 +109,10 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         
         initComponents();
         
+        originalDividerLocation = jSplitPane1.getDividerLocation();
+        
+        showSubcategoryList(false);
+        
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent evt) {
@@ -107,7 +121,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         });
         
         //request focus so search panel isnt focus on start
-        homeButton.requestFocus();
+//        homeButton.requestFocus();
         
         //topPanel
         searchPanel.addSearchButtonListener(new ConcreteSearchListener());
@@ -131,6 +145,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         registerPanel.addPropertyChangeListener(this);
         profilePanel.addPropertyChangeListener(this);
         editProfilePanel.addPropertyChangeListener(this);
+        checkOutPanel.addPropertyChangeListener(this);
     }
 
     /**
@@ -144,12 +159,12 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
 
         mainPanel = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
-        topTabsPanel = new javax.swing.JPanel();
-        subHeadPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        homeButton = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         checkOutItem2 = new imat.CheckOutItem();
         profileButton = new imat.ProfileItem();
         searchPanel = new imat.SearchPanel();
-        homeButton = new javax.swing.JLabel();
         topHeadPanel = new javax.swing.JPanel();
         fruitButton = new imat.MainCategoryItem();
         fruitButton.setCategory(new MainProductCategory(MainProductCategory.Name.FRUIT_AND_VEGETABLES));
@@ -164,7 +179,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         recipeButton = new imat.MainCategoryItem();
         dryButton = new imat.MainCategoryItem();
         dryButton.setCategory(new MainProductCategory(MainProductCategory.Name.DRY));
-        jLabel2 = new javax.swing.JLabel();
         jSplitPane1 = new javax.swing.JSplitPane();
         rightSplitPane = new javax.swing.JPanel();
         mainContentPanel = new javax.swing.JPanel();
@@ -176,7 +190,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         productListPanel = new imat.ProductListPanel();
         editProfilePanel = new imat.EditProfilePanel();
         orderHistoryMainPanel1 = new imat.OrderHistoryMainPanel();
-        favouritesPanel1 = new imat.FavouritesPanel();
+        favoritesPanel = new imat.ProductListPanel();
         shoppingPanel1 = new imat.ShoppingPanel();
         subcategoryList = new imat.SubcategoryList();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -191,9 +205,20 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         topPanel.setBackground(Constants.BANNER_COLOR);
         topPanel.setPreferredSize(new java.awt.Dimension(1120, 160));
 
-        topTabsPanel.setBackground(Constants.BANNER_COLOR);
+        jPanel1.setBackground(Constants.MAIN_BACKGROUND);
 
-        subHeadPanel.setBackground(Constants.BANNER_COLOR);
+        homeButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/logo.jpg"))); // NOI18N
+        homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeButtonMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Marker Felt", 1, 36)); // NOI18N
+        jLabel2.setForeground(Constants.FONT_BANNER_COLOR);
+        jLabel2.setText("Din matbutik i molnet");
 
         checkOutItem2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -207,47 +232,40 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             }
         });
 
-        javax.swing.GroupLayout subHeadPanelLayout = new javax.swing.GroupLayout(subHeadPanel);
-        subHeadPanel.setLayout(subHeadPanelLayout);
-        subHeadPanelLayout.setHorizontalGroup(
-            subHeadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, subHeadPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(profileButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(checkOutItem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(profileButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(checkOutItem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(searchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
-        subHeadPanelLayout.setVerticalGroup(
-            subHeadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(checkOutItem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(profileButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(checkOutItem2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(profileButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
-
-        javax.swing.GroupLayout topTabsPanelLayout = new javax.swing.GroupLayout(topTabsPanel);
-        topTabsPanel.setLayout(topTabsPanelLayout);
-        topTabsPanelLayout.setHorizontalGroup(
-            topTabsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(subHeadPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topTabsPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        topTabsPanelLayout.setVerticalGroup(
-            topTabsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(topTabsPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(subHeadPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/logo.jpg"))); // NOI18N
-        homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                homeButtonMouseClicked(evt);
-            }
-        });
 
         topHeadPanel.setBackground(new java.awt.Color(183, 227, 176));
 
@@ -333,32 +351,18 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             .addComponent(dryButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jLabel2.setFont(new java.awt.Font("Marker Felt", 1, 36)); // NOI18N
-        jLabel2.setForeground(Constants.FONT_BANNER_COLOR);
-        jLabel2.setText("Din matbutik i molnet");
-
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
         topPanelLayout.setHorizontalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(topPanelLayout.createSequentialGroup()
-                .addComponent(homeButton)
-                .addGap(67, 67, 67)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(topTabsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(topHeadPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(topTabsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(topHeadPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -376,19 +380,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         mainContentPanel.add(productListPanel, "productList");
         mainContentPanel.add(editProfilePanel, "editProfile");
         mainContentPanel.add(orderHistoryMainPanel1, "orderHistory");
-
-        javax.swing.GroupLayout favouritesPanel1Layout = new javax.swing.GroupLayout(favouritesPanel1);
-        favouritesPanel1.setLayout(favouritesPanel1Layout);
-        favouritesPanel1Layout.setHorizontalGroup(
-            favouritesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1106, Short.MAX_VALUE)
-        );
-        favouritesPanel1Layout.setVerticalGroup(
-            favouritesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 602, Short.MAX_VALUE)
-        );
-
-        mainContentPanel.add(favouritesPanel1, "favourites");
+        mainContentPanel.add(favoritesPanel, "favourites");
 
         javax.swing.GroupLayout rightSplitPaneLayout = new javax.swing.GroupLayout(rightSplitPane);
         rightSplitPane.setLayout(rightSplitPaneLayout);
@@ -406,6 +398,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         );
 
         jSplitPane1.setRightComponent(rightSplitPane);
+
+        subcategoryList.setBackground(new java.awt.Color(255, 255, 255));
         jSplitPane1.setLeftComponent(subcategoryList);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -418,9 +412,10 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jSplitPane1))
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         jMenu1.setText("File");
@@ -518,8 +513,20 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         resetProductList();
         
         switchToCard("startPage");
+        jSplitPane1.setDividerLocation(0);
+        showSubcategoryList(false);
         subcategoryList.clear();
     }//GEN-LAST:event_homeButtonMouseClicked
+    
+    private void showSubcategoryList(boolean b) {
+        if (b) {
+            jSplitPane1.setDividerLocation(originalDividerLocation);
+        } else {
+            jSplitPane1.setDividerLocation(0);
+        }
+        subcategoryList.setVisible(b);
+    }
+    
     /**
      * Checks the state of {@link UserManager}, logged in, switch to profile, not logged in, switch to loginform.
      * @param evt 
@@ -536,6 +543,9 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             list.add(new ProfileSubListItem("Favoriter", "favourites"));
             Object[] arr = list.toArray();
             subcategoryList.update(arr);
+            
+        //Update favourites
+            favoritesPanel.updateProducts(IMatDataHandler.getInstance().favorites());
         } else {
             switchToCard("login");
             subcategoryList.clear();
@@ -591,13 +601,14 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private imat.MainCategoryItem diaryButton;
     private imat.MainCategoryItem dryButton;
     private imat.EditProfilePanel editProfilePanel;
-    private imat.FavouritesPanel favouritesPanel1;
+    private imat.ProductListPanel favoritesPanel;
     private imat.MainCategoryItem fruitButton;
     private javax.swing.JLabel homeButton;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
     private imat.LoginPanel loginPanel;
     private javax.swing.JPanel mainContentPanel;
@@ -613,11 +624,9 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     private imat.ShoppingPanel shoppingPanel1;
     private imat.MainCategoryItem snacksButton;
     private imat.StartPagePanel startPagePanel;
-    private javax.swing.JPanel subHeadPanel;
     private imat.SubcategoryList subcategoryList;
     private javax.swing.JPanel topHeadPanel;
     private javax.swing.JPanel topPanel;
-    private javax.swing.JPanel topTabsPanel;
     // End of variables declaration//GEN-END:variables
     /**
      * Generic card switcher, also clear {@link SubcategoryList}
@@ -625,10 +634,20 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
      */
     private void switchToCard(String card) {       
         CardLayout manager = (CardLayout) mainContentPanel.getLayout();
-        if(card=="checkOut"){
+        if(card.equals("checkOut")) {
             CardLayout tmp = (CardLayout) checkOutPanel.getMainPanel().getLayout();
             tmp.show(checkOutPanel.getMainPanel(), "infoCard");
         }
+        
+        if (card.equals("startPage")
+                || card.equals("login")
+                || card.equals("register")
+                || card.equals("checkOut")) {
+            showSubcategoryList(false);
+        } else {
+            showSubcategoryList(true);
+        }
+        
         manager.show(mainContentPanel, card);
     }
     /**
