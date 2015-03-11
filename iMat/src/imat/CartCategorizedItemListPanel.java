@@ -24,7 +24,7 @@ public class CartCategorizedItemListPanel extends javax.swing.JPanel implements 
      * Creates new form CategorizedShoppingListItemPanel
      */
     public CartCategorizedItemListPanel() {
-        this("En Kategori");
+        this("Okatogoriserade varor");
     }
 
     public CartCategorizedItemListPanel(String categoryName) {
