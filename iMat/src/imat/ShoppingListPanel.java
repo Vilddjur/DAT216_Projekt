@@ -9,6 +9,7 @@ import imat.controller.CartManager;
 import imat.model.ShoppingList;
 import java.util.ArrayList;
 import java.util.List;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -26,13 +27,16 @@ public class ShoppingListPanel extends javax.swing.JPanel {
     public ShoppingListPanel() {
         initComponents();
         Product p = new Product();
-        p.setName("Chebab");
-        p.setPrice(100);
-        p.setProductId(1);
-        p.setUnit("st");
-        ShoppingItem it = new ShoppingItem(p, 1);
+        IMatDataHandler data = IMatDataHandler.getInstance();
         List<ShoppingItem> items = new ArrayList<>();
-        items.add(it);
+        items.add(new ShoppingItem(data.getProduct(1),3));
+        items.add(new ShoppingItem(data.getProduct(2),3));
+        items.add(new ShoppingItem(data.getProduct(3),7));
+        items.add(new ShoppingItem(data.getProduct(4),5));
+        items.add(new ShoppingItem(data.getProduct(5),4));
+        
+        
+        
         shoppingList = new ShoppingList("Vardag", items);
         CartItemListPanel cartList = new CartItemListPanel();
         cartList.setItemPanelListener(new ShoppingItemPanelListener() {
@@ -45,6 +49,7 @@ public class ShoppingListPanel extends javax.swing.JPanel {
 
             @Override
             public void itemRemoved(ShoppingItem item) {
+                shoppingList.removeItem(item);
                 cartList.removeItem(item);
                 
             }
