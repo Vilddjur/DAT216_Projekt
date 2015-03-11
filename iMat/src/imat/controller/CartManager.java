@@ -5,6 +5,7 @@
  */
 package imat.controller;
 
+import imat.CartManagerListener;
 import imat.model.ShoppingList;
 import imat.model.SubShoppingCart;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class CartManager {
 
     private final ShoppingCart cart;
     private List<SubShoppingCart> subcarts = new ArrayList<>();
+    private final List<CartManagerListener> managerListeners = new ArrayList<>();
     private static final CartManager instance = new CartManager();
 
     public CartManager() {
@@ -58,6 +60,7 @@ public class CartManager {
     }
 
     public void addShoppingListToCart(ShoppingList shoppingList) {
+        System.out.println("shoppingList added");
         SubShoppingCart subcart = new SubShoppingCart();
         
         subcart.setName(shoppingList.getName());
@@ -65,6 +68,9 @@ public class CartManager {
         subcarts.add(subcart);
         for (ShoppingItem item : shoppingList.getItems()) {
             subcart.addItem(new ShoppingItem(item.getProduct(), item.getAmount()));
+        }
+         for(CartManagerListener listener : managerListeners) {
+            listener.subCartAdded(subcart);
         }
         
     }
@@ -89,7 +95,19 @@ public class CartManager {
         return cart.getTotal();
     }
 
+    public void addCartManagerListener(CartManagerListener listener) {
+        managerListeners.add(listener);
+    }
+    
+    public void removeCartManagerListener(CartManagerListener listener) {
+        managerListeners.remove(listener);
+        
+    }
+    
+  
     public void clear() {
         cart.clear();
     }
+    
+    
 }
