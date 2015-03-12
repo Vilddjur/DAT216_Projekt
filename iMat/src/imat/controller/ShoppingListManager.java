@@ -41,7 +41,7 @@ public class ShoppingListManager {
         items2.add(new ShoppingItem(data.getProduct(9), 5));
         items2.add(new ShoppingItem(data.getProduct(10), 4));
         availableLists.add(currentList);
-        availableLists.add(new ShoppingList("Arabpack", items2));
+        availableLists.add(new ShoppingList("Student", items2));
 
     }
 
