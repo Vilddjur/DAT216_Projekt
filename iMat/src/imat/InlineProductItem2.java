@@ -74,9 +74,10 @@ public class InlineProductItem2 extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(246, 246, 246));
 
-        labels.setBackground(new java.awt.Color(246, 246, 246));
+        labels.setBackground(new java.awt.Color(255, 255, 255));
+        labels.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 14, 10, 10));
 
-        imgWrapper.setBackground(new java.awt.Color(246, 246, 246));
+        imgWrapper.setBackground(new java.awt.Color(255, 255, 255));
 
         imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/product_1.jpg"))); // NOI18N
 
@@ -149,7 +150,7 @@ public class InlineProductItem2 extends javax.swing.JPanel {
                 .addComponent(amountSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addToCartButton)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         labelsLayout.setVerticalGroup(
             labelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,9 +183,9 @@ public class InlineProductItem2 extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
+                .addGap(10, 10, 10)
                 .addComponent(labels, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addGap(10, 10, 10))
         );
     }// </editor-fold>//GEN-END:initComponents
 

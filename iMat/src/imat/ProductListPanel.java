@@ -22,6 +22,8 @@ public class ProductListPanel extends javax.swing.JPanel {
     private GridLayout grid;
     private List<Product> products;
     
+    private boolean gridActive = true;
+    
     private class PriceComparator implements Comparator<Product> {
         private int direction; 
         
@@ -67,14 +69,15 @@ public class ProductListPanel extends javax.swing.JPanel {
     }
     
     public void updateProducts(List<Product> products) {
-        reset();
-        
         this.products = products;
         
+        updateView();
+    }
+    
+    private void updateView() {
+        reset();
+        
         int sort = sortType.getSelectedIndex();
-        
-        System.out.println(sort);
-        
         if (sort == 0) {
             Collections.sort(products, new CategoryComparator());
         } else if (sort == 1) {
@@ -82,19 +85,24 @@ public class ProductListPanel extends javax.swing.JPanel {
         } else if (sort == 2) {
             Collections.sort(products, new PriceComparator(true));
         } else if (sort == 3) {
-            Collections.sort(products, new PriceComparator((false)));
+            Collections.sort(products, new PriceComparator(false));
         }
         
         for (Product product : products) {
-            subGridPanel.add(new ProductPanel(product));
-            listView.add(new InlineProductItem2(product));
+            if (gridActive) {
+                subGridPanel.add(new ProductPanel(product));
+            } else {
+                listView.add(new InlineProductItem2(product));
+            }
         }
 
-        subGridPanel.revalidate();
-        subGridPanel.repaint();
-        
-        listView.revalidate();
-        listView.repaint();
+        if (gridActive) {
+            subGridPanel.revalidate();
+            subGridPanel.repaint();
+        } else {
+            listView.revalidate();
+            listView.repaint();
+        }
     }
 
     /**
@@ -153,10 +161,11 @@ public class ProductListPanel extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(246, 246, 246));
 
         labels1.setBackground(new java.awt.Color(246, 246, 246));
+        labels1.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 14, 0, 10));
 
         imgWrapper1.setBackground(new java.awt.Color(246, 246, 246));
 
-        jLabel3.setText("Bild");
+        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout imgWrapper1Layout = new javax.swing.GroupLayout(imgWrapper1);
         imgWrapper1.setLayout(imgWrapper1Layout);
@@ -166,12 +175,16 @@ public class ProductListPanel extends javax.swing.JPanel {
         );
         imgWrapper1Layout.setVerticalGroup(
             imgWrapper1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, imgWrapper1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel3))
         );
 
         nameLabel.setText("Namn");
+        nameLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         priceLabel.setText("Enhetspris");
+        priceLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout labels1Layout = new javax.swing.GroupLayout(labels1);
         labels1.setLayout(labels1Layout);
@@ -183,15 +196,15 @@ public class ProductListPanel extends javax.swing.JPanel {
                 .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(292, Short.MAX_VALUE))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
         labels1Layout.setVerticalGroup(
             labels1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(labels1Layout.createSequentialGroup()
                 .addGroup(labels1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, labels1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(nameLabel)
+                        .addComponent(priceLabel))
                     .addComponent(imgWrapper1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
@@ -294,9 +307,13 @@ public class ProductListPanel extends javax.swing.JPanel {
         int type = viewType.getSelectedIndex();
         if (type == 0) {
             card = "grid";
+            gridActive = true;
         } else if (type == 1) {
             card = "list";
+            gridActive = false;
         }
+        
+        updateView();
         
         CardLayout manager = (CardLayout) jPanel2.getLayout();
         manager.show(jPanel2, card);
