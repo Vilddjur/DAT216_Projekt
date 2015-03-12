@@ -104,9 +104,9 @@ public class SearchPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_searchFieldKeyTyped
 
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
-        if (evt.getKeyChar() != KeyEvent.CHAR_UNDEFINED && evt.getKeyCode() != KeyEvent.VK_ESCAPE) {
-            searchFieldActionPerformed(null);
-        }
+//        if (evt.getKeyChar() != KeyEvent.CHAR_UNDEFINED && evt.getKeyCode() != KeyEvent.VK_ESCAPE) {
+//            searchFieldActionPerformed(null);
+//        }
     }//GEN-LAST:event_searchFieldKeyReleased
 
     public void addSearchButtonListener(SearchListener listener) {
