@@ -5,6 +5,7 @@
  */
 package imat;
 
+import java.awt.CardLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.Collections;
@@ -57,13 +58,12 @@ public class ProductListPanel extends javax.swing.JPanel {
      */
     public ProductListPanel() {
         initComponents();
-        gridPanel.setLayout(new WrapLayout(FlowLayout.LEFT));
-        
-        jScrollPane1.getVerticalScrollBar().setUnitIncrement(8);
+        subGridPanel.setLayout(new WrapLayout(FlowLayout.LEFT));
     }
     
     public void reset() {
-        gridPanel.removeAll();
+        subGridPanel.removeAll();
+        listView.removeAll();
     }
     
     public void updateProducts(List<Product> products) {
@@ -86,11 +86,15 @@ public class ProductListPanel extends javax.swing.JPanel {
         }
         
         for (Product product : products) {
-            gridPanel.add(new ProductPanel(product));
+            subGridPanel.add(new ProductPanel(product));
+            listView.add(new InlineProductItem2(product));
         }
 
-        gridPanel.revalidate();
-        gridPanel.repaint();
+        subGridPanel.revalidate();
+        subGridPanel.repaint();
+        
+        listView.revalidate();
+        listView.repaint();
     }
 
     /**
@@ -102,21 +106,135 @@ public class ProductListPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         gridPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        subGridPanel = new javax.swing.JPanel();
+        listCard = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        labels1 = new javax.swing.JPanel();
+        imgWrapper1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        priceLabel = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listView = new javax.swing.JPanel();
         sortType = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        viewType = new javax.swing.JComboBox();
 
         setBackground(new java.awt.Color(246, 246, 246));
 
-        jScrollPane1.setBorder(null);
-
-        jPanel1.setBackground(Constants.MAIN_BACKGROUND);
+        jPanel2.setLayout(new java.awt.CardLayout());
 
         gridPanel.setBackground(Constants.MAIN_BACKGROUND);
 
-        jLabel1.setText("Sortera efter");
+        jScrollPane2.setBorder(null);
+
+        subGridPanel.setBackground(Constants.MAIN_BACKGROUND);
+        jScrollPane2.setViewportView(subGridPanel);
+
+        javax.swing.GroupLayout gridPanelLayout = new javax.swing.GroupLayout(gridPanel);
+        gridPanel.setLayout(gridPanelLayout);
+        gridPanelLayout.setHorizontalGroup(
+            gridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 766, Short.MAX_VALUE)
+        );
+        gridPanelLayout.setVerticalGroup(
+            gridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(gridPanel, "grid");
+
+        listCard.setBackground(Constants.MAIN_BACKGROUND);
+
+        jPanel3.setBackground(new java.awt.Color(246, 246, 246));
+
+        labels1.setBackground(new java.awt.Color(246, 246, 246));
+
+        imgWrapper1.setBackground(new java.awt.Color(246, 246, 246));
+
+        jLabel3.setText("Bild");
+
+        javax.swing.GroupLayout imgWrapper1Layout = new javax.swing.GroupLayout(imgWrapper1);
+        imgWrapper1.setLayout(imgWrapper1Layout);
+        imgWrapper1Layout.setHorizontalGroup(
+            imgWrapper1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+        );
+        imgWrapper1Layout.setVerticalGroup(
+            imgWrapper1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        nameLabel.setText("Namn");
+
+        priceLabel.setText("Enhetspris");
+
+        javax.swing.GroupLayout labels1Layout = new javax.swing.GroupLayout(labels1);
+        labels1.setLayout(labels1Layout);
+        labels1Layout.setHorizontalGroup(
+            labels1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(labels1Layout.createSequentialGroup()
+                .addComponent(imgWrapper1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(292, Short.MAX_VALUE))
+        );
+        labels1Layout.setVerticalGroup(
+            labels1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(labels1Layout.createSequentialGroup()
+                .addGroup(labels1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, labels1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(imgWrapper1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(labels1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(15, 15, 15))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(labels1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+
+        jScrollPane3.setBorder(null);
+
+        listView.setBackground(Constants.MAIN_BACKGROUND);
+        listView.setLayout(new javax.swing.BoxLayout(listView, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPane3.setViewportView(listView);
+
+        javax.swing.GroupLayout listCardLayout = new javax.swing.GroupLayout(listCard);
+        listCard.setLayout(listCardLayout);
+        listCardLayout.setHorizontalGroup(
+            listCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane3)
+        );
+        listCardLayout.setVerticalGroup(
+            listCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listCardLayout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3))
+        );
+
+        jPanel2.add(listCard, "list");
 
         sortType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kategori", "Namn", "Pris - billigast först", "Pris - dyrast först" }));
         sortType.addActionListener(new java.awt.event.ActionListener() {
@@ -125,40 +243,44 @@ public class ProductListPanel extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sortType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(sortType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
-                .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE))
-        );
+        jLabel1.setText("Sortera efter");
 
-        jScrollPane1.setViewportView(jPanel1);
+        jLabel2.setText("Visa som");
+
+        viewType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rutnät", "Lista" }));
+        viewType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewTypeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sortType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(sortType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(viewType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -166,12 +288,41 @@ public class ProductListPanel extends javax.swing.JPanel {
         updateProducts(products);
     }//GEN-LAST:event_sortTypeActionPerformed
 
+    private void viewTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTypeActionPerformed
+        String card = "";
+        
+        int type = viewType.getSelectedIndex();
+        if (type == 0) {
+            card = "grid";
+        } else if (type == 1) {
+            card = "list";
+        }
+        
+        CardLayout manager = (CardLayout) jPanel2.getLayout();
+        manager.show(jPanel2, card);
+    }//GEN-LAST:event_viewTypeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel gridPanel;
+    private javax.swing.JLabel imageLabel;
+    private javax.swing.JPanel imgWrapper;
+    private javax.swing.JPanel imgWrapper1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JPanel labels;
+    private javax.swing.JPanel labels1;
+    private javax.swing.JPanel listCard;
+    private javax.swing.JPanel listView;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel priceLabel;
     private javax.swing.JComboBox sortType;
+    private javax.swing.JPanel subGridPanel;
+    private javax.swing.JComboBox viewType;
     // End of variables declaration//GEN-END:variables
 }
