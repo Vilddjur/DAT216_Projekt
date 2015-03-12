@@ -137,7 +137,7 @@ public class UserManager implements IPropertyChangeSupport {
         this.regFirstname = firstname;
         this.regLastname = lastname;
         this.regPhoneNumber = phoneNumber;
-        this.regCity = regCity;
+        this.regCity = city;
         this.regPostCode = postCode;
         
         pcs.firePropertyChange("updateRegisterInfo", null, null);
