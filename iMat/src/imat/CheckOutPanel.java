@@ -76,26 +76,19 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         cal.add(Calendar.DAY_OF_MONTH, 5);
         dayComboBox.setSelectedIndex(cal.get(Calendar.DAY_OF_MONTH) - 1);
         monthComboBox.setSelectedIndex(cal.get(Calendar.MONTH));
-        
-//        cardField1.setDocument(new CustomDocument());
-//        cardField2.setDocument(new CustomDocument());
-//        cardField3.setDocument(new CustomDocument());
-//        cardField4.setDocument(new CustomDocument());
-        
-        // TA BORT INNAN REDOVISNING
-        demoFillFields();
     }
     
-    private void demoFillFields() {
-        persnbrTextField.setText("9306151979");
-        prenameTextField.setText("Mats");
-        lastnameTextField.setText("Högberg");
-        emailTextField.setText("mats@hgbrg.se");
-        adressTextField.setText("Gatan");
-        postcodeTextField.setText("41280");
-        postadressTextField.setText("Göteborg");
-        mobileTextField.setText("0730308425");
-    }
+//    private void demoFillFields() {
+//        persnbrTextField.setText("9306151979");
+//        prenameTextField.setText("Mats");
+//        lastnameTextField.setText("Högberg");
+//        emailTextField.setText("mats@hgbrg.se");
+//        adressTextField.setText("Gatan");
+//        postcodeTextField.setText("41280");
+//        postadressTextField.setText("Göteborg");
+//        mobileTextField.setText("0730308425");
+//    }
+    
     private void clearAllFields() {
             persnbrTextField.setText("");
             adressTextField.setText(""); 
@@ -477,10 +470,10 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         jLabel13.setText("Summa");
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel14.setText("0 KR");
+        jLabel14.setText("0 kr");
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel15.setText("Leverans (Fri frakt)");
+        jLabel15.setText("Leveranskostnad (fri frakt)");
 
         totalAmountLabel.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         totalAmountLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -535,16 +528,17 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(amountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(totalAmountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(amountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(totalAmountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -797,8 +791,8 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         }
         
         if (!error) {
-            amountLabel.setText("" + cart.getTotal());
-            totalAmountLabel.setText("" + cart.getTotal());
+            amountLabel.setText(cart.getTotal() + " kr");
+            totalAmountLabel.setText(cart.getTotal() + " kr");
             
             String dateString;
             
@@ -839,7 +833,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (!creditCardPanel1.hasValidInfo()) {
+        if (jRadioButton2.isSelected() && !creditCardPanel1.hasValidInfo()) {
             return;
         }
         
@@ -1002,11 +996,10 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         return jRadioButton1.isSelected() ? 29 : 0;
     }
     public void updatePayValues() {
-        amountLabel.setText(cart.getTotal()+ " :-");
+        amountLabel.setText(cart.getTotal()+ " kr");
         //fast coded stuff
         double deliveryFee = getDeliveryFee();
-        //jLabel14.setText(deliveryFee+ " :-");
-        totalAmountLabel.setText((cart.getTotal()+deliveryFee)+" :-");
+        totalAmountLabel.setText((cart.getTotal()+deliveryFee)+" kr");
     }
     @Override
     public void shoppingCartChanged(CartEvent ce) {
