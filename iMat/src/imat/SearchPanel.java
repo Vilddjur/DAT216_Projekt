@@ -47,9 +47,17 @@ public class SearchPanel extends javax.swing.JPanel {
                 searchFieldActionPerformed(evt);
             }
         });
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                searchFieldKeyTyped(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
 
         searchButton.setText("Sök");
-        searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
@@ -89,6 +97,14 @@ public class SearchPanel extends javax.swing.JPanel {
     private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
         searchListener.search(searchField.getText());
     }//GEN-LAST:event_searchFieldActionPerformed
+
+    private void searchFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyTyped
+        
+    }//GEN-LAST:event_searchFieldKeyTyped
+
+    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+        searchFieldActionPerformed(null);
+    }//GEN-LAST:event_searchFieldKeyReleased
 
     public void addSearchButtonListener(SearchListener listener) {
         this.searchListener = listener;
