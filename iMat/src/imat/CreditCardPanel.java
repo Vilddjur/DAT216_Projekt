@@ -24,6 +24,8 @@ public class CreditCardPanel extends javax.swing.JPanel implements PropertyChang
     
     private CreditCard card = IMatDataHandler.getInstance().getCreditCard();
     private boolean editState;
+    
+    private boolean checkout = false;
 
     /**
      * Creates new form CreditCardPanel
@@ -41,6 +43,13 @@ public class CreditCardPanel extends javax.swing.JPanel implements PropertyChang
         nbr4TextField.setDocument(new CustomDocument());
         
         updateCardInfo();
+    }
+    
+    public void setCheckout() {
+        this.checkout = true;
+        editButtonActionPerformed(null);
+        editButton.setEnabled(false);
+        editButton.setText("");
     }
 
     private void updateCardInfo(){
@@ -103,11 +112,35 @@ public class CreditCardPanel extends javax.swing.JPanel implements PropertyChang
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_02.jpg"))); // NOI18N
 
+        nbr1TextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_04.jpg"))); // NOI18N
+
+        nbr2TextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_06.jpg"))); // NOI18N
 
+        nbr3TextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_08.jpg"))); // NOI18N
+
+        nbr4TextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_10.jpg"))); // NOI18N
 
@@ -115,13 +148,33 @@ public class CreditCardPanel extends javax.swing.JPanel implements PropertyChang
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_12.jpg"))); // NOI18N
 
+        dateTextField.setText("01/2015");
+        dateTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
+
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_14.jpg"))); // NOI18N
+
+        ccvTextField.setText("000");
+        ccvTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_16.jpg"))); // NOI18N
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_17.jpg"))); // NOI18N
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_18.jpg"))); // NOI18N
+
+        nameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldFocusGained(evt);
+            }
+        });
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imat/img/visa/credit_card_new_21.jpg"))); // NOI18N
 
@@ -246,12 +299,67 @@ public class CreditCardPanel extends javax.swing.JPanel implements PropertyChang
         nbr4TextField.setBackground(Color.WHITE);
         ccvTextField.setBackground(Color.WHITE);
         nameTextField.setBackground(Color.WHITE);
+        dateTextField.setBackground(Color.WHITE);
     }
     
-    private boolean validateFields() {
+    public boolean hasValidInfo() {
         resetFieldBackgrounds();
         
         boolean error = false;
+        
+        Color errorColor = new Color(0xFF7049);
+        
+        if (nbr1TextField.getText().length() != 4 || !isNumeric(nbr1TextField.getText())) {
+            nbr1TextField.setBackground(errorColor);
+            error = true;
+        }
+
+        if (nbr2TextField.getText().length() != 4 || !isNumeric(nbr2TextField.getText())) {
+            nbr2TextField.setBackground(errorColor);
+            error = true;
+        }
+
+        if (nbr3TextField.getText().length() != 4 || !isNumeric(nbr3TextField.getText())) {
+            nbr3TextField.setBackground(errorColor);
+            error = true;
+        }
+
+        if (nbr4TextField.getText().length() != 4 || !isNumeric(nbr4TextField.getText())) {
+            nbr4TextField.setBackground(errorColor);
+            error = true;
+        }
+        
+        if ((ccvTextField.getText().length() != 3
+                || !isNumeric(ccvTextField.getText()))) {
+            ccvTextField.setBackground(errorColor);
+            error = true;
+        }
+        
+        if (nameTextField.getText().trim().equals("")) {
+            nameTextField.setBackground(errorColor);
+            error = true;
+        }
+        
+        if (dateTextField.getText().contains("/")){
+            String[] my = dateTextField.getText().split("/");
+            try {
+                Integer.parseInt(my[0]);
+                Integer.parseInt(my[1]);
+            } catch(NumberFormatException e){
+                dateTextField.setBackground(errorColor);
+                error = true;
+            }
+        }
+        
+        return !error;
+    }
+    
+    public boolean validateFields() {
+        resetFieldBackgrounds();
+        
+        boolean error = false;
+        
+        Color errorColor = new Color(0xFF7049);
         
         if (!(nbr1TextField.getText().equals("")
                 && nbr2TextField.getText().equals("")
@@ -259,37 +367,48 @@ public class CreditCardPanel extends javax.swing.JPanel implements PropertyChang
                 && nbr4TextField.getText().equals(""))) {
             
             if (nbr1TextField.getText().length() != 4 || !isNumeric(nbr1TextField.getText())) {
-                nbr1TextField.setBackground(Constants.ERROR_COLOR);
+                nbr1TextField.setBackground(errorColor);
                 error = true;
             }
             
             if (nbr2TextField.getText().length() != 4 || !isNumeric(nbr2TextField.getText())) {
-                nbr2TextField.setBackground(Constants.ERROR_COLOR);
+                nbr2TextField.setBackground(errorColor);
                 error = true;
             }
             
             if (nbr3TextField.getText().length() != 4 || !isNumeric(nbr3TextField.getText())) {
-                nbr3TextField.setBackground(Constants.ERROR_COLOR);
+                nbr3TextField.setBackground(errorColor);
                 error = true;
             }
             
             if (nbr4TextField.getText().length() != 4 || !isNumeric(nbr4TextField.getText())) {
-                nbr4TextField.setBackground(Constants.ERROR_COLOR);
+                nbr4TextField.setBackground(errorColor);
                 error = true;
             }
         }
         
         if (!ccvTextField.getText().equals("")
-                && ccvTextField.getText().length() != 4
-                && !isNumeric(ccvTextField.getText())) {
-            ccvTextField.setBackground(Constants.ERROR_COLOR);
+                && (ccvTextField.getText().length() != 3
+                || !isNumeric(ccvTextField.getText()))) {
+            ccvTextField.setBackground(errorColor);
             error = true;
         }
         
-        if (!nameTextField.getText().equals("")
-                && nameTextField.getText().trim().equals("")) {
-            nameTextField.setBackground(Constants.ERROR_COLOR);
-            error = true;
+//        if (!nameTextField.getText().equals("")
+//                && nameTextField.getText().trim().equals("")) {
+//            nameTextField.setBackground(errorColor);
+//            error = true;
+//        }
+        
+        if (!dateTextField.equals("") && dateTextField.getText().contains("/")){
+            String[] my = dateTextField.getText().split("/");
+            try {
+                Integer.parseInt(my[0]);
+                Integer.parseInt(my[1]);
+            } catch(NumberFormatException e){
+                dateTextField.setBackground(errorColor);
+                error = true;
+            }
         }
         
         return error;
@@ -311,24 +430,28 @@ public class CreditCardPanel extends javax.swing.JPanel implements PropertyChang
             editButton.setText("Spara");
         }else{
             if (!validateFields()) {
-                card.setHoldersName(nameTextField.getText());
-                if(dateTextField.getText().contains("/")){
-                    String[] my = dateTextField.getText().split("/");
-                    try{
-                        card.setValidMonth(Integer.parseInt(my[0]));
-                        card.setValidYear(Integer.parseInt(my[1]));
-                    }catch(NumberFormatException e){
-
-                    }
-                }
-                card.setCardNumber(nbr1TextField.getText() + nbr2TextField.getText() + nbr3TextField.getText() + nbr4TextField.getText());
-                editButton.setText("Redigera");
-                setFieldsEditable(false);
+                String[] my = dateTextField.getText().split("/");
+                UserManager.getInstance().updateCreditCard(
+                        nameTextField.getText(),
+                        Integer.parseInt(my[0]),
+                        Integer.parseInt(my[1]),
+                        nbr1TextField.getText() + nbr2TextField.getText() + nbr3TextField.getText() + nbr4TextField.getText(),
+                        Integer.parseInt(ccvTextField.getText())
+                );
                 
-                editState=false;
+                if (!checkout) {
+                    editButton.setText("Redigera");
+                    setFieldsEditable(false);
+                    editState=false;
+                }
             }
         }
     }//GEN-LAST:event_editButtonActionPerformed
+
+    private void fieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldFocusGained
+        JTextField field = (JTextField) evt.getSource();
+        field.selectAll();
+    }//GEN-LAST:event_fieldFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -379,7 +502,8 @@ public class CreditCardPanel extends javax.swing.JPanel implements PropertyChang
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if (evt.getPropertyName().equals("resetCreditCard")) {
+        if (evt.getPropertyName().equals("resetCreditCard")
+                || evt.getPropertyName().equals("editCreditCard")) {
             updateCardInfo();
         }
     }
