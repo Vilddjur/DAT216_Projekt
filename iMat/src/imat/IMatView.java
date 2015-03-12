@@ -550,7 +550,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
     }//GEN-LAST:event_profileButtonMouseClicked
     
     private void checkOutItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkOutItem2MouseClicked
-            shoppingPanel1.showContent(!(shoppingPanel1.getCurrentCard().equals("cartCard") && shoppingPanel1.isContentVisible()));
+//            shoppingPanel1.showContent(!(shoppingPanel1.getCurrentCard().equals("cartCard") && shoppingPanel1.isContentVisible()));
+            shoppingPanel1.showContent(true);
             shoppingPanel1.setContentToCart();
         
     }//GEN-LAST:event_checkOutItem2MouseClicked
