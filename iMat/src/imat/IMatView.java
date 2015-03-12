@@ -205,8 +205,9 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iMat - Mat..Mat!");
-        setMinimumSize(new java.awt.Dimension(1600, 950));
-        setPreferredSize(new java.awt.Dimension(1600, 950));
+        setMinimumSize(new java.awt.Dimension(1500, 1020));
+        setPreferredSize(new java.awt.Dimension(1500, 1020));
+        setSize(new java.awt.Dimension(1600, 1020));
 
         mainPanel.setBackground(Constants.BANNER_COLOR);
 
@@ -374,7 +375,6 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         jSplitPane1.setBorder(null);
         jSplitPane1.setDividerSize(0);
 
-        mainContentPanel.setMinimumSize(new java.awt.Dimension(934, 602));
         mainContentPanel.setPreferredSize(new java.awt.Dimension(100, 602));
         mainContentPanel.setLayout(new java.awt.CardLayout());
         mainContentPanel.add(startPagePanel, "startPage");
@@ -392,7 +392,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         rightSplitPaneLayout.setHorizontalGroup(
             rightSplitPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightSplitPaneLayout.createSequentialGroup()
-                .addComponent(mainContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1203, Short.MAX_VALUE)
+                .addComponent(mainContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1356, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
                 .addComponent(shoppingPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -409,7 +409,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1447, Short.MAX_VALUE)
+            .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1600, Short.MAX_VALUE)
             .addComponent(jSplitPane1)
         );
         mainPanelLayout.setVerticalGroup(
@@ -417,7 +417,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE)
+                .addComponent(jSplitPane1)
                 .addGap(0, 0, 0))
         );
 
