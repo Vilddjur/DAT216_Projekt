@@ -7,6 +7,8 @@ package imat;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.JPanel;
 import se.chalmers.ait.dat215.project.Product;
@@ -17,6 +19,39 @@ import se.chalmers.ait.dat215.project.Product;
  */
 public class ProductListPanel extends javax.swing.JPanel {
     private GridLayout grid;
+    private List<Product> products;
+    
+    private class PriceComparator implements Comparator<Product> {
+        private int direction; 
+        
+        public PriceComparator(boolean cheapestFirst) {
+            if (cheapestFirst) {
+                direction = 1;
+            } else {
+                direction = -1;
+            }
+        }
+        
+        @Override
+        public int compare(Product p1, Product p2) {
+            return direction * ((int) (p1.getPrice() * 100) - (int) (p2.getPrice() * 100));
+        }
+    }
+    
+    private class NameComparator implements Comparator<Product> {
+        @Override
+        public int compare(Product p1, Product p2) {
+            return p1.getName().compareTo(p2.getName());
+        }
+    }
+    
+    private class CategoryComparator implements Comparator<Product> {
+        @Override
+        public int compare(Product p1, Product p2) {
+            return p1.getProductId() - p2.getProductId();
+        }
+    }
+    
     /**
      * Creates new form MainContentPanel
      */
@@ -33,6 +68,22 @@ public class ProductListPanel extends javax.swing.JPanel {
     
     public void updateProducts(List<Product> products) {
         reset();
+        
+        this.products = products;
+        
+        int sort = sortType.getSelectedIndex();
+        
+        System.out.println(sort);
+        
+        if (sort == 0) {
+            Collections.sort(products, new CategoryComparator());
+        } else if (sort == 1) {
+            Collections.sort(products, new NameComparator());
+        } else if (sort == 2) {
+            Collections.sort(products, new PriceComparator(true));
+        } else if (sort == 3) {
+            Collections.sort(products, new PriceComparator((false)));
+        }
         
         for (Product product : products) {
             gridPanel.add(new ProductPanel(product));
@@ -54,28 +105,47 @@ public class ProductListPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         gridPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        sortType = new javax.swing.JComboBox();
 
         setBackground(new java.awt.Color(246, 246, 246));
 
         jScrollPane1.setBorder(null);
 
+        jPanel1.setBackground(Constants.MAIN_BACKGROUND);
+
         gridPanel.setBackground(Constants.MAIN_BACKGROUND);
+
+        jLabel1.setText("Sortera efter");
+
+        sortType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kategori", "Namn", "Pris - billigast först", "Pris - dyrast först" }));
+        sortType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortTypeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sortType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(sortType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
-                .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -92,10 +162,16 @@ public class ProductListPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void sortTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortTypeActionPerformed
+        updateProducts(products);
+    }//GEN-LAST:event_sortTypeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel gridPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox sortType;
     // End of variables declaration//GEN-END:variables
 }
