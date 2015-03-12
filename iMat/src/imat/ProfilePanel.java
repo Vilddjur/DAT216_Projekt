@@ -42,10 +42,6 @@ public class ProfilePanel extends javax.swing.JPanel
             fullName = customer.getLastName();
         }
         
-        if (!customer.getLastName().trim().equals("")) {
-            fullName += " " + customer.getLastName();
-        }
-        
         String postAddress;
         
         if (!customer.getPostCode().trim().equals("")) {
