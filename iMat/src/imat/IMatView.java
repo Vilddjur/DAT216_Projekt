@@ -205,6 +205,8 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iMat - Mat..Mat!");
+        setMinimumSize(new java.awt.Dimension(1600, 950));
+        setPreferredSize(new java.awt.Dimension(1600, 950));
 
         mainPanel.setBackground(Constants.BANNER_COLOR);
 
