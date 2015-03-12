@@ -32,7 +32,7 @@ public class OrderHistoryItem extends javax.swing.JPanel {
         initComponents();
         updateFields(order);
         
-//        products.setVisible(false);
+        products.setVisible(false);
     }
     
     public void updateFields(Order order) {
@@ -114,6 +114,11 @@ public class OrderHistoryItem extends javax.swing.JPanel {
         priceLabel.setText("Pris");
 
         infoButton.setText("Visa info");
+        infoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                infoButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout labelsLayout = new javax.swing.GroupLayout(labels);
         labels.setLayout(labelsLayout);
@@ -250,8 +255,19 @@ public class OrderHistoryItem extends javax.swing.JPanel {
 
     private void labelsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelsMouseClicked
         products.setVisible(!products.isVisible());
+        
+        if (products.isVisible()) {
+            infoButton.setText("Dölj info");
+        } else {
+            infoButton.setText("Visa info");
+        }
+        
         firePropertyChange("click", null, null);
     }//GEN-LAST:event_labelsMouseClicked
+
+    private void infoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoButtonActionPerformed
+        labelsMouseClicked(null);
+    }//GEN-LAST:event_infoButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -882,7 +882,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="531" max="32767" attributes="0"/>
+                      <EmptySpace pref="468" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -926,6 +926,7 @@
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="registerInfo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -964,7 +965,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel7">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&lt;html&gt;Ditt paket v&#xe4;ntas levereras {date}. Har du fr&#xe5;gor ang&#xe5;ende din best&#xe4;llning kan du kontakta oss p&#xe5; &lt;b&gt;kundtjanst@imat.se&lt;/b&gt;.&lt;/html&gt;"/>
+                    <Property name="text" type="java.lang.String" value="&lt;html&gt;Ditt paket v&#xe4;ntas levereras den {date}. Har du fr&#xe5;gor ang&#xe5;ende din best&#xe4;llning kan du kontakta oss p&#xe5; &lt;b&gt;kundtjanst@imat.se&lt;/b&gt;.&lt;/html&gt;"/>
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JPanel" name="registerInfo">
@@ -994,7 +995,7 @@
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="51" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

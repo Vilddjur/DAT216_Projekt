@@ -724,7 +724,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
         jLabel6.setText("<html>En orderbekräftelse har skickats till e-postadressen du angav.</html>");
 
-        jLabel7.setText("<html>Ditt paket väntas levereras {date}. Har du frågor angående din beställning kan du kontakta oss på <b>kundtjanst@imat.se</b>.</html>");
+        jLabel7.setText("<html>Ditt paket väntas levereras den {date}. Har du frågor angående din beställning kan du kontakta oss på <b>kundtjanst@imat.se</b>.</html>");
 
         registerInfo.setBackground(Constants.MAIN_BACKGROUND);
 
@@ -756,7 +756,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -787,7 +787,8 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(registerInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(registerInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout receiptPanelLayout = new javax.swing.GroupLayout(receiptPanel);
@@ -804,7 +805,7 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
             .addGroup(receiptPanelLayout.createSequentialGroup()
                 .addGap(84, 84, 84)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(531, Short.MAX_VALUE))
+                .addContainerGap(468, Short.MAX_VALUE))
         );
 
         mainPanel.add(receiptPanel, "receiptCard");
@@ -880,6 +881,40 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
         if (!error) {
             amountLabel.setText("" + cart.getTotal());
             totalAmountLabel.setText("" + cart.getTotal());
+            
+            String dateString;
+            
+            if (jRadioButton5.isSelected()) {
+                String day = (String) dayComboBox.getSelectedItem();
+                String month = (String) monthComboBox.getSelectedItem();
+                month = month.toLowerCase();
+
+                if (day.equals("1")
+                        || day.equals("2")
+                        || day.equals("31")) {
+                    dateString = day + ":a";
+                } else {
+                    dateString = day + ":e";
+                }
+
+                dateString += " " + month;
+            } else {
+                Calendar cal = Calendar.getInstance();
+                cal.add(Calendar.DAY_OF_MONTH, 3);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+                if (day == 1 || day == 2 || day == 31) {
+                    dateString = day + ":a";
+                } else {
+                    dateString = day + ":e";
+                }
+                String month = (String) monthComboBox.getItemAt(cal.get(Calendar.MONTH));
+                dateString += " " + month.toLowerCase();
+            }
+            
+            String text = "<html>Ditt paket väntas levereras den {date}. Har du frågor angående din beställning kan du kontakta oss på <b>kundtjanst@imat.se</b>.</html>";
+            
+            jLabel7.setText(text.replace("{date}", dateString));
+            
             CardLayout card = (CardLayout) mainPanel.getLayout();
             card.show(mainPanel, "payCard");
         }
@@ -929,7 +964,6 @@ public class CheckOutPanel extends javax.swing.JPanel implements PropertyChangeL
 
     public void fillCreditCardFromUserProfile() {
         if (um.isLoggedIn()) {
-
             CreditCard card = um.getCard();
             
             cardField1.setText(card.getCardNumber());
