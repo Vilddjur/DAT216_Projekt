@@ -13,6 +13,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -32,6 +34,13 @@ public class OrderHistoryPanel extends javax.swing.JPanel implements PropertyCha
             
     private List<Order> orders;
     
+    private class DateComparator implements Comparator<Order> {
+        @Override
+        public int compare(Order o1, Order o2) {
+            return o2.getDate().compareTo(o1.getDate());
+        }
+    }
+    
     /**
      * Creates new form OrderHistoryPanel
      */
@@ -47,6 +56,8 @@ public class OrderHistoryPanel extends javax.swing.JPanel implements PropertyCha
         
         IMatDataHandler imat = IMatDataHandler.getInstance();
         orders = imat.getOrders();
+        
+        Collections.sort(orders, new DateComparator());
         
         for (Order order : orders) {
             OrderHistoryItem panel = new OrderHistoryItem(order);
