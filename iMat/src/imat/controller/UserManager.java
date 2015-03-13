@@ -104,7 +104,7 @@ public class UserManager implements IPropertyChangeSupport {
         }
         card.setValidMonth(1);
         card.setValidYear(2015);
-        card.setVerificationCode(0);
+        card.setVerificationCode(123);
         
         pcs.firePropertyChange("resetCreditCard", null, null);
     }

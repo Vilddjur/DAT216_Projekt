@@ -42,7 +42,9 @@ public class CreditCardPanel extends javax.swing.JPanel implements PropertyChang
         nbr3TextField.setDocument(new CustomDocument());
         nbr4TextField.setDocument(new CustomDocument());
         
-        updateCardInfo();
+        if (UserManager.getInstance().isLoggedIn()) {
+            updateCardInfo();
+        }
     }
     
     public void setCheckout() {
@@ -503,8 +505,11 @@ public class CreditCardPanel extends javax.swing.JPanel implements PropertyChang
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (evt.getPropertyName().equals("resetCreditCard")
-                || evt.getPropertyName().equals("editCreditCard")) {
-            updateCardInfo();
+                || evt.getPropertyName().equals("editCreditCard")
+                || evt.getPropertyName().equals("login")) {
+            if (UserManager.getInstance().isLoggedIn()) {
+                updateCardInfo();
+            }
         }
     }
 }
