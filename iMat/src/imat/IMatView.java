@@ -205,7 +205,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iMat - Mat..Mat!");
-        setMinimumSize(new java.awt.Dimension(1500, 1050));
+        setMinimumSize(new java.awt.Dimension(1200, 800));
         setPreferredSize(new java.awt.Dimension(1600, 1050));
 
         mainPanel.setBackground(Constants.BANNER_COLOR);
@@ -374,6 +374,7 @@ public class IMatView extends javax.swing.JFrame implements PropertyChangeListen
         jSplitPane1.setBorder(null);
         jSplitPane1.setDividerSize(0);
 
+        mainContentPanel.setMinimumSize(new java.awt.Dimension(500, 500));
         mainContentPanel.setPreferredSize(new java.awt.Dimension(100, 602));
         mainContentPanel.setLayout(new java.awt.CardLayout());
         mainContentPanel.add(startPagePanel, "startPage");
