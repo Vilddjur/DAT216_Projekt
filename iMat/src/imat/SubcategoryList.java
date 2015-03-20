@@ -54,6 +54,7 @@ public class SubcategoryList extends javax.swing.JPanel implements IPropertyChan
         list = new javax.swing.JList();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         scrollPane.setBorder(null);
 

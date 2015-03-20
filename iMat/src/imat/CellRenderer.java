@@ -27,6 +27,7 @@ public class CellRenderer extends JLabel
     public CellRenderer() {
         setOpaque(true);
         setBorder(new EmptyBorder(10, 10, 10, 10));
+        
     }
 
     @Override
